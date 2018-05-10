@@ -1,0 +1,2 @@
+class CustommadeController < ApplicationController
+end

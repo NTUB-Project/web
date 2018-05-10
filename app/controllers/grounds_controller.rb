@@ -1,0 +1,2 @@
+class GroundsController < ApplicationController
+end
