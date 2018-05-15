@@ -20,7 +20,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Contact</a>
       </li>
-      
+
       <li class="nav-item active">
         <a class="nav-link disabled" href="#">Member</a>
       </li>
@@ -29,6 +29,25 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
     </form>
-    <%= octicon "person", :height => 32,  :class => "right left", :"aria-label" => "hi" %>
+    <ul class="navbar-nav justify-content-end">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link " href="#">HI!<%= current_user.email %></a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "我的帳戶" , edit_user_registration_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "登出", destroy_user_session_path, method: :delete , class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "註冊", new_user_registration_path ,class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+         <%= link_to "登入", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>

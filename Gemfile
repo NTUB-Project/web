@@ -31,6 +31,7 @@ gem 'bootstrap', '~> 4.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'octicons'
 gem 'octicons_helper'
+gem 'devise', '~> 4.4', '>= 4.4.3'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
