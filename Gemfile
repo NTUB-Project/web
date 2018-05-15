@@ -33,6 +33,7 @@ gem 'octicons'
 gem 'octicons_helper'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'simple_form', '~> 4.0'
+gem 'cancancan', '~> 2.0'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
