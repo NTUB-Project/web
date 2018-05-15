@@ -34,6 +34,7 @@ gem 'octicons_helper'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'simple_form', '~> 4.0'
 gem 'cancancan', '~> 2.0'
+gem 'letter_opener_web', '~> 1.3', '>= 1.3.4'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
