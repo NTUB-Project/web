@@ -91,6 +91,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.6.2)
+      devise (>= 4.4)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -250,6 +252,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.4, >= 4.4.3)
+  devise-i18n (~> 1.6, >= 1.6.2)
   hirb
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)

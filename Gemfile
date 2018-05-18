@@ -37,6 +37,7 @@ gem 'cancancan', '~> 2.0'
 gem 'letter_opener_web', '~> 1.3', '>= 1.3.4'
 gem 'carrierwave'
 gem 'hirb'
+gem 'devise-i18n', '~> 1.6', '>= 1.6.2'
 
 
 # Use ActiveStorage variant
