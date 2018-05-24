@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PartyHelper is an easy to find the vendor's website.
 
-Things you may want to cover:
+Include food, venues, equipment ...
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+* Ruby version ： 2.4.1
 
-* Database creation
+* Rails version ： 5.2.0
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
