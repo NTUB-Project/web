@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_135738) do
+ActiveRecord::Schema.define(version: 2018_05_25_140520) do
+
+  create_table "activity_kinds", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
@@ -25,6 +37,43 @@ ActiveRecord::Schema.define(version: 2018_05_15_135738) do
     t.string "name"
     t.text "introduction"
     t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people_numbers", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.text "description"
+    t.string "location"
+    t.string "tel"
+    t.string "email"
+    t.integer "category_id"
+    t.integer "region_id"
+    t.integer "activity_kind_id"
+    t.integer "people_number_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_kind_id"], name: "index_products_on_activity_kind_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["people_number_id"], name: "index_products_on_people_number_id"
+    t.index ["region_id"], name: "index_products_on_region_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

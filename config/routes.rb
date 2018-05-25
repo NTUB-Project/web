@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  resources :products
+  resources :people_numbers
+  resources :activity_kinds
+  resources :regions
+  resources :categories
   devise_for :users
+  
+  resources :categories
   
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -9,5 +16,10 @@ Rails.application.routes.draw do
      mount LetterOpenerWeb::Engine, at: "/letter_opener"
    end
 
+    resource :cart, only:[:show, :destroy] do
+      collection do
+        post :add, path:'add/:id'
+      end
+    end
 
 end
