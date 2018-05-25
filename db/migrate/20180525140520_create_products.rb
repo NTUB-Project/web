@@ -7,10 +7,10 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :location
       t.string :tel
       t.string :email
-      t.reference :category
-      t.reference :region
-      t.reference :activity_kind
-      t.reference :people_number
+      t.references :category
+      t.references :region
+      t.references :activity_kind
+      t.references :people_number
 
       t.timestamps
     end
