@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   resources :regions
   resources :categories
   devise_for :users
-  
+
   resources :categories
+
+  resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
+    collection do
+      post :search
+    end
+  end
   
-  resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 

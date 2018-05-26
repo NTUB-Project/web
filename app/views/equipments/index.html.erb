@@ -1,4 +1,9 @@
 <div class="container mt-5">
+  <%= form_tag 'equipments/search' do %>
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label>
+    <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
+    <%= submit_tag "Search" %>
+  <% end %>
   <% @equipments.each do |equipment| %>
     <div class="row">
       <div class="card flex-md-row mb-4 box-shadow h-md-250 w-100">
