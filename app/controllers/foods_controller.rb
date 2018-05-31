@@ -18,6 +18,9 @@ class FoodsController < ApplicationController
       when "4"
         @foods = Product.where(category: 1, region: 4)
       end
-
+    end
+    
+    def show
+      @foods = Product.where(category: 1)
     end
 end
