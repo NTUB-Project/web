@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <%= form_tag '/rentcars/search' do %>
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label>
+    <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <% @rentcars.each do |rentcar| %>
+    <div class="row">
+      <div class="card flex-md-row mb-4 box-shadow h-md-250 w-100">
+        <%= link_to image_tag(rentcar.image_url, width: '200px',height: '250px'), rentcar if rentcar.image.present?%>
+        <div class="card-body d-flex flex-column align-items-start">
+          <h3 class="mb-0 mb-3">
+            <a class="text-dark" href="#"><%= rentcar.name %></a>
+          </h3>
+          <p class="card-text mb-auto"><%= rentcar.description %></p>
+          <p class="card-text mb-auto">聯絡電話：<%= rentcar.tel %></p>
+          <p class="card-text mb-auto">信箱：<%= rentcar.email %></p>
+          <a href="#">Continue reading</a>
+          <%= link_to '放到購物車', add_cart_path(rentcar), method: "post", class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <%= form_tag '/grounds/search' do %>
     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label>
-    <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
+    <%= select_tag 'region' , options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
     <%= submit_tag "Search" %>
   <% end %>
   <% @grounds.each do |ground| %>
@@ -21,4 +21,5 @@
       </div>
     </div>
   <% end %>
+
 </div>
