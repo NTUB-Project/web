@@ -7,5 +7,7 @@ class User < ApplicationRecord
   def admin?
     role == "amin"
   end
+  
+  acts_as_commontator
 
 end

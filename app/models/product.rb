@@ -4,4 +4,5 @@ class Product < ApplicationRecord
   belongs_to :activity_kind
   belongs_to :people_number
   mount_uploader :image, ImageUploader
+  acts_as_commontable
 end
