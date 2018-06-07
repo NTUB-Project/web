@@ -38,6 +38,7 @@ gem 'letter_opener_web', '~> 1.3', '>= 1.3.4'
 gem 'carrierwave'
 gem 'hirb'
 gem 'devise-i18n', '~> 1.6', '>= 1.6.2'
+gem 'commontator', '~> 5.1'
 
 
 # Use ActiveStorage variant
