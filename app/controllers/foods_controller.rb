@@ -21,6 +21,7 @@ class FoodsController < ApplicationController
     end
 
     def show
-      @foods = Product.where(category: 1, name: "趴趴走美食工坊")
+      @food_id = params[:id]
+      @foods = Product.where(id: @food_id)
     end
 end
