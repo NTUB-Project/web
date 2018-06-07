@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <%= form_tag '/foods/search' do %>
     <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label>
-    <%= select_tag 'region' , options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
+    <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
     <%= submit_tag "Search" %>
   <% end %>
   <% @foods.each do |food| %>
@@ -12,14 +12,13 @@
           <h3 class="mb-0 mb-3">
             <a class="text-dark" href="#"><%= food.name %></a>
           </h3>
-          <p class="card-text mb-auto"><%= food.description %></p>
           <p class="card-text mb-auto">聯絡電話：<%= food.tel %></p>
           <p class="card-text mb-auto">信箱：<%= food.email %></p>
-          <a href="#">Continue reading</a>
-          <%= link_to '放到購物車', add_cart_path(food), method: "post", class: "btn btn-xs btn-danger" %>
+          <p class="card-text mb-auto">地址：<%= food.location %></p>
+          <%= link_to 'Continue reading', food_path(food) %>
+          <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn btn-xs btn-danger" %>
         </div>
       </div>
     </div>
   <% end %>
-
 </div>

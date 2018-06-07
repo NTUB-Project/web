@@ -19,8 +19,8 @@ class FoodsController < ApplicationController
         @foods = Product.where(category: 1, region: 4)
       end
     end
-    
+
     def show
-      @foods = Product.where(category: 1)
+      @foods = Product.where(category: 1, name: "趴趴走美食工坊")
     end
 end

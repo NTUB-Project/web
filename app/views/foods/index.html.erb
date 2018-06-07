@@ -16,7 +16,7 @@
           <p class="card-text mb-auto">信箱：<%= food.email %></p>
           <p class="card-text mb-auto">地址：<%= food.location %></p>
           <%= link_to 'Continue reading', food_path(food) %>
-          <%= link_to '放到購物車', add_cart_path(food), method: "post", class: "btn btn-xs btn-danger" %>
+          <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn btn-xs" %>
         </div>
       </div>
     </div>
