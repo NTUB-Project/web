@@ -5,18 +5,17 @@ class GroundsController < ApplicationController
   end
 
   def search
-    result = params[:region]
-    @regions =Region.all
+    @regions = Region.all
 
-    case result
-    when "1"
-      @grounds = Product.where(category: 3, region: 1)
-    when "2"
-      @grounds = Product.where(category: 3, region: 2)
-    when "3"
-      @grounds = Product.where(category: 3, region: 3)
-    when "4"
-      @grounds = Product.where(category: 3, region: 4)
-    end
+    @region = params[:region]
+
+    @grounds = Product.where(category: 3, region: @region)
+
+
+  end
+
+  def show
+    @detail = params[:id]
+    @grounds = Product.where(id: @detail)
   end
 end

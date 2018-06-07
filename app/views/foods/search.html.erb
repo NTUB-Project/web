@@ -1,8 +1,15 @@
 <div class="container mt-5">
   <%= form_tag '/foods/search' do %>
-    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label>
-    <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
-    <%= submit_tag "Search" %>
+    <div>
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">地區</label>
+      <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
+    </div>
+    <div>
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> 人數</label>
+      <%= select_tag 'people_number', options_for_select(@people_numbers.collect{ |people_number| [people_number.title, people_number.id] }) %>
+
+    </div>
+  <%= submit_tag "Search" %>
   <% end %>
   <% @foods.each do |food| %>
     <div class="row">
@@ -15,8 +22,8 @@
           <p class="card-text mb-auto">聯絡電話：<%= food.tel %></p>
           <p class="card-text mb-auto">信箱：<%= food.email %></p>
           <p class="card-text mb-auto">地址：<%= food.location %></p>
-          <%= link_to 'Continue reading', food_path(food) %>
-          <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn btn-xs btn-danger" %>
+          <%= link_to '詳細資訊', food_path(food,@detail) , class: "btn btn-xs" %>
+          <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn btn-xs" %>
         </div>
       </div>
     </div>

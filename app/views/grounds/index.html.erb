@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <%= form_tag '/grounds/search' do %>
-    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Region</label>
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">地區</label>
     <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
     <%= submit_tag "Search" %>
   <% end %>
@@ -12,11 +12,11 @@
           <h3 class="mb-0 mb-3">
             <a class="text-dark" href="#"><%= ground.name %></a>
           </h3>
-          <p class="card-text mb-auto"><%= ground.description %></p>
           <p class="card-text mb-auto">聯絡電話：<%= ground.tel %></p>
           <p class="card-text mb-auto">信箱：<%= ground.email %></p>
-          <a href="#">Continue reading</a>
-          <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn btn-xs btn-danger" %>
+          <p class="card-text mb-auto">地址：<%= ground.location %></p>
+          <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn btn-xs" %>
+          <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn btn-xs" %>
         </div>
       </div>
     </div>
