@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :activity_kinds
   resources :regions
   resources :categories
-  devise_for :users
 
-  resources :categories
+  devise_for :users
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
     collection do

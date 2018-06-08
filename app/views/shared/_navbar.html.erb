@@ -8,22 +8,28 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Home
+          廠商類別
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">找食物</a>
+          <a class="dropdown-item" href="#">找設備</a>
+          <a class="dropdown-item" href="#">找場地</a>
+          <a class="dropdown-item" href="#">找租車</a>
+          <a class="dropdown-item" href="#">找攝影</a>
+          <a class="dropdown-item" href="#">找服裝印刷</a>
+          <a class="dropdown-item" href="#">找舞台服</a>
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="#">找附近</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">活動牆</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">關於我們</a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link disabled" href="#">Member</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0 mx-3">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -31,14 +37,17 @@
     </form>
     <ul class="navbar-nav justify-content-end">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <a class="nav-link " href="#">HI!<%= current_user.email %></a>
-        </li>
-        <li class="nav-item">
-          <%= link_to "我的帳戶" , edit_user_registration_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "登出", destroy_user_session_path, method: :delete , class: "nav-link" %>
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            HI!<%= current_user.email %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "我的帳戶" , edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "我的蒐藏", cart_path, class: "dropdown-item" %>
+            <%= link_to "活動管理", root_path , class: "dropdown-item" %>
+            <%= link_to "登出", destroy_user_session_path, method: :delete , class: "dropdown-item" %>
+            </div>
+          </li>
         </li>
       <% else %>
         <li class="nav-item">
@@ -48,7 +57,7 @@
          <%= link_to "登入", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
-      <%= link_to "我的蒐藏", cart_path, class: "nav-link" %>
+
     </ul>
   </div>
 </nav>
