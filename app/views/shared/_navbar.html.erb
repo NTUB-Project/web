@@ -1,54 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <div class="navigation">
-    <div class="container">
-      <button class="navbar-toggler ui-btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-header">
-        <nav class="logo">
-          <a href="#" class="navbar-brand">
-            <img src="imges/logo.png"  width="60" height="60">
-            <a class="logo"><span>PARTY</span>HELPER</a>
-          </a>
-        </nav>
-      </div>
-      
-      <div class="collapse navbar-collapse justify-content-end"  id="navbarSupportedContent">
-        <div class="menu">
-          <ul class="navbar-nav justify-content-end">
-            <li class="nav-item">
-              <%= link_to "首頁" , root_path , class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "關於我們" , root_path , class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "找附近" , root_path , class: "nav-link" %>
-            </li>
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <a class="nav-link " href="#">HI!<%= current_user.email %></a>
-              </li>
-              <li class="nav-item">
-                <%= link_to "我的蒐藏", cart_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "我的帳戶" , edit_user_registration_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "登出", destroy_user_session_path, method: :delete , class: "nav-link" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "註冊", new_user_registration_path ,class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-               <%= link_to "登入", new_user_session_path, class: "nav-link" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a href="#" class="navbar-brand">
+    <a class="logo"><img src="imges/logo.png"  width="60" height="60"><span class="title">PARTY</span>HELPER</a>
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item">
+        <%= link_to "首頁" , root_path , class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "關於我們" , root_path , class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "找附近" , root_path , class: "nav-link" %>
+      </li>
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <a class="nav-link " href="#">HI!<%= current_user.email %></a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "我的蒐藏", cart_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "我的帳戶" , edit_user_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "登出", destroy_user_session_path, method: :delete , class: "nav-link" %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "註冊", new_user_registration_path ,class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "登入", new_user_session_path, class: "nav-link" %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </nav>

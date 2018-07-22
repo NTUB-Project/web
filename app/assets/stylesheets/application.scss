@@ -16,49 +16,29 @@
  */
 @import "bootstrap";
 
-.body{
-  color: #fff;
+body{
+  color: #000;
   font-size: 14px;
-  font-weight: 300;
   line-height: 1.6em;
 }
 
-.navbar{
-  display: block;
-  min-height: 70px;
-  position: fixed;
-  width: 100%;
-  padding: 0px;
-  background-color: #fff;
-}
-
 .logo{
-  display: inline;
+  
   font-weight: 900;
   font-size: 25px;
-}
-.navbar-header{
-  float: left;
-}
-
-.navigation{
-  background-color: #fff;
-  padding: 0;
-  display: block;
-}
-
-.navbar-expand-lg .navbar-collapse{
-  height: 70px;
 }
 
 .navbar-toggler{
   float: right;
-  margin-top: 20px;
   z-index: 99;
 }
 
-span{
+span.title{
   color: rgb(27,189,54);
   font-weight: 900;
   font-size: 25px;
+}
+
+footer{
+  background-color: #fff;
 }
