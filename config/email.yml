@@ -9,7 +9,7 @@ development:
 production:
   address: "smtp.mailgun.org"
   port: 587
-  domain: "ihower.com"
+  domain: "gmail.com"
   authentication: "plain"
   user_name: "partyhelper.ntub@gmail.com"
   password: "Party000"
