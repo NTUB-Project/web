@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "https://frozen-mesa-16727.herokuapp.com/" }
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
 
 end
