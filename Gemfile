@@ -39,6 +39,10 @@ gem 'carrierwave'
 gem 'hirb'
 gem 'devise-i18n', '~> 1.6', '>= 1.6.2'
 gem 'commontator', '~> 5.1'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
 
 
 # Use ActiveStorage variant

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_05_125429) do
+ActiveRecord::Schema.define(version: 2018_07_27_033705) do
 
   create_table "activity_kinds", force: :cascade do |t|
     t.string "title"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2018_06_05_125429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "people_numbers", force: :cascade do |t|

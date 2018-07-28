@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>您好 <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>點選下方連結驗證您的Email：</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to '驗證連結', confirmation_url(@resource, confirmation_token: @token) %></p>

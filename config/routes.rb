@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :regions
   resources :categories
 
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
     collection do
