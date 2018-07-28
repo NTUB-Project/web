@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <div class="jumbotron">
   <h1 class="display-4">Hello, world!</h1>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -5,55 +6,40 @@
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 </div>
-<div class="row">
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找食物" , foods_path , class: "card-title h5" %>
+<div class="feature">
+  <div class="grid-container">
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" >
+			<i class="fa fa-map-marked-alt"></i>
+			<h2>找場地</h2>
     </div>
-  </div>
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找設備" , equipments_path , class: "card-title h5" %>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" >
+			<i class="fa fa-utensils"></i>
+			<h2>找食物</h2>
     </div>
-  </div>
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找場地" , grounds_path , class: "card-title h5" %>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" >
+			<i class="fa fa-bus"></i>
+			<h2>找租車</h2>
     </div>
-  </div>
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找租車" , rentcars_path , class: "card-title h5" %>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" >
+			<i class="fa fa-desktop"></i>
+			<h2>找設備</h2>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找攝影"  ,root_path , class: "card-title h5" %>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" >
+			<i class="fa fa-camera"></i>
+			<span class="hi-icon-wrap hi-icon-effect wow fadeInDown"></span>
+		  	<h2>找攝影</h2>
     </div>
-  </div>
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找服裝印刷",root_path  , class: "card-title h5" %>
-    </div>
-  </div>
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找舞台服" , costumes_path, class: "card-title h5" %>
-    </div>
-  </div>
-  <div class="col-3 card text-black">
-    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-hUSE_rIx4G7Rg7DyTbhkma9wLEo4hhEBeQRRhSa1gVU3vh8" alt="Card image">
-    <div class="card-img-overlay">
-      <%= link_to "找附近" ,root_path, class: "card-title h5" %>
-    </div>
-  </div>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" >
+			<i class="fa fa-brush"></i>
+			<h2>找印刷</h2>
+	  </div>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" >
+			<i class="fa fa-tshirt"></i>
+			<h2>舞台服租借</h2>
+	  </div>
+		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" >
+			<i class="fa fa-map-marker-alt"></i>
+			<h2>找附近</h2>
+	  </div>
+	</div>
 </div>
