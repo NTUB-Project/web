@@ -7,12 +7,17 @@ class Cart
 
   def add_item(product_id)
     found_item = items.find { |item| item.product_id == product_id }
-    
+
     if found_item
         found_item.increment
     else
         @items << CartItem.new(product_id)
     end
+  end
+
+  def delete_item(product_id)
+    found_item = items.find { |item| item.product_id == product_id }
+    @items = items.without(found_item)
   end
 
   def empty?
