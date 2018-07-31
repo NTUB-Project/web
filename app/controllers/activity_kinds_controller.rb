@@ -1,4 +1,5 @@
 class ActivityKindsController < ApplicationController
+
   before_action :set_activity_kind, only: [:show, :edit, :update, :destroy]
 
   # GET /activity_kinds
