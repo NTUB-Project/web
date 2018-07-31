@@ -4,7 +4,7 @@ class CartsController < ApplicationController
       session[:cart9487] = current_cart.serialize
     end
 
-    def update
+    def remove
       current_cart.delete_item(params[:id])
       session[:cart9487] = current_cart.serialize
       redirect_to "/cart"

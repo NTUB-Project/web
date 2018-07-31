@@ -12,7 +12,7 @@
       <tr>
         <td><%= item.product.name %></td>
         <td><%= item.product.location %></td>
-        <td><%= link_to  "刪除",cart_path(item.product.id) , method: :put ,class: "btn btn-default "%></td>
+        <td><%= link_to  "刪除", remove_cart_path(item.product.id), method: :put ,class: "btn btn-default "%></td>
       </tr>
     <% end %>
   </tbody>
