@@ -1,5 +1,5 @@
 class ActivityKindsController < ApplicationController
-prepend_before_action :require_no_authentication, only: [:cancel]
+
   before_action :set_activity_kind, only: [:show, :edit, :update, :destroy]
 
   # GET /activity_kinds
