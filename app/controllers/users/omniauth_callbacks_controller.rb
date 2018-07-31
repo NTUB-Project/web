@@ -18,7 +18,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
 
- def failure
+  def failure
     redirect_to new_user_session_path, alert: "無法獲得驗證！"
   end
 
