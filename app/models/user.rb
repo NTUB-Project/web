@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  cart_number = User.order(current_sign_in_at: :desc).first.id
+  cart = "cart" + cart_number.to_s
+  SessionKey = cart.to_sym
+  debugger
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable, :omniauthable, :omniauth_providers => [:facebook]
 
