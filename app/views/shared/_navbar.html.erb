@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a href="#" class="navbar-brand">
-    <a class="logo"><img src="imges/logo.png"  width="60" height="60"><span class="title">PARTY</span>HELPER</a>
+    <a class="logo">
+      <%= image_tag("logo.png", width: '60', height: '60') %>
+      <span class="title">PARTY</span>HELPER</a>
   </a>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,7 +13,7 @@
         <%= link_to "首頁" , root_path , class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "關於我們" , root_path , class: "nav-link" %>
+        <%= link_to "關於我們" , about_home_index_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "找附近" , root_path , class: "nav-link" %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :activity_kinds
   resources :regions
   resources :categories
+ 
 
   devise_for :users
 
@@ -11,6 +12,10 @@ Rails.application.routes.draw do
     collection do
       post :search
     end
+  end
+  
+  resources :home do
+    get 'about', on: :collection
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
