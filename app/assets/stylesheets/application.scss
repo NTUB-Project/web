@@ -23,7 +23,7 @@ body{
 }
 
 .logo{
-  
+
   font-weight: 900;
   font-size: 25px;
 }
@@ -41,4 +41,11 @@ span.title{
 
 footer{
   background-color: #fff;
+}
+
+.item{
+  color: #fff;
+  a:hover{
+    color: #1BBD36;
+  }
 }
