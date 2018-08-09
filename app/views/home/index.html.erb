@@ -9,32 +9,45 @@
 <div class="feature">
   <div class="grid-container">
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" >
-			<i class="fa fa-map-marked-alt"></i>
+			<%= link_to grounds_path do %>
+    		<i class="fa fa-map-marked-alt"></i>
+			<% end %>
 			<h2>找場地</h2>
     </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" >
-			<i class="fa fa-utensils"></i>
+			<%= link_to foods_path do %>
+				<i class="fa fa-utensils"></i>
+			<% end %>
 			<h2>找食物</h2>
     </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" >
-			<i class="fa fa-bus"></i>
+			<%= link_to rentcars_path do %>
+				<i class="fa fa-bus"></i>
+			<% end %>
 			<h2>找租車</h2>
     </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" >
-			<i class="fa fa-desktop"></i>
+			<%= link_to equipments_path do %>
+				<i class="fa fa-desktop"></i>
+			<% end %>
 			<h2>找設備</h2>
     </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" >
-			<i class="fa fa-camera"></i>
-			<span class="hi-icon-wrap hi-icon-effect wow fadeInDown"></span>
-		  	<h2>找攝影</h2>
+			<%= link_to photography_index_path do %>
+				<i class="fa fa-camera"></i>
+			<% end %>
+		  <h2>找攝影</h2>
     </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" >
-			<i class="fa fa-brush"></i>
+			<%= link_to custommade_index_path do %>
+				<i class="fa fa-brush"></i>
+			<% end %>
 			<h2>找印刷</h2>
 	  </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" >
-			<i class="fa fa-tshirt"></i>
+			<%= link_to costumes_path do %>
+				<i class="fa fa-tshirt"></i>
+			<% end %>
 			<h2>舞台服租借</h2>
 	  </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" >
