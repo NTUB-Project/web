@@ -1,6 +1,6 @@
 class EquipmentsController < ApplicationController
     def index
-        @equipments = Product.where(category: 2)
+        @equipments = Product.where(category: 4)
         @regions =Region.all
     end
 
@@ -9,7 +9,7 @@ class EquipmentsController < ApplicationController
 
       @region = params[:region]
 
-      @equipments = Product.where(category: 2, region: @region)
+      @equipments = Product.where(category: 4, region: @region)
 
 
     end
