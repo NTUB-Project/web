@@ -1,0 +1,33 @@
+<div class="card container">
+  <% @costumes.each do |costume| %>
+    <div class="row">
+        <div class="col-3 py-2 pl-5">
+            <%= link_to image_tag(costume.image_url, width: '200px',height: '200px'), costume if costume.image.present?%>
+        </div>
+        <div class="col-9">
+            <div class="card-body d-flex flex-column align-items-start">
+              <h3 class="mb-0 mb-3">
+                <a class="text-dark" href="#"><%= costume.name %></a>
+              </h3>
+              <p class="card-text mb-auto"><%= costume.description %></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div class="flex-md-row mb-4 box-shadow h-md-250 w-100">
+            <div class="card-body d-flex flex-column align-items-start">
+                <p class="card-text mb-auto">聯絡電話：<%= costume.tel %></p>
+                <p class="card-text mb-auto">信箱：<%= costume.email %></p>
+                <br/>
+                <p>地理位置</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1806.8995086327466!2d121.683066!3d25.0748003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x7a917805a5599c18!2zTGFtaWdv6YKj57Gz5ZOl5a605pyD5buj5aC0!5e0!3m2!1szh-TW!2stw!4v1527774890947" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <%= link_to '加入蒐藏', add_cart_path(costume), method: "post", class: "btn btn-xs" %>
+        </div>
+
+        <%= commontator_thread(costume)%>
+
+    </div>
+  <% end %>
+</div>

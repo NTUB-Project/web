@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :activity_kinds
   resources :regions
   resources :categories
- 
+
 
   devise_for :users
 
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       post :search
     end
   end
-  
+
   resources :home do
     get 'about', on: :collection
   end
