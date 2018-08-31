@@ -1,6 +1,6 @@
 class GroundsController < ApplicationController
   def index
-    @grounds = Product.where(category: 3)
+    @grounds = Product.where(category: 1)
     @regions =Region.all
   end
 
@@ -9,7 +9,7 @@ class GroundsController < ApplicationController
 
     @region = params[:region]
 
-    @grounds = Product.where(category: 3, region: @region)
+    @grounds = Product.where(category: 1, region: @region)
 
 
   end
