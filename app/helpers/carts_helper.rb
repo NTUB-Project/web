@@ -1,7 +1,7 @@
 module CartsHelper
 
     def current_cart
-      @cart ||= Cart.from_hash(session[:cart9487])
+      @cart ||= Cart.from_hash(session[:cart_id])
     end
 
 end
