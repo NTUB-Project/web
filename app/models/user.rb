@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
-
+  cart_number = User.order(current_sign_in_at: :desc).first.id
+  cart = "cart" + cart_number.to_s
+  SessionKey = cart.to_sym
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable, :omniauthable, :omniauth_providers => [:facebook]
@@ -10,8 +12,6 @@ class User < ApplicationRecord
   end
 
   acts_as_commontator
-
-
 
   def self.from_omniauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
@@ -36,7 +36,6 @@ class User < ApplicationRecord
       identity.user = user
       identity.save!
     end
-
     user
   end
 

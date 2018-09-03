@@ -2,12 +2,13 @@ class ApplicationController < ActionController::Base
   include CartsHelper
 
   def find_cart
-    cart = Cart.find_by(id: session[:cart_id])
-    unless cart.present?
-      cart = Cart.create
-    end
-      session[:cart_id] = cart.id
-      cart
+     @current_cart ||= load_cart
+  end
+
+  private
+
+  def load_cart
+    session[User::SessionKey] = current_cart.serialize
   end
 
 end
