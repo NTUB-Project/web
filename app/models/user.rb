@@ -1,8 +1,6 @@
 class User < ApplicationRecord
 
-  cart_number = User.order(current_sign_in_at: :desc).first.id
-  cart = "cart" + cart_number.to_s
-  SessionKey = cart.to_sym
+  
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable, :omniauthable, :omniauth_providers => [:facebook]

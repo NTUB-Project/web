@@ -1,16 +1,6 @@
-class CartItem
-  attr_reader :product_id
+class CartItem < ApplicationRecord
+  belongs_to :cart ,required: false
+  belongs_to :product ,required: false
 
-  def initialize(product_id)
-    @product_id = product_id
-  end
-
-  def increment
-      @quantity = 1
-  end
-
-  def product
-    Product.find_by(id: product_id)
-  end
 
 end

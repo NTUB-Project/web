@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def index
     @regions =Region.all
   end
@@ -8,8 +9,10 @@ module ApplicationHelper
       content_tag :i, class: "fa fa-#{icon}" do
         label
       end
-
     end
-
   end
+
+
+
+
 end

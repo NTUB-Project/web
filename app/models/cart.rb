@@ -1,45 +1,6 @@
-class Cart
+class Cart < ApplicationRecord
+has_many :cart_items
+has_many :products, through: :cart_items, source: :product
 
-  attr_reader :items
 
-  def initialize(items = [])
-    @items = items
-  end
-
-  def add_item(product_id)
-    found_item = items.find { |item| item.product_id == product_id }
-
-    if found_item
-        found_item.increment
-    else
-        @items << CartItem.new(product_id)
-    end
-  end
-
-  def delete_item(product_id)
-    found_item = items.find { |item| item.product_id == product_id }
-    @items = items.without(found_item)
-  end
-
-  def empty?
-    items.empty?
-  end
-
-  def serialize
-    all_items = items.map { |item|
-      { "product_id" => item.product_id}
-    }
-
-    { "items" => all_items }
-  end
-
-  def self.from_hash(hash)
-    if hash.nil?
-      new []
-    else
-      new hash["items"].map { |item_hash|
-        CartItem.new(item_hash["product_id"])
-      }
-    end
-  end
 end
