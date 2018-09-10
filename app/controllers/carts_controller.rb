@@ -7,11 +7,13 @@ before_action :current_cart
   end
 
   def add
+    quantity  = CartItem.where(:cart_id => @cart_id).count
     find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
-    if find_item.blank?
+    if find_item.blank? && quantity < 5
     CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
     end
-    redirect_to "/grounds"
+    
+
   end
 
 
