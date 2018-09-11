@@ -1,7 +1,5 @@
 class User < ApplicationRecord
 
-  
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable, :omniauthable, :omniauth_providers => [:facebook]
 
@@ -9,7 +7,6 @@ class User < ApplicationRecord
     role == "amin"
   end
 
-  acts_as_commontator
 
   def self.from_omniauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
