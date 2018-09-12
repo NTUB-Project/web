@@ -4,7 +4,7 @@ development:
   domain: "gmail.com"
   authentication: "plain"
   user_name: "partyhelper.ntub@gmail.com"
-  password: "Party000"
+  password: "PartyNtub000"
   enable_starttls_auto: true
 production:
   address: "smtp.gmail.com"
@@ -12,5 +12,5 @@ production:
   domain: "gmail.com"
   authentication: "plain"
   user_name: "partyhelper.ntub@gmail.com"
-  password: "Party000"
+  password: "PartyNtub000"
   enable_starttls_auto: true

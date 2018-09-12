@@ -17,5 +17,7 @@ class GroundsController < ApplicationController
   def show
     @detail = params[:id]
     @grounds = Product.where(id: @detail)
+    @product = Product.find(@detail)
+    @comments = @product.comments
   end
 end

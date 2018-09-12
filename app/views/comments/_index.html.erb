@@ -1,0 +1,25 @@
+<table class="table">
+<thead>
+ <tr>
+   <th>留言者</th>
+   <th>留言</th>
+   <th><%= link_to "新增留言" , new_comment_path(@product) %></th>
+   <th colspan="3"></th>
+ </tr>
+</thead>
+<tbody>
+ <% @comments.each do |comment| %>
+   <tr>
+     <td><%= comment.user.email %></td>
+     <td><%= comment.content %></td>
+     <td>
+       <%= link_to("Edit", edit_comment_path(comment.product, comment),
+                   class: "btn btn-default btn-xs")%>
+       <%= link_to("Delete", comment_path(comment.product, comment),
+                   class: "btn btn-default btn-xs ", method: :delete,
+                   data: { confirm: "Are you sure?" } )%>
+     </td>
+   </tr>
+ <% end %>
+</tbody>
+</table>
