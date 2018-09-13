@@ -1,7 +1,7 @@
-<h1>新增文章</h1>
+<h1>新增留言</h1>
 
 <div class="col-md-4 col-md-offset-4">
-  <%= simple_form_for [@comment] do |f| %>
+  <%= simple_form_for [@product_id, @comment] do |f| %>
     <div class="form-group">
       <%= f.input :content%>
     </div>
