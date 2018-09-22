@@ -3,17 +3,22 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <td>選取</td>
       <td>名稱</td>
-      <td>地址</td>
+      <td>信箱</td>
     </tr>
   </thead>
   <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.product.name %></td>
-        <td><%= item.product.location %></td>
-        <td><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put ,class: "btn btn-default "%></td>
-      </tr>
+    <%= form_tag(email_cart_path(@items),method: :put)  do %> 
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= check_box_tag "item_id[]",item.product.id %></td>
+          <td><%= item.product.name %></td>
+          <td><%= item.product.email %></td>
+          <td><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put ,class: "btn btn-default "%></td>
+        </tr>
+      <% end %>
+      <tr><td><%= submit_tag '寄信', class: "btn btn-success" %></td></tr>
     <% end %>
   </tbody>
   <tfoot></tfoot>
