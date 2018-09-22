@@ -19,5 +19,6 @@ class GroundsController < ApplicationController
     @grounds = Product.where(id: @detail)
     @product_id = Product.find(@detail)
     @comments = @product_id.comments
+
   end
 end

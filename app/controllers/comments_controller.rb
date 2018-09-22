@@ -3,11 +3,15 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
+    @comment = @product_id.comments.new
   end
 
   def new
-    @comment = @product_id.comments.new
+    @comment = Comment.new
+
   end
+
+
 
   def create
     @comment = @product_id.comments.new(comment_params)

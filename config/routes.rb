@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :regions
   resources :categories
 
-
+  resources :comments
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
 
