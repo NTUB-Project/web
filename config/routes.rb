@@ -32,7 +32,10 @@ Rails.application.routes.draw do
   end
 
   # put '/carts/:id', to: 'carts#update'
-
+  
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
 
 end
