@@ -18,7 +18,7 @@ class GroundsController < ApplicationController
     @detail = params[:id]
     @grounds = Product.where(id: @detail)
     @product_id = Product.find(@detail)
-    @comments = @product_id.comments
+    @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
 
   end
 end

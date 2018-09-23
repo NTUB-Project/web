@@ -1,15 +1,7 @@
 <table class="table">
 <thead>
   <tr>
-      <th><%= simple_form_for [@product_id, Comment.new] do |f| %>
-        <div class="form-group">
-          <%= f.input :content%>
-        </div>
-        <div class="form-actions">
-          <%= f.submit %>
-        </div>
-      <% end %>
-      </th>
+      <th><%= render "comments/form"%></th>
   </tr>
   <th>留言者</th>
   <th>留言</th>
@@ -24,15 +16,18 @@
      <td><%= comment.content %></td>
      <td><%= comment.updated_at%></td>
      <td>
-       <% if current_user.id == comment.user_id %>
-       <%= link_to("Edit", edit_product_comment_path(comment.product, comment),
-                   class: "btn btn-default btn-xs")%>
-       <%= link_to("Delete", product_comment_path(comment.product, comment),
-                   class: "btn btn-default btn-xs ", method: :delete,
-                   data: { confirm: "Are you sure?" } )%>
+       <% if user_signed_in? %>
+         <% if current_user.id == comment.user_id %>
+           <%= link_to("Edit", edit_product_comment_path(comment.product, comment),
+                       class: "btn btn-default btn-xs")%>
+           <%= link_to("Delete", product_comment_path(comment.product, comment),
+                       class: "btn btn-default btn-xs ", method: :delete,
+                       data: { confirm: "Are you sure?" } )%>
+          <% end %>
         <% end %>
      </td>
    </tr>
  <% end %>
+ <tr><td><%= will_paginate @comments, :page_links => false %></td></tr>
 </tbody>
 </table>
