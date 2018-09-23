@@ -2,14 +2,13 @@ class CommentsController < ApplicationController
   before_action :authenticate_user! , :only => [:new,:edit,:destroy]
   before_action :find
 
-
   def create
     if user_signed_in?
       @comment = @product_id.comments.new(comment_params)
       uid = current_user.id
       @comment.user_id = uid
       if @comment.save
-        redirect_to root_path, notice:"新增成功"
+        redirect_back(fallback_location: root_path)
       else
         redirect_to root_path, notice:"新增失敗"
       end
@@ -39,7 +38,7 @@ class CommentsController < ApplicationController
     @product_id = Product.find(params[:product_id])
     @comment = @product_id.comments.find(params[:id])
     @comment.destroy if @comment
-    redirect_to root_path, notice: "留言已刪除!"
+    redirect_back(fallback_location: root_path)
   end
 
 

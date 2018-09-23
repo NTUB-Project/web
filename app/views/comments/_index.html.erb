@@ -10,6 +10,7 @@
  </tr>
 </thead>
 <tbody>
+
  <% @comments.each do |comment| %>
    <tr>
      <td><%= comment.user.email%></td>
@@ -28,6 +29,6 @@
      </td>
    </tr>
  <% end %>
- <tr><td><%= will_paginate @comments, :page_links => false %></td></tr>
+ <tr><td><%= will_paginate @comments%></td></tr>
 </tbody>
 </table>
