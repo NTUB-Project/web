@@ -41,8 +41,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
+gem 'letter_opener_web'
 gem 'will_paginate', '~> 3.1'
-
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

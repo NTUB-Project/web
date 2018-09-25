@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   before_action :authenticate_user! , :only => [:new,:edit,:destroy]
   before_action :find
 
+  def new
+    comment = @product_id.comments.new
+  end
+
   def create
     if user_signed_in?
       @comment = @product_id.comments.new(comment_params)
