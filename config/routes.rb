@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :regions
   resources :categories
 
-
+  resources :comments
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
 
@@ -25,12 +25,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 
-
-
   resource :cart, only:[:show, :destroy] do
     collection do
       post :add, path:'add/:id'
       put :remove, path:'/:id'
+      put :email, path:'email/:id'
     end
   end
 

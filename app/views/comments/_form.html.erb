@@ -1,0 +1,8 @@
+<%= simple_form_for [@product_id, Comment.new], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.input :content%>
+  </div>
+  <div class="form-actions">
+    <%= f.submit %>
+  </div>
+<% end %>
