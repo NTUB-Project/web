@@ -50,9 +50,10 @@ class CommentsController < ApplicationController
   end
 
 
+
   private
     def comment_params
-      params.require(:comment).permit(:content, :product_id, :user_id, :rating, :image)
+      params.require(:comment).permit(:content, :product_id, :user_id, :rating, :images => [])
     end
 
     def find
