@@ -1,5 +1,7 @@
 <%= simple_form_for [@product_id, Comment.new] do |f| %>
   <div class="form-group">
+    <%= f.input :rating%>
+    <%= f.file_field :image %>
     <%= f.input :content%>
   </div>
   <div class="form-actions">

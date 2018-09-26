@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
-  
+
     collection do
       post :search
     end
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   end
 
   # put '/carts/:id', to: 'carts#update'
-  
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

@@ -34,7 +34,7 @@ gem 'octicons_helper'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'simple_form', '~> 4.0'
 gem 'cancancan', '~> 2.0'
-gem 'carrierwave'
+gem 'carrierwave'  #上傳圖片用
 gem 'hirb'
 gem 'devise-i18n', '~> 1.6', '>= 1.6.2'
 gem 'omniauth'
