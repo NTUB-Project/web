@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2018_09_26_142548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rating"
-    t.string "image"
     t.json "images"
   end
 
