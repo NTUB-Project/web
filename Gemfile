@@ -34,7 +34,7 @@ gem 'octicons_helper'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'simple_form', '~> 4.0'
 gem 'cancancan', '~> 2.0'
-gem 'carrierwave'
+gem 'carrierwave'  #上傳圖片用
 gem 'hirb'
 gem 'devise-i18n', '~> 1.6', '>= 1.6.2'
 gem 'omniauth'
@@ -42,10 +42,15 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
 <<<<<<< HEAD
+<<<<<<< HEAD
 gem 'will_paginate', '~> 3.1'
 
 =======
 gem 'letter_opener_web'
+>>>>>>> develop
+=======
+gem 'letter_opener_web'
+gem 'will_paginate', '~> 3.1'
 >>>>>>> develop
 
 # Use ActiveStorage variant

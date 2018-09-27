@@ -3,6 +3,8 @@
   <tr>
       <th><%= render "comments/form"%></th>
   </tr>
+  <th></th>
+  <th></th>
   <th>留言者</th>
   <th>留言</th>
   <th>時間</th>
@@ -10,8 +12,13 @@
  </tr>
 </thead>
 <tbody>
+
  <% @comments.each do |comment| %>
    <tr>
+     <td><div class="star-rating" data-score= <%= comment.rating %> > <%= comment.rating%></div></td>
+     <% for images in comment.images_urls %>
+       <td><%= link_to image_tag(images, width: '200px',height: '250px'), comment if comment.images.present?%></td>
+     <% end %>
      <td><%= comment.user.email%></td>
      <td><%= comment.content %></td>
      <td><%= comment.updated_at%></td>
@@ -28,6 +35,15 @@
      </td>
    </tr>
  <% end %>
- <tr><td><%= will_paginate @comments, :page_links => false %></td></tr>
+ <tr><td><%= will_paginate @comments%></td></tr>
 </tbody>
 </table>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      score: function(){
+        return $(this).attr('data-score');
+      }
+    });
+</script>
