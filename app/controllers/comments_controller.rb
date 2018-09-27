@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :find
 
   def new
-    comment = @product_id.comments.new
+    @comment = @product_id.comments.new
   end
 
   def create
@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
     else
       redirect_to new_user_session_url, notice:"請先登入再嘗試留言"
     end
+    
   end
 
   def edit

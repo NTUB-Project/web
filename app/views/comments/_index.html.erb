@@ -16,7 +16,9 @@
  <% @comments.each do |comment| %>
    <tr>
      <td><%= comment.rating %></td>
-     <td><%= link_to image_tag(comment.images_urls, width: '200px',height: '250px'), comment if comment.images.present?%></td>
+     <% for images in comment.images_urls %>
+       <td><%= link_to image_tag(images, width: '200px',height: '250px'), comment if comment.images.present?%></td>
+     <% end %>  
      <td><%= comment.user.email%></td>
      <td><%= comment.content %></td>
      <td><%= comment.updated_at%></td>
