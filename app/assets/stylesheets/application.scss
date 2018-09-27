@@ -40,6 +40,12 @@ body{
   width: 100%;
 }
 
+.dropdown-menu{
+  a:hover{
+    background-color: rgba(211, 211, 211,0.5);
+  }
+  background-color: rgba(211, 211, 211,0.2);
+}
 
 
 span.title{
