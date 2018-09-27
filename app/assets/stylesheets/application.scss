@@ -29,6 +29,7 @@ body{
   font-size: 25px;
 }
 
+//navbar
 .navbar-toggler{
   float: right;
   z-index: 99;
@@ -47,7 +48,7 @@ body{
   background-color: rgba(211, 211, 211,0.2);
 }
 
-
+//footer
 span.title{
   color: rgb(27,189,54);
   font-weight: 900;
@@ -56,6 +57,7 @@ span.title{
 
 footer{
   background-color: rgba(77,140,105,0.2);
+  margin-top: 50px;
 }
 
 .item{
@@ -69,6 +71,7 @@ footer{
   background-color: rgba(43, 131, 122, 0.3)
 }
 
+//index 看板
 .bkgrdimg{
   img{
     width: 100%;
@@ -106,4 +109,19 @@ footer{
 
 .grid-container h2{
   color: #1FA479
+}
+
+//關於我們
+.about_us{
+  .about_us_image{
+    width: auto;
+    height: 300px;
+    img{
+      max-width: 100%;
+      max-height:100%;
+      margin: auto;
+    }
+  }
+  margin-top: 130px;
+  text-align: center;
 }

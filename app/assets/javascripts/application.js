@@ -11,15 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
-//= require_tree .
 
 //= require jquery3
 //= require popper
-//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui
-
+//= require bootstrap-sprockets
+//= require_tree .
 
 
 var bkgrdimg_letters = {};
