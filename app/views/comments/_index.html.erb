@@ -16,7 +16,7 @@
 
  <% @comments.each do |comment| %>
    <tr>
-     <td><div class="comment-rating" data-score= "<%= comment.rating %>" ></div><%= comment.rating%></td>
+     <td><div class="star-rating" data-score= <%= comment.rating %> ></div></td>
      <% for images in comment.images_urls %>
        <td><%= link_to image_tag(images, width: '200px',height: '250px'), comment if comment.images.present?%></td>
      <% end %>
@@ -41,8 +41,7 @@
 </table>
 
 <script>
-     $('.comment-rating').raty({
-       readOnly: true,
+     $('.star-rating').raty({
        path: '/assets/',
        readOnly: true,
        score: function() {

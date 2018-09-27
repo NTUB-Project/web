@@ -1,6 +1,8 @@
 <%= simple_form_for [@product_id, Comment.new] do |f| %>
   <div class="form-group">
-    <%= f.input :rating%>
+    <div class="field">
+      <div id="star-rating"></div>
+    </div>
     <%= f.file_field :images , multiple: true, name: "comment[images][]"%>
     <%= f.input :content%>
   </div>
@@ -8,3 +10,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'comment[rating]'
+  });
+</script>
