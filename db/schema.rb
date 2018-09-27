@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_062152) do
+ActiveRecord::Schema.define(version: 2018_09_26_142548) do
 
   create_table "activity_kinds", force: :cascade do |t|
     t.string "title"
@@ -44,6 +44,11 @@ ActiveRecord::Schema.define(version: 2018_09_12_062152) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
+=======
+    t.integer "rating"
+    t.json "images"
+>>>>>>> feature/comment
   end
 
   create_table "identities", force: :cascade do |t|

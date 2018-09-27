@@ -20,6 +20,7 @@ body{
   color: #000;
   font-size: 14px;
   line-height: 1.6em;
+  background-color: lightcyan;
 }
 
 .logo{
@@ -33,6 +34,10 @@ body{
   z-index: 99;
 }
 
+nav{
+  background-color: rgba(255,255,255,0.8);
+}
+
 span.title{
   color: rgb(27,189,54);
   font-weight: 900;
@@ -40,7 +45,7 @@ span.title{
 }
 
 footer{
-  background-color: #fff;
+  background-color: rgba(77,140,105,0.2);
 }
 
 .item{
@@ -48,4 +53,8 @@ footer{
   a:hover{
     color: #1BBD36;
   }
+}
+
+.card{
+  background-color: rgba(43, 131, 122, 0.3)
 }
