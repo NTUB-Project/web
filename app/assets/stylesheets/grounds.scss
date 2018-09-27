@@ -1,3 +1,211 @@
 // Place all the styles related to the Grounds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.content{
+	padding-top: 40px;
+	height: auto;
+	text-align: center;
+}
+div.content button.backbtn{
+	position: fixed;
+	top: 20%;
+	left: 9%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 0px;
+	letter-spacing: 3px;
+	background-color: rgba(70, 154, 145, 0.2);
+}
+div.content button.backbtn:hover{
+	background-color: rgba(43, 131, 122, 0.5);
+}
+div.content button.addbtn{
+	position: fixed;
+	top: 20%;
+	right: 9%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 0px;
+	letter-spacing: 3px;
+	background-color: rgba(70, 154, 145, 0.2);
+}
+div.content button.addbtn:hover{
+	background-color: rgba(43, 131, 122, 0.5);
+}
+div.content button.connectbtn{
+	position: fixed;
+	top: 32%;
+	right: 9%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 0px;
+	letter-spacing: 2px;
+	background-color: rgba(70, 154, 145, 0.2);
+}
+div.content button.connectbtn:hover{
+	background-color: rgba(43, 131, 122, 0.5);
+}
+div.content button.forumbtn{
+	position: fixed;
+	top: 30%;
+	right: 10%;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	border: 0px;
+	letter-spacing: 2px;
+	background-color: rgba(70, 154, 145, 0.2);
+}
+div.content button.forumbtn:hover{
+	background-color: rgba(43, 131, 122, 0.5);
+}
+div.detail{
+	margin:0 auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	height: 100%;
+	background-color: rgba(43, 131, 122, 0.3);
+	border-radius: 10px;
+	padding-bottom: 50px;
+}
+div.name{
+	top: auto;	
+	width: 100%;
+	text-align: center;
+}
+div.name h1{
+	padding-top: 50px;
+	font-size: 90px;
+	color: aliceblue;	
+}
+/*---------------------------*/
+/*  定義fancybox              */
+/*---------------------------*/
+div.detail2{
+	text-align: center;
+	margin:20px auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	background-color: rgba(43, 131, 122, 0.3);
+	padding-top: 12px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
+div.detail2 img{
+    box-shadow:0px 0px 5px 1px #000;
+    margin-right:20px;
+}
+
+div.detail2 a{
+    outline:none;
+}
+
+div.detail2:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+/*---------------------------*/
+/*  定義icon                   */
+/*---------------------------*/
+div.detail3{
+	text-align: center;
+	margin:20px auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	background-color: rgba(43, 131, 122, 0.3);
+	padding-top: 2px;
+	border-radius: 10px;
+}
+div.icons img{
+	width: 70px;
+	height: 70px;
+	padding: 5px 5px 5px 5px;
+	margin-left: 10px;
+}
+div.detail4{
+	text-align: center;
+	margin:20px auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	background-color: rgba(43, 131, 122, 0.3);
+	padding-top: 15px;
+	border-radius: 10px;
+	padding-bottom: 15px;
+}
+div.detail5{
+	text-align: center;
+	margin:20px auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	background-color: rgba(43, 131, 122, 0.3);
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-bottom: 15px;
+}
+div.detail6{
+	text-align: center;
+	margin:20px auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	background-color: rgba(176, 207, 207, 0.3);
+	border-radius: 10px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+div.inputs{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: rgba(176, 239, 239, 0.3);
+	padding-bottom: 50px;
+	box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
+}
+from#message{
+	float: left;
+}
+textarea.form-control{
+	position: relative;
+	top:20px;
+	border-radius: 5px;
+	font-size: 14px;
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+}
+.checked {
+    color: orange;
+}
+div.upload{
+	position: relative;
+	top:20px;
+}
+/*------------TOP------------*/
+div.backtotop{
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+}
+a.top{
+	border-radius: 50%;
+	background-color: rgba(255,255,255,0.0);
+	color: aquamarine;
+	border: none;
+	width: 100px;
+	height: 100px;
+	text-decoration: none;
+}
+a.top img{
+	width: 20px;
+	height: 20px;
+}

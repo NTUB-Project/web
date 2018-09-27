@@ -44,11 +44,8 @@ ActiveRecord::Schema.define(version: 2018_09_26_142548) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-=======
     t.integer "rating"
     t.json "images"
->>>>>>> feature/comment
   end
 
   create_table "identities", force: :cascade do |t|
