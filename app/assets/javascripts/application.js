@@ -18,3 +18,70 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery-ui
+
+
+
+var bkgrdimg_letters = {};
+bkgrdimg_letters.opacityIn = [0,1];
+bkgrdimg_letters.scaleIn = [0.2, 1];
+bkgrdimg_letters.scaleOut = 3;
+bkgrdimg_letters.durationIn = 800;
+bkgrdimg_letters.durationOut = 600;
+bkgrdimg_letters.delay = 500;
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.bkgrdimg_letters .letters-1',
+    opacity: bkgrdimg_letters.opacityIn,
+    scale: bkgrdimg_letters.scaleIn,
+    duration: bkgrdimg_letters.durationIn
+  }).add({
+    targets: '.bkgrdimg_letters .letters-1',
+    opacity: 0,
+    scale: bkgrdimg_letters.scaleOut,
+    duration: bkgrdimg_letters.durationOut,
+    easing: "easeInExpo",
+    delay: bkgrdimg_letters.delay
+  }).add({
+    targets: '.bkgrdimg_letters .letters-2',
+    opacity: bkgrdimg_letters.opacityIn,
+    scale: bkgrdimg_letters.scaleIn,
+    duration: bkgrdimg_letters.durationIn
+  }).add({
+    targets: '.bkgrdimg_letters .letters-2',
+    opacity: 0,
+    scale: bkgrdimg_letters.scaleOut,
+    duration: bkgrdimg_letters.durationOut,
+    easing: "easeInExpo",
+    delay: bkgrdimg_letters.delay
+  }).add({
+    targets: '.bkgrdimg_letters .letters-3',
+    opacity: bkgrdimg_letters.opacityIn,
+    scale: bkgrdimg_letters.scaleIn,
+    duration: bkgrdimg_letters.durationIn
+  }).add({
+    targets: '.bkgrdimg_letters .letters-3',
+    opacity: 0,
+    scale: bkgrdimg_letters.scaleOut,
+    duration: bkgrdimg_letters.durationOut,
+    easing: "easeInExpo",
+    delay: bkgrdimg_letters.delay
+  }).add({
+    targets: '.bkgrdimg_letters .letters-4',
+    opacity: bkgrdimg_letters.opacityIn,
+    scale: bkgrdimg_letters.scaleIn,
+    duration: bkgrdimg_letters.durationIn
+  }).add({
+    targets: '.bkgrdimg_letters .letters-4',
+    opacity: 0,
+    scale: bkgrdimg_letters.scaleOut,
+    duration: bkgrdimg_letters.durationOut,
+    easing: "easeInExpo",
+    delay: bkgrdimg_letters.delay
+  }).add({
+    targets: '.bkgrdimg_letters',
+    opacity: 0,
+    duration: 500,
+    delay: 500
+  });

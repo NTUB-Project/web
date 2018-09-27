@@ -12,7 +12,7 @@
  *
  *= require_tree .
  *= require_self
-
+ *= require jquery-ui
  */
 @import "bootstrap";
 
@@ -20,7 +20,7 @@ body{
   color: #000;
   font-size: 14px;
   line-height: 1.6em;
-  background-color: lightcyan;
+  background-color: #FFF;
 }
 
 .logo{
@@ -34,9 +34,13 @@ body{
   z-index: 99;
 }
 
-nav{
-  background-color: rgba(255,255,255,0.8);
+.navbar{
+  background-color: rgba(211, 211, 211,0.2);
+  position: fixed;
+  width: 100%;
 }
+
+
 
 span.title{
   color: rgb(27,189,54);
@@ -57,4 +61,29 @@ footer{
 
 .card{
   background-color: rgba(43, 131, 122, 0.3)
+}
+
+.bkgrdimg{
+  img{
+    width: 100%;
+    height: 600px;
+  }
+  z-index: 0px;
+}
+
+.bkgrdimg_letters {
+  position: relative;
+  font-weight: 900;
+  font-size: 4.5em;
+  height: 100%;
+}
+.bkgrdimg_letters .letters {
+  position: absolute;
+  margin: auto;
+  left: 45%;
+  top: -600px;
+  right: auto;
+  opacity: 0;
+  z-index: 90px;
+  text-align:center;
 }
