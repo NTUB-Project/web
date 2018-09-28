@@ -11,12 +11,36 @@
     <%= f.input :tel %>
     <%= f.input :email %>
     <%= f.association :category %>
-    <%= f.association :region %>
     <%= f.association :activity_kind %>
     <%= f.association :people_number %>
   </div>
+  <ul id="list">
+    <li>
+      <%= f.association :region %>
+      <span class="btn add">add</span>
+      <span class="btn del">del</span>
+    </li>
+  </ul>
+
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
 <% end %>
+<script>
+  function bind_me(target){ //input li
+    target.find('.del').click(function(){
+      if($('#list li').length > 1){
+        $(this).parent().remove();
+    }
+  }).siblings('.add').click(function(){
+    var temp = bind_me($(this).parent().clone());
+    temp.find('input').val('');
+    $('#list').append(temp);
+  })
+  return target;
+}
+jQuery(function($){
+  bind_me($('#list li'));
+});
+</script>

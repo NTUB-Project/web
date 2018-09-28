@@ -1,0 +1,61 @@
+<div class="content	">
+  <button type="button" onClick="history.back()" class="backbtn">Back</button>
+  <button type="button" onClick="location.href='../cart'" class="addbtn" >Collect</button>
+  <button type="button" onClick="location.href='http://www.hanastage.tw/'" class="connectbtn">connect</button>
+  <% @comments.each do |comment| %>
+		<div class="message">
+			<section class="cd-single-item">
+				<div class="cd-slider-wrapper">
+					<ul class="cd-slider">
+            <% for images in comment.images_urls %>
+              <li class="selected">
+                <td><%= link_to image_tag(images, width: '200px',height: '250px'), comment if comment.images.present?%></td>
+              </li>
+            <% end %>
+					</ul> <!-- cd-slider -->
+
+					<ul class="cd-slider-navigation">
+					  <li><a href="#0" class="cd-prev inactive">Next</a></li>
+						<li><a href="#0" class="cd-next">Prev</a></li>
+					</ul> <!-- cd-slider-navigation -->
+
+					<a href="#0" class="cd-close">Close</a>
+				</div> <!-- cd-slider-wrapper -->
+			</section> <!-- cd-single-item -->
+			<div class="text">
+				<p>評價：
+					<div class="star-rating" data-score= <%= comment.rating %> ></div>
+				</p>
+					<hr>
+          <%= comment.user.email.split('@').first%></br>
+					<%= comment.content %>
+          <%= comment.updated_at%>
+          <% if user_signed_in? %>
+            <% if current_user.id == comment.user_id %>
+              <%= link_to("Edit", edit_product_comment_path(comment.product, comment),
+                          class: "btn btn-default btn-xs")%>
+              <%= link_to("Delete", product_comment_path(comment.product, comment),
+                          class: "btn btn-default btn-xs ", method: :delete,
+                          data: { confirm: "Are you sure?" } )%>
+             <% end %>
+           <% end %>
+				</div>
+			</div>
+    <% end %>
+		</div>
+<!--------------------TOP------------------------->
+		<div class="backtotop">
+			<a class="top" href="#"><img src="IMG/top-arrow.png"></a>
+		</div>
+
+
+
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>

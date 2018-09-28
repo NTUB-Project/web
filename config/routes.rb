@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
-
     collection do
       post :search
     end
@@ -35,6 +34,6 @@ Rails.application.routes.draw do
 
   # put '/carts/:id', to: 'carts#update'
 
-  
+
 
 end

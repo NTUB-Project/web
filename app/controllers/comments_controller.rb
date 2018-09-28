@@ -2,6 +2,11 @@ class CommentsController < ApplicationController
   before_action :authenticate_user! , :only => [:new,:edit,:destroy]
   before_action :find
 
+  def show
+    @comments= @product_id.comments.all
+  
+  end
+
   def new
     @comment = @product_id.comments.new
   end
@@ -23,7 +28,7 @@ class CommentsController < ApplicationController
     else
       redirect_to new_user_session_url, notice:"請先登入再嘗試留言"
     end
-    
+
   end
 
   def edit

@@ -3,6 +3,8 @@
 		<button type="button" onClick="history.back()" class="backbtn">Back</button>
 		<button type="button" onClick="location.href='../cart'" class="addbtn" >Collect</button>
 		<button type="button" onClick="location.href='http://www.hanastage.tw/'" class="connectbtn">connect</button>
+    <%= link_to 'forum', product_comment_url(ground)%>
+    <button type="button" onClick="location.href='../forum'" class="forumbtn">forum</button>
 		<!--<button type="button" onClick="self.location.href='forum.html'" class="forumbtn">forum</button>-->
 		<div class="detail">
 			<div class="name"><h1><%= ground.name %></h1></div>
@@ -44,7 +46,7 @@
 			<h2>地理位置</h2>
 			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.8547769479696!2d121.52014281546774!3d25.039001983970024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a976fe1361a1%3A0x8126f8a368a8b255!2z6Iqx5ry-SGFuYeWxlea8lOepuumWkw!5e0!3m2!1szh-TW!2stw!4v1537799171786" width="96%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
 		</div>
-    
+
 
 		<%=render "comments/index" %>
 
