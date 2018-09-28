@@ -5,6 +5,7 @@ div.content{
 	padding-top: 40px;
 	height: auto;
 	text-align: center;
+	margin-top: 40px;
 }
 div.content button.backbtn{
 	position: fixed;
@@ -73,14 +74,14 @@ div.detail{
 	padding-bottom: 50px;
 }
 div.name{
-	top: auto;	
+	top: auto;
 	width: 100%;
 	text-align: center;
 }
 div.name h1{
 	padding-top: 50px;
 	font-size: 90px;
-	color: aliceblue;	
+	color: aliceblue;
 }
 /*---------------------------*/
 /*  定義fancybox              */

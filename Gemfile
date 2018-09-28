@@ -41,12 +41,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
 gem 'will_paginate', '~> 3.1'
-<<<<<<< HEAD
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
-=======
-gem 'letter_opener_web'
-
->>>>>>> 397c5b4fe9b16f40ee52092f7896d659fb442db9
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
