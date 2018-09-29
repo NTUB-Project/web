@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= form_tag(email_cart_path(@items),method: :put)  do %> 
+    <%= form_tag(matter_cart_path(@items),method: :put)  do %> 
       <% @items.each do |item| %>
         <tr>
           <td><%= check_box_tag "item_id[]",item.product.id %></td>
