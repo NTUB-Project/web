@@ -25,10 +25,13 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
 
-    1.upto(product_params.values[8].count-1) do |i|
-      @product = Product.new(product_params)
-      @product.region_id = product_params.values[8][i]
-      @product.save
+    1.upto(product_params.values[7].count-1) do |region|
+      1.upto(product_params.values[8].count-1) do |activity_kind|
+        @product = Product.new(product_params)
+        @product.region_id = product_params.values[7][region]
+        @product.activity_kind_id = product_params.values[8][activity_kind]
+        @product.save
+      end
     end
 
   end
@@ -65,6 +68,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :image, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, :region_ids => [])
+      params.require(:product).permit(:name, :image, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, {:region_ids => []}, :activity_kind_ids => [])
     end
 end

@@ -10,9 +10,11 @@
     <%= f.input :location %>
     <%= f.input :tel %>
     <%= f.input :email %>
-    <%= f.collection_check_boxes :region_ids, Region.all, :id, :title, { multiple: true }  %>
+    地區：</br>
+    <%= f.collection_check_boxes :region_ids, Region.all, :id, :title, { multiple: true }  %></br>
+    活動類型：</br>
+    <%= f.collection_check_boxes :activity_kind_ids, ActivityKind.all, :id, :title, { multiple: true }  %>
     <%= f.association :category %>
-    <%= f.association :activity_kind %>
     <%= f.association :people_number %>
   </div>
 
