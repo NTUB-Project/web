@@ -23,7 +23,9 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.image %></td>
+        <% for images in product.images_urls %>
+          <td><%= link_to image_tag(images, width: '200px',height: '250px'), product if product.images.present?%></td>
+        <% end %>
         <td><%= product.description %></td>
         <td><%= product.location %></td>
         <td><%= product.tel %></td>

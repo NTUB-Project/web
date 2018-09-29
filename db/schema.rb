@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_29_144357) do
+ActiveRecord::Schema.define(version: 2018_09_29_173046) do
 
   create_table "activity_kinds", force: :cascade do |t|
     t.string "title"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_144357) do
     t.integer "people_number_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "images"
     t.index ["activity_kind_id"], name: "index_products_on_activity_kind_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["people_number_id"], name: "index_products_on_people_number_id"
