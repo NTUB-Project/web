@@ -20,21 +20,21 @@ before_action :current_cart
     redirect_to "/cart"
   end
   
-  
-  def email
-    @items = CartItem.where(product_id: params[:item_id])
-    @items.each do |item|
-      @a = item.product_id
-      @b=Product.find_by(id: @a)
-      CartMailer.say_hello_to(item,@b).deliver_now
-    end
-    redirect_to "/cart" ,notice: "已成功寄出信件!"
-  end
-  
   def matter
-    
+    @items = CartItem.where(product_id: params[:item_id])
+    @matter = Matter.new
+    if @matter.save
+      @items.each do |item|
+        @a = item.product_id
+        @b=Product.find_by(id: @a)
+        CartMailer.say_hello_to(item,@b).deliver_now
+      end
+    else
+      redirect_to "/cart" ,notice: "失敗!"
+    end
+      redirect_to "/cart" ,notice: "已成功寄出信件!"
   end
-  
+
 private
 
   def current_cart
@@ -45,6 +45,6 @@ private
     end
     @cart_id = @current_cart[:id]
   end
-
-
+  
+  
 end

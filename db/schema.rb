@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
     t.string "tel"
     t.string "email"
     t.string "url"
-    t.text "equipment"
     t.integer "category_id"
     t.integer "region_id"
     t.integer "activity_kind_id"
