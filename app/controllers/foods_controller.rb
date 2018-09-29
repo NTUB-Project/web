@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
       @people_number = params[:people_number]
 
 
-      @foods = Product.where(category: 2, region: @region, people_number: @people_number)
+      @foods = Product.where(category: 2, region_ids: @region, people_number: @people_number)
 
 
     end

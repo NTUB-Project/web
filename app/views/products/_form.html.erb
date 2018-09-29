@@ -16,7 +16,7 @@
   </div>
   <ul id="list">
     <li>
-      <%= f.association :region %>
+      <%= f.collection_check_boxes :region_ids, Region.all, :id, :title, { multiple: true }   %>
       <span class="btn add">add</span>
       <span class="btn del">del</span>
     </li>
