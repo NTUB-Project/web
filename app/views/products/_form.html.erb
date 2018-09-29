@@ -1,21 +1,28 @@
-
+</br>
 <%= simple_form_for(@product) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.file_field :images, multiple: true, name: "product[images][]" %>
-    <%= f.input :description %>
-    <%= f.input :location %>
-    <%= f.input :tel %>
-    <%= f.input :email %>
+    <%= f.input :name  ,label: "廠商名稱：" %>
     地區：</br>
-    <%= f.collection_check_boxes :region_ids, Region.all, :id, :title, { multiple: true }  %></br>
+    <%= f.collection_check_boxes :region_ids, Region.all, :id, :title, { multiple: true }  %></p>
     活動類型：</br>
-    <%= f.collection_check_boxes :activity_kind_ids, ActivityKind.all, :id, :title, { multiple: true }  %>
-    <%= f.association :category %>
-    <%= f.association :people_number %>
+    <%= f.collection_check_boxes :activity_kind_ids, ActivityKind.all, :id, :title, { multiple: true }  %></p>
+    圖片（必填）：
+    <%= f.file_field :images, multiple: true, name: "product[images][]" %></p>
+    <%= f.association :category, label: "類別：" %>
+    <%= f.association :people_number, label: "人數：" %>
+    <%= f.input :description ,label: "廠商介紹：" %>
+    <%= f.input :tel ,label: "聯絡電話：" %>
+    <%= f.input :email ,label: "聯絡信箱：" %>
+    <%= f.input :item ,label: "產品項目："  %>
+    <%= f.input :location ,label: "地址：" %>
+    <%= f.input :url, label: "網站連結："  %>
+    <%= f.input :equipment, label: "設備："  %>
+    <%= f.input :limit, label: "限制條件（廠規、里程數、件數..）："  %>
+    <%= f.input :activity, label: "優惠活動（注意日期）："  %>
+
   </div>
 
   <div class="form-actions">

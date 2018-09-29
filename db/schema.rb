@@ -70,11 +70,15 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "image"
     t.text "description"
+    t.text "item"
+    t.text "limit"
+    t.text "activity"
     t.string "location"
     t.string "tel"
     t.string "email"
+    t.string "url"
+    t.text "equipment"
     t.integer "category_id"
     t.integer "region_id"
     t.integer "activity_kind_id"
