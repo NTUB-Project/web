@@ -24,18 +24,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
 
-    respond_to do |format|
-
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    1.upto(product_params.values[8].count-1) do |i|
+      @product = Product.new(product_params)
+      @product.region_id = product_params.values[8][i]
+      @product.save
     end
+
   end
 
   # PATCH/PUT /products/1
