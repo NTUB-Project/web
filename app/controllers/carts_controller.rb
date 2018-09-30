@@ -19,21 +19,27 @@ before_action :current_cart
     cart_items.destroy
     redirect_to "/cart"
   end
-  
+
   def matter
-    @items = CartItem.where(product_id: params[:item_id])
-    @matter = Matter.new
+    @products = Product.find_by(id: params[:id])
+
+
+  end
+
+  def matter_send
+
+    @products = Product.find_by(id: params[:id])
+    @matter = Matter.new(matter_params)
+    @current_user = User.find_by(id: @user_id).email
+
     if @matter.save
-      @items.each do |item|
-        @a = item.product_id
-        @b=Product.find_by(id: @a)
-        CartMailer.say_hello_to(item,@b).deliver_now
-      end
+        CartMailer.say_hello_to(@matter,@products,@current_user).deliver_now
+        redirect_to "/cart" ,notice: "已成功寄出信件!"
     else
       redirect_to "/cart" ,notice: "失敗!"
     end
-      redirect_to "/cart" ,notice: "已成功寄出信件!"
   end
+
 
 private
 
@@ -45,6 +51,10 @@ private
     end
     @cart_id = @current_cart[:id]
   end
-  
-  
+
+  def matter_params
+    params.require(:matter).permit(:mattertext, :id)
+  end
+
+
 end

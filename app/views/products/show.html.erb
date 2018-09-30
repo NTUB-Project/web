@@ -7,7 +7,11 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @product.image %>
+  <% for images in @product.images_urls %>
+    <li class="selected">
+      <td><%= link_to image_tag(images, width: '200px',height: '250px'), @product if @product.images.present?%></td>
+    </li>
+  <% end %>
 </p>
 
 <p>

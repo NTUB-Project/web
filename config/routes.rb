@@ -25,12 +25,13 @@ Rails.application.routes.draw do
   root "home#index"
 
   resource :cart, only:[:show, :destroy] do
+
     collection do
       post :add, path:'add/:id'
       put :remove, path:'/:id'
-      # post :email, path:'email/:id'
-      put :matter, path:'matter/:id'
-      post :matter,path:'matter/:id'
+      get :matter, path:'matter/:id'
+      post :matter_send, path:'matter_send/:id'
+
     end
   end
 

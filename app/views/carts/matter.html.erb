@@ -1,5 +1,5 @@
 <h2>輸入信件內容</h2>
-<%= simple_form_for (matter_cart_path) do |f| %>
+<%= simple_form_for :matter , :url => {:action => :matter_send }  do |f| %>
   <div class="form-inputs">
     <%= f.input :mattertext %>
   </div>

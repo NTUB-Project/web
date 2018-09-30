@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'partyhelper.ntub@gmail.com'
+
+  default from: @current_user
   layout 'mailer'
 end
