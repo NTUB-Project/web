@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 2018_09_29_070803) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "matters", force: :cascade do |t|
+    t.text "mattertext"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "people_numbers", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
