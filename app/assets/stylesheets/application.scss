@@ -127,7 +127,7 @@ footer{
 //登入登出
 div.devise_content{
 	padding-top: 80px;
-	height: 700px;
+	padding-bottom: 80px;
 	text-align: center;
 	background-image: image-url('background.jpg');
 	background-repeat: no-repeat;
@@ -136,25 +136,32 @@ div.devise_content{
   background-size: cover;
 }
 div.devise_content h3{
-	padding-top: 20px;
 	font-size: 40px;
+	margin-top: 50px;
+}
+div.devise_content .container{
+  width: 500px;
+  background:rgba(175,175,175,0.3);
+  border-radius: 50px;
+  margin-top: 20px;
 }
 div.login{
-  margin-left:0;
-  margin-right:0;
+  margin-left:50px;
+  margin-right:50px;
 	font-size: 36px;
   .devise_inputs{
     width: 100%;
   }
   .devise_link{
     display: block;
+    padding-bottom: 30px;
   }
 }
 
 div.login form{
 	text-align: center;
 	font-size: 20px;
-	padding-top: 50px;
+	padding-top: 30px;
 }
 
 div.login .devise_btn{
