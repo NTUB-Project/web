@@ -1,6 +1,6 @@
 class GroundsController < ApplicationController
   def index
-    @grounds = Product.where(category: 1)
+    @grounds = Product.where(category: Category.find_by(title: "場地").id)
     @regions =Region.all
   end
 

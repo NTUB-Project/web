@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
     def index
-      @foods = Product.where(category: 2)
+      @foods = Product.where(category: Category.find_by(title: "食物").id)
       @regions =Region.all
       @people_numbers = PeopleNumber.all
 
@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
       @people_number = params[:people_number]
 
 
-      @foods = Product.where(category: 2, region_id: @region, people_number: @people_number)
+      @foods = Product.where(category: Category.find_by(title: "食物").id, region_id: @region, people_number: @people_number)
 
 
     end

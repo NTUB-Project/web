@@ -4,11 +4,37 @@ before_action :current_cart
 
   def show
     @items = CartItem.where(:user_id => @user_id)
+    @grounds = Array.new
+    @foods = Array.new
+    @rentcars = Array.new
+    @equipments = Array.new
+    @custommade = Array.new
+    @costumes = Array.new
+    @items.each do |item|
+      @category = Product.find_by(id: item.product_id).category_id
+      case @category
+      when 1
+        @grounds << item
+      when 2
+        @foods << item
+      when 3
+        @rentcars << item
+      when 4
+        @equipments << item
+      when 5
+        @custommade << item
+      when 6
+        @costumes << item
+      end
+    end
   end
 
   def add
+
     quantity  = CartItem.where(:cart_id => @cart_id).count
     find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
+    category = Product.find_by(id: params[:id]).category_id
+
     if find_item.blank? && quantity < 5
       CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
     end
