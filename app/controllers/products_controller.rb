@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    
   end
 
   # GET /products/new
@@ -24,7 +25,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    
+
     1.upto(product_params.values[13].count-1) do |region|
       1.upto(product_params.values[14].count-1) do |activity_kind|
         @product = Product.new(product_params)

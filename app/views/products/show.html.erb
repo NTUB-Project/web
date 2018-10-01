@@ -1,58 +1,95 @@
-<p id="notice"><%= notice %></p>
-
+</br>
+</br>
+</br>
+</br>
 <p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
   <% for images in @product.images_urls %>
     <li class="selected">
       <td><%= link_to image_tag(images, width: '200px',height: '250px'), @product if @product.images.present?%></td>
     </li>
   <% end %>
 </p>
-
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <strong>廠商名稱:</strong>
+  <%= @product.name %>
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @product.location %>
+  <strong>類別:</strong>
+  <%= @product.category.title %>
 </p>
 
 <p>
-  <strong>Tel:</strong>
-  <%= @product.tel %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @product.email %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<p>
-  <strong>Region:</strong>
+  <strong>地區(
+    <% 1.upto(Region.count) do |i| %>
+      <%= i %>
+      <%= Region.find_by(id: i).title %>
+    <% end %>
+  )：</strong>
   <%= @product.region_ids %>
 </p>
 
 <p>
-  <strong>Activity kind:</strong>
-  <%= @product.activity_kind %>
+  <strong>活動類別(
+    <% 1.upto(ActivityKind.count) do |i| %>
+      <%= i %>
+      <%= ActivityKind.find_by(id: i).title %>
+    <% end %>
+    )：</strong>
+  <%= @product.activity_kind_ids %>
 </p>
 
 <p>
-  <strong>People number:</strong>
-  <%= @product.people_number %>
+  <strong>人數:</strong>
+  <%= @product.people_number.title %>
 </p>
+
+<p>
+  <strong>廠商介紹:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>聯絡電話：</strong>
+  <%= @product.tel %>
+</p>
+
+<p>
+  <strong>聯絡信箱:</strong>
+  <%= @product.email %>
+</p>
+
+<p>
+  <strong>產品項目:</strong>
+  <%= @product.item %>
+</p>
+
+<p>
+  <strong>地址:</strong>
+  <%= @product.location %>
+</p>
+
+<p>
+  <strong>網站連結:</strong>
+  <%= @product.url %>
+</p>
+
+<p>
+  <strong>設備:</strong>
+  <%= @product.equipment %>
+</p>
+
+<p>
+  <strong>限制條件:</strong>
+  <%= @product.limit %>
+</p>
+
+<p>
+  <strong>優惠活動:</strong>
+  <%= @product.activity %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
