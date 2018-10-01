@@ -41,7 +41,7 @@ before_action :current_cart
     if find_item.blank? && @count < 5
       CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
     else
-      redirect_to root_path ,notice: "此類別的蒐藏已滿囉!"
+      redirect_to root_path ,notice: "此類別的蒐藏已滿囉!" if find_item.blank?
     end
   end
 
