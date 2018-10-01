@@ -1,4 +1,5 @@
 class EquipmentsController < ApplicationController
+
     def index
         @equipments = Product.where(category: Category.find_by(title: "設備").id)
         @regions =Region.all
@@ -6,11 +7,8 @@ class EquipmentsController < ApplicationController
 
     def search
       @regions = Region.all
-
       @region = params[:region]
-
-      @equipments = Product.where(category: Category.find_by(title: "設備", region: @region)
-
+      @equipments = Product.where(category: Category.find_by(title: "設備"), region: @region)
 
     end
 

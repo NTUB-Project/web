@@ -1,6 +1,6 @@
 class RentcarsController < ApplicationController
   def index
-    @rentcars = Product.where(category: 3)
+    @rentcars = Product.where(category: Category.find_by(title: "租車").id)
     @regions =Region.all
   end
 

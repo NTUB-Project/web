@@ -30,13 +30,18 @@ before_action :current_cart
   end
 
   def add
-
-    quantity  = CartItem.where(:cart_id => @cart_id).count
+    @category = Product.find_by(id: params[:id]).category_id
+    @count = 0
+    items = CartItem.where(:cart_id => @cart_id)
+    items.each do |i|
+      @count = @count + 1 if  @category == Product.find_by(id: i.product_id).category_id
+    end
     find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
-    category = Product.find_by(id: params[:id]).category_id
 
-    if find_item.blank? && quantity < 5
+    if find_item.blank? && @count < 5
       CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
+    else
+      redirect_to root_path ,notice: "此類別的蒐藏已滿囉!"
     end
   end
 
