@@ -1,7 +1,7 @@
 class EquipmentsController < ApplicationController
 
     def index
-        @equipments = Product.where(category: Category.find_by(title: "設備").id)
+        @equipments = Product.group("name").having(category: Category.find_by(title: "設備").id)
         @regions =Region.all
     end
 

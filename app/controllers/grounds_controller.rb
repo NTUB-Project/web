@@ -1,6 +1,6 @@
 class GroundsController < ApplicationController
   def index
-    @grounds = Product.where(category: Category.find_by(title: "場地").id)
+    @grounds = Product.group("name").having(category: Category.find_by(title: "場地").id)
     @regions =Region.all
   end
 
@@ -9,7 +9,7 @@ class GroundsController < ApplicationController
 
     @region = params[:region]
 
-    @grounds = Product.where(category: 1, region: @region)
+    @grounds = Product.where(category: Category.find_by(title: "場地").id, region: @region)
 
 
   end

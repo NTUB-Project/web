@@ -1,6 +1,6 @@
 class CostumesController < ApplicationController
   def index
-    @costumes = Product.where(category: Category.find_by(title: "舞台服").id)
+    @costumes = Product.group("name").having(category: Category.find_by(title: "舞台服").id)
     @regions =Region.all
   end
 

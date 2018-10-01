@@ -102,6 +102,9 @@ GEM
       activesupport (>= 4.2.0)
     hashie (3.5.7)
     hirb (0.7.3)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -243,13 +246,11 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
+    unicode-display_width (0.1.1)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -279,6 +280,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   devise-i18n (~> 1.6, >= 1.6.2)
   hirb
+  hirb-unicode
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   jquery-ui-rails (~> 5.0, >= 5.0.5)
@@ -307,4 +309,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.2
+   1.16.5
