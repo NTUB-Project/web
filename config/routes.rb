@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     collection do
       post :add, path:'add/:id'
       put :remove, path:'/:id'
-      get :matter, path:'matter/:id'
+      put :matter, path:'matter/:id'
       post :matter_send, path:'matter_send/:id'
 
     end

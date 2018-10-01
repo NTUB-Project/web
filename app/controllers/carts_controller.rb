@@ -21,24 +21,23 @@ before_action :current_cart
   end
 
   def matter
-    @products = Product.find_by(id: params[:id])
-
-
+    @matter = Array.new(params[:item_id])
   end
 
   def matter_send
-
-    @products = Product.find_by(id: params[:id])
-    @matter = Matter.new(matter_params)
-    @current_user = User.find_by(id: @user_id).email
-
+    item_id = params.keys[2].split('/')[3].split('%2F')
+    @matter = Matter.new(mattertext: params.values[2][:mattertext])
     if @matter.save
-        CartMailer.say_hello_to(@matter,@products,@current_user).deliver_now
-        redirect_to "/cart" ,notice: "已成功寄出信件!"
+      for id in item_id
+        @products = Product.find_by(id: id.to_i)
+        CartMailer.say_hello_to(@matter,@products).deliver_now
+      end
+      redirect_to "/cart" ,notice: "已成功寄出信件!"
     else
       redirect_to "/cart" ,notice: "失敗!"
     end
   end
+
 
 
 private
@@ -51,10 +50,5 @@ private
     end
     @cart_id = @current_cart[:id]
   end
-
-  def matter_params
-    params.require(:matter).permit(:mattertext, :id)
-  end
-
 
 end

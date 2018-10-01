@@ -9,19 +9,17 @@
     </tr>
   </thead>
   <tbody>
-
-
+    <%= form_tag(matter_cart_path(@items),method: :put)  do %>
       <% @items.each do |item| %>
         <tr>
-          <td><%= check_box_tag "item_id[]",item.product.id %></td>
+          <td><%= check_box_tag "item_id[]",item.product_id %></td>
           <td><%= item.product.name %></td>
           <td><%= item.product.email %></td>
           <td><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put ,class: "btn btn-default "%></td>
         </tr>
-
-      <tr><td><%= submit_tag '寄信', class: "btn btn-success" %></td></tr>
-      <tr><td><%= link_to '下一步', matter_cart_url(item.product_id), class: "btn btn-success" %></td></tr>
       <% end %>
+      <tr><td><%= submit_tag '寄信', class: "btn btn-success" %></td></tr>
+    <% end %>
 
   </tbody>
   <tfoot></tfoot>
