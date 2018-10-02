@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
     def index
-      @foods = Product.group("name").having(category: Category.find_by(title: "食物").id)
+      @foods = Product.group("name").having(category: Category.find_by(title: "食物").id).select("DISTINCT on id *") 
       @regions =Region.all
       @people_numbers = PeopleNumber.all
 

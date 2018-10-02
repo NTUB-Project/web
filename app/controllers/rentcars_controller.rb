@@ -1,6 +1,6 @@
 class RentcarsController < ApplicationController
   def index
-    @rentcars = Product.group("name").having(category: Category.find_by(title: "租車").id)
+    @rentcars = Product.group("name").having(category: Category.find_by(title: "租車").id).select("DISTINCT on id *") 
     @regions =Region.all
   end
 

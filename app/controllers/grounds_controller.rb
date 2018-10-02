@@ -1,6 +1,6 @@
 class GroundsController < ApplicationController
   def index
-    @grounds = Product.group("name").having(category: Category.find_by(title: "場地").id)
+    @grounds = Product.group("name").having(category: Category.find_by(title: "場地").id).select("DISTINCT on id *") 
     @regions =Region.all
   end
 
