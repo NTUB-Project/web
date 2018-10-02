@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_142548) do
+ActiveRecord::Schema.define(version: 2018_09_29_070803) do
 
   create_table "activity_kinds", force: :cascade do |t|
     t.string "title"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 2018_09_26_142548) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "matters", force: :cascade do |t|
+    t.text "mattertext"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "people_numbers", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -80,6 +86,11 @@ ActiveRecord::Schema.define(version: 2018_09_26_142548) do
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["people_number_id"], name: "index_products_on_people_number_id"
     t.index ["region_id"], name: "index_products_on_region_id"
+  end
+
+  create_table "products_regions", id: false, force: :cascade do |t|
+    t.integer "region_id", null: false
+    t.integer "product_id", null: false
   end
 
   create_table "regions", force: :cascade do |t|
