@@ -5,7 +5,17 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
 
-    @products = Product.group(:name).select("DISTINCT on (id) *") 
+    @product = Product.group(:name).select("MIN(id) AS id  , name")
+    @products = Array.new
+    @a = 0
+    if @product != []
+      @product.each do |i|
+        @a+=1
+      end
+      0.upto(@a-1) do |i|
+        @products <<  Product.find_by(id: @product[i].id)
+      end
+    end
   end
 
   # GET /products/1

@@ -30,18 +30,22 @@ before_action :current_cart
   end
 
   def add
-    @category = Product.find_by(id: params[:id]).category_id
-    @count = 0
-    items = CartItem.where(:cart_id => @cart_id)
-    items.each do |i|
-      @count = @count + 1 if  @category == Product.find_by(id: i.product_id).category_id
-    end
-    find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
+    if user_signed_in?
+      @category = Product.find_by(id: params[:id]).category_id
+      @count = 0
+      items = CartItem.where(:cart_id => @cart_id)
+      items.each do |i|
+        @count = @count + 1 if  @category == Product.find_by(id: i.product_id).category_id
+      end
+      find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
 
-    if find_item.blank? && @count < 5
-      CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
+      if find_item.blank? && @count < 5
+        CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
+      else
+        redirect_to root_path ,notice: "此類別的蒐藏已滿囉!" if find_item.blank?
+      end
     else
-      redirect_to root_path ,notice: "此類別的蒐藏已滿囉!" if find_item.blank?
+      redirect_to new_user_session_url, notice:"請先登入再蒐藏!"
     end
   end
 
@@ -74,12 +78,16 @@ before_action :current_cart
 private
 
   def current_cart
-    @user_id = User.order(current_sign_in_at: :desc).first.id
-    @current_cart = Cart.find_by(user_id: @user_id )
-    if @current_cart.blank?
-    @current_cart = Cart.create(:user_id => @user_id)
+
+    if user_signed_in?
+      @user_id = User.order(current_sign_in_at: :desc).first.id
+      @current_cart = Cart.find_by(user_id: @user_id )
+      @current_cart = Cart.create(:user_id => @user_id) if @current_cart.blank?
+      @cart_id = @current_cart[:id]
+    else
+      redirect_to new_user_session_url, notice:"請先登入再蒐藏!"
     end
-    @cart_id = @current_cart[:id]
+
   end
 
 end

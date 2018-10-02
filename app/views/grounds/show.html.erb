@@ -14,15 +14,11 @@
 			</div>
 		</div>
 		<div class="detail2">
-			<a data-fancybox="gallery">
- 			  <%= link_to images_tag(ground.images_url, width: '200px',height: '200px'), ground if ground.images.present?%>
-			</a>
-			<a data-fancybox="gallery">
- 			  <%= link_to images_tag(ground.images_url, width: '200px',height: '200px'), ground if ground.images.present?%>
-			</a>
-			<a data-fancybox="gallery">
- 			  <%= link_to images_tag(ground.images_url, width: '200px',height: '200px'), ground if ground.images.present?%>
-			</a>
+      <% for images in ground.images_urls %>
+        <a data-fancybox="gallery">
+          <%= link_to image_tag(images, width: '200px',height: '250px'), ground if ground.images.present?%>
+        </a>
+      <% end %>
 		</div>
 		<div class="detail3">
 			<div class="icons">

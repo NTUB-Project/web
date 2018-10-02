@@ -1,6 +1,17 @@
 class GroundsController < ApplicationController
   def index
-    @grounds = Product.group("name").having(category: Category.find_by(title: "場地").id).select("DISTINCT on (id) *") 
+    @find = Product.where(category: Category.find_by(title: "場地").id)
+    @ground = @find.group("name").select("MIN(id) AS id , name")
+    @grounds = Array.new
+    @a = 0
+    if @ground != []
+      @ground.each do |i|
+        @a+=1
+      end
+      0.upto(@a-1) do |i|
+        @grounds <<  Product.find_by(id: @ground[i].id)
+      end
+    end
     @regions =Region.all
   end
 
