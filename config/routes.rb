@@ -11,8 +11,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :equipments, :foods, :grounds, :rentcars, :costumes, :photography, :custommade do
-
+  resources :equipments, :foods, :grounds, :rentcars, :costumes, :custommade do
     collection do
       post :search
     end
@@ -26,18 +25,18 @@ Rails.application.routes.draw do
   root "home#index"
 
   resource :cart, only:[:show, :destroy] do
+
     collection do
       post :add, path:'add/:id'
       put :remove, path:'/:id'
-      put :email, path:'email/:id'
+      put :matter, path:'matter/:id'
+      post :matter_send, path:'matter_send/:id'
+
     end
   end
 
   # put '/carts/:id', to: 'carts#update'
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
 
 
 end

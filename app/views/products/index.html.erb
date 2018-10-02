@@ -1,20 +1,28 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Products</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Tel</th>
-      <th>Email</th>
-      <th>Category</th>
-      <th>Region</th>
-      <th>Activity kind</th>
-      <th>People number</th>
+      <th>廠商名稱</th>
+      <th>類別</th>
+      <th>地區</th>
+      <th>活動類別</th>
+      <th>圖片</th>
+      <th>人數</th>
+      <th>廠商介紹</th>
+      <th>聯絡電話</th>
+      <th>聯絡信箱</th>
+      <th>產品項目</th>
+      <th>地址</th>
+      <th>網站連結</th>
+      <th>設備</th>
+      <th>限制條件</th>
+      <th>優惠活動</th>
+
+
+
+
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,15 +31,22 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.image %></td>
+        <td><%= product.category.title %></td>
+        <td><%= product.region_ids %></td>
+        <td><%= product.activity_kind_ids %></td>
+        <% for images in product.images_urls %>
+          <td><%= link_to image_tag(images, width: '200px',height: '250px'), product if product.images.present?%></td>
+        <% end %>
+        <td><%= product.people_number.title %></td>
         <td><%= product.description %></td>
-        <td><%= product.location %></td>
         <td><%= product.tel %></td>
         <td><%= product.email %></td>
-        <td><%= product.category %></td>
-        <td><%= product.region %></td>
-        <td><%= product.activity_kind %></td>
-        <td><%= product.people_number %></td>
+        <td><%= product.item %></td>
+        <td><%= product.location %></td>
+        <td><%= product.url %></td>
+        <td><%= product.equipment %></td>
+        <td><%= product.limit %></td>
+        <td><%= product.activity %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light navbar_color" style="top: 0px;">
   <a href="#" class="navbar-brand">
     <a class="logo">
       <%= image_tag("logo.png", width: '60', height: '60') %>
@@ -18,9 +18,22 @@
       <li class="nav-item">
         <%= link_to "找附近" , root_path , class: "nav-link" %>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          找廠商
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "找場地" , grounds_path , class: "dropdown-item" %>
+          <%= link_to "找食物" , foods_path , class: "dropdown-item" %>
+          <%= link_to "找租車" , rentcars_path , class: "dropdown-item" %>
+          <%= link_to "找設備" , equipments_path , class: "dropdown-item" %>
+          <%= link_to "找印刷" , custommade_index_path , class: "dropdown-item" %>
+          <%= link_to "找舞台服租借" , costumes_path , class: "dropdown-item" %>
+        </div>
+      </li>
       <% if user_signed_in? %>
       <li class="nav-item">
-        <a class="nav-link " href="#">HI!<%= current_user.email %></a>
+        <a class="nav-link ">HI!<%= current_user.email.split('@').first %></a>
       </li>
       <li class="nav-item">
         <%= link_to "我的蒐藏", cart_path, class: "nav-link" %>

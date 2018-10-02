@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_09_29_070803) do
+=======
+ActiveRecord::Schema.define(version: 2018_09_29_173046) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> 5c1077b0bd26692eb80784340796e384dad18fbb
 
   create_table "activity_kinds", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_kinds_products", id: false, force: :cascade do |t|
+    t.integer "activity_kind_id", null: false
+    t.integer "product_id", null: false
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -71,17 +83,22 @@ ActiveRecord::Schema.define(version: 2018_09_29_070803) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "image"
     t.text "description"
+    t.text "item"
+    t.text "limit"
+    t.text "activity"
     t.string "location"
     t.string "tel"
     t.string "email"
+    t.string "url"
+    t.text "equipment"
     t.integer "category_id"
     t.integer "region_id"
     t.integer "activity_kind_id"
     t.integer "people_number_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "images"
     t.index ["activity_kind_id"], name: "index_products_on_activity_kind_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["people_number_id"], name: "index_products_on_people_number_id"

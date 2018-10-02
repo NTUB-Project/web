@@ -1,23 +1,24 @@
 class CustommadeController < ApplicationController
   def index
-    @custommades = Product.where(category: 6)
+    @find = Product.where(category: Category.find_by(title: "印刷").id)
+    @custommade = @find.group("name").select("MIN(id) AS id , name")
+    @custommades = Array.new
+    @a = 0
+    if @custommade != []
+      @custommade.each do |i|
+        @a+=1
+      end
+      0.upto(@a-1) do |i|
+        @custommades <<  Product.find_by(id: @custommade[i].id)
+      end
+    end
+
     @regions =Region.all
   end
 
   def search
     result = params[:region]
     @regions =Region.all
-
-    case result
-    when "1"
-      @foods = Product.where(category: 7, region: 1)
-    when "2"
-      @foods = Product.where(category: 7, region: 2)
-    when "3"
-      @foods = Product.where(category: 7, region: 3)
-    when "4"
-      @foods = Product.where(category: 7, region: 4)
-    end
 
   end
 end

@@ -1,25 +1,63 @@
+</br>
 <h1>蒐藏清單</h1>
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button" onclick="openCategory('Ground')">場地</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Food')">食物</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Rentcar')">租車</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Equipment')">設備</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Custommade')">印刷</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Costume')">舞台服</button>
+</div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <td>選取</td>
-      <td>名稱</td>
-      <td>信箱</td>
-    </tr>
-  </thead>
-  <tbody>
-    <%= form_tag(email_cart_path(@items),method: :put)  do %> 
-      <% @items.each do |item| %>
-        <tr>
-          <td><%= check_box_tag "item_id[]",item.product.id %></td>
-          <td><%= item.product.name %></td>
-          <td><%= item.product.email %></td>
-          <td><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put ,class: "btn btn-default "%></td>
-        </tr>
-      <% end %>
-      <tr><td><%= submit_tag '寄信', class: "btn btn-success" %></td></tr>
-    <% end %>
-  </tbody>
-  <tfoot></tfoot>
-</table>
+<div id="Ground" class="w3-container categor">
+  <h2>場地：</h2>
+  <% if @grounds != []%>
+    <%= render "ground" %>
+  <% end %>
+</div>
+
+<div id="Food" class="w3-container categor" style="display:none">
+  <h2>食物：</h2>
+  <% if @foods != []%>
+    <%= render "food" %>
+  <% end %>
+</div>
+
+<div id="Rentcar" class="w3-container categor" style="display:none">
+  <h2>租車：</h2>
+  <% if @rentcars != []%>
+    <%= render "rentcar" %>
+  <% end %>
+</div>
+
+<div id="Equipment" class="w3-container categor" style="display:none">
+  <h2>設備：</h2>
+  <% if @equipments != []%>
+    <%= render "equipment" %>
+  <% end %>
+</div>
+
+<div id="Custommade" class="w3-container categor" style="display:none">
+  <h2>印刷：</h2>
+  <% if @custommade != []%>
+    <%= render "custommade" %>
+  <% end %>
+</div>
+
+<div id="Costume" class="w3-container categor" style="display:none">
+  <h2>舞台服：</h2>
+  <% if @costumes != []%>
+    <%= render "costume" %>
+  <% end %>
+</div>
+
+<script>
+function openCategory(categoryName) {
+    var i;
+    var x = document.getElementsByClassName("categor");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    document.getElementById(categoryName).style.display = "block";
+}
+</script>

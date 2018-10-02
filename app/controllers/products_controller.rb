@@ -4,12 +4,24 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+
+    @product = Product.group(:name).select("MIN(id) AS id  , name")
+    @products = Array.new
+    @a = 0
+    if @product != []
+      @product.each do |i|
+        @a+=1
+      end
+      0.upto(@a-1) do |i|
+        @products <<  Product.find_by(id: @product[i].id)
+      end
+    end
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+
   end
 
   # GET /products/new
@@ -24,17 +36,16 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+    1.upto(product_params.values[13].count-1) do |region|
+      1.upto(product_params.values[14].count-1) do |activity_kind|
+        @product = Product.new(product_params)
+        @product.region_id = product_params.values[13][region]
+        @product.activity_kind_id = product_params.values[14][activity_kind]
+        @product.save
       end
     end
+
   end
 
   # PATCH/PUT /products/1
@@ -69,6 +80,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :image, :description, :location, :tel, :email, :category_id, :region_id, :activity_kind_id, :people_number_id)
+      params.require(:product).permit(:name, {:images => []}, :item, :url, :equipment, :limit, :activity, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, {:region_ids => []}, :activity_kind_ids => [])
     end
 end

@@ -1,0 +1,3 @@
+class Matter < ApplicationRecord
+
+end

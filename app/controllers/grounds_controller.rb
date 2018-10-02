@@ -1,6 +1,17 @@
 class GroundsController < ApplicationController
   def index
-    @grounds = Product.where(category: 1)
+    @find = Product.where(category: Category.find_by(title: "場地").id)
+    @ground = @find.group("name").select("MIN(id) AS id , name")
+    @grounds = Array.new
+    @a = 0
+    if @ground != []
+      @ground.each do |i|
+        @a+=1
+      end
+      0.upto(@a-1) do |i|
+        @grounds <<  Product.find_by(id: @ground[i].id)
+      end
+    end
     @regions =Region.all
   end
 
@@ -9,7 +20,7 @@ class GroundsController < ApplicationController
 
     @region = params[:region]
 
-    @grounds = Product.where(category: 1, region: @region)
+    @grounds = Product.where(category: Category.find_by(title: "場地").id, region: @region)
 
 
   end
@@ -19,6 +30,6 @@ class GroundsController < ApplicationController
     @grounds = Product.where(id: @detail)
     @product_id = Product.find(@detail)
     @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
-    
+
   end
 end
