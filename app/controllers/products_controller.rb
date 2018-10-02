@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
 
-    @products = Product.group(:name).select("DISTINCT on id *") 
+    @products = Product.group(:name).select("DISTINCT on (id) *") 
   end
 
   # GET /products/1
