@@ -1,25 +1,17 @@
-<h1>蒐藏清單</h1>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <td>選取</td>
-      <td>名稱</td>
-      <td>信箱</td>
-    </tr>
-  </thead>
-  <tbody>
-    <%= form_tag(email_cart_path(@items),method: :put)  do %> 
+<div class="content">
+  <div class="container">
+    <%= form_tag(email_cart_path(@items),method: :put)  do %>
       <% @items.each do |item| %>
-        <tr>
-          <td><%= check_box_tag "item_id[]",item.product.id %></td>
-          <td><%= item.product.name %></td>
-          <td><%= item.product.email %></td>
-          <td><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put ,class: "btn btn-default "%></td>
-        </tr>
+      <div class="message1">
+        <div class="row">
+          <div class="col"><%= check_box_tag "item_id[]",item.product.id %></div>
+          <div class="col"><%=item.product.name%></div>
+          <div class="col"><%= item.product.email %></div>
+          <div class="col"><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put %></div>
+        </div>
+        </div>
       <% end %>
-      <tr><td><%= submit_tag '寄信', class: "btn btn-success" %></td></tr>
+      <%= submit_tag '寄信', class: "btn btn-default" %>
     <% end %>
-  </tbody>
-  <tfoot></tfoot>
-</table>
+  </div>
+</div>

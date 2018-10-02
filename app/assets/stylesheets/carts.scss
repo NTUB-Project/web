@@ -1,3 +1,27 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.content{
+	padding-top: 40px;
+	height: auto;
+	padding-bottom: 40px;
+}
+div.message1{
+	margin:0 auto;
+	right: auto;
+	left: auto;
+	height: 100px;
+	width: 70%;
+	background-color: rgba(255,255,255, 0.5);
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 30px;
+	line-height: 100px;
+	font-family: "Rubik", sans-serif;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  transition: 300ms;
+}
+.message1:hover {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: 300ms;
+}
