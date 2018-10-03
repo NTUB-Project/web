@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :custommade do
-    resources :comments
     collection do
       post :search
     end
