@@ -1,17 +1,17 @@
 <div class="devise_content">
-  <h3 class="devise_title">編輯使用者</h3>
+  <h3 class="devise_title">更改密碼</h3>
   <div class="container">
     <div class="login">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :email, label:'信箱：', required: true, autofocus: true %>
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
-          <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-          <%= f.input :password_confirmation, required: false %>
-          <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+          <%= f.input :password, label:'新密碼：', autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+          <%= f.input :password_confirmation, label:'確認新密碼：', required: false %>
+          <%= f.input :current_password, label:'目前的密碼：', hint: "we need your current password to confirm your changes", required: true %>
         </div>
         <div class="form-actions">
           <%= f.button :submit, "Update" %>
