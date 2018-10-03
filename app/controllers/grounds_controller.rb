@@ -1,7 +1,7 @@
 class GroundsController < ApplicationController
   def index
-    @find = Product.where(category: Category.find_by(title: "場地").id)
-    @ground = @find.group("name").select("MIN(id) AS id , name")
+    find = Product.where(category: Category.find_by(title: "場地").id)
+    @ground = find.group("name").select("MIN(id) AS id , name")
     @grounds = Array.new
     @a = 0
     if @ground != []
@@ -12,15 +12,24 @@ class GroundsController < ApplicationController
         @grounds <<  Product.find_by(id: @ground[i].id)
       end
     end
-    @regions =Region.all
+    @regions = Region.all
   end
 
   def search
     @regions = Region.all
-
     @region = params[:region]
-
-    @grounds = Product.where(category: Category.find_by(title: "場地").id, region: @region)
+    find = Product.where(category: Category.find_by(title: "場地").id, region: params[:region_ids])
+    @ground = find.group("name").select("MIN(id) AS id , name")
+    @grounds = Array.new
+    @a = 0
+    if @ground != []
+      @ground.each do |i|
+        @a+=1
+      end
+      0.upto(@a-1) do |i|
+        @grounds <<  Product.find_by(id: @ground[i].id)
+      end
+    end
 
 
   end

@@ -84,3 +84,16 @@ anime.timeline({loop: true})
     duration: 500,
     delay: 500
   });
+
+  $(document).ready(function(){
+    $(".checkbox_submit").change(function(){
+        var src = $(this);
+        $.ajax({
+          type: "post",
+          url: "search",
+          data: {"region_ids": this.id},
+          success: function(result){
+            src.parents('form:first').submit();
+        }});
+    });
+});
