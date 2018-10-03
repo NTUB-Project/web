@@ -31,5 +31,11 @@ class GroundsController < ApplicationController
     @product_id = Product.find(@detail)
     @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
 
+    if @comments.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @comments.average(:rating).round(2)
+    end
+
   end
 end

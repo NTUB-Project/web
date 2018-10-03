@@ -3,10 +3,10 @@
 		<button type="button" onClick="history.back()" class="backbtn">Back</button>
 		<button type="button" onClick="location.href='../cart'" class="addbtn" >Collect</button>
 		<button type="button" onClick="location.href='http://www.hanastage.tw/'" class="connectbtn">connect</button>
-    <%= link_to 'forum', product_comment_url(ground)%>
-    <button type="button" onClick="location.href='../forum'" class="forumbtn">forum</button>
 		<!--<button type="button" onClick="self.location.href='forum.html'" class="forumbtn">forum</button>-->
 		<div class="detail">
+      <div class="star-rating" data-score=<%= @avg_rating %> ></div>
+      <em><%= "#{@comments.length} 則留言"%></em>
 			<div class="name"><h1><%= ground.name %></h1></div>
 			<div class="introduce">
 				<h2>簡介</h2>

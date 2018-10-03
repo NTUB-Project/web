@@ -9,14 +9,16 @@
   <tbody>
     <%= form_tag(matter_cart_path(@rentcars),method: :put)  do %>
       <% @rentcars.each do |item| %>
-        <tr>
-          <td><%= check_box_tag "item_id[]",item.product_id %></td>
-          <td><%= item.product.name %></td>
-          <td><%= item.product.email %></td>
-          <td><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put ,class: "btn btn-default "%></td>
-        </tr>
+      <div class="message1">
+        <div class="row">
+          <div class="col"><%= check_box_tag "item_id[]",item.product.id %></div>
+          <div class="col"><%=item.product.name%></div>
+          <div class="col"><%= item.product.email %></div>
+          <div class="col"><%= link_to  "刪除", remove_cart_path(item.product_id), method: :put %></div>
+        </div>
+      </div>
       <% end %>
-      <tr><td><%= submit_tag '寄信', class: "btn btn-success" %></td></tr>
+      <tr><td><%= submit_tag '寄信', class: "btn btn-default" %></td></tr>
     <% end %>
   </tbody>
   <tfoot></tfoot>
