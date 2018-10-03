@@ -34,7 +34,11 @@ class GroundsController < ApplicationController
     if @comments.blank?
       @avg_rating = 0
     else
-      @avg_rating = @comments.average(:rating).round(2)
+      if @avg_rating.blank?
+        @avg_rating = 0
+      else
+        @avg_rating = @comments.average(:rating).round(2)
+      end
     end
 
   end

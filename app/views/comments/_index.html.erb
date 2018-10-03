@@ -20,7 +20,7 @@
       <% end %>
       <td><%= comment.user.email.split('@').first%></td>
       <td><%= comment.content %></td>
-      <td><%= comment.updated_at%></td>
+      <td><%= comment.updated_at.strftime("%Y-%m-%d")%></td>
       <td>
         <% if user_signed_in? %>
           <% if current_user.id == comment.user_id %>
@@ -34,7 +34,7 @@
       </td>
     </tr>
   <% end %>
-  <tr><td><%= will_paginate @comments%></td></tr>
+  
  </tbody>
  </table>
 
