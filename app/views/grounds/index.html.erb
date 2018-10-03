@@ -2,10 +2,15 @@
 </br>
 <div class="container mt-5">
     <%= form_tag '/grounds/search' do %>
-    <% @regions.each do |i| %>
-      <%= i.title %>
-      <%= check_box_tag "region_ids[]", i.id, false, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-    <% end %>
+      <% @regions.each do |i| %>
+        <%= i.title %>
+        <%= check_box_tag "region_ids[]", i.id, false, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+      <% end %>
+      </p>
+      <% @people_numbers.each do |i| %>
+        <%= i.title %>
+        <%= check_box_tag "people_number_ids[]", i.id, false, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+      <% end %>
     <% end %>
 
   <% @grounds.each do |ground| %>

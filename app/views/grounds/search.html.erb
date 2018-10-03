@@ -6,7 +6,14 @@
         <%= i.title %>
         <%= check_box_tag "region_ids[]", i.id, false, :id  => "#{i.id}" ,class: "checkbox_submit"%>
       <% end %>
+      </p>
+      <% @people_numbers.each do |i| %>
+        <%= i.title %>
+        <%= check_box_tag "people_number_ids[]", i.id, false, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+      <% end %>
     <% end %>
+
+    <h5><%= @r %><%= @p %></h5>
 
   <% @grounds.each do |ground| %>
     <div class="row">

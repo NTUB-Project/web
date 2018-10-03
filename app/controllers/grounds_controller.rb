@@ -13,12 +13,14 @@ class GroundsController < ApplicationController
       end
     end
     @regions = Region.all
+    @people_numbers = PeopleNumber.all
   end
 
   def search
     @regions = Region.all
-    @region = params[:region]
-    find = Product.where(category: Category.find_by(title: "場地").id, region: params[:region_ids])
+    @people_numbers = PeopleNumber.all
+    all = Product.where(category: Category.find_by(title: "場地").id)
+    find = all.where(region: params[:region_ids]).or(all.where(people_number: params[:people_number_ids]))
     @ground = find.group("name").select("MIN(id) AS id , name")
     @grounds = Array.new
     @a = 0
@@ -30,6 +32,11 @@ class GroundsController < ApplicationController
         @grounds <<  Product.find_by(id: @ground[i].id)
       end
     end
+    @r = Array.new
+    @p = Array.new
+    @r = params[:region_ids]
+    @p = params[:people_number_ids]
+
 
 
   end
