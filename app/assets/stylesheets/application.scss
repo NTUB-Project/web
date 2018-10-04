@@ -143,32 +143,37 @@ div.login .devise_btn{
 }
 
 //活動性質篩選
+div.activitycontent{
+	padding-top: 60px;
+	height: auto;
+	margin-top: 40px;
+}
 #joinedFilterList {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 #searchPageLeftColumn .filter-list.filter-list-react {
-    margin: 0;
+  margin: 0;
 }
 .filters-header-text {
-    padding: 13px;
-    font-size: 16px;
-    font-weight: 700;
-    border-bottom: 1px solid #ddd;
-    background-color: #5392f9;
-    color: #fff;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+  background-color: #5392f9;
+  color: #fff;
 }
 .filter-list ul {
-    margin: 0 0 20px;
-    padding: 0;
-    list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
 }
 .filter-list--vertical .filter-box {
-    border-top: 1px solid #e8e8e8;;
-    margin-bottom: 0;
-    padding: 0 14px;
-    margin: 0 10px;
-    border-top: 1px solid #e8e8e8;
+  border-top: 1px solid #e8e8e8;;
+  margin-bottom: 0;
+  padding: 0 14px;
+  margin: 0 10px;
+  border-top: 1px solid #e8e8e8;
 }
 .ficon-filter-icon:before {
   background: url(search_icon-04.png) 0 3px no-repeat;
@@ -179,46 +184,40 @@ div.login .devise_btn{
   width: 21px;
 }
 .filters-header-text {
-    padding: 13px;
-    font-size: 16px;
-    font-weight: 700;
-    border-bottom: 1px solid #ddd;
-    background-color: #2b837a;
-    color: #fff;
-    box-sizing: border-box;
+  padding: 13px;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+  background-color: #2b837a;
+  color: #fff;
+  box-sizing: border-box;
 }
 .ficon {
-    font-family: icons;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
-    font-weight: 400;
-    font-style: normal;
-    speak: none;
-    text-decoration: inherit;
-    text-transform: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-bottom: 3px;
+  font-family: icons;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: 400;
+  font-style: normal;
+  speak: none;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 3px;
 }
 .filters-header-text p {
-    margin: 0;
-    display: inline-block;
+  margin: 0;
+  display: inline-block;
 }
 .checkbox-icon{
   margin-top: 10px;
 }
 .filter-menu {
-    cursor: text;
-    font-size: 14px;
-    font-weight: 700;
-    padding-top: 18px;
-    padding-bottom: 7px;
-}
-//活動性質商品條列(ex:ground/index.html)
-div.activitycontent{
-	padding-top: 60px;
-	height: auto;
-	margin-top: 40px;
+  cursor: text;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 18px;
+  padding-bottom: 7px;
 }

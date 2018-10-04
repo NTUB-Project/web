@@ -3,9 +3,6 @@
 		<button type="button" onClick="history.back()" class="backbtn">Back</button>
 		<button type="button" onClick="location.href='../cart'" class="addbtn" >Collect</button>
 		<button type="button" onClick="location.href='http://www.hanastage.tw/'" class="connectbtn">connect</button>
-    <%= link_to 'forum', product_comment_url(ground)%>
-    <button type="button" onClick="location.href='../forum'" class="forumbtn">forum</button>
-		<!--<button type="button" onClick="self.location.href='forum.html'" class="forumbtn">forum</button>-->
 		<div class="detail">
 			<div class="name"><h1><%= ground.name %></h1></div>
 			<div class="introduce">
@@ -15,12 +12,12 @@
 		</div>
 		<div class="detail2">
 			<a data-fancybox="gallery">
- 			  <%= link_to image_tag(ground.image_url, width: '200px',height: '200px'), ground if ground.image.present?%>
+ 			  <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>
 			</a>
 			<a data-fancybox="gallery">
- 			  <%= link_to image_tag(ground.image_url, width: '200px',height: '200px'), ground if ground.image.present?%>			</a>
+ 			  <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>			</a>
 			<a data-fancybox="gallery">
- 			  <%= link_to image_tag(ground.image_url, width: '200px',height: '200px'), ground if ground.image.present?%>
+ 			  <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>
 			</a>
 		</div>
 		<div class="detail3">
