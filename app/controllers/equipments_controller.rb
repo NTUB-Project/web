@@ -4,12 +4,8 @@ class EquipmentsController < ApplicationController
       @find = Product.where(category: Category.find_by(title: "設備").id)
       @equipment = @find.group("name").select("MIN(id) AS id , name")
       @equipments = Array.new
-      @a = 0
       if @equipment != []
-        @equipment.each do |i|
-          @a+=1
-        end
-        0.upto(@a-1) do |i|
+        0.upto(@equipment.to_a.count-1) do |i|
           @equipments <<  Product.find_by(id: @equipment[i].id)
         end
       end

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :comments
 
-  post '/search' => 'grounds#search'
+  post '/grounds/search' => 'grounds#search'
+
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :custommade do
     collection do
       post :search
