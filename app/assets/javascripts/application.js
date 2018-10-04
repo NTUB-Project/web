@@ -86,14 +86,14 @@ anime.timeline({loop: true})
   });
 
   $(document).ready(function(){
-    $(".checkbox_submit").change(function(){
-        var src = $(this);
-        $.ajax({
-          type: "post",
-          url: "search",
-          data: {"region_ids": this.id},
-          success: function(result){
-            src.parents('form:first').submit();
-        }});
-    });
+  $(".checkbox_submit").change(function(){
+      var src = $(this);
+      $.ajax({
+        type: "post",
+        url: "search",
+        data: {"region_ids": this.id},
+        success: function(result){
+          src.parents('form:first').submit();
+      }});
+  });
 });

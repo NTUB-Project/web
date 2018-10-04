@@ -14,6 +14,7 @@ class GroundsController < ApplicationController
     end
     @regions = Region.all
     @people_numbers = PeopleNumber.all
+    @r = Array.new
   end
 
   def search
@@ -34,10 +35,8 @@ class GroundsController < ApplicationController
     end
     @r = Array.new
     @p = Array.new
-    @r = params[:region_ids]
-    @p = params[:people_number_ids]
-
-
+    @r << params[:region_ids]
+    @p << params[:people_number_ids]
 
   end
 

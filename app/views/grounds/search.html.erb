@@ -1,10 +1,13 @@
 </br>
 </br>
 <div class="container mt-5">
+
     <%= form_tag '/grounds/search' do %>
       <% @regions.each do |i| %>
         <%= i.title %>
-        <%= check_box_tag "region_ids[]", i.id, false, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+        <% checked = @r && @r.collect(&:region_ids).include?(i.id) %>
+        debugger
+        <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
       <% end %>
       </p>
       <% @people_numbers.each do |i| %>
