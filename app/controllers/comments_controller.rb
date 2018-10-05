@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @product_id = Product.find(params[:product_id])
+    
     @comment = @product_id.comments.find(params[:id])
     @comment.destroy if @comment
     redirect_back(fallback_location: root_path, notice: "成功刪除留言")

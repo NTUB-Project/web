@@ -30,26 +30,19 @@ class GroundsController < ApplicationController
     @p = Array.new
     @r = Region.where(id: params[:region_ids]).to_a
     @p = PeopleNumber.where(id: params[:people_number_ids]).to_a
-
-
   end
 
 
   def show
-    @detail = params[:id]
-    @grounds = Product.where(id: @detail)
-    @product_id = Product.find(@detail)
+    @grounds = Product.where(id: params[:id])
+    @product_id = Product.find(params[:id])
     @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
-
-    if @comments.blank?
-      @avg_rating = 0
-    else
-      if @avg_rating.blank?
-        @avg_rating = 0
-      else
-        @avg_rating = @comments.average(:rating).round(2)
-      end
+    el = 0
+    sum = 0
+    @comments.each do |i|
+      el = i.rating
+      sum = sum + el
+      @avg_rating =  sum / @comments.count
     end
-
   end
 end

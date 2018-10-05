@@ -85,7 +85,9 @@
         <% @grounds.each do |ground| %>
           <div class="row">
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>
+                <a data-fancybox="gallery">
+                  <%= link_to image_tag(ground.images_urls[0], width: '200px',height: '250px'), ground if ground.images.present?%>
+                </a>
               <div class="card-body d-flex flex-column align-items-start">
                 <h3 class="mb-0 mb-3">
                   <a class="text-dark" href="#"><%= ground.name %></a>
@@ -100,9 +102,9 @@
                 </p>
                 <p class="card-text mb-auto">
                   <%= image_tag("person.png", width: '20px',height: '20px')%>
-                  <a><%= ground.people_number %></a>
+                  <a><%= ground.people_number.title %></a>
                 </p>
-                <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn btn-xs" %>
+                <%= link_to '詳細資訊', ground_path(ground) , class: "btn btn-xs" %>
                 <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn btn-xs" %>
               </div>
             </div>
