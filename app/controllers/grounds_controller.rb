@@ -39,10 +39,15 @@ class GroundsController < ApplicationController
     @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
     el = 0
     sum = 0
-    @comments.each do |i|
-      el = i.rating
-      sum = sum + el
-      @avg_rating =  sum / @comments.count
+    if @comments.blank?
+      @avg_ratin = 0
+    else
+      @comments.each do |i|
+        el = i.rating
+        sum = sum + el
+        @avg_rating =  sum / @comments.count
+      end
     end
+    
   end
 end
