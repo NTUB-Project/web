@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.assets.compile = true #讓heroku圖片正常顯示
+  config.serve_static_assets = true #讓heroku圖片正常顯示
   # Code is not reloaded between requests.
   config.cache_classes = true
 
