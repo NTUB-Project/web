@@ -3,7 +3,8 @@
 		<button type="button" class="addbtn" >
 			<%= link_to 'Collect', add_cart_path(ground), method: "post" %>
 		</button>
-		<button type="button" onClick="location.href='http://www.hanastage.tw/'" class="connectbtn">
+		<button type="button" class="connectbtn">
+			<%= link_to 'Connect' ,ground.url %>
 		</button>
 		<div class="detail">
       <div class="star-rating" data-score=<%= @avg_rating %> ></div>
@@ -15,23 +16,11 @@
 			</div>
 		</div>
 		<div class="detail2">
-<<<<<<< HEAD
-			<a data-fancybox="gallery">
- 			  <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>
-			</a>
-			<a data-fancybox="gallery">
- 			  <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>			</a>
-			</a>
-			<a data-fancybox="gallery">
- 			  <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>
-			</a>
-=======
       <% for images in ground.images_urls %>
         <a data-fancybox="gallery">
           <%= link_to image_tag(images, width: '200px',height: '250px'), ground if ground.images.present?%>
         </a>
       <% end %>
->>>>>>> master
 		</div>
 		<div class="detail3">
 			<div class="icons">
