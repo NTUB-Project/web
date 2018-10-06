@@ -44,7 +44,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'hirb-unicode'
 gem 'mini_magick'
-gem 'fog'
+# gem 'fog'
 gem 'rails_12factor', group: :production
 
 # Use ActiveStorage variant
