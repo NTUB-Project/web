@@ -82,27 +82,47 @@
         </div>
       </div>
       <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
+        <%= form_tag '/grounds/search' do %>
+          <% @regions.each do |i| %>
+            <%= i.title %>
+            <% checked = @r && @r.collect(&:id).include?(i.id) %>
+            <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+          <% end %>
+          </p>
+          <% @people_numbers.each do |i| %>
+            <%= i.title %>
+            <% checked = @p && @p.collect(&:id).include?(i.id) %>
+            <%= check_box_tag "people_number_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+          <% end %>
+          </p>
+          <% @activity_kinds.each do |i| %>
+            <%= i.title %>
+            <% checked = @a && @a.collect(&:id).include?(i.id) %>
+            <%= check_box_tag "activity_kind_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+          <% end %>
+        <% end %>
+
         <% @grounds.each do |ground| %>
           <div class="row">
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(ground.image_url, width: '250px',height: '250px'), ground if ground.image.present?%>
+              <%= link_to image_tag(ground.images_urls[0], width: '250px',height: '250px'), ground if ground.images.present?%>
               <div class="card-body d-flex flex-column align-items-start">
                 <h3 class="mb-0 mb-3">
                   <a class="text-dark" href="#"><%= ground.name %></a>
                 </h3>
                 <p class="card-text mb-auto">
-                  <%= image_tag("house.png", width: '20px',height: '20px')%>
+
                   <a><%= ground.name %></a>
                 </p>
                 <p class="card-text mb-auto">
-                  <%= image_tag("marker.png", width: '20px',height: '20px')%>
+
                   <a><%= ground.location %></a>
                 </p>
                 <p class="card-text mb-auto">
-                  <%= image_tag("person.png", width: '20px',height: '20px')%>
-                  <a><%= ground.people_number %></a>
+
+                  <a><%= ground.people_number.title %></a>
                 </p>
-                <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn btn-xs" %>
+                <%= link_to '詳細資訊', ground_path(ground) , class: "btn btn-xs" %>
                 <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn btn-xs" %>
               </div>
             </div>
