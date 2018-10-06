@@ -26,7 +26,7 @@
                                 <input type="checkbox" class="checkbox-icon">
                               </span>
                               <span>
-                                <span class="filter-item-content" data-selenium="filter-item-text">五折以下折扣</span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">北部</span>
                               </span>
                             </span>
                           </li>
@@ -36,27 +36,57 @@
                                 <input type="checkbox" class="checkbox-icon">
                               </span>
                               <span>
-                                <span class="filter-item-content" data-selenium="filter-item-text">A級機密價</span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">中部</span>
                               </span>
                             </span>
-                          </li
-                        </ul>
-                        <div class="filter-options clearfix"></div>
-                      </div>
-                    </li>
-                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
-                      <div class="filter-menu">
-                        <span class="list-filter__title">折扣</span>
-                      </div>
-                      <div class="filter-items">
-                        <ul class="list-filter__items filter-list-item">
+                          </li>
                           <li class="filter-item-react">
                             <span class="filter-item-info" data-element-name="search-filter" data-element-index="0">
                               <span>
                                 <input type="checkbox" class="checkbox-icon">
                               </span>
                               <span>
-                                <span class="filter-item-content" data-selenium="filter-item-text">七折以下折扣</span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">南部</span>
+                              </span>
+                            </span>
+                          </li>
+                          <li class="filter-item-react">
+                            <span class="filter-item-info" data-element-name="search-filter" data-element-index="0">
+                              <span>
+                                <input type="checkbox" class="checkbox-icon">
+                              </span>
+                              <span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">東部</span>
+                              </span>
+                            </span>
+                          </li>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">人數</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <li class="filter-item-react">
+                            <span class="filter-item-info" data-element-name="search-filter" data-element-index="1">
+                              <span>
+                                <input type="checkbox" class="checkbox-icon">
+                              </span>
+                              <span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">不限</span>
+                              </span>
+                            </span>
+                          </li>
+                          <li class="filter-item-react">
+                            <span class="filter-item-info" data-element-name="search-filter" data-element-index="0">
+                              <span>
+                                <input type="checkbox" class="checkbox-icon">
+                              </span>
+                              <span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">1-10</span>
                               </span>
                             </span>
                           </li>
@@ -66,10 +96,10 @@
                                 <input type="checkbox" class="checkbox-icon">
                               </span>
                               <span>
-                                <span class="filter-item-content" data-selenium="filter-item-text">B級機密價</span>
+                                <span class="filter-item-content" data-selenium="filter-item-text">11-20</span>
                               </span>
                             </span>
-                          </li
+                          </li>
                         </ul>
                         <div class="filter-options clearfix"></div>
                       </div>
@@ -91,30 +121,40 @@
         <% end %>
 
         <% @grounds.each do |ground| %>
-          <div class="row">
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(ground.images_urls[0], width: '250px',height: '250px'), ground if ground.images.present?%>
+              <%= link_to image_tag(ground.image_url, width: '200px',height: '250px'), ground if ground.image.present?%>
               <div class="card-body d-flex flex-column align-items-start">
-                <h3 class="mb-0 mb-3">
-                  <a class="text-dark" href="#"><%= ground.name %></a>
-                </h3>
-                <p class="card-text mb-auto">
 
-                  <a><%= ground.name %></a>
-                </p>
-                <p class="card-text mb-auto">
+                <div class="row">
+                  <div class="col-6 cardleft">
+                    <h3 class="mb-0 mb-3">
+                      <a class="text-dark" href="#"><%= ground.name %></a>
+                    </h3>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("house.png", width: '20px',height: '20px')%>
+                      <a><%= ground.name %></a>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("marker.png", width: '20px',height: '20px')%>
+                      <a><%= ground.location.split('區').first+'區' %></a>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("person.png", width: '20px',height: '20px')%>
+                    </p>
+                  </div>
 
-                  <a><%= ground.location %></a>
-                </p>
-                <p class="card-text mb-auto">
-
-                  <a><%= ground.people_number.title %></a>
-                </p>
-                <%= link_to '詳細資訊', ground_path(ground) , class: "btn btn-xs" %>
-                <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn btn-xs" %>
+                  <div class="col-6 cardright">
+                    <div class="card-text mb-auto">
+                      <a><%= ground.description %></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cardbtn">
+                <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn" %>
+                <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn" %>
               </div>
             </div>
-          </div>
         <% end %>
       </div>
     </div>
