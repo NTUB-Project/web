@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2018_09_29_070803) do
-=======
 ActiveRecord::Schema.define(version: 2018_09_29_173046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
->>>>>>> 5c1077b0bd26692eb80784340796e384dad18fbb
 
   create_table "activity_kinds", force: :cascade do |t|
     t.string "title"
@@ -26,8 +22,8 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
   end
 
   create_table "activity_kinds_products", id: false, force: :cascade do |t|
-    t.integer "activity_kind_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "activity_kind_id", null: false
+    t.bigint "product_id", null: false
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -61,7 +57,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
   end
 
   create_table "identities", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false
@@ -92,10 +88,10 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
     t.string "email"
     t.string "url"
     t.text "equipment"
-    t.integer "category_id"
-    t.integer "region_id"
-    t.integer "activity_kind_id"
-    t.integer "people_number_id"
+    t.bigint "category_id"
+    t.bigint "region_id"
+    t.bigint "activity_kind_id"
+    t.bigint "people_number_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
@@ -106,8 +102,8 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
   end
 
   create_table "products_regions", id: false, force: :cascade do |t|
-    t.integer "region_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "region_id", null: false
+    t.bigint "product_id", null: false
   end
 
   create_table "regions", force: :cascade do |t|
@@ -139,4 +135,5 @@ ActiveRecord::Schema.define(version: 2018_09_29_173046) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "identities", "users"
 end
