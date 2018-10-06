@@ -1,22 +1,15 @@
 </br>
 <div class="container mt-5">
   <%= form_tag '/foods/search' do %>
-    <div>
-      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">地區</label>
-      <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
-    </div>
-    <div>
-      <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> 人數</label>
-      <%= select_tag 'people_number', options_for_select(@people_numbers.collect{ |people_number| [people_number.title, people_number.id] }) %>
-
-    </div>
-  <%= submit_tag "Search" %>
+    <%= render 'shared/searchregion'%>
+    </p>
+    <%= render 'shared/searchpeople'%>
   <% end %>
   <% @foods.each do |food| %>
     <div class="row">
       <div class="card flex-md-row mb-4 box-shadow h-md-250 w-100">
           <li class="selected">
-            <%= link_to image_tag(ground.images_urls[0], width: '200px',height: '250px'), ground if ground.images.present?%>
+            <%= link_to image_tag(food.images_urls[0], width: '200px',height: '250px'), food if food.images.present?%>
           </li>
         <div class="card-body d-flex flex-column align-items-start">
           <h3 class="mb-0 mb-3">
@@ -25,7 +18,7 @@
           <p class="card-text mb-auto">聯絡電話：<%= food.tel %></p>
           <p class="card-text mb-auto">信箱：<%= food.email %></p>
           <p class="card-text mb-auto">地址：<%= food.location %></p>
-          <%= link_to '詳細資訊', food_path(food,@detail) , class: "btn btn-xs" %>
+          <%= link_to '詳細資訊', food_path(food) , class: "btn btn-xs" %>
           <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn btn-xs" %>
         </div>
       </div>

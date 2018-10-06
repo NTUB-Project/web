@@ -83,23 +83,11 @@
       </div>
       <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
         <%= form_tag '/grounds/search' do %>
-          <% @regions.each do |i| %>
-            <%= i.title %>
-            <% checked = @r && @r.collect(&:id).include?(i.id) %>
-            <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-          <% end %>
+          <%= render 'shared/searchregion'%>
           </p>
-          <% @people_numbers.each do |i| %>
-            <%= i.title %>
-            <% checked = @p && @p.collect(&:id).include?(i.id) %>
-            <%= check_box_tag "people_number_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-          <% end %>
+          <%= render 'shared/searchpeople'%>
           </p>
-          <% @activity_kinds.each do |i| %>
-            <%= i.title %>
-            <% checked = @a && @a.collect(&:id).include?(i.id) %>
-            <%= check_box_tag "activity_kind_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-          <% end %>
+          <%= render 'shared/searchactivity'%>
         <% end %>
 
         <% @grounds.each do |ground| %>

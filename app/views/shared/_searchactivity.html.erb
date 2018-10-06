@@ -1,0 +1,5 @@
+<% @activity_kinds.each do |i| %>
+  <%= i.title %>
+  <% checked = @a && @a.collect(&:id).include?(i.id) %>
+  <%= check_box_tag "activity_kind_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+<% end %>

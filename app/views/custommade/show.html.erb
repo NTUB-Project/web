@@ -1,33 +1,53 @@
-<div class="card container">
+<div class="content	">
   <% @custommades.each do |custommade| %>
-    <div class="row">
-        <div class="col-3 py-2 pl-5">
-            <%= link_to image_tag(custommade.image_url, width: '200px',height: '200px'), custommade if custommade.image.present?%>
-        </div>
-        <div class="col-9">
-            <div class="card-body d-flex flex-column align-items-start">
-              <h3 class="mb-0 mb-3">
-                <a class="text-dark" href="#"><%= custommade.name %></a>
-              </h3>
-              <p class="card-text mb-auto"><%= custommade.description %></p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <div class="flex-md-row mb-4 box-shadow h-md-250 w-100">
-            <div class="card-body d-flex flex-column align-items-start">
-                <p class="card-text mb-auto">聯絡電話：<%= custommade.tel %></p>
-                <p class="card-text mb-auto">信箱：<%= custommade.email %></p>
-                <br/>
-                <p>地理位置</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1806.8995086327466!2d121.683066!3d25.0748003!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x7a917805a5599c18!2zTGFtaWdv6YKj57Gz5ZOl5a605pyD5buj5aC0!5e0!3m2!1szh-TW!2stw!4v1527774890947" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </div>
-            <%= link_to '加入蒐藏', add_cart_path(custommade), method: "post", class: "btn btn-xs" %>
-        </div>
+		<button type="button" onClick="history.back()" class="backbtn">Back</button>
+		<button type="button" onClick="location.href='../cart'" class="addbtn" >Collect</button>
+		<button type="button" onClick="location.href='http://www.hanastage.tw/'" class="connectbtn">connect</button>
+		<div class="detail">
+      <div class="star-rating" data-score=<%= @avg_rating %> ></div>
+      <em><%= "#{@comments.length} 則留言"%></em>
+			<div class="name"><h1><%= custommade.name %></h1></div>
+			<div class="introduce">
+				<h2>簡介</h2>
+				<p><%= custommade.name %></p>
+			</div>
+		</div>
+		<div class="detail2">
+      <% for images in custommade.images_urls %>
+        <a data-fancybox="gallery">
+          <%= link_to image_tag(images, width: '200px',height: '250px'), custommade if custommade.images.present?%>
+        </a>
+      <% end %>
+		</div>
+		<div class="detail3">
+			<div class="icons">
+			  <%= image_tag("projector.png")%>
+			  <%= image_tag("computer.png")%>
+			  <%= image_tag("sofa.png")%>
+			  <%= image_tag("drum-set.png")%>
+			  <%= image_tag("karaoke.png")%>
+			  <%= image_tag("parking.png")%>
+			  <%= image_tag("speaker.png")%>
+			  <%= image_tag("spotlight.png")%>
+			  <%= image_tag("stage.png")%>
+			</div>
+		</div>
+		<div class="detail4">
+			<h2>聯絡資訊</h2>
+			<p>電話號碼：<%= custommade.tel %></p>
+			<p>地址：<%= custommade.location %></p>
+		</div>
+		<div class="detail5">
+			<h2>地理位置</h2>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.8547769479696!2d121.52014281546774!3d25.039001983970024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a976fe1361a1%3A0x8126f8a368a8b255!2z6Iqx5ry-SGFuYeWxlea8lOepuumWkw!5e0!3m2!1szh-TW!2stw!4v1537799171786" width="96%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
 
-        
 
-    </div>
+		<%=render "comments/index" %>
+
   <% end %>
+</div>
+<!--------------------TOP------------------------->
+<div class="backtotop">
+	<a class="top" href="#"> <%= image_tag("top-arrow.png")%></a>
 </div>

@@ -1,0 +1,5 @@
+<% @regions.each do |i| %>
+  <%= i.title %>
+  <% checked = @r && @r.collect(&:id).include?(i.id) %>
+  <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+<% end %>
