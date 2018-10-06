@@ -1,5 +1,11 @@
-<% @activity_kinds.each do |i| %>
-  <%= i.title %>
-  <% checked = @a && @a.collect(&:id).include?(i.id) %>
-  <%= check_box_tag "activity_kind_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-<% end %>
+<li class="filter-item-react">
+  <span class="filter-item-info" data-element-name="search-filter" data-element-index="0">
+    <span>
+      <% @activity_kinds.each do |i| %>
+        <% checked = @a && @a.collect(&:id).include?(i.id) %>
+        <%= check_box_tag "activity_kind_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+        <%= i.title %></p>
+      <% end %>
+    </span>
+  </span>
+</li>

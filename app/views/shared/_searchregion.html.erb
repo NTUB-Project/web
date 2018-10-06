@@ -1,5 +1,11 @@
-<% @regions.each do |i| %>
-  <%= i.title %>
-  <% checked = @r && @r.collect(&:id).include?(i.id) %>
-  <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-<% end %>
+<li class="filter-item-react">
+  <span class="filter-item-info" data-element-name="search-filter" data-element-index="0">
+    <span>
+      <% @regions.each do |i| %>
+        <% checked = @r && @r.collect(&:id).include?(i.id) %>
+        <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+        <%= i.title %></p>
+      <% end %>
+    </span>
+  </span>
+</li>
