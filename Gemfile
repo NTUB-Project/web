@@ -43,6 +43,8 @@ gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
 gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'hirb-unicode'
+gem 'mini_magick'
+gem 'fog'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

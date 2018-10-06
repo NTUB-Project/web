@@ -1,60 +1,72 @@
+</br>
+</br>
+</br>
 <h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>廠商名稱</th>
-      <th>類別</th>
-      <th>地區</th>
-      <th>活動類別</th>
-      <th>圖片</th>
-      <th>人數</th>
-      <th>廠商介紹</th>
-      <th>聯絡電話</th>
-      <th>聯絡信箱</th>
-      <th>產品項目</th>
-      <th>地址</th>
-      <th>網站連結</th>
-      <th>設備</th>
-      <th>限制條件</th>
-      <th>優惠活動</th>
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button" onclick="openCategory('Ground')">場地</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Food')">食物</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Rentcar')">租車</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Equipment')">設備</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Custommade')">印刷</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Costume')">舞台服</button>
+</div>
 
-
-
-
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.category.title %></td>
-        <td><%= product.region_ids %></td>
-        <td><%= product.activity_kind_ids %></td>
-        <% for images in product.images_urls %>
-          <td><%= link_to image_tag(images, width: '200px',height: '250px'), product if product.images.present?%></td>
-        <% end %>
-        <td><%= product.people_number.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.tel %></td>
-        <td><%= product.email %></td>
-        <td><%= product.item %></td>
-        <td><%= product.location %></td>
-        <td><%= product.url %></td>
-        <td><%= product.equipment %></td>
-        <td><%= product.limit %></td>
-        <td><%= product.activity %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div id="Ground" class="w3-container categor">
+  <h2>場地：</h2>
+    <% if @grounds != []%>
+      <%= render "ground" %>
     <% end %>
-  </tbody>
-</table>
+</div>
+
+<div id="Food" class="w3-container categor" style="display:none">
+  <h2>食物：</h2>
+    <% if @foods != []%>
+      <%= render "food" %>
+    <% end %>
+</div>
+
+<div id="Rentcar" class="w3-container categor" style="display:none">
+  <h2>租車：</h2>
+    <% if @rentcars != []%>
+      <%= render "rentcar" %>
+    <% end %>
+</div>
+
+<div id="Equipment" class="w3-container categor" style="display:none">
+  <h2>設備：</h2>
+    <% if @equipments != []%>
+      <%= render "equipment" %>
+    <% end %>
+</div>
+
+<div id="Custommade" class="w3-container categor" style="display:none">
+  <h2>印刷：</h2>
+    <% if @custommade != []%>
+      <%= render "custommade" %>
+    <% end %>
+</div>
+
+<div id="Costume" class="w3-container categor" style="display:none">
+  <h2>舞台服：</h2>
+    <% if @costumes != []%>
+      <%= render "costume" %>
+    <% end %>
+</div>
+
 
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+
+
+<script>
+function openCategory(categoryName) {
+    var i;
+    var x = document.getElementsByClassName("categor");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    document.getElementById(categoryName).style.display = "block";
+}
+</script>

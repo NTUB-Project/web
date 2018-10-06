@@ -5,17 +5,40 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
 
-    @product = Product.group(:name).select("MIN(id) AS id  , name")
-    @products = Array.new
-    @a = 0
+    @product = Product.group(:name).select("MIN(id) AS id , name")
+    @a = Array.new
     if @product != []
-      @product.each do |i|
-        @a+=1
-      end
-      0.upto(@a-1) do |i|
-        @products <<  Product.find_by(id: @product[i].id)
+      0.upto(@product.to_a.count-1) do |i|
+        @a <<  Product.find_by(id: @product[i].id)
       end
     end
+
+    @grounds = Array.new
+    @foods = Array.new
+    @rentcars = Array.new
+    @equipments = Array.new
+    @custommade = Array.new
+    @costumes = Array.new
+
+    @a.map{ |i|
+      case i.category_id
+      when 1
+        @grounds << i
+      when 2
+        @foods << i
+      when 3
+        @rentcars << i
+      when 4
+        @equipments << i
+      when 5
+        @custommade << i
+      when 6
+        @costumes << i
+      end
+    }
+
+
+
   end
 
   # GET /products/1
@@ -45,6 +68,7 @@ class ProductsController < ApplicationController
         @product.save
       end
     end
+    redirect_back(fallback_location: root_path, notice: "新增廠商成功！")
 
   end
 
@@ -65,7 +89,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    Product.where(name: @product.name).destroy_all
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }

@@ -1,11 +1,36 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <div class="bkgrdimg"><%= image_tag("background.jpg") %>
-			<div class="bkgrdimg_letters">
-			  <span class="letters letters-2">Let's</span>
-			  <span class="letters letters-2">Plan</span>
-			  <span class="letters letters-3">Party!</span>
-			  <span class="letters letters-4">Go!</span>
+	<div class="dropdownWraper">
+		<div class="centerDropdown">
+			<div class="dropdown evtType">
+				<select>
+					<option style="display:none;" disabled="" selected="">活動性質</option>
+					<option value="" disabled="" class="disabled">--活動性質--</option>
+					<option value="1">會議</option>	
+					<option value="2">派對</option>	
+					<option value="3">課程講座</option>	
+				</select>
 			</div>
+			<div class="dropdown location">
+				<select>
+					<option style="display:none;" disabled="" selected="">地點</option>
+					<option value="" disabled="" class="disabled">--地點--</option>
+					<option value="台北市">台北市</option>	
+					<option value="新北市">新北市</option>
+				</select>
+			</div>
+			<div class="dropdown capacity">
+				<select>
+					<option style="display:none;" disabled="" selected="">活動人數</option>
+					<option value="" disabled="" class="disabled">--活動人數--</option>
+					<option style="font-family: sans-serif;" value="1.20">1 - 10</option>	
+					<option style="font-family: sans-serif;" value="11.30">11 - 20</option>	
+				</select>
+			</div>
+			<input class="keySearch no-width" type="text" name="keywords" placeholder="關鍵字" onfocus="this.placeholder='例如: '台北、小型會議室'; this.style.color = '#000'; " onblur="this.placeholder='例如: 台北, 小型會議室'" style="color: rgb(0, 0, 0);font-family: 'Varela Round', 'cwTeXYen',sans-serif;">
+			<button class="greenBtn" type="submit">開始尋找</button>
+		</div>
+	</div>
 </div>
 <div class="feature">
   <div class="grid-container">

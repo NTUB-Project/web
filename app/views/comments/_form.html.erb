@@ -1,6 +1,4 @@
-</br>
-<h1>編輯留言</h1>
-<%= simple_form_for [@product_id, @comment] do |f| %>
+<%= simple_form_for [@product_id, Comment.new] do |f| %>
   <div class="form-group">
     <div class="field">
       <div id="star-rating"></div>

@@ -84,3 +84,17 @@ anime.timeline({loop: true})
     duration: 500,
     delay: 500
   });
+
+//廠商列表篩選
+  $(document).ready(function(){
+  $(".checkbox_submit").change(function(){
+      var src = $(this);
+      $.ajax({
+        type: "post",
+        url: "/grounds/search",
+        data: {"region_ids": this.id},
+        success: function(result){
+          src.parents('form:first').submit();
+      }});
+  });
+});

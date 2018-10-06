@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments
   end
+
   resources :people_numbers
   resources :activity_kinds
   resources :regions
   resources :categories
-
   resources :comments
+
+  post '/grounds/search' => 'grounds#search'
 
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :custommade do
     collection do

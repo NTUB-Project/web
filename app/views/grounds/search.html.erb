@@ -1,9 +1,22 @@
+</br>
+</br>
 <div class="container mt-5">
-  <%= form_tag '/grounds/search' do %>
-    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">地區</label>
-    <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
-    <%= submit_tag "Search" %>
-  <% end %>
+    <%= form_for '/grounds/search' do %>
+      <% @regions.each do |i| %>
+        <%= i.title %>
+        <% checked = @r && @r.collect(&:id).include?(i.id) %>
+        <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+      <% end %>
+      </p>
+      <% @people_numbers.each do |i| %>
+        <%= i.title %>
+        <% checked = @p && @p.collect(&:id).include?(i.id) %>
+        <%= check_box_tag "people_number_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
+      <% end %>
+    <% end %>
+
+    <h5><%= @r %><%= @p %></h5>
+
   <% @grounds.each do |ground| %>
     <div class="row">
       <div class="card flex-md-row mb-4 box-shadow h-md-250 w-100">
