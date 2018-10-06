@@ -220,3 +220,23 @@ a.top img{
 	width: 20px;
 	height: 20px;
 }
+
+//廠商index頁面
+.cardbtn{
+	position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.cardbtn .btn{
+	background: #008B5D;
+	color: #fff;
+}
+.cardbtn .btn:hover{
+	background: #2b837a;
+}
+.cardleft{
+	border-right: #acc3c0 1px solid;
+}
+.card-text{
+	padding-bottom: 10px;
+}
