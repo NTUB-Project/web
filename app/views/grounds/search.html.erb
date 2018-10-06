@@ -1,41 +1,114 @@
-</br>
-</br>
-<div class="container mt-5">
-    <%= form_for '/grounds/search' do %>
-      <% @regions.each do |i| %>
-        <%= i.title %>
-        <% checked = @r && @r.collect(&:id).include?(i.id) %>
-        <%= check_box_tag "region_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-      <% end %>
-      </p>
-      <% @people_numbers.each do |i| %>
-        <%= i.title %>
-        <% checked = @p && @p.collect(&:id).include?(i.id) %>
-        <%= check_box_tag "people_number_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-      <% end %>
-    <% end %>
-
-    <h5><%= @r %><%= @p %></h5>
-
-  <% @grounds.each do |ground| %>
+<div class="activitycontent">
+  <div class="container">
     <div class="row">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250 w-100">
-        <% for images in ground.images_urls %>
-          <li class="selected">
-            <td><%= link_to image_tag(images, width: '200px',height: '250px'), ground if ground.images.present?%></td>
-          </li>
-        <% end %>
-        <div class="card-body d-flex flex-column align-items-start">
-          <h3 class="mb-0 mb-3">
-            <a class="text-dark" href="#"><%= ground.name %></a>
-          </h3>
-          <p class="card-text mb-auto">聯絡電話：<%= ground.tel %></p>
-          <p class="card-text mb-auto">信箱：<%= ground.email %></p>
-          <p class="card-text mb-auto">地址：<%= ground.location %></p>
-          <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn btn-xs" %>
-          <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn btn-xs" %>
+      <div id="searchPageLeftColumn" class="col-sm-12 col-md-4 col-lg-3">
+        <div id="joinedFilterList">
+          <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
+            <div class="filters-header-text">
+              <div style="display: block;">
+                <i class="ficon ficon-filter-icon"></i>
+                <p>自訂篩選</p>
+              </div>
+            </div>
+            <div id="filtersContainerReact" class="filtersContainerReact">
+              <div>
+                <div class="filters-container" data-selenium="filter-container">
+                  <%= form_tag '/grounds/search' do %>
+                  <ul class="filters-list">
+
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">地區</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchregion'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">人數</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchpeople'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">活動類型</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchactivity'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+
+                  </ul>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
+
+
+          </p>
+
+          </p>
+
+
+
+        <% @grounds.each do |ground| %>
+            <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
+              <%= link_to image_tag(ground.images_urls[0], width: '200px',height: '250px'), ground if ground.images.present?%>
+              <div class="card-body d-flex flex-column align-items-start">
+
+                <div class="row">
+                  <div class="col-6 cardleft">
+                    <h3 class="mb-0 mb-3">
+                      <a class="text-dark" href="#"><%= ground.name %></a>
+                    </h3>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("house.png", width: '20px',height: '20px')%>
+                      <a><%= ground.name %></a>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("marker.png", width: '20px',height: '20px')%>
+                      <% if ground.location != ""%>
+                        <a><%= ground.location.split('區').first+'區' %></a>
+                      <% end %>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("person.png", width: '20px',height: '20px')%>
+                      <a><%= ground.people_number.title %></a>
+                    </p>
+                  </div>
+
+                  <div class="col-6 cardright">
+                    <div class="card-text mb-auto">
+                      <a><%= ground.description %></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cardbtn">
+                <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn" %>
+                <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>

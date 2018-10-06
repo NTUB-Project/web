@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     if user_signed_in?
       if Comment.find_by(user_id: current_user.id, product_id: @product_id).blank?
         @comment = @product_id.comments.new(comment_params)
+        @comment.rating = 0 if @comment.rating == nil
         uid = current_user.id
         @comment.user_id = uid
         if @comment.save
