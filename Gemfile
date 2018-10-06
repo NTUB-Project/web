@@ -42,7 +42,9 @@ gem 'omniauth-google-oauth2'
 gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
 gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
-
+gem 'hirb-unicode'
+gem 'mini_magick'
+gem 'rails_12factor', group: :production
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -56,7 +58,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :production do

@@ -1,30 +1,87 @@
-<div class="content">
-  <div class="container">
-    <%= form_tag(email_cart_path(@items),method: :put)  do %>
-      <% @items.each do |item| %>
-      <div class="message1">
-        <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-          <div class="col-md-4 col-lg-3">
-            <%= check_box_tag "item_id[]",item.product.id %>
-            <%= image_tag('logo.png', width: '100',height: '100px')%>
-          </div>
-          <div class="col-md-6 col-lg-7 card-text">
-            <h3><%=item.product.name%></h3>
-            <p><%= image_tag("marker.png", width: '20px',height: '20px')%><%= item.product.location %></p>
-            <p><%= image_tag("telephone.png", width: '20px',height: '20px')%><%= item.product.tel %></p>
-          </div>
-          <div class="col-md-2 col-lg-2 trace_cell trace_delete">
-            <%=image_tag('cancel.png', class: "delete_icon")  %>
-            <div class="delete_text delete_btn" data-module="domhotel" data-id="3471" data-status="normal">
-              <%= link_to  "刪除", remove_cart_path(item.product_id), method: :put %>
-            </div>
-          </div>
-        </div>
-      </div>
+</br>
+<h1>蒐藏清單</h1>
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button" onclick="openCategory('Ground')">場地</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Food')">食物</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Rentcar')">租車</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Equipment')">設備</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Custommade')">印刷</button>
+  <button class="w3-bar-item w3-button" onclick="openCategory('Costume')">舞台服</button>
+</div>
+
+<div id="Ground" class="w3-container categor">
+  <h2>場地：</h2>
+  <div class="content">
+    <div class="container">
+      <% if @grounds != []%>
+        <%= render "ground" %>
       <% end %>
-      <%= submit_tag '寄信', class: "btn btn-default" %>
-    <% end %>
+    </div>
+  </div>
+</div>
+  
+<div id="Food" class="w3-container categor" style="display:none">
+  <h2>食物：</h2>
+  <div class="content">
+    <div class="container">
+      <% if @foods != []%>
+        <%= render "food" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
+<div id="Rentcar" class="w3-container categor" style="display:none">
+  <h2>租車：</h2>
+  <div class="content">
+    <div class="container">
+      <% if @rentcars != []%>
+        <%= render "rentcar" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
+<div id="Equipment" class="w3-container categor" style="display:none">
+  <h2>設備：</h2>
+  <div class="content">
+    <div class="container">
+      <% if @equipments != []%>
+        <%= render "equipment" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="Custommade" class="w3-container categor" style="display:none">
+  <h2>印刷：</h2>
+  <div class="content">
+    <div class="container">
+      <% if @custommade != []%>
+        <%= render "custommade" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="Costume" class="w3-container categor" style="display:none">
+  <h2>舞台服：</h2>
+  <div class="content">
+    <div class="container">
+      <% if @costumes != []%>
+        <%= render "costume" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+function openCategory(categoryName) {
+    var i;
+    var x = document.getElementsByClassName("categor");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    document.getElementById(categoryName).style.display = "block";
+}
+</script>

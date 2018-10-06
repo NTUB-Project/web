@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.assets.compile = false #讓heroku圖片正常顯示
+  config.serve_static_assets = true #讓heroku圖片正常顯示
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -28,7 +30,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -90,7 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
+  config.action_mailer.default_url_options = { host: "https://partyhelper-ntub-imd.herokuapp.com" }
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
   # config.action_mailer.delivery_method = :letter_opener_web
 

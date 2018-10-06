@@ -1,31 +1,102 @@
-<div class="container mt-5">
-  <%= form_tag '/foods/search' do %>
-    <div>
-      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">地區</label>
-      <%= select_tag 'region', options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
-    </div>
-    <div>
-      <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> 人數</label>
-      <%= select_tag 'people_number', options_for_select(@people_numbers.collect{ |people_number| [people_number.title, people_number.id] }) %>
-
-    </div>
-  <%= submit_tag "Search" %>
-  <% end %>
-  <% @foods.each do |food| %>
+<div class="activitycontent">
+  <div class="container">
     <div class="row">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250 w-100">
-        <%= link_to image_tag(food.image_url, width: '200px',height: '250px'), food if food.image.present?%>
-        <div class="card-body d-flex flex-column align-items-start">
-          <h3 class="mb-0 mb-3">
-            <a class="text-dark" href="#"><%= food.name %></a>
-          </h3>
-          <p class="card-text mb-auto">聯絡電話：<%= food.tel %></p>
-          <p class="card-text mb-auto">信箱：<%= food.email %></p>
-          <p class="card-text mb-auto">地址：<%= food.location %></p>
-          <%= link_to '詳細資訊', food_path(food,@detail) , class: "btn btn-xs" %>
-          <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn btn-xs" %>
+      <div id="searchPageLeftColumn" class="col-sm-12 col-md-4 col-lg-3">
+        <div id="joinedFilterList">
+          <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
+            <div class="filters-header-text">
+              <div style="display: block;">
+                <i class="ficon ficon-filter-icon"></i>
+                <p>自訂篩選</p>
+              </div>
+            </div>
+            <div id="filtersContainerReact" class="filtersContainerReact">
+              <div>
+                <div class="filters-container" data-selenium="filter-container">
+                  <%= form_tag 'foods/search' do %>
+                  <ul class="filters-list">
+
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">地區</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchregion'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">人數</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchpeople'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+
+                  </ul>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
+
+
+          </p>
+
+          </p>
+
+
+
+        <% @foods.each do |food| %>
+            <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
+              <%= link_to image_tag(food.images_urls[0], width: '200px',height: '250px'), food if food.images.present?%>
+              <div class="card-body d-flex flex-column align-items-start">
+
+                <div class="row">
+                  <div class="col-6 cardleft">
+                    <h3 class="mb-0 mb-3">
+                      <a class="text-dark" href="#"><%= food.name %></a>
+                    </h3>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("house.png", width: '20px',height: '20px')%>
+                      <a><%= food.name %></a>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("marker.png", width: '20px',height: '20px')%>
+                      <% if food.location != ""%>
+                        <a><%= food.location.split('區').first+'區' %></a>
+                      <% end %>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("person.png", width: '20px',height: '20px')%>
+                      <a><%= food.people_number.title %></a>
+                    </p>
+                  </div>
+
+                  <div class="col-6 cardright">
+                    <div class="card-text mb-auto">
+                      <a><%= food.description %></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cardbtn">
+                <%= link_to '加入蒐藏', add_cart_path(food), method: "post", class: "btn" %>
+                <%= link_to '詳細資訊', food_path(food,@detail) , class: "btn" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
