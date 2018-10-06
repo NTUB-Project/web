@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     if user_signed_in?
       if Comment.find_by(user_id: current_user.id, product_id: @product_id).blank?
         @comment = @product_id.comments.new(comment_params)
+        @comment.rating = 0 if @comment.rating == nil
         uid = current_user.id
         @comment.user_id = uid
         if @comment.save
@@ -45,7 +46,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    
+    @product_id = Product.find(params[:product_id])
     @comment = @product_id.comments.find(params[:id])
     @comment.destroy if @comment
     redirect_back(fallback_location: root_path, notice: "成功刪除留言")
