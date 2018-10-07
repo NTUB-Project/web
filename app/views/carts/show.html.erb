@@ -1,79 +1,74 @@
-</br>
-<h1>蒐藏清單</h1>
-<div class="w3-bar w3-black">
-  <button class="w3-bar-item w3-button" onclick="openCategory('Ground')">場地</button>
-  <button class="w3-bar-item w3-button" onclick="openCategory('Food')">食物</button>
-  <button class="w3-bar-item w3-button" onclick="openCategory('Rentcar')">租車</button>
-  <button class="w3-bar-item w3-button" onclick="openCategory('Equipment')">設備</button>
-  <button class="w3-bar-item w3-button" onclick="openCategory('Custommade')">印刷</button>
-  <button class="w3-bar-item w3-button" onclick="openCategory('Costume')">舞台服</button>
+<div class="content">
+<div class="sub_menu">
+	<%=image_tag('mycollect.png',width: '90%')%>
+	<div class="sub_title">
+		<div><button class="click_log" onclick="openCategory('Ground')"><%=image_tag('map.png', size: '20')%>場地</button></div>
+		<div><button class="click_log" onclick="openCategory('Food')"><%=image_tag('fork.png', size: '20')%>食物</button></div>
+		<div><button class="click_log" onclick="openCategory('Rentcar')"><%=image_tag('bus.png', size: '20')%>租車</button></div>
+		<div><button class="click_log" onclick="openCategory('Equipment')"><%=image_tag('monitor.png', size: '20')%>設備</button></div>
+		<div><button class="click_log" onclick="openCategory('Custommade')"><%=image_tag('poster.png', size: '20')%>印刷</button></div>
+		<div><button class="click_log" onclick="openCategory('Costume')"><%=image_tag('shirt.png', size: '20')%>舞台服</button></div>
+	</div>
 </div>
 
-<div id="Ground" class="w3-container categor">
-  <h2>場地：</h2>
-  <div class="content">
-    <div class="container">
-      <% if @grounds != []%>
-        <%= render "ground" %>
-      <% end %>
-    </div>
+<div id="Ground" class="categor">
+  <h2><%=image_tag('map.png', size: '30')%>場地</h2>
+  <div class="container">
+    <% if @grounds != []%>
+      <%= render "ground" %>
+    <% end %>
   </div>
 </div>
   
-<div id="Food" class="w3-container categor" style="display:none">
-  <h2>食物：</h2>
-  <div class="content">
-    <div class="container">
-      <% if @foods != []%>
-        <%= render "food" %>
-      <% end %>
-    </div>
+<div id="Food" class="categor" style="display:none">
+  <h2><%=image_tag('fork.png', size: '30')%>食物</h2>
+  <div class="container">
+    <% if @foods != []%>
+      <%= render "food" %>
+    <% end %>
   </div>
 </div>
 
-<div id="Rentcar" class="w3-container categor" style="display:none">
-  <h2>租車：</h2>
-  <div class="content">
-    <div class="container">
-      <% if @rentcars != []%>
-        <%= render "rentcar" %>
-      <% end %>
-    </div>
+<div id="Rentcar" class="categor" style="display:none">
+  <h2><%=image_tag('bus.png', size: '30')%>租車</h2>
+  <div class="container">
+    <% if @rentcars != []%>
+      <%= render "rentcar" %>
+    <% end %>
   </div>
 </div>
 
-<div id="Equipment" class="w3-container categor" style="display:none">
-  <h2>設備：</h2>
-  <div class="content">
-    <div class="container">
-      <% if @equipments != []%>
-        <%= render "equipment" %>
-      <% end %>
-    </div>
+<div id="Equipment" class="categor" style="display:none">
+  <h2><%=image_tag('monitor.png', size: '30')%>設備</h2>
+  <div class="container">
+    <% if @equipments != []%>
+      <%= render "equipment" %>
+    <% end %>
   </div>
 </div>
 
-<div id="Custommade" class="w3-container categor" style="display:none">
-  <h2>印刷：</h2>
-  <div class="content">
-    <div class="container">
-      <% if @custommade != []%>
-        <%= render "custommade" %>
-      <% end %>
-    </div>
+<div id="Custommade" class="categor" style="display:none">
+  <h2><%=image_tag('poster.png', size: '30')%>印刷</h2>
+  <div class="container">
+    <% if @custommade != []%>
+      <%= render "custommade" %>
+    <% end %>
   </div>
 </div>
 
-<div id="Costume" class="w3-container categor" style="display:none">
-  <h2>舞台服：</h2>
-  <div class="content">
-    <div class="container">
-      <% if @costumes != []%>
-        <%= render "costume" %>
-      <% end %>
-    </div>
+<div id="Costume" class="categor" style="display:none">
+  <h2><%=image_tag('shirt.png', size: '30')%>舞台服</h2>
+  <div class="container">
+    <% if @costumes != []%>
+      <%= render "costume" %>
+    <% end %>
   </div>
 </div>
+
+</div>
+
+
+
 
 <script>
 function openCategory(categoryName) {
