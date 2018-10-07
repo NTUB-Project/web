@@ -29,7 +29,6 @@ body{
   top: 75px;
   left: 0;
   width: 100%;
-  z-index: 99;
 }
 .logo{
   font-weight: 900;
@@ -45,12 +44,16 @@ body{
   background-color: rgba(211, 211, 211,0.2);
   position: fixed;
   width: 100%;
+  z-index: 99;
 }
 .dropdown-menu{
   a:hover{
     background-color: rgba(211, 211, 211,0.5);
   }
   background-color: rgba(211, 211, 211,0.2);
+}
+.navbar-nav{
+  font-size: 16px;
 }
 
 //footer
