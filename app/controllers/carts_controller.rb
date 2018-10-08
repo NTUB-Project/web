@@ -11,20 +11,24 @@ before_action :current_cart
     @custommade = Array.new
     @costumes = Array.new
     @items.each do |item|
-      @category = Product.find_by(id: item.product_id).category_id
-      case @category
-      when 1
-        @grounds << item
-      when 2
-        @foods << item
-      when 3
-        @rentcars << item
-      when 4
-        @equipments << item
-      when 5
-        @custommade << item
-      when 6
-        @costumes << item
+      if item.product == nil
+        item.destroy
+      else
+        @category = Product.find_by(id: item.product_id).category_id
+        case @category
+        when 1
+          @grounds << item
+        when 2
+          @foods << item
+        when 3
+          @rentcars << item
+        when 4
+          @equipments << item
+        when 5
+          @custommade << item
+        when 6
+          @costumes << item
+        end
       end
     end
   end
