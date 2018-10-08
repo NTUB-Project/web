@@ -472,7 +472,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.4, >= 4.4.3)
   devise-i18n (~> 1.6, >= 1.6.2)
-  fog (~> 1.38)
+  fog
   gmaps4rails
   gon (~> 6.2)
   hirb

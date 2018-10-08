@@ -44,7 +44,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'hirb-unicode'
 gem 'mini_magick' #S3
-gem 'fog', '~> 1.38' #S3
+gem 'fog' #S3
 gem 'gmaps4rails'#找附近
 gem 'gon', '~> 6.2' #controller變數直接傳給js
 
