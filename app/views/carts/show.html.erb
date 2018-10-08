@@ -12,7 +12,6 @@
 </div>
 
 <div id="Ground" class="categor">
-  <h2><%=image_tag('map.png', size: '30')%>場地</h2>
   <div class="container">
     <% if @grounds != []%>
       <%= render "ground" %>
@@ -21,7 +20,6 @@
 </div>
   
 <div id="Food" class="categor" style="display:none">
-  <h2><%=image_tag('fork.png', size: '30')%>食物</h2>
   <div class="container">
     <% if @foods != []%>
       <%= render "food" %>
@@ -30,7 +28,6 @@
 </div>
 
 <div id="Rentcar" class="categor" style="display:none">
-  <h2><%=image_tag('bus.png', size: '30')%>租車</h2>
   <div class="container">
     <% if @rentcars != []%>
       <%= render "rentcar" %>
@@ -39,7 +36,6 @@
 </div>
 
 <div id="Equipment" class="categor" style="display:none">
-  <h2><%=image_tag('monitor.png', size: '30')%>設備</h2>
   <div class="container">
     <% if @equipments != []%>
       <%= render "equipment" %>
@@ -48,7 +44,6 @@
 </div>
 
 <div id="Custommade" class="categor" style="display:none">
-  <h2><%=image_tag('poster.png', size: '30')%>印刷</h2>
   <div class="container">
     <% if @custommade != []%>
       <%= render "custommade" %>
@@ -57,7 +52,6 @@
 </div>
 
 <div id="Costume" class="categor" style="display:none">
-  <h2><%=image_tag('shirt.png', size: '30')%>舞台服</h2>
   <div class="container">
     <% if @costumes != []%>
       <%= render "costume" %>
