@@ -59,7 +59,6 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-
     1.upto(product_params.values[13].count-1) do |region|
       1.upto(product_params.values[14].count-1) do |activity_kind|
         @product = Product.new(product_params)
@@ -68,8 +67,6 @@ class ProductsController < ApplicationController
         @product.save
       end
     end
-    redirect_back(fallback_location: root_path, notice: "新增廠商成功！")
-
   end
 
   # PATCH/PUT /products/1

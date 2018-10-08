@@ -1,8 +1,8 @@
 class EquipmentsController < ApplicationController
 
     def index
-      @find = Product.where(category: Category.find_by(title: "設備").id)
-      @equipment = @find.group("name").select("MIN(id) AS id , name")
+      find = Product.where(category: Category.find_by(title: "設備").id)
+      @equipment = find.group("name").select("MIN(id) AS id , name")
       @equipments = Array.new
       if @equipment != []
         0.upto(@equipment.to_a.count-1) do |i|

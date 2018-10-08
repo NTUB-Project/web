@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :gmaps
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"  }
 
   resources :products do

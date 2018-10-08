@@ -26,6 +26,35 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit %></p>
   </div>
 <% end %>
+
+<%= form_tag '/gmaps/new',method: 'get' do %>
+  地址：</p>
+  <input name="ConstructionADD" type="text" id="ConstructionADD" size="50" maxlength="50"/>
+  <botton  type="submit" class="btn" onClick="codeAddress()">轉換經度及緯度</botton>
+  <input name="Longitude" type="text" id="Longitude" size="10" maxlength="10" readonly="readonly"/>
+  <input name="Latitude" type="text" id="Latitude" size="10" maxlength="9" readonly="readonly"/>
+<%end%>
+
+<script type="text/javascript">
+function codeAddress(){
+var add = document.getElementById("ConstructionADD");
+var long = document.getElementById("Longitude");
+var lat = document.getElementById("Latitude");
+var geocoder = new google.maps.Geocoder();
+geocoder.geocode( { address: add.value}, function(results, status) {
+if (status == google.maps.GeocoderStatus.OK) {
+Longitude.value = results[0].geometry.location.lng();
+Latitude.value = results[0].geometry.location.lat();
+$.ajax({
+  type: "get",
+  url: "/gmaps/new",
+  data: {"long": Longitude.value, "lat": Latitude.value, "address": add.value},
+  });
+} else {
+alert("Geocode was not successful for the following reason: " + status);}
+});
+}
+</script>

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gmaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gmaps.each do |gmap| %>
+      <tr>
+        <td><%= gmap.latitude %></td>
+        <td><%= gmap.longitude %></td>
+        <td><%= gmap.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<div id="map" style="width:100%;height:400px">地圖預留</div>
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = [{
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+              picture: {
+                url: "https://png.icons8.com/color/50/000000/map-pin.png",
+                width:  36,
+                height: 36
+              },
+              infowindow: "目前位置"
+            }];
+            var gmap = <%=raw @hash.to_json %>
+            var mark = pos.concat(gmap);
+            markers = handler.addMarkers(mark);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+          });
+        }
+  });
+</script>

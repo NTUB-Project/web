@@ -8,4 +8,5 @@ class Product < ApplicationRecord
   mount_uploaders :images, ImageUploader
   has_and_belongs_to_many :regions
   has_and_belongs_to_many :activity_kinds
+  has_one :gmap
 end

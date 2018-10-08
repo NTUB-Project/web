@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
     def index
-      @find = Product.where(category: Category.find_by(title: "食物").id)
-      @food = @find.group("name").select("MIN(id) AS id , name")
+      find = Product.where(category: Category.find_by(title: "食物").id)
+      @food = find.group("name").select("MIN(id) AS id , name")
       @foods = Array.new
       if @food != []
         0.upto(@food.to_a.count-1) do |i|

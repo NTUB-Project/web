@@ -6,16 +6,16 @@
 				<select>
 					<option style="display:none;" disabled="" selected="">活動性質</option>
 					<option value="" disabled="" class="disabled">--活動性質--</option>
-					<option value="1">會議</option>	
-					<option value="2">派對</option>	
-					<option value="3">課程講座</option>	
+					<option value="1">會議</option>
+					<option value="2">派對</option>
+					<option value="3">課程講座</option>
 				</select>
 			</div>
 			<div class="dropdown location">
 				<select>
 					<option style="display:none;" disabled="" selected="">地點</option>
 					<option value="" disabled="" class="disabled">--地點--</option>
-					<option value="台北市">台北市</option>	
+					<option value="台北市">台北市</option>
 					<option value="新北市">新北市</option>
 				</select>
 			</div>
@@ -23,8 +23,8 @@
 				<select>
 					<option style="display:none;" disabled="" selected="">活動人數</option>
 					<option value="" disabled="" class="disabled">--活動人數--</option>
-					<option style="font-family: sans-serif;" value="1.20">1 - 10</option>	
-					<option style="font-family: sans-serif;" value="11.30">11 - 20</option>	
+					<option style="font-family: sans-serif;" value="1.20">1 - 10</option>
+					<option style="font-family: sans-serif;" value="11.30">11 - 20</option>
 				</select>
 			</div>
 			<input class="keySearch no-width" type="text" name="keywords" placeholder="關鍵字" onfocus="this.placeholder='例如: '台北、小型會議室'; this.style.color = '#000'; " onblur="this.placeholder='例如: 台北, 小型會議室'" style="color: rgb(0, 0, 0);font-family: 'Varela Round', 'cwTeXYen',sans-serif;">
@@ -71,7 +71,9 @@
 			<h2>舞台服租借</h2>
 	  </div>
 		<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" >
+			<%= link_to gmaps_path do %>
 			<i class="fa fa-map-marker-alt"></i>
+			<% end %>
 			<h2>找附近</h2>
 	  </div>
 	</div>
