@@ -246,7 +246,7 @@ select:-moz-focusing {
   .dropdown.evtType, .dropdown.location, .dropdown.capacity {
     width: 90%; }
   .dropdown.evtType select,.dropdown.location select, .dropdown.capacity select {
-      width: 95%; }
+    width: 95%; }
   .dropdown::after {
     margin: 32px 16px 0 0; }
 
@@ -265,5 +265,8 @@ select:-moz-focusing {
   }
   .bkgrdimg .dropdown::after {
       margin: 16px 16px 0 0;
+  }
+  .feature{
+    padding-top: 150px;
   }
 }
