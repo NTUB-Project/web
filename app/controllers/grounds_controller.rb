@@ -43,6 +43,12 @@ class GroundsController < ApplicationController
 
 
   def show
+    gmap = Gmap.where(product_id: params[:id])
+    @hash = Gmaps4rails.build_markers(gmap) do |hash, marker|
+        marker.lat hash.latitude
+        marker.lng hash.longitude
+        marker.infowindow hash.product.name
+    end
     @grounds = Product.where(id: params[:id])
     @product_id = Product.find(params[:id])
     @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
