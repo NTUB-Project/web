@@ -83,6 +83,13 @@ div.message1{
 }
 .sub_title > div {
   display: inline-block;
-  font-size: 20px;
-  margin: 0 5px;
+  font-size: 24px;
+  margin: 0 10px;
+}
+.sub_title > div :hover{
+  color: #2b837a;
+  text-decoration: underline;
+}
+.click_log{
+  letter-spacing: 3px;
 }
