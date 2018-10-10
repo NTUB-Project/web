@@ -44,13 +44,13 @@ gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'hirb-unicode'
 gem 'mini_magick' #S3
-gem 'fog' #S3
+# gem 'fog' #S3
 gem 'gmaps4rails'#找附近
 gem 'gon', '~> 6.2' #controller變數直接傳給js
 gem 'webpacker', '~> 3.5' 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'pg'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -60,11 +60,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-gem 'pg'
+
 end
 
 group :production do
-gem 'pg'
+
  end
 
 group :development do
