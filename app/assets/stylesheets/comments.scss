@@ -1,0 +1,58 @@
+//留言板上半部
+div.detail6{
+	text-align: center;
+	margin:20px auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	background-color: rgba(176, 207, 207, 0.3);
+	border-radius: 10px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+div.inputs{
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	border-radius: 5px;
+	padding: 20px;
+	background-color: rgba(176, 239, 239, 0.3);
+	padding-bottom: 50px;
+	box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4);
+}
+.checked {
+  color: orange;
+}
+div.upload{
+	position: relative;
+	top:20px;
+}
+
+
+//留言板下半部
+div.message2{
+	margin:0 auto;
+	right: auto;
+	left: auto;
+	width: 70%;
+	border-radius: 5px;
+	font-family: "Rubik", sans-serif;
+  transition: 300ms;
+  .card-text{
+    text-align: left;
+  }
+  .card{
+    padding: 10px 0;
+  }
+  .cardimg{
+    padding-top: 5px;
+  }
+  .card input{
+   width: 20px;
+   height: 20px;
+   margin-right: 10px;
+  }
+  .trace_delete{
+    padding-top: 35px;
+  }
+}
