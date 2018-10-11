@@ -19,31 +19,31 @@ div.message1{
 	border-radius: 5px;
 	font-family: "Rubik", sans-serif;
   transition: 300ms;
-}
-.message1:hover {
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
-  transition: 300ms;
-}
-.card-text h3{
-  border-bottom: 1px #000 solid;
-  padding-bottom: 5px;
-}
-.card-text{
-  text-align: left;
-}
-.card{
-  padding: 10px 0;
-}
-.cardimg{
-  padding-top: 5px;
-}
-.card input{
- width: 20px;
- height: 20px;
- margin-right: 10px;
-}
-.trace_delete{
-  padding-top: 35px;
+  .message1:hover {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+    transition: 300ms;
+  }
+  .card-text h3{
+    border-bottom: 1px #000 solid;
+    padding-bottom: 5px;
+  }
+  .card-text{
+    text-align: left;
+  }
+  .card{
+    padding: 10px 0;
+  }
+  .cardimg{
+    padding-top: 5px;
+  }
+  .card input{
+   width: 20px;
+   height: 20px;
+   margin-right: 10px;
+  }
+  .trace_delete{
+    padding-top: 35px;
+  }
 }
 .cartbtn .btn{
 	background: #2b837a;
@@ -83,6 +83,13 @@ div.message1{
 }
 .sub_title > div {
   display: inline-block;
-  font-size: 20px;
-  margin: 0 5px;
+  font-size: 24px;
+  margin: 0 10px;
+}
+.sub_title > div :hover{
+  color: #2b837a;
+  text-decoration: underline;
+}
+.click_log{
+  letter-spacing: 3px;
 }
