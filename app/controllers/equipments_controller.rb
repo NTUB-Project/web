@@ -40,8 +40,8 @@ class EquipmentsController < ApplicationController
       marker.infowindow hash.product.name
     end
     @equipments = Product.where(id: params[:id])
-    product_id = Product.find(params[:id])
-    @comments = product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
+    @product_id = Product.find(params[:id])
+    @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
     el = 0
     sum = 0
     @comments.each do |i|
