@@ -3,7 +3,7 @@ Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.assets.compile = false #讓heroku圖片正常顯示
+  config.assets.compile = true #讓heroku圖片正常顯示
   config.serve_static_assets = true #讓heroku圖片正常顯示
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -87,7 +87,7 @@ Rails.application.configure do
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # Do not dump schema after migrations.
