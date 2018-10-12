@@ -5,14 +5,16 @@ class SearchesController < ApplicationController
     find = all.group("name").select("MIN(id) AS id , name")
     product = find.where(region: params[:region_ids]).or(
               find.where(activity_kind_id: params[:activity_kind_ids]))
+    if @keywords = params[:keywords]
+      keywords = find.where([ "name like ? or description like ? or item like ? or equipment like ? ", "%#{params[:keywords]}%", "%#{params[:keywords]}%", "%#{params[:keywords]}%", "%#{params[:keywords]}%" ])
+    end
+    people_number = []
     if params[:people_number_ids] != nil
-      people_number = []
       1.upto(params[:people_number_ids].to_i) do |i|
         people_number << find.find_by(people_number: i )
       end
-    product = (product + people_number).uniq
     end
-
+    product = (product + people_number + keywords).uniq
     @products = []
     if product != []
       0.upto(product.to_a.count-1) do |i|
