@@ -35,7 +35,6 @@ class GroundsController < ApplicationController
     @a = ActivityKind.where(id: params[:activity_kind_ids]).to_a
   end
 
-
   def show
     gmap = Gmap.where(product_id: params[:id])
     @hash = Gmaps4rails.build_markers(gmap) do |hash, marker|

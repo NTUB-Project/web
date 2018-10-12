@@ -1,12 +1,12 @@
 class User < ApplicationRecord
-
 has_many :comments
-
+has_one :cart
+has_many :cart_items
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable, :omniauthable, :omniauth_providers => [:facebook]
 
   def admin?
-    role == "amin"
+    role == "admin"
   end
 
 

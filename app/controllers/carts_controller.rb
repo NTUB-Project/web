@@ -1,9 +1,10 @@
 class CartsController < ApplicationController
-
+before_action :authenticate_user!
+before_action :authenticate_admin
 before_action :current_cart
 
   def show
-    @items = CartItem.where(:user_id => @user_id)
+    @items = CartItem.where(user_id: current_user.id)
     @grounds = []
     @foods = []
     @rentcars = []
@@ -36,22 +37,22 @@ before_action :current_cart
   def add
     if user_signed_in?
       @category = Product.find(params[:id]).category_id
-      @count = 0
-      items = CartItem.where(:cart_id => @cart_id)
+      count = 0
+      items = CartItem.where(user_id: current_user.id)
       items.each do |i|
         if Product.find_by(id: i.product_id) == nil
           i.destroy
         else
-          @count = @count + 1 if @category == Product.find_by(id: i.product_id).category_id
+          count = count + 1 if @category == Product.find_by(id: i.product_id).category_id
         end
       end
-      find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
-
-      if find_item.blank? && @count < 5
-        CartItem.create( :user_id => @user_id , :cart_id => @cart_id , :product_id => params[:id] )
+      find_item = CartItem.where(user_id: current_user.id, product_id: params[:id])
+      if find_item.blank? && count < 5
+        CartItem.create(user_id: current_user.id , cart_id: current_cart , product_id: params[:id])
       else
         redirect_to root_path ,notice: "此類別的蒐藏已滿囉!" if find_item.blank?
       end
+
     else
       redirect_to new_user_session_url, notice:"請先登入再蒐藏!"
     end
@@ -86,12 +87,10 @@ before_action :current_cart
 private
 
   def current_cart
-
     if user_signed_in?
-      @user_id = User.order(current_sign_in_at: :desc).first.id
-      @current_cart = Cart.find_by(user_id: @user_id )
-      @current_cart = Cart.create(:user_id => @user_id) if @current_cart.blank?
-      @cart_id = @current_cart[:id]
+      current_cart = Cart.find_by(user_id: current_user.id )
+      current_cart = Cart.create(user_id: current_user.id) if current_cart.blank?
+      cart_id = current_cart[:id]
     else
       redirect_to new_user_session_url, notice:"請先登入再蒐藏!"
     end

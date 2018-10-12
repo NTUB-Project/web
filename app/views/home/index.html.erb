@@ -23,7 +23,7 @@
 					<%=  options_for_select(@people_numbers.collect{ |people_number| [people_number.title, people_number.id] }) %>
 				</select>
 			</div>
-			<input class="keySearch no-width" type="text" name="keywords" placeholder="關鍵字" onfocus="this.placeholder='例如: '台北、小型會議室'; this.style.color = '#000'; " onblur="this.placeholder='例如: 台北, 小型會議室'" style="color: rgb(0, 0, 0);font-family: 'Varela Round', 'cwTeXYen',sans-serif;">
+			<input class="keySearch no-width" type="text" name="keywords" placeholder="關鍵字" onfocus="this.placeholder='例如: '大稻埕、小型會議室'; this.style.color = '#000'; " onblur="this.placeholder='例如: 大稻埕, 小型會議室'" style="color: rgb(0, 0, 0);font-family: 'Varela Round', 'cwTeXYen',sans-serif;">
 			<%= submit_tag "開始尋找", class:"greenBtn" %>
 			<% end %>
 		</div>
