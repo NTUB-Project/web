@@ -12,7 +12,9 @@
 ;
 (function($) {
   'use strict';
-
+  var starhalfAssetPath = "<%= asset_path('star-half.png') %>";
+  var staroffAssetPath = "<%= asset_path('star-off.png') %>";
+  var staronAssetPath = "<%= asset_path('star-on.png') %>";
   var methods = {
     init: function(options) {
       return this.each(function() {
@@ -745,9 +747,9 @@
     scoreName    : 'score',
     single       : false,
     space        : true,
-    starHalf     : 'star-half.png',
-    starOff      : 'star-off.png',
-    starOn       : 'star-on.png',
+    starHalf     : starhalfAssetPath,
+    starOff      : staroffAssetPath,
+    starOn       : staronAssetPath,
     starType     : 'img',
     target       : undefined,
     targetFormat : '{score}',
