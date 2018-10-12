@@ -1,4 +1,4 @@
-<div class="content	">
+<div class="content">
   <% @grounds.each do |ground| %>
 		<button type="button" class="addbtn" >
 			<%= link_to 'Collect', add_cart_path(ground), method: "post" %>
@@ -6,13 +6,15 @@
 		<button type="button" class="connectbtn">
 			<%= link_to 'Connect' ,ground.url %>
 		</button>
+		
+		
 		<div class="detail">
       <div class="star-rating" data-score=<%= @avg_rating %> ></div>
       <em><%= "#{@comments.length} 則留言"%></em>
 			<div class="name"><h1><%= ground.name %></h1></div>
 			<div class="introduce">
 				<h2>簡介</h2>
-				<p><%= ground.name %></p>
+				<p><%= ground.description %></p>
 			</div>
 		</div>
 		<div class="detail2">
@@ -36,6 +38,18 @@
 			</div>
 		</div>
 		<div class="detail4">
+			<h2>內容</h2>
+			<p>額外限制：<%= ground.limit %></p>
+			
+			<h2>設備</h2>
+			<p><%= ground.equipment %></p>
+			
+			<h2>活動類型</h2>
+			<p><%= ground.item %></p>
+			
+			<h2>優惠活動</h2>
+			<p><%= ground.activity %>前下訂單，即享優惠!</p>
+			
 			<h2>聯絡資訊</h2>
 			<p>電話號碼：<%= ground.tel %></p>
 			<p>地址：<%= ground.location %></p>

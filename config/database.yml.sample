@@ -1,0 +1,40 @@
+****改database.yml
+
+default: &default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
+ username: postgresql
+ password: pass
+ host:     <%= ENV['IP'] %>
+
+development:
+ <<: *default
+ database: shuyu
+ 
+test:
+ <<: *default
+ database: shuyu
+
+
+
+****改gemfile
+
+gem 'fog' #S3 註解
+gem 'pg' 移動位置
+
+
+config/initializers/carrierwave.rb 刪掉內容
+
+
+****改 uploader/image_uploader
+
+註解
+if Rails.env.production?
+      storage :fog
+    else
+      storage :file
+    end
+
+加入
+storage :file
