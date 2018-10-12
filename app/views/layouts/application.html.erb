@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Web</title>
-    <%= javascript_include_tag 'javascripts.raty.js', "data-turbolinks-track" => false %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -13,6 +12,7 @@
     <%= stylesheet_link_tag    'jquery.fancybox' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'javascripts.raty.js', "data-turbolinks-track" => false %>
   </head>
 
   <body>

@@ -13,8 +13,20 @@
             <div id="filtersContainerReact" class="filtersContainerReact">
               <div>
                 <div class="filters-container" data-selenium="filter-container">
-                  <%= form_tag '/costumes/search' do %>
+                  <%= form_tag '/searches/search' do %>
                   <ul class="filters-list">
+
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">廠商類別</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchcategory'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
 
                     <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
                       <div class="filter-menu">
@@ -40,6 +52,18 @@
                       </div>
                     </li>
 
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">活動類型</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchactivity'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+
                   </ul>
                   <% end %>
                 </div>
@@ -51,48 +75,45 @@
       <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
 
 
-          </p>
-
-          </p>
 
 
 
-        <% @costumes.each do |costume| %>
+        <% @products.each do |product| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(costume.images_urls[0], width: '200px',height: '250px'), costume if costume.images.present?%>
+              <%= link_to image_tag(product.images_urls[0], width: '200px',height: '250px'), product if product.images.present?%>
               <div class="card-body d-flex flex-column align-items-start">
 
                 <div class="row">
                   <div class="col-6 cardleft">
                     <h3 class="mb-0 mb-3">
-                      <a class="text-dark" href="#"><%= costume.name %></a>
+                      <a class="text-dark" href="#"><%= product.name %></a>
                     </h3>
                     <p class="card-text mb-auto">
                       <%= image_tag("house.png", width: '20px',height: '20px')%>
-                      <a><%= costume.name %></a>
+                      <a><%= product.name %></a>
                     </p>
                     <p class="card-text mb-auto">
                       <%= image_tag("marker.png", width: '20px',height: '20px')%>
-                      <% if costume.location != ""%>
-                        <a><%= costume.location.split('區').first+'區' %></a>
+                      <% if product.location != ""%>
+                        <a><%= product.location.split('區').first+'區' %></a>
                       <% end %>
                     </p>
                     <p class="card-text mb-auto">
                       <%= image_tag("person.png", width: '20px',height: '20px')%>
-                      <a><%= costume.people_number.title %></a>
+                      <a><%= product.people_number.title %></a>
                     </p>
                   </div>
 
                   <div class="col-6 cardright">
                     <div class="card-text mb-auto">
-                      <a><%= costume.description %></a>
+                      <a><%= product.description %></a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="cardbtn">
-                <%= link_to '加入蒐藏', add_cart_path(costume), method: "post", class: "btn" %>
-                <%= link_to '詳細資訊', costume_path(costume,@detail) , class: "btn" %>
+                <%= link_to '加入蒐藏', add_cart_path(product), method: "post", class: "btn" %>
+                <%= link_to '詳細資訊', search_path(product,@detail) , class: "btn" %>
               </div>
             </div>
         <% end %>

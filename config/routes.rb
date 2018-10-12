@@ -13,12 +13,19 @@ Rails.application.routes.draw do
   resources :comments
 
   post '/grounds/search' => 'grounds#search'
-
+  post '/foods/search' => 'foods#search'
+  post '/rentcars/search' => 'rentcars#search'
+  post '/equipments/search' => 'equipments#search'
+  post '/costumes/search' => 'costumes#search'
+  post '/custommade/search' => 'custommade#search'
+  post '/searches/search' => 'searches#search'
+  post '/searches' => 'searches#index'
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :custommade do
     collection do
       post :search
     end
   end
+  resources :searches
 
   resources :home do
     get 'about', on: :collection

@@ -13,12 +13,12 @@ class ProductsController < ApplicationController
       end
     end
 
-    @grounds = Array.new
-    @foods = Array.new
-    @rentcars = Array.new
-    @equipments = Array.new
-    @custommade = Array.new
-    @costumes = Array.new
+    @grounds = []
+    @foods = []
+    @rentcars = []
+    @equipments = []
+    @custommade = []
+    @costumes = []
 
     @a.map{ |i|
       case i.category_id
