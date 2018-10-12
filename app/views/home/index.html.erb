@@ -2,33 +2,30 @@
 <div class="bkgrdimg"><%= image_tag("background.jpg") %>
 	<div class="dropdownWraper">
 		<div class="centerDropdown">
+
+			<%= form_tag '/searches', method:"post"  do %>
 			<div class="dropdown evtType">
-				<select>
+				<select name="activity_kind_ids" id="activity_kind_ids">
 					<option style="display:none;" disabled="" selected="">活動性質</option>
-					<option value="" disabled="" class="disabled">--活動性質--</option>
-					<option value="1">會議</option>
-					<option value="2">派對</option>
-					<option value="3">課程講座</option>
+					<%=  options_for_select(@activity_kinds.collect{ |activity_kind| [activity_kind.title, activity_kind.id] }) %>
 				</select>
 			</div>
+
 			<div class="dropdown location">
-				<select>
+				<select name="region_ids" id="region_ids">
 					<option style="display:none;" disabled="" selected="">地點</option>
-					<option value="" disabled="" class="disabled">--地點--</option>
-					<option value="台北市">台北市</option>
-					<option value="新北市">新北市</option>
+					<%=  options_for_select(@regions.collect{ |region| [region.title, region.id] }) %>
 				</select>
 			</div>
 			<div class="dropdown capacity">
-				<select>
+				<select name="people_number_ids" id="people_number_ids">
 					<option style="display:none;" disabled="" selected="">活動人數</option>
-					<option value="" disabled="" class="disabled">--活動人數--</option>
-					<option style="font-family: sans-serif;" value="1.20">1 - 10</option>
-					<option style="font-family: sans-serif;" value="11.30">11 - 20</option>
+					<%=  options_for_select(@people_numbers.collect{ |people_number| [people_number.title, people_number.id] }) %>
 				</select>
 			</div>
 			<input class="keySearch no-width" type="text" name="keywords" placeholder="關鍵字" onfocus="this.placeholder='例如: '台北、小型會議室'; this.style.color = '#000'; " onblur="this.placeholder='例如: 台北, 小型會議室'" style="color: rgb(0, 0, 0);font-family: 'Varela Round', 'cwTeXYen',sans-serif;">
-			<button class="greenBtn" type="submit">開始尋找</button>
+			<%= submit_tag "開始尋找", class:"greenBtn" %>
+			<% end %>
 		</div>
 	</div>
 </div>

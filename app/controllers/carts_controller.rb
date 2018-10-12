@@ -4,12 +4,12 @@ before_action :current_cart
 
   def show
     @items = CartItem.where(:user_id => @user_id)
-    @grounds = Array.new
-    @foods = Array.new
-    @rentcars = Array.new
-    @equipments = Array.new
-    @custommade = Array.new
-    @costumes = Array.new
+    @grounds = []
+    @foods = []
+    @rentcars = []
+    @equipments = []
+    @custommade = []
+    @costumes = []
     @items.each do |item|
       if item.product == nil
         item.destroy
@@ -35,11 +35,15 @@ before_action :current_cart
 
   def add
     if user_signed_in?
-      @category = Product.find_by(id: params[:id]).category_id
+      @category = Product.find(params[:id]).category_id
       @count = 0
       items = CartItem.where(:cart_id => @cart_id)
       items.each do |i|
-        @count = @count + 1 if  @category == Product.find_by(id: i.product_id).category_id
+        if Product.find_by(id: i.product_id) == nil
+          i.destroy
+        else
+          @count = @count + 1 if @category == Product.find_by(id: i.product_id).category_id
+        end
       end
       find_item = CartItem.where(:user_id => @user_id, :product_id => params[:id])
 
