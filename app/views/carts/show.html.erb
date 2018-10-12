@@ -2,12 +2,12 @@
 <div class="sub_menu">
 	<%=image_tag('mycollect.png',width: '90%')%>
 	<div class="sub_title">
-		<div><button class="click_log" onclick="openCategory('Ground')"><%=image_tag('map.png', size: '20')%>場地</button></div>
-		<div><button class="click_log" onclick="openCategory('Food')"><%=image_tag('fork.png', size: '20')%>食物</button></div>
-		<div><button class="click_log" onclick="openCategory('Rentcar')"><%=image_tag('bus.png', size: '20')%>租車</button></div>
-		<div><button class="click_log" onclick="openCategory('Equipment')"><%=image_tag('monitor.png', size: '20')%>設備</button></div>
-		<div><button class="click_log" onclick="openCategory('Custommade')"><%=image_tag('poster.png', size: '20')%>印刷</button></div>
-		<div><button class="click_log" onclick="openCategory('Costume')"><%=image_tag('shirt.png', size: '20')%>舞台服</button></div>
+		<div><button class="click_log" id="Groundbtn" onclick="openCategory('Ground'),changeColor('Groundbtn')"><%=image_tag('map.png', size: '20')%>場地</button></div>
+		<div><button class="click_log" id="Foodbtn" onclick="openCategory('Food'),changeColor('Foodbtn')"><%=image_tag('fork.png', size: '20')%>食物</button></div>
+		<div><button class="click_log" id="Rentcarbtn" onclick="openCategory('Rentcar'),changeColor('Rentcarbtn')"><%=image_tag('bus.png', size: '20')%>租車</button></div>
+		<div><button class="click_log" id="Equipmentbtn" onclick="openCategory('Equipment'),changeColor('Equipmentbtn')"><%=image_tag('monitor.png', size: '20')%>設備</button></div>
+		<div><button class="click_log" id="Costumebtn" onclick="openCategory('Custommade'),changeColor('Custommadebtn')"><%=image_tag('poster.png', size: '20')%>印刷</button></div>
+		<div><button class="click_log" id="Costumebtn" onclick="openCategory('Costume'),changeColor('Costumebtn')"><%=image_tag('shirt.png', size: '20')%>舞台服</button></div>
 	</div>
 </div>
 
@@ -62,15 +62,20 @@
 </div>
 
 
-
-
 <script>
 function openCategory(categoryName) {
-    var i;
-    var x = document.getElementsByClassName("categor");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
-    }
-    document.getElementById(categoryName).style.display = "block";
+  var i;
+  var x = document.getElementsByClassName("categor");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  document.getElementById(categoryName).style.display = "block";
+}
+function changeColor(btnName) {
+  var x = document.getElementsByClassName("click_log");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.color = "black";
+  }
+  document.getElementById(btnName).style.color = "TEAL";
 }
 </script>

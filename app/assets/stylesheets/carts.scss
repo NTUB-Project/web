@@ -31,7 +31,7 @@ div.message1{
 .card-text{
   text-align: left;
 }
-.card{
+.message1 .card{
   padding: 10px 0;
 }
 .cardimg{
@@ -83,6 +83,13 @@ div.message1{
 }
 .sub_title > div {
   display: inline-block;
-  font-size: 20px;
-  margin: 0 5px;
+  font-size: 24px;
+  margin: 0 10px;
+}
+.sub_title > div :hover{
+  color: #2b837a;
+  text-decoration: underline;
+}
+.click_log{
+  letter-spacing: 3px;
 }
