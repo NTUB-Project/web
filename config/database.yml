@@ -54,22 +54,22 @@
  #  password:
  #  timeout: 5000
  
- default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  username: postgresql
-  password: pass
-  host:     <%= ENV['IP'] %>
- 
- development:
-  <<: *default
- database: shuyu
-  
- test:
-  <<: *default
+default: &default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
+ username: postgresql
+ password: pass
+ host:     <%= ENV['IP'] %>
+
+development:
+ <<: *default
  database: shuyu
  
- production:	
-  <<: *default	  
+test:
+ <<: *default
+ database: shuyu
+
+production:	
+ <<: *default	  
  database: shuyu 
