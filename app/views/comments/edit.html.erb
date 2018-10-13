@@ -1,17 +1,22 @@
-</br>
-<h1>編輯留言</h1>
+<div class="content">
 <%= simple_form_for [@product_id, @comment] do |f| %>
-  <div class="form-group">
-    <div class="field">
+<div class="detail6">
+	<h2>編輯留言</h2>
+	<div class="inputs">
+	  <div class="field">
       <div id="star-rating"></div>
     </div>
-    <%= f.file_field :images , multiple: true, name: "comment[images][]"%>
-    <%= f.input :content%>
-  </div>
-  <div class="form-actions">
-    <%= f.submit %>
-  </div>
+		<div id="message2">
+      <%= f.input :content , label: '我有話要說：'%>
+		</div>
+		<div class="upload">
+		  <%= f.file_field :images, multiple: true, name: "comment[images][]"%>
+			<input type="submit" name="commit" value="修改留言">
+		</div>
+	</div>
+</div>
 <% end %>
+</div>
 
 <script>
   $('#star-rating').raty({
