@@ -1,0 +1,15 @@
+<%= simple_form_for matter_cart_path(@matter_form)  , :url => {:action => :matter_form_send } do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email, label: "聯絡信箱：" %>
+    <%= f.input :school, label: "學校/單位：" %>
+    <%= f.input :date, label: "活動日期：", as: :datetime, start_year: Date.today.year,
+                                                          end_year: Date.today.year + 5, discard_day: true %>
+    <%= f.input :material, label: "種類：" %>
+    <%= f.input :size, label: "件數：" %>
+    <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@matter_form)}[images][]"%>
+    <%= f.input :memo, label: "備註：" %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit,"寄出" %>
+  </div>
+<% end %>

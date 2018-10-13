@@ -14,7 +14,8 @@
     <h2>輸入信件內容</h2>
     <%= simple_form_for matter_cart_path(@matter) , :url => {:action => :matter_send } do |f| %>
       <div class="form-inputs">
-        <%= f.input :mattertext %>
+        <%= f.input :email, label: "聯絡信箱：" %>
+        <%= f.input :mattertext, label: "信件內容：" %>
       </div>
       <div class="form-actions">
         <%= f.button :submit,"寄出" %>
@@ -26,21 +27,23 @@
 
 <div id="Form" class="categor" style="display:none">
   <div class="container">
-    <%= simple_form_for matter_cart_path(@matter_form)  , :url => {:action => :matter_form_send } do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email, label: "聯絡信箱：" %>
-        <%= f.input :school, label: "學校/單位：" %>
-        <%= f.input :date, label: "活動日期：", as: :datetime, start_year: Date.today.year,
-                                                              end_year: Date.today.year + 5, discard_day: true %>
-        <%= f.input :people, label: "預估活動人數：" %>
-        <%= f.input :memo, label: "備註" %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit,"寄出" %>
-      </div>
+    <% case @category %>
+      <% when 1 %>
+        <%= render "carts/matter_form/ground"%>
+      <% when 2 %>
+        <%= render "carts/matter_form/food"%>
+      <% when 3 %>
+        <%= render "carts/matter_form/rentcar"%>
+      <% when 4 %>
+        <%= render "carts/matter_form/equipment"%>
+      <% when 5 %>
+        <%= render "carts/matter_form/custommade"%>
+      <% when 6 %>
+        <%= render "carts/matter_form/costume"%>
     <% end %>
   </div>
 </div>
+
 
 </div>
 

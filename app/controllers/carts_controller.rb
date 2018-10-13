@@ -67,12 +67,16 @@ before_action :current_cart
   def matter
     @matter = params[:item_id]
     @matter_form = params[:item_id]
+    @category = Product.find(params[:item_id][0].to_i).category_id
   end
 
   def matter_send
     item_id = params.keys[2].split('/')[3].split('%2F')
-    @matter = current_user.matters.new(matter_params)
-
+    item_id.map { |i|
+      @matter = current_user.matters.new(matter_params)
+      @matter.product_id = i
+      @matter.save
+    }
     if @matter.save
       for id in item_id
         @products = Product.find_by(id: id.to_i)
@@ -82,13 +86,16 @@ before_action :current_cart
     else
       redirect_to "/cart" ,notice: "失敗!"
     end
-  end  
+  end
 
 
   def matter_form_send
     item_id = params.keys[2].split('/')[3].split('%2F')
-    @matter_form = current_user.matter_forms.new(matter_form_params)
-
+    item_id.map { |i|
+      @matter_form = current_user.matter_forms.new(matter_form_params)
+      @matter_form.product_id = i
+      @matter_form.save
+    }
     if @matter_form.save
       for id in item_id
         @products = Product.find_by(id: id.to_i)
@@ -98,6 +105,7 @@ before_action :current_cart
     else
       redirect_to "/cart" ,notice: "失敗!"
     end
+
 
   end
 
@@ -117,11 +125,11 @@ private
 
   def matter_form_params
   item = params.keys[2].split('/')[3]
-  params.require(:"/cart/matter/#{item}").permit(:email, :school, :'date(1i)', :'date(2i)', :'date(3i)', :'date(4i)', :'date(5i)', :people, :memo)
+  params.require(:"/cart/matter/#{item}").permit(:email, :school, :'date(1i)', :'date(2i)', :'date(3i)', :'date(4i)', :'date(5i)', :people, :vegetarian, :non_vegetarian, :expect_menu, :budget, :activity_location, :device, :material, :size, :memo, :images => [])
   end
   def matter_params
   item = params.keys[2].split('/')[3]
-  params.require(:"/cart/matter/#{item}").permit(:mattertext)
+  params.require(:"/cart/matter/#{item}").permit(:mattertext,:email)
   end
 
 

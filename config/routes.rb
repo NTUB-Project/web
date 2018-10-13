@@ -42,7 +42,6 @@ Rails.application.routes.draw do
       put :matter, path:'matter/:id'
       post :matter_send, path:'matter_send/:id'
       post :matter_form_send, path:'matter_form_send/:id'
-
     end
   end
 

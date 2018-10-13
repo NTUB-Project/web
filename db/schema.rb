@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
   end
 
   create_table "activity_kinds_products", id: false, force: :cascade do |t|
-    t.integer "activity_kind_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "activity_kind_id", null: false
+    t.bigint "product_id", null: false
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -90,15 +90,18 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
     t.json "images"
     t.text "memo"
     t.integer "user_id"
+    t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "matters", force: :cascade do |t|
+    t.string "email"
     t.text "mattertext"
+    t.integer "product_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "people_numbers", force: :cascade do |t|
@@ -132,8 +135,8 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
   end
 
   create_table "products_regions", id: false, force: :cascade do |t|
-    t.integer "region_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "region_id", null: false
+    t.bigint "product_id", null: false
   end
 
   create_table "regions", force: :cascade do |t|

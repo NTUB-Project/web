@@ -1,10 +1,51 @@
 <%= @products.name %>，你好!
-
-<%= @matter_form.email %>
-<%= @matter_form.school %>
-<%= @matter_form.date.to_s %>
-<%= @matter_form.people %>
-<%= @matter_form.memo %>
------------
+<% if Product.find(@matter_form.product_id).category_id == 1%>
+  我們是<%= @matter_form.school %>，
+  將在<%= @matter_form.date.to_s %>舉辦活動，
+  參加人數大約為<%= @matter_form.people %>人，
+  請問是否能跟您租借場地？
+  備註：<%= @matter_form.memo %>
+<% end %>
+<% if Product.find(@matter_form.product_id).category_id == 2%>
+  我們是<%= @matter_form.school %>，
+  將在<%= @matter_form.date.to_s %>舉辦活動，
+  地點在<%= @matter_form.activity_location %>
+  參加人數大約為<%= @matter_form.people %>人，
+  葷食人數大約為<%= @matter_form.vegetarian %>人，
+  素食人數大約為<%= @matter_form.non_vegetarian %>人，
+  必要的菜色有：<%= @matter_form.expect_menu %>，
+  預算是<%= @matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。
+  備註：<%= @matter_form.memo %>
+<% end %>
+<% if Product.find(@matter_form.product_id).category_id == 3%>
+  我們是<%= @matter_form.school %>，
+  將在<%= @matter_form.date.to_s %>舉辦活動，
+  地點在<%= @matter_form.activity_location %>
+  參加人數大約為<%= @matter_form.people %>人，
+  請問大概要包幾台車以及價格為多少？
+  備註：<%= @matter_form.memo %>
+<% end %>
+<% if Product.find(@matter_form.product_id).category_id == 4%>
+  我們是<%= @matter_form.school %>，
+  將在<%= @matter_form.date.to_s %>舉辦活動，
+  地點在<%= @matter_form.activity_location %>，
+  請問能跟您租<%= @matter_form.device %>嗎？
+  備註：<%= @matter_form.memo %>
+<% end %>
+<% if Product.find(@matter_form.product_id).category_id == 5%>
+  我們是<%= @matter_form.school %>，
+  將在<%= @matter_form.date.to_s %>舉辦活動，
+  我們想要印刷<%= @matter_form.people %>件，
+  請問價格多少？
+  備註：<%= @matter_form.memo %>
+<% end %>
+<% if Product.find(@matter_form.product_id).category_id == 6%>
+  我們是<%= @matter_form.school %>，
+  將在<%= @matter_form.date.to_s %>舉辦活動，
+  我們想要租借<%= @matter_form.material %><%= @matter_form.size %>件，
+  請問價格多少？
+  備註：<%= @matter_form.memo %>
+<% end %>
+------------------------------------------
 此信件為PartyHelper系統發送，請不要直接回覆
-轉寄給上述email
+轉寄給<%= @matter_form.email %>
