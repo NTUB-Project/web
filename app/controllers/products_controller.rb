@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   def index
 
     @product = Product.group(:name).select("MIN(id) AS id , name")
-    @a = Array.new
+    @a = []
     if @product != []
       0.upto(@product.to_a.count-1) do |i|
         @a <<  Product.find_by(id: @product[i].id)

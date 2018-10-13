@@ -15,7 +15,6 @@
                 <div class="filters-container" data-selenium="filter-container">
                   <%= form_tag '/grounds/search' do %>
                   <ul class="filters-list">
-
                     <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
                       <div class="filter-menu">
                         <span class="list-filter__title">地區</span>
@@ -27,7 +26,6 @@
                         <div class="filter-options clearfix"></div>
                       </div>
                     </li>
-
                     <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
                       <div class="filter-menu">
                         <span class="list-filter__title">人數</span>
@@ -39,7 +37,6 @@
                         <div class="filter-options clearfix"></div>
                       </div>
                     </li>
-
                     <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
                       <div class="filter-menu">
                         <span class="list-filter__title">活動類型</span>
@@ -51,7 +48,6 @@
                         <div class="filter-options clearfix"></div>
                       </div>
                     </li>
-
                   </ul>
                   <% end %>
                 </div>
@@ -61,22 +57,14 @@
         </div>
       </div>
       <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
-
-
-          </p>
-
-          </p>
-
-
-
         <% @grounds.each do |ground| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
               <%= link_to image_tag(ground.images_urls[0], width: '200px',height: '250px'), ground if ground.images.present?%>
-              <div class="card-body d-flex flex-column align-items-start">
+              <div class="card-body">
 
                 <div class="row">
                   <div class="col-6 cardleft">
-                    <h3 class="mb-0 mb-3">
+                    <h3 class="mb-3">
                       <a class="text-dark" href="#"><%= ground.name %></a>
                     </h3>
                     <p class="card-text mb-auto">
@@ -91,7 +79,13 @@
                     </p>
                     <p class="card-text mb-auto">
                       <%= image_tag("person.png", width: '20px',height: '20px')%>
-                      <a><%= ground.people_number.title %></a>
+                      <% people_number = [] %>
+                      <% PeopleNumber.find_by(title: ground.people_number.title).id.upto(PeopleNumber.last.id) do |i| %>
+                        <% people_number << PeopleNumber.find(i).title %>
+                      <% end %>
+                      <% people_number.map do |i| %>
+                        <a><%= i %></a>
+                      <% end %>
                     </p>
                   </div>
 
