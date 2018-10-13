@@ -1,8 +1,14 @@
 class CartMailer < ApplicationMailer
 
-  def say_hello_to(matter,product)
+  def matter(matter,product)
     @matter = matter
     @products = product
-    mail to: @products.email, subject:"請問一下~"
+    mail to: @products.email.split('"')[1], subject:"請問一下~"
+  end
+
+  def matter_form(matter_form,product)
+    @matter_form = matter_form
+    @products = product
+    mail to: @products.email.split('"')[1], subject:"請問一下~"
   end
 end

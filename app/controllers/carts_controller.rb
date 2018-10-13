@@ -65,24 +65,40 @@ before_action :current_cart
   end
 
   def matter
-    @matter = Array.new(params[:item_id])
-    @matter_form = Array.new(params[:item_id])
-    item_id = params[:id].split('/')
+    @matter = params[:item_id]
+    @matter_form = params[:item_id]
   end
 
   def matter_send
-    debugger
     item_id = params.keys[2].split('/')[3].split('%2F')
-    @matter = Matter.new(mattertext: params.values[2][:mattertext], user_id: current_user.id)
+    @matter = current_user.matters.new(matter_params)
+
     if @matter.save
       for id in item_id
         @products = Product.find_by(id: id.to_i)
-        CartMailer.say_hello_to(@matter,@products).deliver_now
+        CartMailer.matter(@matter,@products).deliver_now
       end
       redirect_to "/cart" ,notice: "已成功寄出信件!"
     else
       redirect_to "/cart" ,notice: "失敗!"
     end
+  end  
+
+
+  def matter_form_send
+    item_id = params.keys[2].split('/')[3].split('%2F')
+    @matter_form = current_user.matter_forms.new(matter_form_params)
+
+    if @matter_form.save
+      for id in item_id
+        @products = Product.find_by(id: id.to_i)
+        CartMailer.matter_form(@matter_form,@products).deliver_now
+      end
+      redirect_to "/cart" ,notice: "已成功寄出信件!"
+    else
+      redirect_to "/cart" ,notice: "失敗!"
+    end
+
   end
 
 
@@ -97,7 +113,16 @@ private
     else
       redirect_to new_user_session_url, notice:"請先登入再蒐藏!"
     end
-
   end
+
+  def matter_form_params
+  item = params.keys[2].split('/')[3]
+  params.require(:"/cart/matter/#{item}").permit(:email, :school, :'date(1i)', :'date(2i)', :'date(3i)', :'date(4i)', :'date(5i)', :people, :memo)
+  end
+  def matter_params
+  item = params.keys[2].split('/')[3]
+  params.require(:"/cart/matter/#{item}").permit(:mattertext)
+  end
+
 
 end
