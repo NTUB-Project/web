@@ -9,6 +9,7 @@ div.detail6{
 	border-radius: 10px;
 	margin-top: 5px;
 	margin-bottom: 15px;
+	font-family: "微軟正黑體", sans-serif;
 }
 div.inputs{
 	margin-left: auto;
@@ -34,27 +35,41 @@ div.message2{
 	right: auto;
 	left: auto;
 	width: 70%;
-	border-radius: 5px;
-	font-family: "Rubik", sans-serif;
+	font-family: "微軟正黑體", sans-serif;
   transition: 300ms;
   .card-text{
     text-align: left;
   }
   .card{
     padding: 10px 0;
-    background: rgba(176, 207, 207, 0.3);
+    background: #fff;
   }
   .cardimg{
     padding-top: 5px;
   }
   .card input{
-   width: 20px;
-   height: 20px;
-   margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
   }
   .trace_delete button{
-    padding-top: 35px;
     border: 0;
-    background: #e7f1f1;
+    background: #fff;
+  }
+  .trace_delete .btn:hover{
+    color: DarkCyan;
+  }
+  .commentcontent{
+    padding-top: 10px;
+  }
+  .commentime{
+    position: relative;
+    color: gray;
+    bottom: -18px;
+  }
+  .trace_delete{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
   }
 }
