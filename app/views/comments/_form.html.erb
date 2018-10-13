@@ -1,18 +1,4 @@
 <%= simple_form_for [@product_id, Comment.new] do |f| %>
-  <div class="form-group">
-    <div class="field">
-      <div id="star-rating"></div>
-    </div>
-    <%= f.file_field :images , multiple: true, name: "comment[images][]"%>
-    <%= f.input :content%>
-  </div>
-  <div class="form-actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
-<%= simple_form_for [@product_id, Comment.new] do |f| %>
 <div class="detail6">
 	<h2>評價留言</h2>
 	<h5>(僅開放會員登入後使用)</h5>
@@ -20,13 +6,13 @@
 	  <div class="field">
       <div id="star-rating"></div>
     </div>
-		<div id="message">
+		<div id="message2">
 			<strong>我有話要說：</strong>
 			<textarea class="form-control text optional" name="comment[content]" id="comment_content"></textarea>
 		</div>
 		<div class="upload">
-		  <%= f.file_field :images , multiple: true, name: "comment[images][]"%>
-			<%= f.submit %>
+		  <%= f.file_field :images, multiple: true, name: "comment[images][]"%>
+			<input type="submit" name="commit" value="新增留言">
 		</div>
 	</div>
 </div>

@@ -24,10 +24,9 @@ div.inputs{
   color: orange;
 }
 div.upload{
-	position: relative;
 	top:20px;
+	position: relative;
 }
-
 
 //留言板下半部
 div.message2{
@@ -43,6 +42,7 @@ div.message2{
   }
   .card{
     padding: 10px 0;
+    background: rgba(176, 207, 207, 0.3);
   }
   .cardimg{
     padding-top: 5px;
@@ -52,7 +52,9 @@ div.message2{
    height: 20px;
    margin-right: 10px;
   }
-  .trace_delete{
+  .trace_delete button{
     padding-top: 35px;
+    border: 0;
+    background: #e7f1f1;
   }
 }
