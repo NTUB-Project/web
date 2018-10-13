@@ -2,6 +2,8 @@ class User < ApplicationRecord
 has_many :comments
 has_one :cart
 has_many :cart_items
+has_many :matters
+has_many :matter_forms
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable, :omniauthable, :omniauth_providers => [:facebook]
 

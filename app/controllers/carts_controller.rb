@@ -66,11 +66,14 @@ before_action :current_cart
 
   def matter
     @matter = Array.new(params[:item_id])
+    @matter_form = Array.new(params[:item_id])
+    item_id = params[:id].split('/')
   end
 
   def matter_send
+    debugger
     item_id = params.keys[2].split('/')[3].split('%2F')
-    @matter = Matter.new(mattertext: params.values[2][:mattertext])
+    @matter = Matter.new(mattertext: params.values[2][:mattertext], user_id: current_user.id)
     if @matter.save
       for id in item_id
         @products = Product.find_by(id: id.to_i)

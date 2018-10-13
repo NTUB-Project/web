@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  school: MyString
+  date: 2018-10-13 23:09:44
+  people: 1
+  vegetarian: 1
+  non-vegetarian: 1
+  expect_menu: MyText
+  budget: 1
+  activity_location: MyString
+  device: MyText
+  material: MyText
+  size: MyText
+  images: 
+  memo: MyText
+
+two:
+  email: MyString
+  school: MyString
+  date: 2018-10-13 23:09:44
+  people: 1
+  vegetarian: 1
+  non-vegetarian: 1
+  expect_menu: MyText
+  budget: 1
+  activity_location: MyString
+  device: MyText
+  material: MyText
+  size: MyText
+  images: 
+  memo: MyText

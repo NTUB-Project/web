@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_170910) do
+ActiveRecord::Schema.define(version: 2018_10_13_150944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2018_10_06_170910) do
   end
 
   create_table "activity_kinds_products", id: false, force: :cascade do |t|
-    t.bigint "activity_kind_id", null: false
-    t.bigint "product_id", null: false
+    t.integer "activity_kind_id", null: false
+    t.integer "product_id", null: false
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_10_06_170910) do
   end
 
   create_table "identities", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false
@@ -74,10 +74,31 @@ ActiveRecord::Schema.define(version: 2018_10_06_170910) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "matter_forms", force: :cascade do |t|
+    t.string "email"
+    t.string "school"
+    t.datetime "date"
+    t.integer "people"
+    t.integer "vegetarian"
+    t.integer "non_vegetarian"
+    t.text "expect_menu"
+    t.integer "budget"
+    t.string "activity_location"
+    t.text "device"
+    t.text "material"
+    t.text "size"
+    t.json "images"
+    t.text "memo"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "matters", force: :cascade do |t|
     t.text "mattertext"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "people_numbers", force: :cascade do |t|
@@ -97,10 +118,10 @@ ActiveRecord::Schema.define(version: 2018_10_06_170910) do
     t.string "email"
     t.string "url"
     t.text "equipment"
-    t.bigint "category_id"
-    t.bigint "region_id"
-    t.bigint "activity_kind_id"
-    t.bigint "people_number_id"
+    t.integer "category_id"
+    t.integer "region_id"
+    t.integer "activity_kind_id"
+    t.integer "people_number_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
@@ -111,8 +132,8 @@ ActiveRecord::Schema.define(version: 2018_10_06_170910) do
   end
 
   create_table "products_regions", id: false, force: :cascade do |t|
-    t.bigint "region_id", null: false
-    t.bigint "product_id", null: false
+    t.integer "region_id", null: false
+    t.integer "product_id", null: false
   end
 
   create_table "regions", force: :cascade do |t|
@@ -144,5 +165,4 @@ ActiveRecord::Schema.define(version: 2018_10_06_170910) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "identities", "users"
 end
