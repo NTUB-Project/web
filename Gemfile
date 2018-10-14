@@ -48,6 +48,7 @@ gem 'fog-aws' #S3
 gem 'gmaps4rails'#googlmap
 gem 'gon', '~> 6.2' #controller變數直接傳給js
 gem 'webpacker', '~> 3.5'
+gem 'fancybox-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

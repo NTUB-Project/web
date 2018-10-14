@@ -3,11 +3,17 @@
  <div class="message2">
   <div class="card flex-md-row mb-3 h-md-250 w-100">
     <div class="col-md-4 col-lg-3 cardimg">
-      <% for images in comment.images_urls %>
-        <td><%= link_to image_tag(images, width: '150px',height: '150px'), comment if comment.images.present?%></td>
-      <% end %>
+		  <div class="cd-slider-wrapper">
+			  <ul class="cd-slider">
+          <% for images in comment.images_urls %>
+            <% if comment.images.present? %>
+              <li><%= image_tag(images, width: '150px',height: '150px')  %></li>
+            <% end %>
+          <% end %>
+				</ul>
+			</div>
     </div>
-    
+
     <div class="col-md-8 col-lg-9 card-text">
       <h4><%= comment.user.email.split('@').first%></h4>
       <p><div class="star-rating" data-score= <%= comment.rating %> ></div></p>
@@ -34,11 +40,15 @@
 
 
  <script>
-      $('.star-rating').raty({
-        path: '',
-        readOnly: true,
-        score: function() {
-              return $(this).attr('data-score');
-        }
-    });
+  $('.star-rating').raty({
+    path: '',
+    readOnly: true,
+    score: function() {
+           return $(this).attr('data-score');
+    }
+  });
+
+  jQuery(function() {
+    $("a.fancybox").fancybox();
+  });
   </script>

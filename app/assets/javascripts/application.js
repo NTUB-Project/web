@@ -19,7 +19,7 @@
 //= require bootstrap-sprockets
 //= require underscore-min
 //= require gmaps/google
-
+//= require fancybox
 //= require_tree .
 
 
