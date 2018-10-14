@@ -9,44 +9,23 @@ class CustommadeController < ApplicationController
     end
     #checkbox
     @regions =Region.all
-    @people_numbers = PeopleNumber.all
   end
 
   def search
     all = Product.where(category: Category.find_by(title: "印刷").id)
-    find = all.group("name").select("MIN(id) AS id , name")
-
-    region = find.where(region: params[:region_ids]).to_a
-    region_name = []
-    region.map {|i| region_name << i.name}
-
-    #people_number
-    people_number = []
-    if params[:people_number_ids] != nil
-      1.upto(params[:people_number_ids].max.to_i) do |i|
-        if find.where(people_number: i ).to_a != []
-          find.where(people_number: i ).to_a.map {|m| people_number <<  m }
-        end
-      end
-    end
-    people_number_name = []
-    people_number.map{|i| people_number_name << i.name}
-
-    product = [region_name,people_number_name].reject(&:empty?).reduce(:&) || []
-
-    if product != []
+    find = all.where(region: params[:region_ids]).or(all.where(people_number: params[:people_number_ids]))
+    custommade = find.group("name").select("MIN(id) AS id , name")
+    if custommade != []
       @custommades = []
-      0.upto(product.count-1) do |i|
-        @custommades <<  Product.find_by(name: product[i])
+      0.upto(custommade.to_a.count-1) do |i|
+        @custommades <<  Product.find_by(id: custommade[i].id)
       end
     else
       redirect_to custommade_index_path, notice: "無搜尋到此條件"
     end
     #checkbox
     @regions = Region.all
-    @people_numbers = PeopleNumber.all
     @r = Region.where(id: params[:region_ids]).to_a
-    @p = PeopleNumber.where(id: params[:people_number_ids]).to_a
   end
 
   def show

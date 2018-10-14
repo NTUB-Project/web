@@ -27,17 +27,6 @@
                         <div class="filter-options clearfix"></div>
                       </div>
                     </li>
-                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
-                      <div class="filter-menu">
-                        <span class="list-filter__title">人數</span>
-                      </div>
-                      <div class="filter-items">
-                        <ul class="list-filter__items filter-list-item">
-                          <%= render 'shared/searchpeople'%>
-                        </ul>
-                        <div class="filter-options clearfix"></div>
-                      </div>
-                    </li>
 
                   </ul>
                   <% end %>
@@ -48,10 +37,18 @@
         </div>
       </div>
       <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
+
+
+          </p>
+
+          </p>
+
+
+
         <% @custommades.each do |custommade| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
               <%= link_to image_tag(custommade.images_urls[0], width: '200px',height: '250px'), custommade if custommade.images.present?%>
-              <div class="card-body">
+              <div class="card-body d-flex flex-column align-items-start">
 
                 <div class="row">
                   <div class="col-6 cardleft">
