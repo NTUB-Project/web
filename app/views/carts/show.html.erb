@@ -1,4 +1,9 @@
 <div class="content">
+	<p>
+    Download:
+    <%= link_to 'CSV',  cart_path(format: "csv") %>
+    <%= link_to 'Excel', cart_path(format: "xls") %>
+</p>
 <div class="sub_menu">
 	<%=image_tag('mycollect.png',width: '90%')%>
 	<div class="sub_title">
@@ -10,7 +15,6 @@
 		<div><button class="click_log" id="Costumebtn" onclick="openCategory('Costume'),changeColor('Costumebtn')"><%=image_tag('shirt.png', size: '20')%>舞台服</button></div>
 	</div>
 </div>
-
 <div id="Ground" class="categor">
   <div class="container">
     <% if @grounds != []%>
@@ -18,7 +22,7 @@
     <% end %>
   </div>
 </div>
-  
+
 <div id="Food" class="categor" style="display:none">
   <div class="container">
     <% if @foods != []%>
