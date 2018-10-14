@@ -1,32 +1,39 @@
-</br>
-</br>
-</br>
-<div class="content">
-<div class="sub_menu">
-  <div class="sub_title">
-    <div><button class="click_log" id="Selfbtn" onclick="openCategory('Self'),changeColor('Selfbtn')">自行輸入</button></div>
-    <div><button class="click_log" id="Formbtn" onclick="openCategory('Form'),changeColor('Formbtn')">表格</button></div>
-  </div>
-</div>
-
-<div id="Self" class="categor">
+<div class="cart_content">
   <div class="container">
-    <h2>輸入信件內容</h2>
-    <%= simple_form_for matter_cart_path(@matter) , :url => {:action => :matter_send } do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email, label: "聯絡信箱：" %>
-        <%= f.input :mattertext, label: "信件內容：" %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit,"寄出" %>
-      </div>
-    <% end %>
+  <div class="sub_title">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active">
+        <button class="click_log" id="Selfbtn" onclick="openCategory('Self'),changeColor('Selfbtn')">自行輸入</button>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+        <button class="click_log" id="Formbtn" onclick="openCategory('Form'),changeColor('Formbtn')">表格</button>
+        </a>
+      </li>
+    </ul>
   </div>
+  
+<div id="Self" class="categor">
+    <div class="cartform">
+      <h3>輸入信件內容</h3>
+      <%= simple_form_for matter_cart_path(@matter) , :url => {:action => :matter_send } do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, label: "聯絡信箱：" %>
+          <%= f.input :mattertext, label: "信件內容：" %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit,"寄出" %>
+        </div>
+      <% end %>
+    </div>
+  
 </div>
 
 
 <div id="Form" class="categor" style="display:none">
-  <div class="container">
+    <div class="cartform">
     <% case @category %>
       <% when 1 %>
         <%= render "carts/matter_form/ground"%>
@@ -41,10 +48,11 @@
       <% when 6 %>
         <%= render "carts/matter_form/costume"%>
     <% end %>
-  </div>
+    </div>
+  
 </div>
 
-
+</div>
 </div>
 
 <script>
