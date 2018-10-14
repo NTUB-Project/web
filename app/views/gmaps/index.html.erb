@@ -2,30 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Gmaps</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @gmaps.each do |gmap| %>
-      <tr>
-        <td><%= gmap.latitude %></td>
-        <td><%= gmap.longitude %></td>
-        <td><%= gmap.address %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<div id="map" style="width:90%;height:400px">地圖預留</div>
+<h1>尋找附近</h1>
+<div id="map" style="width:90%;height:600px">地圖預留</div>
 </div>
 
 <script type="text/javascript">
