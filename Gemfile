@@ -43,9 +43,9 @@ gem 'koala' # 可以將錯誤的 session 刪掉避免註冊失敗
 gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'hirb-unicode'
-gem 'mini_magick' #S3
+gem 'mini_magick' #切圖片
 gem 'fog-aws' #S3
-gem 'gmaps4rails'#找附近
+gem 'gmaps4rails'#googlmap
 gem 'gon', '~> 6.2' #controller變數直接傳給js
 gem 'webpacker', '~> 3.5'
 # Use ActiveStorage variant

@@ -48,8 +48,9 @@ class FoodsController < ApplicationController
     @comment.each do |i|
       el = i.rating
       sum = sum + el
+      @avg_rating =  sum / @comment.count
     end
-    @avg_rating =  sum / @comment.count
+
   end
 
 end
