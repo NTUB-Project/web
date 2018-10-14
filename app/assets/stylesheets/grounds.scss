@@ -109,9 +109,19 @@ div.name{
 	text-align: center;
 }
 div.name h1{
+	padding-left: 50px;
+	padding-right: 50px;
 	padding-top: 50px;
 	font-size: 90px;
 	color: #fff;
+}
+
+div.introduce{
+	h2{
+		p{
+			margin: 0px 50px 1rem 50px;
+		}
+	}
 }
 /*---------------------------*/
 /*  定義fancybox              */
@@ -170,6 +180,9 @@ div.detail4{
 	padding-top: 15px;
 	border-radius: 10px;
 	padding-bottom: 15px;
+	p{
+		margin: 0 50px 1rem 50px;
+	}
 }
 div.detail5{
 	text-align: center;
@@ -181,6 +194,9 @@ div.detail5{
 	border-radius: 10px;
 	padding-top: 5px;
 	padding-bottom: 15px;
+	h2{
+		argin: 20px 50px;
+	}
 }
 
 /*------------TOP------------*/

@@ -52,7 +52,7 @@
               <%= link_to image_tag(food.images_urls[0], width: '200px',height: '250px'), food if food.images.present?%>
               <div class="card-body">
                 <div class="row">
-                  
+
                   <div class="col-6 cardleft">
                     <h3 class="mb-0 mb-3">
                       <a class="text-dark" href="#"><%= food.name %></a>
@@ -69,7 +69,13 @@
                     </p>
                     <p class="card-text mb-auto">
                       <%= image_tag("person.png", width: '20px',height: '20px')%>
-                      <a><%= food.people_number.title %></a>
+                      <% people_number = [] %>
+                      <% PeopleNumber.find_by(title: food.people_number.title).id.upto(PeopleNumber.last.id) do |i| %>
+                        <% people_number << PeopleNumber.find(i).title %>
+                      <% end %>
+                      <% people_number.map do |i| %>
+                        <a><%= i %></a>
+                      <% end %>
                     </p>
                   </div>
 

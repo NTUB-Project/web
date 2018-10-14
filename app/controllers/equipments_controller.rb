@@ -42,13 +42,14 @@ class EquipmentsController < ApplicationController
     @equipments = Product.where(id: params[:id])
     @product_id = Product.find(params[:id])
     @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
+    @comment = @product_id.comments
     el = 0
     sum = 0
-    @comments.each do |i|
+    @comment.each do |i|
       el = i.rating
       sum = sum + el
-      @avg_rating =  sum / @comments.count
     end
+    @avg_rating =  sum / @comment.count
   end
 
 end
