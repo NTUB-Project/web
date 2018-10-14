@@ -11,11 +11,12 @@ before_action :current_cart
     @equipments = []
     @custommade = []
     @costumes = []
-    @items.each do |item|
+    @product = []
+    @items.map { |item|
       if item.product == nil
         item.destroy
       else
-        @category = Product.find_by(id: item.product_id).category_id
+        @category = item.product.category_id
         case @category
         when 1
           @grounds << item
@@ -30,8 +31,16 @@ before_action :current_cart
         when 6
           @costumes << item
         end
+        @product << item.product
       end
+    }
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @product.as_json(only: [:id, :name, :email]).to_csv}
+      format.xls { send_data @product.as_json(only: [:id, :name, :email]).to_csv}
     end
+
   end
 
   def add
