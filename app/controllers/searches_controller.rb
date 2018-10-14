@@ -3,27 +3,43 @@ class SearchesController < ApplicationController
   def index
     all = Product.all
     find = all.group("name").select("MIN(id) AS id , name")
-    product = find.where(region: params[:region_ids]).or(
-              find.where(activity_kind_id: params[:activity_kind_ids]))
-    if @keywords = params[:keywords]
-      keywords = find.where([ "name like ? or description like ? or item like ? or equipment like ? ", "%#{params[:keywords]}%", "%#{params[:keywords]}%", "%#{params[:keywords]}%", "%#{params[:keywords]}%" ])
-    end
+
+    region = find.where(region: params[:region_ids]).to_a
+    region_name = []
+    region.map {|i| region_name << i.name}
+
+    activity_kind = find.where(activity_kind_id: params[:activity_kind_ids]).to_a
+    activity_kind_name = []
+    activity_kind.map {|i| activity_kind_name << i.name}
+
+    @keywords = params[:keywords] if params[:keywords] != nil
+    keyword = find.where([ "name like ? or description like ? or item like ? or equipment like ? ", "%#{params[:keywords]}%", "%#{params[:keywords]}%", "%#{params[:keywords]}%", "%#{params[:keywords]}%" ]).to_a
+    keyword_name = []
+    keyword.map {|i| keyword_name << i.name}
+
     people_number = []
     if params[:people_number_ids] != nil
       1.upto(params[:people_number_ids].to_i) do |i|
-        people_number << find.find_by(people_number: i )
+        if find.where(people_number: i ).to_a != []
+          find.where(people_number: i ).to_a.map {|m| people_number <<  m }
+        end
       end
     end
-    product = (product + people_number + keywords).uniq
+    people_number_name = []
+    people_number.map {|i| people_number_name << i.name }
+
+    product = [region_name,activity_kind_name,people_number_name,keyword_name].reject(&:empty?).reduce(:&) || []
+
     @products = []
     if product != []
       0.upto(product.to_a.count-1) do |i|
-        @products <<  Product.find(product[i].id)
+        @products <<  Product.find_by(name: product[i])
       end
     else
       0.upto(find.to_a.count-1) do |i|
-        @products << Product.find(find[i].id)
+        @products <<  Product.find(find[i].id)
       end
+      redirect_to searches_path, notice: "無搜尋到此條件"
     end
 
     #checkbox
@@ -40,24 +56,42 @@ class SearchesController < ApplicationController
   def search
     all = Product.all
     find = all.group("name").select("MIN(id) AS id , name")
-    product = find.where(region: params[:region_ids]).or(
-              find.where(category_id: params[:category_ids]).or(
-              find.where(activity_kind_id: params[:activity_kind_ids])))
+
+    category = find.where(category: params[:category_ids]).to_a
+    category_name = []
+    category.map {|i| category_name << i.name}
+
+    region = find.where(region: params[:region_ids]).to_a
+    region_name = []
+    region.map {|i| region_name << i.name}
+
+    activity_kind = find.where(activity_kind_id: params[:activity_kind_ids]).to_a
+    activity_kind_name = []
+    activity_kind.map {|i| activity_kind_name << i.name}
+
+    #people_number
+    people_number = []
     if params[:people_number_ids] != nil
-      people_number = []
       1.upto(params[:people_number_ids].max.to_i) do |i|
-        people_number << find.find_by(people_number: i ) if find.find_by(people_number: i ) != nil
+        if find.where(people_number: i ).to_a != []
+          find.where(people_number: i ).to_a.map {|m| people_number <<  m }
+        end
       end
     end
-    product = (product + people_number).uniq
-    @products = []
+    people_number_name = []
+    people_number.map{|i| people_number_name << i.name}
+
+    product = [region_name,activity_kind_name,people_number_name,category_name].reject(&:empty?).reduce(:&) || []
+
     if product != []
-      0.upto(product.to_a.count-1) do |i|
-        @products <<  Product.find(product[i].id)
+      @products = []
+      0.upto(product.count-1) do |i|
+        @products <<  Product.find_by(name: product[i])
       end
     else
       redirect_to searches_path, notice: "無搜尋到此條件"
     end
+
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all
