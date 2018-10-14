@@ -6,11 +6,11 @@
         <%= f.error_notification %>
           <div class="form-group">
             <%= f.input :email,  label:'信箱：', placeholder: 'ex: user@gmail.com', required: true, autofocus: true  %>
-            <%= f.input :password,  label:'密碼：', required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) , class: "form-control", id: "exampleInputPassword1"%>
+            <%= f.input :password,  label:'密碼：', required: true, hint: ("※請使用#{@minimum_password_length}個字元以上的英文字母、數字和符號" if @minimum_password_length) , class: "form-control", id: "exampleInputPassword1"%>
                 <%= f.input :password_confirmation,  label:'確認密碼：', required: true, class: "form-control", id: "exampleInputPassword1" %>
           </div>
         <div class="form-actions">
-            <%= f.button :submit, "註冊", class: "btn btn-primary" %>
+            <%= f.button :submit, "註冊", class: "btn" %>
         </div>
       <% end %>
       <div class="devise_link">
