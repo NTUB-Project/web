@@ -32,6 +32,7 @@ body{
   top: 75px;
   left: 0;
   width: 100%;
+  z-index: 10;
 }
 .logo{
   font-weight: 900;
@@ -141,8 +142,10 @@ div.login{
     width: 100%;
   }
   .devise_link{
-    display: block;
     padding-bottom: 30px;
+  }
+  .devise_link a{
+    color: #3F3D3D;
   }
 }
 div.login form{
@@ -155,6 +158,11 @@ div.login .devise_btn{
 	background: initial;
 	border: none;
 	color: #000;
+}
+.login .btn{
+  background: #73aea8;
+  border: #73aea8;
+  color: #fff;
 }
 
 //活動性質篩選
@@ -235,4 +243,11 @@ div.activitycontent{
   font-weight: 700;
   padding-top: 18px;
   padding-bottom: 7px;
+}
+
+//gmap
+#map{
+  margin: 0 auto;
+  width: 90%;
+  height: 500px;
 }
