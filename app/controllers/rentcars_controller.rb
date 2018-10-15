@@ -49,7 +49,7 @@ class RentcarsController < ApplicationController
     el = 0
     sum = 0
     @comment.each do |i|
-      el = i.rating
+      el = i.rating if i.rating != nil
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end

@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.json "images"
   end
 
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
   end
 
   create_table "identities", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false
@@ -96,7 +96,10 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
   end
 
   create_table "matters", force: :cascade do |t|
+    t.string "email"
     t.text "mattertext"
+    t.integer "product_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -118,10 +121,10 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
     t.string "email"
     t.string "url"
     t.text "equipment"
-    t.bigint "category_id"
-    t.bigint "region_id"
-    t.bigint "activity_kind_id"
-    t.bigint "people_number_id"
+    t.integer "category_id"
+    t.integer "region_id"
+    t.integer "activity_kind_id"
+    t.integer "people_number_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "images"
@@ -165,5 +168,4 @@ ActiveRecord::Schema.define(version: 2018_10_13_150944) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "identities", "users"
 end
