@@ -22,10 +22,11 @@ class CostumesController < ApplicationController
       0.upto(costume.to_a.count-1) do |i|
         @costumes <<  Product.find_by(id: costume[i].id)
       end
+      @search = @costumes.count
     else
       redirect_to costumes_path, notice: "無搜尋到此條件"
     end
-    @search = @costumes.count
+
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all

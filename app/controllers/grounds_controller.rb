@@ -46,11 +46,11 @@ class GroundsController < ApplicationController
       0.upto(product.count-1) do |i|
         @grounds <<  Product.find_by(name: product[i])
       end
+      @search = @grounds.count
     else
         redirect_to grounds_path, notice: "無搜尋到此條件"
     end
-    @search = @grounds.count
-    
+
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all

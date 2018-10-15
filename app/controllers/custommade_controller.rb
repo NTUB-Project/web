@@ -21,10 +21,11 @@ class CustommadeController < ApplicationController
       0.upto(custommade.to_a.count-1) do |i|
         @custommades <<  Product.find_by(id: custommade[i].id)
       end
+      @search = @custommades.count
     else
       redirect_to custommade_index_path, notice: "無搜尋到此條件"
     end
-    @search = @custommades.count
+
     #checkbox
     @regions = Region.all
     @r = Region.where(id: params[:region_ids]).to_a

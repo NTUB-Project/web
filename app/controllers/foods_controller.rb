@@ -23,10 +23,11 @@ class FoodsController < ApplicationController
       0.upto(food.to_a.count-1) do |i|
         @foods <<  Product.find_by(id: food[i].id)
       end
+      @search = @foods.count
     else
       redirect_to foods_path, notice: "無搜尋到此條件"
     end
-    @search = @foods.count
+
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all
