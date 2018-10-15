@@ -73,7 +73,7 @@
                     <p class="card-text mb-auto">
                       <%= image_tag("person.png", width: '20px',height: '20px')%>
                       <% people_number = [] %>
-                      <% PeopleNumber.find_by(title: rentcar.people_number.title).id.upto(PeopleNumber.last.id) do |i| %>
+                      <% PeopleNumber.find_by(title: rentcar.people_number.title).id.upto(PeopleNumber.find_by(title: "不限人數").id-1) do |i| %>
                         <% people_number << PeopleNumber.find(i).title %>
                       <% end %>
                       <% people_number.map do |i| %>

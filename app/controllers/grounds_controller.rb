@@ -50,6 +50,7 @@ class GroundsController < ApplicationController
         redirect_to grounds_path, notice: "無搜尋到此條件"
     end
     @search = @grounds.count
+    
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all
