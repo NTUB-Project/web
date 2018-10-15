@@ -35,6 +35,7 @@ before_action :current_cart
       end
     }
 
+    
     respond_to do |format|
       format.html
       format.csv { send_data @product.as_json(only: [:id, :name, :email]).to_csv}

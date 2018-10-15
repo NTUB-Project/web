@@ -3,8 +3,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1>尋找附近</h1>
-<div id="map" style="width:90%;height:600px">地圖預留</div>
+<div class="row">
+  <div class="col-lg-5">
+    <div id="map" style="height:600px">
+      地圖預留
+      <div id="content">
+
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="col-lg-7">
+
+  </div>
+
 </div>
+
+
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
@@ -25,8 +40,12 @@
             var mark = pos.concat(gmap);
             markers = handler.addMarkers(mark);
             handler.bounds.extendWith(markers);
+            _.each(markers, function(markers){
+            google.maps.event.trigger(markers.getServiceObject(), 'click');
+            });
             handler.fitMapToBounds();
           });
-        }
+    }
   });
+
 </script>

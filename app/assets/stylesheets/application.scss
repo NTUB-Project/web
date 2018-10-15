@@ -10,13 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require fancybox
+
  *= require_tree .
  *= require_self
  *= require jquery-ui
-
-
-
+ *= require fancybox
 
 
 
@@ -251,9 +249,14 @@ div.activitycontent{
 }
 
 //gmap
-#map .gm-style-iw{
+#map {
+  margin-left: 30px;
+  margin-right: 30px;
+  .gm-style-iw{
 
+  }
 }
+
 
 //comment page
 .digg_pagination {
