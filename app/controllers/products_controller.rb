@@ -37,7 +37,12 @@ class ProductsController < ApplicationController
       end
     }
 
-
+    @ground = @grounds.count
+    @food = @foods.count
+    @rentcar = @rentcars.count
+    @equipment = @equipments.count
+    @custommad = @custommade.count
+    @costume = @costumes.count
 
   end
 

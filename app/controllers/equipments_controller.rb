@@ -8,6 +8,7 @@ class EquipmentsController < ApplicationController
         @equipments <<  Product.find_by(id: equipment[i].id)
       end
     end
+    @search = @equipments.count
     #checkbox
     @regions =Region.all
     @activity_kinds = ActivityKind.all
@@ -25,6 +26,7 @@ class EquipmentsController < ApplicationController
     else
       redirect_to equipments_path, notice: "無搜尋到此條件"
     end
+    @search = @equipments.count
     #checkbox
     @regions = Region.all
     @activity_kinds = PeopleNumber.all

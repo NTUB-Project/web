@@ -8,6 +8,7 @@ class GroundsController < ApplicationController
         @grounds <<  Product.find(ground[i].id)
       end
     end
+    @search = @grounds.count
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all
@@ -48,6 +49,7 @@ class GroundsController < ApplicationController
     else
         redirect_to grounds_path, notice: "無搜尋到此條件"
     end
+    @search = @grounds.count
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all

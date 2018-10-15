@@ -13,42 +13,42 @@
 </div>
 
 <div id="Ground" class="w3-container categor">
-  <h2>場地：</h2>
+  <h2>場地：共<%=@ground%>家</h2>
     <% if @grounds != []%>
       <%= render "ground" %>
     <% end %>
 </div>
 
 <div id="Food" class="w3-container categor" style="display:none">
-  <h2>食物：</h2>
+  <h2>食物：共<%=@food%>家</h2>
     <% if @foods != []%>
       <%= render "food" %>
     <% end %>
 </div>
 
 <div id="Rentcar" class="w3-container categor" style="display:none">
-  <h2>租車：</h2>
+  <h2>租車：共<%=@rentcar%>家</h2>
     <% if @rentcars != []%>
       <%= render "rentcar" %>
     <% end %>
 </div>
 
 <div id="Equipment" class="w3-container categor" style="display:none">
-  <h2>設備：</h2>
+  <h2>設備：共<%=@equipment%>家</h2>
     <% if @equipments != []%>
       <%= render "equipment" %>
     <% end %>
 </div>
 
 <div id="Custommade" class="w3-container categor" style="display:none">
-  <h2>印刷：</h2>
+  <h2>印刷：共<%=@custommad%>家</h2>
     <% if @custommade != []%>
       <%= render "custommade" %>
     <% end %>
 </div>
 
 <div id="Costume" class="w3-container categor" style="display:none">
-  <h2>舞台服：</h2>
+  <h2>舞台服：共<%=@costume%>家</h2>
     <% if @costumes != []%>
       <%= render "costume" %>
     <% end %>

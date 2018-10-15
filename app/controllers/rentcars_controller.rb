@@ -8,6 +8,7 @@ class RentcarsController < ApplicationController
         @rentcars <<  Product.find_by(id: rentcar[i].id)
       end
     end
+    @search = @rentcars.count
     #checkbox
     @regions =Region.all
     @people_numbers = PeopleNumber.all
@@ -25,6 +26,7 @@ class RentcarsController < ApplicationController
     else
       redirect_to rentcars_path, notice: "無搜尋到此條件"
     end
+    @search = @rentcars.count
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all

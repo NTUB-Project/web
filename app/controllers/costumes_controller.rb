@@ -7,6 +7,7 @@ class CostumesController < ApplicationController
         @costumes <<  Product.find_by(id: costume[i].id)
       end
     end
+    @search = @costumes.count
     #checkbox
     @people_numbers = PeopleNumber.all
     @regions =Region.all
@@ -24,6 +25,7 @@ class CostumesController < ApplicationController
     else
       redirect_to costumes_path, notice: "無搜尋到此條件"
     end
+    @search = @costumes.count
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all

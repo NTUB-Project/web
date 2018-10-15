@@ -252,9 +252,18 @@ div.activitycontent{
 #map {
   margin-left: 30px;
   margin-right: 30px;
-  .gm-style-iw{
+}
+.gm-style div > div:last-child > div > div:first-child > div {
+    background: #2f2f2f !important;
+    color: #fff;
+}
 
-  }
+.gm-style div > div:last-child > div > div:first-child > div:nth-child(3) > div div {
+    background-color: #2f2f2f !important;
+}
+
+.gm-style div > div:last-child > div > div:first-child > div:first-child {
+    background: transparent !important;
 }
 
 
