@@ -2,6 +2,7 @@ class GmapsController < ApplicationController
   before_action :set_gmap, only: [:edit, :update, :destroy]
 
   def index
+    @products = Product.all
     @gmaps = Gmap.all
     @hash = Gmaps4rails.build_markers(@gmaps) do |gmap, marker|
       if gmap.product == nil
