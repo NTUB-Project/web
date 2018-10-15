@@ -315,3 +315,23 @@ div.activitycontent{
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+
+//gmap
+.nearly{
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 300px;
+  background: rgba(176, 239, 239, 0.1);
+  h5{
+    color: Teal;
+    padding-top: 10px;
+  }
+}
+.nearly:hover {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+    transition: 300ms;
+  }
+#map{
+  position: fixed;
+}
