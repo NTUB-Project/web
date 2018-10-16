@@ -1,7 +1,6 @@
 class CreateMatters < ActiveRecord::Migration[5.2]
   def change
     create_table :matters do |t|
-      t.string :email
       t.text :mattertext
       t.integer :product_id
       t.integer :user_id
