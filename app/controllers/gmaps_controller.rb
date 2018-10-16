@@ -13,8 +13,7 @@ class GmapsController < ApplicationController
         marker.infowindow gmap.product.name
       end
     end
-
-end
+  end
 
   def new
     product_id = Product.find_by(location: params[:address]).id
@@ -25,9 +24,6 @@ end
     end
   end
 
-
-  # DELETE /gmaps/1
-  # DELETE /gmaps/1.json
   def destroy
     @gmap.destroy
     respond_to do |format|

@@ -18,15 +18,14 @@ class GroundsController < ApplicationController
   def search
     all = Product.where(category: Category.find_by(title: "場地").id)
     find = all.group("name").select("MIN(id) AS id , name")
-
+    #region
     region = find.where(region: params[:region_ids]).to_a
     region_name = []
     region.map {|i| region_name << i.name}
-
+    #activity_kind
     activity_kind = find.where(activity_kind_id: params[:activity_kind_ids]).to_a
     activity_kind_name = []
     activity_kind.map {|i| activity_kind_name << i.name}
-
     #people_number
     people_number = []
     if params[:people_number_ids] != nil
@@ -38,9 +37,8 @@ class GroundsController < ApplicationController
     end
     people_number_name = []
     people_number.map{|i| people_number_name << i.name}
-
+    #search
     product = [region_name,activity_kind_name,people_number_name].reject(&:empty?).reduce(:&) || []
-
     if product != []
       @grounds = []
       0.upto(product.count-1) do |i|
@@ -48,9 +46,8 @@ class GroundsController < ApplicationController
       end
       @search = @grounds.count
     else
-        redirect_to grounds_path, notice: "無搜尋到此條件"
+      redirect_to grounds_path, notice: "無搜尋到此條件"
     end
-
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all

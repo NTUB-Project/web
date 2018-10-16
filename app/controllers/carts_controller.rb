@@ -35,7 +35,7 @@ before_action :current_cart
       end
     }
 
-    
+
     respond_to do |format|
       format.html
       format.csv { send_data @product.as_json(only: [:id, :name, :email]).to_csv}
@@ -98,7 +98,6 @@ before_action :current_cart
     end
   end
 
-
   def matter_form_send
     item_id = params.keys[2].split('/')[3].split('%2F')
     item_id.map { |i|
@@ -115,8 +114,6 @@ before_action :current_cart
     else
       redirect_to "/cart" ,notice: "失敗!"
     end
-
-
   end
 
 
@@ -139,7 +136,7 @@ private
   end
   def matter_params
   item = params.keys[2].split('/')[3]
-  params.require(:"/cart/matter/#{item}").permit(:mattertext,:email)
+  params.require(:"/cart/matter/#{item}").permit(:mattertext, :email)
   end
 
 
