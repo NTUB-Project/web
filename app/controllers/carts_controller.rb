@@ -11,7 +11,7 @@ before_action :current_cart
     @equipments = []
     @custommade = []
     @costumes = []
-    @product = []
+    product = []
     @items.map { |item|
       if item.product == nil
         item.destroy
@@ -31,15 +31,16 @@ before_action :current_cart
         when 6
           @costumes << item
         end
-        @product << item.product
+        product << item.product_id
       end
     }
 
+    @product = Product.where(id: product)
 
     respond_to do |format|
       format.html
-      format.csv { send_data @product.as_json(only: [:id, :name, :email]).to_csv}
-      format.xls { send_data @product.as_json(only: [:id, :name, :email]).to_csv}
+      format.csv { send_data @product.to_csv} 
+      format.xls { send_data @product.to_csv}
     end
 
   end
