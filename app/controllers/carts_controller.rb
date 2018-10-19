@@ -39,7 +39,7 @@ before_action :current_cart
 
     respond_to do |format|
       format.html
-      format.csv { send_data @product.to_csv} 
+      format.csv { send_data @product.to_csv}
       format.xls { send_data @product.to_csv}
     end
 
@@ -72,30 +72,36 @@ before_action :current_cart
   def remove
     cart_items = CartItem.find_by(product_id: params[:id])
     cart_items.destroy
-    redirect_to "/cart"
+    redirect_to "/cart", notice:"刪除成功！"
   end
 
   def matter
+    @product = Product.where(id: params[:item_id])
     @matter = params[:item_id]
     @matter_form = params[:item_id]
     @category = Product.find(params[:item_id][0].to_i).category_id
   end
 
   def matter_send
-    item_id = params.keys[2].split('/')[3].split('%2F')
-    item_id.map { |i|
-      @matter = current_user.matters.new(matter_params)
-      @matter.product_id = i
-      @matter.save
-    }
-    if @matter.save
-      for id in item_id
-        @products = Product.find_by(id: id.to_i)
-        CartMailer.matter(@matter,@products).deliver_now
-      end
+    if params[:commit] == "寄出"
+      item_id = params.keys[2].split('/')[3].split('%2F')
+      item_id.map { |i|
+        @matter = current_user.matters.new(matter_params)
+        @matter.mattertext = params[i] if params[:Radios] == "option2"
+        @matter.product_id = i
+        if @matter.save
+          @products = Product.find_by(id: i)
+          CartMailer.matter(@matter,@products).deliver_now
+        else
+          redirect_to "/cart" ,notice: "失敗!"
+        end
+      }
       redirect_to "/cart" ,notice: "已成功寄出信件!"
     else
-      redirect_to "/cart" ,notice: "失敗!"
+      item = params.keys[2].split('/')[3].split('%2F')
+      @matter = current_user.matters.new(matter_params)
+      @matter.mattertext = item.map { |i| params[i] } if params[:Radios] == "option2"
+      @products = Product.where(id: item)
     end
   end
 
@@ -131,13 +137,15 @@ private
     end
   end
 
+
   def matter_form_params
   item = params.keys[2].split('/')[3]
   params.require(:"/cart/matter/#{item}").permit(:email, :school, :'date(1i)', :'date(2i)', :'date(3i)', :'date(4i)', :'date(5i)', :people, :vegetarian, :non_vegetarian, :expect_menu, :budget, :activity_location, :device, :material, :size, :memo, :images => [])
   end
+
   def matter_params
   item = params.keys[2].split('/')[3]
-  params.require(:"/cart/matter/#{item}").permit(:mattertext, :email)
+  params.require(:"/cart/matter/#{item}").permit(:email, :mattertext)
   end
 
 
