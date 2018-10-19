@@ -41,7 +41,7 @@ Rails.application.routes.draw do
       put :remove, path:'/:id'
       get :matter, path:'matter/:id'
       post :matter_send, path:'matter_send/:id'
-      get :matter_form_send, path:'matter_form_send/:id'
+      post :matter_form_send, path:'matter_form_send/:id'
     end
   end
 

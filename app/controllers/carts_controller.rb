@@ -3,6 +3,7 @@ before_action :authenticate_user!
 before_action :authenticate_admin
 before_action :current_cart
 
+
   def show
     @items = CartItem.where(user_id: current_user.id)
     @grounds = []
@@ -93,7 +94,7 @@ before_action :current_cart
           @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
         else
-          redirect_to "/cart" ,notice: "失敗!"
+          redirect_back(fallback_location: root_path, notice: "失敗！")
         end
       }
       redirect_to "/cart" ,notice: "已成功寄出信件!"
@@ -106,20 +107,27 @@ before_action :current_cart
   end
 
   def matter_form_send
-    item_id = params.keys[2].split('/')[3].split('%2F')
-    item_id.map { |i|
-      @matter_form = current_user.matter_forms.new(matter_form_params)
-      @matter_form.product_id = i
-      @matter_form.save
-    }
-    if @matter_form.save
-      for id in item_id
-        @products = Product.find_by(id: id.to_i)
-        CartMailer.matter_form(@matter_form,@products).deliver_now
+    if params[:commit] == "寄出"
+      item_id = params.keys[2].split('/')[3].split('%2F')
+      item_id.map { |i|
+        @matter_form = current_user.matter_forms.new(matter_form_params)
+        @matter_form.product_id = i
+        @matter_form.save
+      }
+      if @matter_form.save
+        for id in item_id
+          @products = Product.find_by(id: id.to_i)
+          CartMailer.matter_form(@matter_form,@products).deliver_now
+        end
+        redirect_to "/cart" ,notice: "已成功寄出信件!"
+      else
+        redirect_to "/cart" ,notice: "失敗!"
       end
-      redirect_to "/cart" ,notice: "已成功寄出信件!"
     else
-      redirect_to "/cart" ,notice: "失敗!"
+      item = params.keys[2].split('/')[3].split('%2F')
+      @matter_form = current_user.matter_forms.new(matter_form_params)
+      @products = Product.where(id: item)
+
     end
   end
 
