@@ -6,7 +6,28 @@
                                                           end_year: Date.today.year + 5, discard_day: true %>
     <%= f.input :people, label: "預估活動人數：" %>
     <%= f.input :location, label: "活動地點：" %>
-    <%= f.input :memo, label: "備註：" %>
+    <% if @product.count > 1 %>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="Radios" id="Radios1" value="option1" checked>
+        <label class="form-check-label" for="Radios1">
+          統一備註內容
+        </label>
+          <%= f.input :memo, label: "備註：" %>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
+        <label class="form-check-label" for="Radios2">
+          分開備註內容
+        </label></p>
+        <% @product.each do |product| %>
+          給<%= product.name %>的備註內容：
+          <input name= <%= product.id %> > </p>
+        <% end %>
+      </div>
+    <% else %>
+      <%= f.input :memo, label: "備註：" %>
+    <% end %>
+    <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@matter_form)}[images][]"%>
   </div>
   <div class="form-actions">
     <%= f.button :submit,"寄出" %>

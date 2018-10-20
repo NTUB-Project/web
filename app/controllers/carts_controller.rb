@@ -91,7 +91,7 @@ before_action :current_cart
         @matter.mattertext = params[i] if params[:Radios] == "option2"
         @matter.product_id = i
         if @matter.save
-          @products = Product.find(i)
+          @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
         end
       }
@@ -113,10 +113,11 @@ before_action :current_cart
       item_id = params.keys[2].split('/')[3].split('%2F')
       item_id.map { |i|
         @matter_form = current_user.matter_forms.new(matter_form_params)
+        @matter_form.memo = params[i] if params[:Radios] == "option2"
         @matter_form.product_id = i
         @matter_form.save
         if @matter_form.save
-          @products = Product.find(i)
+          @products = Product.find_by(id: i)
           CartMailer.matter_form(@matter_form,@products).deliver_now
         end
       }
@@ -129,6 +130,7 @@ before_action :current_cart
     else
       item = params.keys[2].split('/')[3].split('%2F')
       @matter_form = current_user.matter_forms.new(matter_form_params)
+      @matter_form.memo = item.map { |i| params[i] } if params[:Radios] == "option2"
       @products = Product.where(id: item)
     end
   end

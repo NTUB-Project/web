@@ -4,7 +4,7 @@
 </br>
 </br>
 </br>
-
+<% i = 0 %>
 <% @products.each do |product|%>
   <%= product.name %>，您好！
   <% case product.category_id %>
@@ -14,7 +14,12 @@
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       參加人數大約為<%= @matter_form.people %>人，
       請問是否能跟您租借場地？
-      備註：<%= @matter_form.memo %>
+      <% if params[:Radios]== "option2" %>
+        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        <% i += 1 %>
+      <% else %>
+        備註：<%= @matter_form.memo %>
+      <% end %>
     </div></p>
   <% when 2 %>
     <div>
@@ -26,7 +31,12 @@
       素食人數大約為<%= @matter_form.non_vegetarian %>人，
       必要的菜色有：<%= @matter_form.expect_menu %>，
       預算是<%= @matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。
-      備註：<%= @matter_form.memo %>
+      <% if params[:Radios]== "option2" %>
+        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        <% i += 1 %>
+      <% else %>
+        備註：<%= @matter_form.memo %>
+      <% end %>
     </div></p>
   <% when 3 %>
     <div>
@@ -35,7 +45,12 @@
       地點在<%= @matter_form.activity_location %>
       參加人數大約為<%= @matter_form.people %>人，
       請問大概要包幾台車以及價格為多少？
-      備註：<%= @matter_form.memo %>
+      <% if params[:Radios]== "option2" %>
+        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        <% i += 1 %>
+      <% else %>
+        備註：<%= @matter_form.memo %>
+      <% end %>
     </div></p>
   <% when 4 %>
     <div>
@@ -43,7 +58,12 @@
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       地點在<%= @matter_form.activity_location %>，
       請問能跟您租<%= @matter_form.device %>嗎？
-      備註：<%= @matter_form.memo %>
+      <% if params[:Radios]== "option2" %>
+        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        <% i += 1 %>
+      <% else %>
+        備註：<%= @matter_form.memo %>
+      <% end %>
     </div></p>
   <% when 5 %>
     <div>
@@ -51,7 +71,12 @@
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       我們想要印刷<%= @matter_form.people %>件，
       請問價格多少？
-      備註：<%= @matter_form.memo %>
+      <% if params[:Radios]== "option2" %>
+        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        <% i += 1 %>
+      <% else %>
+        備註：<%= @matter_form.memo %>
+      <% end %>
     </div></p>
   <% when 6 %>
     <div>
@@ -59,7 +84,12 @@
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       我們想要租借<%= @matter_form.material %><%= @matter_form.size %>件，
       請問價格多少？
-      備註：<%= @matter_form.memo %>
+      <% if params[:Radios]== "option2" %>
+        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        <% i += 1 %>
+      <% else %>
+        備註：<%= @matter_form.memo %>
+      <% end %>
     </div></p>
   <% end %>
 <% end %>

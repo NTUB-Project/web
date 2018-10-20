@@ -43,9 +43,7 @@
           <% else %>
             <%= f.input :mattertext, label: "信件內容："%>
           <% end %>
-          <% if @category == 5 %>
-            <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@matter_form)}[images][]"%>
-          <% end %>
+          <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@matter_form)}[images][]"%>
 
         </div>
         <div class="form-actions">
