@@ -1,4 +1,4 @@
-<%= simple_form_for matter_cart_path(@matter_form)  , :url => {:action => :matter_form_send } do |f| %>
+<%= simple_form_for matter_cart_path(@item_id)  , :url => {:action => :matter_form_send } do |f| %>
   <div class="form-inputs">
     <%= f.input :email, label: "聯絡信箱：" %>
     <%= f.input :school, label: "學校/單位：" %>
@@ -26,7 +26,7 @@
     <% else %>
       <%= f.input :memo, label: "備註：" %>
     <% end %>
-    <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@matter_form)}[images][]"%>
+    <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@item_id)}[images][]"%>
   </div>
   <div class="form-actions">
     <%= f.button :submit,"寄出" %>

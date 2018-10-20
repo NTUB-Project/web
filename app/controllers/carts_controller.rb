@@ -78,27 +78,31 @@ before_action :current_cart
 
   def matter
     @product = Product.where(id: params[:item_id])
-    @matter = params[:item_id]
-    @matter_form = params[:item_id]
+    @item_id = params[:item_id]
+    @matter = Matter.new
     @category = Product.find(params[:item_id][0].to_i).category_id
   end
 
   def matter_send
     if params[:commit] == "寄出"
       item_id = params.keys[2].split('/')[3].split('%2F')
-      item_id.map { |i|
+      item_id.map{ |i| return redirect_back(fallback_location: matter_cart_path, notice: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
+      item_id.map{ |i|
         @matter = current_user.matters.new(matter_params)
         @matter.mattertext = params[i] if params[:Radios] == "option2"
         @matter.product_id = i
         if @matter.save
           @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
+        else
+          @item_id = params.keys[2].split('/')[3].split('%2F')
+          @product = Product.where(id: @item_id)
+          @category = Product.find(@item_id[0].to_i).category_id
+          break render :action => :matter
         end
       }
       if @matter.save
         redirect_to "/cart" ,notice: "已成功寄出信件!"
-      else
-        redirect_back(fallback_location: root_path, notice: "失敗！")
       end
     else
       item = params.keys[2].split('/')[3].split('%2F')

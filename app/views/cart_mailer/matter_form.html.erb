@@ -16,7 +16,9 @@
     參加人數大約為<%= @matter_form.people %>人，
     葷食人數大約為<%= @matter_form.vegetarian %>人，
     素食人數大約為<%= @matter_form.non_vegetarian %>人，
+    <% if @matter_form.expect_menu? %>
     必要的菜色有：<%= @matter_form.expect_menu %>，
+    <% end %>
     預算是<%= @matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。
     備註：<%= @matter_form.memo %>
   </div></p>
