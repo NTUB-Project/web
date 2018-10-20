@@ -19,9 +19,10 @@
     <div class="cartform">
       <h3>輸入信件內容</h3>
       <%= simple_form_for matter_cart_path(@matter) , :url => {:action => :matter_send } do |f| %>
+      <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :email, label: "聯絡信箱：" %>
-          <% if @product.count > 1%>
+          <% if @product.count > 1 %>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="Radios" id="Radios1" value="option1" checked>
               <label class="form-check-label" for="Radios1">
@@ -33,15 +34,19 @@
               <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
               <label class="form-check-label" for="Radios2">
                 分開信件內容
-              </label>
+              </label></p>
               <% @product.each do |product| %>
                 給<%= product.name %>的信件內容：
-                <input name= <%= product.id %> >
+                <input name= <%= product.id %> > </p>
               <% end %>
             </div>
           <% else %>
             <%= f.input :mattertext, label: "信件內容："%>
           <% end %>
+          <% if @category == 5 %>
+            <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@matter_form)}[images][]"%>
+          <% end %>
+
         </div>
         <div class="form-actions">
           <%= f.button :submit,"寄出" %>

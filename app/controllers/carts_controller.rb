@@ -91,13 +91,15 @@ before_action :current_cart
         @matter.mattertext = params[i] if params[:Radios] == "option2"
         @matter.product_id = i
         if @matter.save
-          @products = Product.find_by(id: i)
+          @products = Product.find(i)
           CartMailer.matter(@matter,@products).deliver_now
-        else
-          redirect_back(fallback_location: root_path, notice: "失敗！")
         end
       }
-      redirect_to "/cart" ,notice: "已成功寄出信件!"
+      if @matter.save
+        redirect_to "/cart" ,notice: "已成功寄出信件!"
+      else
+        redirect_back(fallback_location: root_path, notice: "失敗！")
+      end
     else
       item = params.keys[2].split('/')[3].split('%2F')
       @matter = current_user.matters.new(matter_params)
@@ -113,21 +115,21 @@ before_action :current_cart
         @matter_form = current_user.matter_forms.new(matter_form_params)
         @matter_form.product_id = i
         @matter_form.save
-      }
-      if @matter_form.save
-        for id in item_id
-          @products = Product.find_by(id: id.to_i)
+        if @matter_form.save
+          @products = Product.find(i)
           CartMailer.matter_form(@matter_form,@products).deliver_now
         end
+      }
+      if @matter_form.save
         redirect_to "/cart" ,notice: "已成功寄出信件!"
       else
-        redirect_to "/cart" ,notice: "失敗!"
+        redirect_back(fallback_location: root_path, notice: "失敗！")
       end
+
     else
       item = params.keys[2].split('/')[3].split('%2F')
       @matter_form = current_user.matter_forms.new(matter_form_params)
       @products = Product.where(id: item)
-
     end
   end
 
@@ -153,7 +155,7 @@ private
 
   def matter_params
   item = params.keys[2].split('/')[3]
-  params.require(:"/cart/matter/#{item}").permit(:email, :mattertext)
+  params.require(:"/cart/matter/#{item}").permit(:email, :mattertext, :images => [])
   end
 
 
