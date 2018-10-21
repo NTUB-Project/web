@@ -91,6 +91,7 @@ before_action :current_cart
         @matter = current_user.matters.new(matter_params)
         @matter.mattertext = params[i] if params[:Radios] == "option2"
         @matter.product_id = i
+        @matter.save
         if @matter.save
           @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
@@ -115,22 +116,54 @@ before_action :current_cart
   def matter_form_send
     if params[:commit] == "寄出"
       item_id = params.keys[2].split('/')[3].split('%2F')
+      item_id.map{ |i| return redirect_back(fallback_location: root_path, notice: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
       item_id.map { |i|
         @matter_form = current_user.matter_forms.new(matter_form_params)
         @matter_form.memo = params[i] if params[:Radios] == "option2"
         @matter_form.product_id = i
+        categroy = Category.find(Product.find_by(id: i).category_id).title
+        case categroy
+          when "場地"
+            @matter_form.skip_food = true
+            @matter_form.skip_location = true
+            @matter_form.skip_device = true
+            @matter_form.skip_costommade = true
+          when "食物"
+            @matter_form.skip_device = true
+            @matter_form.skip_costommade = true
+          when "租車"
+            @matter_form.skip_food = true
+            @matter_form.skip_device = true
+            @matter_form.skip_costommade = true
+          when "設備"
+            @matter_form.skip_food = true
+            @matter_form.skip_costommade = true
+            @matter_form.skip_people = true
+          when "印刷"
+            @matter_form.skip_food = true
+            @matter_form.skip_location = true
+            @matter_form.skip_device = true
+            @matter_form.skip_people = true
+          when "舞台服"
+            @matter_form.skip_food = true
+            @matter_form.skip_location = true
+            @matter_form.skip_device = true
+            @matter_form.skip_people = true
+        end
         @matter_form.save
         if @matter_form.save
           @products = Product.find_by(id: i)
           CartMailer.matter_form(@matter_form,@products).deliver_now
+        else
+          @item_id = params.keys[2].split('/')[3].split('%2F')
+          @product = Product.where(id: @item_id)
+          @category = Product.find(@item_id[0].to_i).category_id
+          break render :action => :matter
         end
       }
       if @matter_form.save
         redirect_to "/cart" ,notice: "已成功寄出信件!"
-      else
-        redirect_back(fallback_location: root_path, notice: "失敗！")
       end
-
     else
       item = params.keys[2].split('/')[3].split('%2F')
       @matter_form = current_user.matter_forms.new(matter_form_params)
@@ -156,7 +189,7 @@ private
 
   def matter_form_params
   item = params.keys[2].split('/')[3]
-  params.require(:"/cart/matter/#{item}").permit(:email, :school, :'date(1i)', :'date(2i)', :'date(3i)', :'date(4i)', :'date(5i)', :people, :vegetarian, :non_vegetarian, :expect_menu, :budget, :activity_location, :device, :material, :size, :memo, :images => [])
+  params.require(:"/cart/matter/#{item}").permit(:email, :school, :people, :'date(1i)', :'date(2i)', :'date(3i)', :'date(4i)', :'date(5i)', :vegetarian, :non_vegetarian, :expect_menu, :budget, :activity_location, :device, :material, :size, :memo, :images => [])
   end
 
   def matter_params

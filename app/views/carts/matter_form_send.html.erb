@@ -71,13 +71,13 @@
     <div>
       我們是<%= @matter_form.school %>，
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
-      我們想要印刷<%= @matter_form.people %>件，
+      我們想要印刷<%= @matter_form.size %>件，
       請問價格多少？
       <% if params[:Radios]== "option2" %>
-        備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
+        備註：材質為<%= @matter_form.material %>，<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
       <% else %>
-        備註：<%= @matter_form.memo %>
+        備註：材質為<%= @matter_form.material %>，<%= @matter_form.memo %>
       <% end %>
     </div></p>
   <% when 6 %>

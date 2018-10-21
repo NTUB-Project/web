@@ -1,6 +1,15 @@
+<% if @matter_form != nil %>
+  <% if @matter_form.errors.any? %>
+  <ul>
+  <% @matter_form.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+  <% end %>
+<% end %>
 <%= simple_form_for matter_cart_path(@item_id)  , :url => {:action => :matter_form_send } do |f| %>
   <div class="form-inputs">
-    <%= f.input :email, label: "聯絡信箱：" %>
+    <%= f.input :email, label: "聯絡信箱：" , readonly: true, :input_html => { :value => "#{current_user.email}" }%>
     <%= f.input :school, label: "學校/單位：" %>
     <%= f.input :date, label: "活動日期：", as: :datetime, start_year: Date.today.year,end_year: Date.today.year + 5, discard_day: true %>
     <%= f.input :activity_location, label: "活動地點" %>
