@@ -27,7 +27,25 @@
 .card-text{
 	padding-bottom: 10px;
 }
+.cardscroll{
+	overflow: auto;
+	height: 170px;
+}
 
+.cardscroll::-webkit-scrollbar {
+    width: 8px;
+}
+.cardscroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.cardscroll::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #2b837a; 
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
+}
 
 //show頁面
 div.content{
