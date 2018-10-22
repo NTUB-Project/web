@@ -11,8 +11,7 @@
   <div class="form-inputs">
     <%= f.input :email, label: "聯絡信箱：" , readonly: true, :input_html => { :value => "#{current_user.email}" }%>
     <%= f.input :school, label: "學校/單位：" %>
-    <%= f.input :date, label: "活動日期：", as: :datetime, start_year: Date.today.year,
-                                                          end_year: Date.today.year + 5, discard_day: true %>
+    <%= f.input :date, label: "活動日期：", as: :datetime, start_year: Date.today.year, end_year: Date.today.year + 5 %>
     <%= f.input :material, label: "種類：" %>
     <%= f.input :size, label: "件數：" %>
     <% if @product.count > 1 %>
