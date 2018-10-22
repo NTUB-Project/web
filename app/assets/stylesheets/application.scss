@@ -335,3 +335,13 @@ div.activitycontent{
 #map{
   position: fixed;
 }
+
+//蒐藏庫寄信頁面
+.nav-tabs{
+  border-bottom: 1px solid #2b837a;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #495057;
+    background-color: #fff;
+    border-color: #2b837a #2b837a #fff;
+}
