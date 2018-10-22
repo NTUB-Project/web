@@ -61,11 +61,11 @@ before_action :current_cart
       if find_item.blank? && count < 5
         CartItem.create(user_id: current_user.id , cart_id: current_cart , product_id: params[:id])
       else
-        redirect_to root_path ,notice: "此類別的蒐藏已滿囉!" if find_item.blank?
+        redirect_to root_path ,alert: "此類別的蒐藏已滿囉!" if find_item.blank?
       end
 
     else
-      redirect_to new_user_session_url, notice:"請先登入再蒐藏!"
+      redirect_to new_user_session_url, alert:"請先登入再蒐藏!"
     end
   end
 
@@ -85,7 +85,7 @@ before_action :current_cart
   def matter_send
     if params[:commit] == "寄出"
       item_id = params.keys[2].split('/')[3].split('%2F')
-      item_id.map{ |i| return redirect_back(fallback_location: matter_cart_path, notice: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
+      item_id.map{ |i| return redirect_back(fallback_location: matter_cart_path, alert: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
       item_id.map{ |i|
         @matter = current_user.matters.new(matter_params)
         @matter.mattertext = params[i] if params[:Radios] == "option2"
@@ -94,6 +94,8 @@ before_action :current_cart
         if @matter.save
           @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
+          cart_items = CartItem.find_by(product_id: i)
+          cart_items.destroy
         else
           @item_id = params.keys[2].split('/')[3].split('%2F')
           @product = Product.where(id: @item_id)
@@ -102,7 +104,7 @@ before_action :current_cart
         end
       }
       if @matter.save
-        redirect_to "/cart" ,notice: "已成功寄出信件!"
+        redirect_to "/cart" ,notice: "已成功寄出信件，並移至「我的寄件夾」!"
       end
     else
       item = params.keys[2].split('/')[3].split('%2F')
@@ -115,7 +117,7 @@ before_action :current_cart
   def matter_form_send
     if params[:commit] == "寄出"
       item_id = params.keys[2].split('/')[3].split('%2F')
-      item_id.map{ |i| return redirect_back(fallback_location: root_path, alert: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
+      item_id.map{ |i| return redirect_back(fallback_location: matter_cart_path, alert: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
       item_id.map { |i|
         @matter_form = current_user.matter_forms.new(matter_form_params)
         @matter_form.memo = params[i] if params[:Radios] == "option2"
@@ -153,6 +155,8 @@ before_action :current_cart
         if @matter_form.save
           @products = Product.find_by(id: i)
           CartMailer.matter_form(@matter_form,@products).deliver_now
+          cart_items = CartItem.find_by(product_id: i)
+          cart_items.destroy
         else
           @item_id = params.keys[2].split('/')[3].split('%2F')
           @product = Product.where(id: @item_id)
@@ -162,7 +166,7 @@ before_action :current_cart
         end
       }
       if @matter_form.save
-        redirect_to "/cart", notice: "已成功寄出信件!"
+        redirect_to "/cart",notice: "已成功寄出信件，並移至「我的寄件夾」!"
       end
     else
       item = params.keys[2].split('/')[3].split('%2F')
