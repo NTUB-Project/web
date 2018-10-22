@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :gmaps
+  resources :matters
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"  }
 
   resources :products do
@@ -39,7 +40,7 @@ Rails.application.routes.draw do
     collection do
       post :add, path:'add/:id'
       put :remove, path:'/:id'
-      put :matter, path:'matter/:id'
+      get :matter, path:'matter/:id'
       post :matter_send, path:'matter_send/:id'
       post :matter_form_send, path:'matter_form_send/:id'
     end

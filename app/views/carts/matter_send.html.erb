@@ -1,0 +1,22 @@
+</br>
+</br>
+</br>
+</br>
+<% i = 0 %>
+<% @products.each do |product|%>
+  <%= product.name %>，您好！
+  <% if params[:Radios]== "option2" %>
+    <%= @matter.mattertext.split(',')[i].split('"')[1] %>
+    <% i += 1 %>
+  <% else %>
+    <%= @matter.mattertext %>
+  <% end %>
+<% end %>
+
+
+
+------------------------------------------</p>
+  此信件為PartyHelper系統發送，請不要直接回覆！！</p>
+  麻煩轉寄給<%= @matter.email %>
+
+<input type ="button" onclick="history.back()" value="上一步"></input>
