@@ -6,14 +6,14 @@
 </br>
 <% i = 0 %>
 <% @products.each do |product|%>
-  <%= product.name %>，您好！
+  <%= product.name %>，您好！<br/>
   <% case product.category_id %>
   <% when 1 %>
     <div>
       我們是<%= @matter_form.school %>，
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       參加人數大約為<%= @matter_form.people %>人，
-      請問是否能跟您租借場地？
+      請問是否能跟您租借場地？<br/>
       <% if params[:Radios]== "option2" %>
         備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
@@ -32,7 +32,7 @@
       <% if @matter_form.expect_menu != "無" %>
       必要的菜色有：<%= @matter_form.expect_menu %>，
       <% end %>
-      預算是<%= @matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。
+      預算是<%= @matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。<br/>
       <% if params[:Radios]== "option2" %>
         備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
@@ -46,7 +46,7 @@
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       地點在<%= @matter_form.activity_location %>
       參加人數大約為<%= @matter_form.people %>人，
-      請問大概要包幾台車以及價格為多少？
+      請問大概要包幾台車以及價格為多少？<br/>
       <% if params[:Radios]== "option2" %>
         備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
@@ -59,7 +59,7 @@
       我們是<%= @matter_form.school %>，
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       地點在<%= @matter_form.activity_location %>，
-      請問能跟您租<%= @matter_form.device %>嗎？
+      請問能跟您租<%= @matter_form.device %>嗎？<br/>
       <% if params[:Radios]== "option2" %>
         備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
@@ -72,7 +72,7 @@
       我們是<%= @matter_form.school %>，
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       我們想要印刷<%= @matter_form.size %>件，
-      請問價格多少？
+      請問總價格多少？<br/>
       <% if params[:Radios]== "option2" %>
         備註：材質為<%= @matter_form.material %>，<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
@@ -85,7 +85,7 @@
       我們是<%= @matter_form.school %>，
       將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
       我們想要租借<%= @matter_form.material %><%= @matter_form.size %>件，
-      請問價格多少？
+      請問總價格多少？<br/>
       <% if params[:Radios]== "option2" %>
         備註：<%= @matter_form.memo.split(',')[i].split('"')[1] %>
         <% i += 1 %>
@@ -96,8 +96,4 @@
   <% end %>
 <% end %>
 
-
-------------------------------------------</p>
-此信件為PartyHelper系統發送，請不要直接回覆！！</p>
-麻煩轉寄給<%= @matter_form.email %>
 <input type ="button" onclick="history.back()" value="上一步"></input>
