@@ -16,8 +16,7 @@
   </div>
 
 <div id="Self" class="categor">
-    <div class="cartform">
-      <% if @matter != nil %>
+  <div class="cartform">
         <% if @matter.errors.any? %>
         <ul>
         <% @matter.errors.full_messages.each do |msg| %>
@@ -25,9 +24,8 @@
         <% end %>
         </ul>
         <% end %>
-      <% end %>
       <h3>輸入信件內容</h3>
-      <%= simple_form_for matter_cart_path(@item_id) , :url => {:action => :matter_send }, remote: true do |f| %>
+      <%= simple_form_for matter_cart_path(@item_id) , :url => {:action => :matter_send }, remote: true  do |f| %>
         <div class="form-inputs">
           <%= f.input :email, label: "聯絡信箱：", readonly: true, :input_html => { :value => "#{current_user.email}" } %>
           <% if @product.count > 1 %>
@@ -56,7 +54,7 @@
         </div>
         <div class="form-actions">
           <%= f.button :submit,"寄出" %>
-          <%= f.button :submit,"預覽" ,{:remote => true , 'data-toggle' =>  "modal", 'data-target' => '#modal-window', 'id' => "modal"} %>
+          <%= f.button :submit,"預覽" ,{:remote => true , 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %>
         </div>
       <% end %>
     </div>
