@@ -1,62 +1,64 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <div class="content">
   <% @grounds.each do |ground| %>
-		<button type="button" class="addbtn" >
-			<%= link_to 'Collect', add_cart_path(ground), method: "post" %>
-		</button>
-		<button type="button" class="connectbtn">
-			<%= link_to 'Connect' ,ground.url %>
-		</button>
-
 
 		<div class="detail">
-      <div class="star-rating" data-score=<%= @avg_rating %> ></div>
-      <em><%= "#{@comment.length} 則留言"%></em>
-			<div class="name"><h1><%= ground.name %></h1></div>
-			<div class="introduce">
-				<h2>簡介</h2>
-				<p><%= ground.description %></p>
+			<div class="addbtn">
+	      <%= link_to '♡ 加入蒐藏', add_cart_path(ground), method: "post", class: "btn" %>
+	    </div>
+      
+			<div class="name">
+				<h1><%= ground.name %><span class="star-rating" data-score=<%= @avg_rating %> style="font-size: 20px;	padding-left: 10px;"></span></h1>
+	      	<%= "#{@comment.length} 則留言"%>
 			</div>
-		</div>
-		<div class="detail2">
-      <% for images in ground.images_urls %>
+			
+			<% for images in ground.images_urls %>
         <a data-fancybox="gallery">
           <%= link_to image_tag(images, width: '200px',height: '250px'), ground if ground.images.present?%>
         </a>
       <% end %>
-		</div>
-		<div class="detail3">
-			<div class="icons">
-			  <%= image_tag("projector.png")%>
-			  <%= image_tag("computer.png")%>
-			  <%= image_tag("sofa.png")%>
-			  <%= image_tag("drum-set.png")%>
-			  <%= image_tag("karaoke.png")%>
-			  <%= image_tag("parking.png")%>
-			  <%= image_tag("speaker.png")%>
-			  <%= image_tag("spotlight.png")%>
-			  <%= image_tag("stage.png")%>
+      
+      <div class="bnb-images">
+      	<div class="lg-img bnb-image" style="background-image:url(../uploads/product/images/1/20180426_085010.jpg)"></div>
+	      	<div class="bnb-image sm-img-1" style="background-image:url(../uploads/product/images/1/20180530_015216.jpg)"></div>
+	      	<div class="bnb-image sm-img-2" style="background-image:url(../uploads/product/images/1/20180614_095006.jpg)"></div>
+	      	<div class="bnb-image sm-img-3" style="background-image:url(../uploads/product/images/1/20180614_095006.jpg)">
+      		<div class="bnb-image-layer"></div>
+      		<p class="more-images">查看更多</p>
+      	</div>
+      	<div class="clearfix"></div>
+      </div>
+      
+      
+      
+			<div class="introduce">
+				<h2 class="eachProgramTitle">簡介</h2>
+				<%= ground.description %>
 			</div>
-		</div>
-		<div class="detail4">
-			<h2>內容</h2>
-			<p>額外限制：<%= ground.limit %></p>
+		
+			<h2 class="eachProgramTitle">內容</h2>
+				<div class="row">
+					<div class="col-3"><h5>設備</h5></div>
+					<div class="col-3"><h5>活動類型</h5></div>
+					<div class="col-3"><h5>優惠活動</h5></div>
+					<div class="col-3"><h5>額外限制</h5></div>
+				</div>
+				<div class="row" style="height: 100px">
+					<div class="col-3"><%= ground.equipment %></div>
+					<div class="col-3"><%= ground.item %></div>
+					<div class="col-3"><%= ground.activity %></div>
+					<div class="col-3"><%= ground.limit %></div>
+				</div>
 
-			<h2>設備</h2>
-			<p><%= ground.equipment %></p>
-
-			<h2>活動類型</h2>
-			<p><%= ground.item %></p>
-
-			<h2>優惠活動</h2>
-			<p><%= ground.activity %>前下訂單，即享優惠!</p>
-
-			<h2>聯絡資訊</h2>
-			<p>電話號碼：<%= ground.tel %></p>
-			<p>地址：<%= ground.location %></p>
-		</div>
-		<div class="detail5">
-			<h2>地理位置</h2>
-      <div id="map" style="width:100%;height:400px">地圖預留</div>
+			<h2 class="eachProgramTitle">聯絡資訊</h2>
+			<p>電話:  <%= ground.tel %></p>
+			<p>信箱:  <%= ground.email %></p>
+			<p>網站:  <%= ground.url %></p>
+		
+			<h2 class="eachProgramTitle">地理位置
+				<span class="pull-right"><%= ground.location %></span>
+			</h2>
+      <div id="map" style="width:100%; height:400px">地圖預留</div>
 		</div>
 
 		<%=render "comments/index" %>

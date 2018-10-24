@@ -51,89 +51,27 @@
 div.content{
 	padding-top: 40px;
 	height: auto;
-	text-align: center;
 	margin-top: 40px;
 	font-family: "微軟正黑體", sans-serif;
 }
-div.content button.backbtn{
-	position: fixed;
-	top: 20%;
-	left: 9%;
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	border: 0px;
-	letter-spacing: 3px;
-	background-color: rgba(70, 154, 145, 0.2);
+.addbtn{
+	float: right;
 }
-div.content button.backbtn:hover{
-	background-color: rgba(43, 131, 122, 0.5);
+.addbtn .btn{
+	background: rgba(43, 131, 122, 0.5);
+	color: #fff;
 }
-div.content button.addbtn{
-	position: fixed;
-	top: 20%;
-	right: 9%;
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	border: 0px;
-	letter-spacing: 3px;
-	background-color: rgba(70, 154, 145, 0.2);
-}
-div.content button.addbtn:hover{
-	background-color: rgba(43, 131, 122, 0.5);
-}
-div.content button.connectbtn{
-	position: fixed;
-	top: 32%;
-	right: 9%;
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	border: 0px;
-	letter-spacing: 2px;
-	background-color: rgba(70, 154, 145, 0.2);
-}
-div.content button.connectbtn:hover{
-	background-color: rgba(43, 131, 122, 0.5);
-}
-div.content button.forumbtn{
-	position: fixed;
-	top: 44%;
-	right: 9%;
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	border: 0px;
-	letter-spacing: 2px;
-	background-color: rgba(70, 154, 145, 0.2);
-}
-div.content button.forumbtn:hover{
-	background-color: rgba(43, 131, 122, 0.5);
+.addbtn .btn:hover{
+	background: #2b837a;
 }
 div.detail{
-	margin:0 auto;
-	right: auto;
-	left: auto;
+	margin: 0 auto;
 	width: 70%;
 	height: 100%;
 	background-color: rgba(43, 131, 122, 0.3);
 	border-radius: 10px;
-	padding-bottom: 50px;
+	padding: 50px;
 }
-div.name{
-	top: auto;
-	width: 100%;
-	text-align: center;
-}
-div.name h1{
-	padding-left: 50px;
-	padding-right: 50px;
-	padding-top: 50px;
-	font-size: 90px;
-	color: #fff;
-}
-
 div.introduce{
 	h2{
 		p{
@@ -141,87 +79,86 @@ div.introduce{
 		}
 	}
 }
-/*---------------------------*/
-/*  定義fancybox              */
-/*---------------------------*/
-div.detail2{
-	text-align: center;
-	margin:20px auto;
-	right: auto;
-	left: auto;
-	width: 70%;
-	background-color: rgba(43, 131, 122, 0.3);
-	padding-top: 12px;
-	padding-bottom: 10px;
-	border-radius: 10px;
+.eachProgramTitle {
+    color: #5E5D5D;
+    font-size: 28px;
+    letter-spacing: 2px;
+    border-bottom: #5E5D5D solid 1px;
+    margin: 50px 0 20px 0;
 }
-div.detail2 img{
-    box-shadow:0px 0px 5px 1px #000;
-    margin-right:20px;
+.pull-right{
+	float: right;
+	font-size: 16px;
 }
 
-div.detail2 a{
-    outline:none;
-}
+/*------------show.html各別廠商圖片------------*/
 
-div.detail2:after{
-    content: '';
+.bnb-images {
+    width: 100%;
+}
+.image-centered, .bnb-images .lg-img, .bnb-images .sm-img-1, .bnb-images .sm-img-2, .bnb-images .sm-img-3, .bnb .bnb-image-overlay .bnb-image-overlay-content .bnb-image-nav .bnb-nav-image, .room-type-card-content .room-image, .slick-box .slick-container .slider-nav .slider-nav-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.bnb-image-container, .bnb-images .lg-img, .bnb-images .sm-img-1, .bnb-images .sm-img-2, .bnb-images .sm-img-3 {
     display: block;
+    float: left;
+}
+.bnb-images .sm-img-3 .bnb-image-layer {
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.bnb-images .sm-img-3 .more-images {
+    position: absolute;
+    top: 90px;
+    bottom: 90px;
+    right: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+.bnb-images .lg-img {
+    width: 56%;
+    height: 400px;
+    margin-right: 8px;
+}
+.bnb-images .sm-img-1 {
+    width: calc(44% - 12px);
+    height: 200px;
+    margin-bottom: 8px;
+}
+.bnb-images .sm-img-2 {
+    width: calc(28% - 10px);
+    height: 191px;
+    margin-right: 8px;
+}
+.bnb-images .sm-img-3 {
+    width: calc(16% - 10px);
+    height: 191px;
+    position: relative;
+    cursor: pointer;
+}
+.clearfix {
     clear: both;
 }
-/*---------------------------*/
-/*  定義icon                   */
-/*---------------------------*/
-div.detail3{
-	text-align: center;
-	margin:20px auto;
-	right: auto;
-	left: auto;
-	width: 70%;
-	background-color: rgba(43, 131, 122, 0.3);
-	padding-top: 2px;
-	border-radius: 10px;
+.clearfix {
+    zoom: 1;
 }
-div.icons img{
-	width: 70px;
-	height: 70px;
-	padding: 5px 5px 5px 5px;
-	margin-left: 10px;
-}
-div.detail4{
-	text-align: center;
-	margin:20px auto;
-	right: auto;
-	left: auto;
-	width: 70%;
-	background-color: rgba(43, 131, 122, 0.3);
-	padding-top: 15px;
-	border-radius: 10px;
-	padding-bottom: 15px;
-	p{
-		margin: 0 50px 1rem 50px;
-	}
-}
-div.detail5{
-	text-align: center;
-	margin:20px auto;
-	right: auto;
-	left: auto;
-	width: 70%;
-	background-color: rgba(43, 131, 122, 0.3);
-	border-radius: 10px;
-	padding-top: 5px;
-	padding-bottom: 15px;
-	h2{
-		argin: 20px 50px;
-	}
-}
+
 
 /*------------TOP------------*/
 div.backtotop{
 	position: fixed;
-	right: 10px;
-	bottom: 10px;
+	right: 11%;
+	bottom: 20%;
 }
 a.top{
 	border-radius: 50%;

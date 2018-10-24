@@ -1,12 +1,15 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-div.content{
-	padding-top: 20px;
-	height: auto;
+div.cartcontent{
 	padding-bottom: 20px;
+	text-align: center;
+	padding-top: 40px;
+	height: auto;
+	margin-top: 40px;
+	font-family: "微軟正黑體", sans-serif;
 }
-.content .card p{
+.cartcontent .card p{
   font-size: 14px;
   margin: 0;
   line-height: 24px;
