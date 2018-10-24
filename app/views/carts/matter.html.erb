@@ -36,7 +36,7 @@
               <label class="form-check-label" for="Radios1">
                 統一信件內容
               </label>
-                <%= f.input :mattertext, label: "信件內容：" %>
+                <%= f.input :mattertext, label: "信件內容：" , input_html: {id: "mattertext"}%>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
@@ -45,7 +45,7 @@
               </label></p>
               <% @product.each do |product| %>
                 給<%= product.name %>的信件內容：
-                <input name= <%= product.id %> > </p>
+                <input name="<%= product.id %>" id="<%= product.id %>" class="form-control string required" disabled /> </p>
               <% end %>
             </div>
           <% else %>
@@ -101,4 +101,28 @@ function changeColor(btnName) {
   }
   document.getElementById(btnName).style.color = "TEAL";
 }
+document.getElementById('Radios2').onchange = function() {
+  '<% @product.each do |product| %>'
+  document.getElementById('<%= product.id %>').disabled = !this.checked;
+  '<% end %>'
+  document.getElementById('mattertext').disabled = true;
+};
+document.getElementById('Radios1').onchange = function() {
+  '<% @product.each do |product| %>'
+  document.getElementById('<%= product.id %>').disabled = true ;
+  '<% end %>'
+  document.getElementById('mattertext').disabled = !this.checked;
+};
+document.getElementById('FM_Radios2').onchange = function() {
+  '<% @product.each do |product| %>'
+  document.getElementById('FM_<%= product.id %>').disabled = !this.checked;
+  '<% end %>'
+  document.getElementById('memo').disabled = true;
+};
+document.getElementById('FM_Radios1').onchange = function() {
+  '<% @product.each do |product| %>'
+  document.getElementById('FM_<%= product.id %>').disabled = true ;
+  '<% end %>'
+  document.getElementById('memo').disabled = !this.checked;
+};
 </script>
