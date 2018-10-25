@@ -1,0 +1,11 @@
+$("#FM_modal-window").find(".modal-content").html("<%= j (render 'matter_form_send') %>");
+$("#FM_modal-window").modal();
+<% if @matter_form != nil %>
+  <% if @matter_form.errors.any? %>
+    $("#errors_form_div").html("<% @matter_form.errors.full_messages.each do |msg| %> <%= msg %> </br> <% end %>")
+  <% end %>
+<% end %>
+
+<% if @errors != nil %>
+  $("#errors_form_div").html("<%= @errors %>")
+<% end %>

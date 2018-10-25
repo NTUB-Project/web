@@ -5,9 +5,9 @@
     <div class="col-md-4 col-lg-3 cardimg">
 		  <div class="cd-slider-wrapper">
 			  <ul class="cd-slider">
-          <% for images in comment.images_urls %>
+          <% for images in comment.images %>
             <% if comment.images.present? %>
-              <li><%= image_tag(images, width: '150px',height: '150px')  %></li>
+              <li><%= image_tag(images.thumb.url)  %></li>
             <% end %>
           <% end %>
 				</ul>

@@ -14,10 +14,8 @@ class Product < ApplicationRecord
   has_and_belongs_to_many :activity_kinds
   has_one :gmap
 
-
-
   def self.to_csv(options={})
-    attributes = %w{ name email tel location url }
+    attributes = ["\xEF\xBB\xBF","name","tel","email","location","url"]
     CSV.generate(options) do |csv|
       csv << attributes
       all.each do |product|

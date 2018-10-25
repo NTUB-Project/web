@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <% if @matter!= nil %>
+      <% if @matter.errors.any? %>
+        <h5 class="modal-title" id="myModalLabel">錯誤</h5>
+      <% else %>
+        <h5 class="modal-title" id="myModalLabel">預覽</h5>
+      <% end %>
+    <% else %>
+      <h5 class="modal-title" id="myModalLabel">錯誤</h5>
+  <% end %>
+
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+<% if @matter!= nil %>
+  <% if @matter.errors.any? %>
+  <div id="errors_div"></div>
+  <% else %>
+    <% i = 0 %>
+    <% if @products != nil %>
+      <% @products.each do |product|%>
+        <%= product.name %>，您好！
+        <% if params[:Radios]== "option2" %>
+          <p><%= @matter.mattertext.split(',')[i].split('"')[1] %></p>
+          <% i += 1 %>
+        <% else %>
+          <p><%= @matter.mattertext %></p>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+<div id="errors_div"></div>
+<% end %>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
