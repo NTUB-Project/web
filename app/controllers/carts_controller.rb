@@ -3,7 +3,6 @@ before_action :authenticate_user!
 before_action :authenticate_admin
 before_action :current_cart
 
-
   def show
     @items = CartItem.where(user_id: current_user.id)
     @grounds = []
@@ -77,7 +76,6 @@ before_action :current_cart
   end
 
   def matter
-
     @product = Product.where(id: params[:item_id])
     @item_id = params[:item_id]
     @matter = Matter.new
@@ -85,25 +83,10 @@ before_action :current_cart
   end
 
   def matter_send
-
-    @item_id = params.keys[1].split('/')[3].split('%2F')
     if params[:commit] == "寄出"
-      if params[:Radios] == "option2"
-
-          @item_id.map{ |i|
-            if params[i] == ""
-              @product = Product.where(id: @item_id)
-              @category = Product.find(@item_id[0].to_i).category_id
-              respond_to do |format|
-                flash[:alert] = "信件內容不可為空白！"
-                format.html { return render :matter }
-                format.js  { return render js: "window.location.reload(true)"}
-              end
-            end
-          }
-
-      end
-      @item_id.map{ |i|
+      item_id = params.keys[2].split('/')[3].split('%2F')
+      item_id.map{ |i| return redirect_back(fallback_location: matter_cart_path, alert: "信件內容不可為空！") if params[i] == "" } if params[:Radios] == "option2"
+      item_id.map{ |i|
         @matter = current_user.matters.new(matter_params)
         @matter.mattertext = params[i] if params[:Radios] == "option2"
         @matter.product_id = i
@@ -112,30 +95,22 @@ before_action :current_cart
           @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
           cart_items = CartItem.find_by(product_id: i)
-          #cart_items.destroy
+          cart_items.destroy
         else
+          @item_id = params.keys[2].split('/')[3].split('%2F')
           @product = Product.where(id: @item_id)
           @category = Product.find(@item_id[0].to_i).category_id
-          respond_to do |format|
-            format.html { return render :matter }
-            format.json { return render :json => { :error => @matter.errors } }
-            debugger
-          end
-
+          break render :action => :matter
         end
       }
-      respond_to do |format|
-        if @matter.save
-          flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」"
-          format.html { redirect_to controller: "carts", action: "show"}
-          format.js   { render js: "window.location.href='#{cart_path}'"}
-        end
+      if @matter.save
+        redirect_to "/cart" ,notice: "已成功寄出信件，並移至「我的寄件夾」!"
       end
     else
+      item = params.keys[2].split('/')[3].split('%2F')
       @matter = current_user.matters.new(matter_params)
-      @matter.mattertext = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
-      @products = Product.where(id: @item_id)
-
+      @matter.mattertext = item.map { |i| params[i] } if params[:Radios] == "option2"
+      @products = Product.where(id: item)
     end
   end
 
@@ -222,7 +197,7 @@ private
   end
 
   def matter_params
-  item = params.keys[1].split('/')[3]
+  item = params.keys[2].split('/')[3]
   params.require(:"/cart/matter/#{item}").permit(:email, :mattertext, :images => [])
   end
 
