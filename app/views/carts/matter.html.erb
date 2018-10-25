@@ -16,18 +16,9 @@
   </div>
 
 <div id="Self" class="categor">
-    <div class="cartform">
-      <% if @matter != nil %>
-        <% if @matter.errors.any? %>
-        <ul>
-        <% @matter.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-        </ul>
-        <% end %>
-      <% end %>
+  <div class="cartform">
       <h3>輸入信件內容</h3>
-      <%= simple_form_for matter_cart_path(@item_id) , :url => {:action => :matter_send } do |f| %>
+      <%= simple_form_for matter_cart_path(@item_id) , :url => {:action => :matter_send }, remote: true  do |f| %>
         <div class="form-inputs">
           <%= f.input :email, label: "聯絡信箱：", readonly: true, :input_html => { :value => "#{current_user.email}" } %>
           <% if @product.count > 1 %>
@@ -42,10 +33,10 @@
               <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
               <label class="form-check-label" for="Radios2">
                 分開信件內容
-              </label>
+              </label></p>
               <% @product.each do |product| %>
                 給<%= product.name %>的信件內容：
-                <input name="<%= product.id %>" id="<%= product.id %>" class="form-control string required" disabled />
+                <input name="<%= product.id %>" id="<%= product.id %>" class="form-control string required" disabled /> </p>
               <% end %>
             </div>
           <% else %>
@@ -56,7 +47,7 @@
         </div>
         <div class="form-actions">
           <%= f.button :submit,"寄出" %>
-          <%= f.button :submit,"預覽" %>
+          <%= f.button :submit,"預覽" ,{:remote => true , 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %>
         </div>
       <% end %>
     </div>
@@ -84,6 +75,12 @@
 
 </div>
 </div>
+<div class="modal fade" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
 
 <script>
 function openCategory(categoryName) {
