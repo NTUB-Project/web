@@ -6,6 +6,7 @@
 </div>
 <div class="modal-body">
   <% i = 0 %>
+  <% if @products != nil %>
   <% @products.each do |product|%>
     <%= product.name %>，您好！
     <% if params[:Radios]== "option2" %>
@@ -14,6 +15,7 @@
     <% else %>
       <p><%= @matter.mattertext %></p>
     <% end %>
+  <% end %>
   <% end %>
 </div>
 <div class="modal-footer">
