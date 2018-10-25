@@ -2,7 +2,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
 
@@ -25,18 +25,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-  process resize_to_fit: [800, 800] #圖片上傳後，自動切成你要的size
+   process resize_to_fit: [800, 800] #圖片上傳後，自動切成你要的size
 
 
-  version :thumb do #設同時切其他size的版本-thumb
+   version :thumb do #設同時切其他size的版本-thumb
 
-    process resize_to_fill: [200,200]
-  end
+     process resize_to_fill: [200,200]
+   end
 
-  version :medium do #設同時切其他size的版本-medium
+   version :medium do #設同時切其他size的版本-medium
 
-    process resize_to_fill: [400,400]
-  end
+     process resize_to_fill: [400,400]
+   end
 
   # Process files as they are uploaded:
   # process scale: [200, 300]

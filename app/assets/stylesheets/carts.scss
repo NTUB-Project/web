@@ -105,7 +105,7 @@ div.message1{
 	padding-top: 10px;
 }
 .cart_content .container{
-  width: 500px;
+  width: 600px;
   margin-top: 20px;
 }
 .cartform{
@@ -133,4 +133,27 @@ div.message1{
   font-size: 18px;
   border: 0;
   border-color: #2b837a;
+}
+
+//寄信預覽
+.modal-header{
+  background: #BFD8D8;
+  h4{
+    font-family: 'Noto Sans TC', sans-serif;
+    letter-spacing: 5px;
+  }
+}
+.modal-body{
+  span{
+    font-size: 18px;
+    color: #185353;
+    border-left: 5px solid #185353;
+    padding-left: 10px;
+    font-family: 'Noto Sans TC', sans-serif;
+    text-decoration: underline;
+  }
+  p{
+    font-family: 'Noto Sans TC', sans-serif;
+    margin: 10px 0 20px 0;
+  }
 }

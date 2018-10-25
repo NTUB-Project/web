@@ -43,24 +43,24 @@ body{
 
 //navbar
 .navbar-toggler{
-  float: right;
   z-index: 99;
 }
 .navbar{
-  background-color: rgba(211, 211, 211,0.2);
-  position: fixed;
+  background-color: #e7f1f1;
   width: 100%;
   z-index: 99;
 }
 .dropdown-menu{
   a:hover{
-    background-color: rgba(211, 211, 211,0.5);
+    background-color: #fff;
   }
-  background-color: rgba(211, 211, 211,0.2);
+  background-color: #e7f1f1;
 }
 .navbar-nav{
-  font-size: 16px;
+  font-size: 18px;
+  font-family: '微軟正黑體', sans-serif;
 }
+
 
 //footer
 span.title{
