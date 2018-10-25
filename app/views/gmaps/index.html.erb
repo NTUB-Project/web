@@ -50,8 +50,8 @@
             var mark = pos.concat(gmap);
             markers = handler.addMarkers(mark);
             handler.bounds.extendWith(markers);
-            _.each(markers, function(markers){
-            google.maps.event.trigger(markers.getServiceObject(), 'click');
+            _.each(markers, function(marker){
+             google.maps.event.trigger(marker.getServiceObject(), 'click');
             });
             handler.fitMapToBounds();
           });
