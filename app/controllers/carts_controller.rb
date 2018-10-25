@@ -96,7 +96,7 @@ before_action :current_cart
           @item_id.map{ |i|
             if params[i] == ""
               respond_to do |format|
-                @errors = "分開信件內容不能為空"
+                @errors = "分開信件內容不能為空！"
                 format.html { return render :matter }
                 format.js {return render :matter_send }
               end
@@ -142,7 +142,7 @@ before_action :current_cart
           @item_id.map{ |i|
             if params[i] == ""
               respond_to do |format|
-                @errors = "分開信件內容不能為空"
+                @errors_form = "分開信件內容不能為空！"
                 format.html { return render :matter }
                 format.js {return render :matter_form_send }
               end
@@ -206,6 +206,7 @@ before_action :current_cart
       @matter_form = current_user.matter_forms.new(matter_form_params)
       @matter_form.memo = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
       @products = Product.where(id: @item_id)
+      debugger
     end
   end
 

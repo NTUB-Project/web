@@ -1,11 +1,14 @@
 $("#FM_modal-window").find(".modal-content").html("<%= j (render 'matter_form_send') %>");
+$(".modal-header").css("background", "#BFD8D8")
 $("#FM_modal-window").modal();
 <% if @matter_form != nil %>
   <% if @matter_form.errors.any? %>
     $("#errors_form_div").html("<% @matter_form.errors.full_messages.each do |msg| %> <%= msg %> </br> <% end %>")
+    $(".modal-header").css("background", "#E06767")
   <% end %>
 <% end %>
 
-<% if @errors != nil %>
-  $("#errors_form_div").html("<%= @errors %>")
+<% if @errors_form != nil %>
+  $(".modal-header").css("background", "#E06767")
+  $("#errors_form_div").html("<%= @errors_form %>")
 <% end %>
