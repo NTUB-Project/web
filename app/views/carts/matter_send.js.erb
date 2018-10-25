@@ -1,13 +1,16 @@
 $("#modal-window").find(".modal-content").html("<%= j (render 'matter_send') %>");
+$(".modal-header").css("background", "#BFD8D8")
 $("#modal-window").modal();
 <% if @matter != nil %>
   <% if @matter.errors.any? %>
     <% @matter.errors.full_messages.each do |msg| %>
     $("#errors_div").html("<%= msg %>")
     <% end %>
+    $(".modal-header").css("background", "#E06767")
   <% end %>
 <% end %>
 
 <% if @errors != nil %>
+  $(".modal-header").css("background", "#E06767")
   $("#errors_div").html("<%= @errors %>")
 <% end %>
