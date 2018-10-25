@@ -1,12 +1,12 @@
 <div class="modal-header">
   <% if @matter_form!= nil %>
       <% if @matter_form.errors.any? %>
-        <h5 class="modal-title" id="myModalLabel">錯誤</h5>
+        <h4 class="modal-title" id="myModalLabel">錯誤</h4>
       <% else %>
-        <h5 class="modal-title" id="myModalLabel">預覽</h5>
+        <h4 class="modal-title" id="myModalLabel">預覽</h4>
       <% end %>
     <% else %>
-      <h5 class="modal-title" id="myModalLabel">錯誤</h5>
+      <h4 class="modal-title" id="myModalLabel">錯誤</h4>
   <% end %>
 
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -21,7 +21,7 @@
     <% i = 0 %>
     <% if @products != nil %>
       <% @products.each do |product|%>
-        <%= product.name %>，您好！<br/>
+        <span><%= product.name %></span>，您好！<br/>
         <% case product.category_id %>
         <% when 1 %>
           <div>
