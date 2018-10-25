@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    debugger
     if user_signed_in?
       if Comment.find_by(user_id: current_user.id, product_id: @product_id).blank?
         @comment = @product_id.comments.new(comment_params)
