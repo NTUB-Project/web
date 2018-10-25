@@ -7,7 +7,7 @@
 			  <ul class="cd-slider">
           <% for images in comment.images %>
             <% if comment.images.present? %>
-              <li><%= image_tag(image.thumb.url)  %></li>
+              <li><%= image_tag(images.thumb.url)  %></li>
             <% end %>
           <% end %>
 				</ul>
