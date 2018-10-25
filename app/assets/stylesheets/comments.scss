@@ -60,10 +60,8 @@ div.message2{
   .trace_delete .btn:hover{
     color: DarkCyan;
   }
-  .commentcontent{
-    padding-top: 10px;
-  }
   .commentime{
+    font-size: 14px;
     position: relative;
     color: gray;
     bottom: -18px;
@@ -72,5 +70,26 @@ div.message2{
     position: absolute;
     bottom: 5px;
     right: 5px;
+  }
+  ul{
+    list-style-type: none;
+  }
+  .cardscroll{
+  	overflow: auto;
+  	height: 40px;
+  }
+  .cardscroll::-webkit-scrollbar {
+      width: 8px;
+  }
+  .cardscroll::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+  }
+  .cardscroll::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      background: gray; 
+      -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
   }
 }

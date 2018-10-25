@@ -17,7 +17,7 @@
     <div class="col-md-8 col-lg-9 card-text">
       <h4><%= comment.user.email.split('@').first%></h4>
       <p><div class="star-rating" data-score= <%= comment.rating %> ></div></p>
-      <div class="commentcontent"><%= comment.content %></div>
+      <div class="commentcontent cardscroll"><%= comment.content %></div>
       <p class="commentime"><%= comment.updated_at.strftime("%Y-%m-%d")%></p>
     </div>
     <div class="trace_delete">

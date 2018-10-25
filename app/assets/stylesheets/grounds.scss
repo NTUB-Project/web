@@ -31,7 +31,6 @@
 	overflow: auto;
 	height: 170px;
 }
-
 .cardscroll::-webkit-scrollbar {
     width: 8px;
 }
@@ -72,7 +71,11 @@ div.detail{
 	border-radius: 10px;
 	padding: 50px;
 }
+.name p{
+	font-size: 36px;
+}
 div.introduce{
+	height: 150px;
 	h2{
 		p{
 			margin: 0px 50px 1rem 50px;

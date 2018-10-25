@@ -42,10 +42,10 @@
               <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
               <label class="form-check-label" for="Radios2">
                 分開信件內容
-              </label></p>
+              </label>
               <% @product.each do |product| %>
                 給<%= product.name %>的信件內容：
-                <input name="<%= product.id %>" id="<%= product.id %>" class="form-control string required" disabled /> </p>
+                <input name="<%= product.id %>" id="<%= product.id %>" class="form-control string required" disabled />
               <% end %>
             </div>
           <% else %>

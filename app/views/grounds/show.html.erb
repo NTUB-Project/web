@@ -8,28 +8,22 @@
 	    </div>
       
 			<div class="name">
-				<h1><%= ground.name %><span class="star-rating" data-score=<%= @avg_rating %> style="font-size: 20px;	padding-left: 10px;"></span></h1>
-	      	<%= "#{@comment.length} 則留言"%>
+				<p><%= ground.name %>
+					<span class="star-rating" data-score=<%= @avg_rating %> style="font-size: 20px;	padding-left: 10px;"></span>
+					<span style="font-size: 14px"><%= "[ #{@comment.length} 則留言 ]"%></span>
+				</p>
 			</div>
-			
-			<% for images in ground.images_urls %>
-        <a data-fancybox="gallery">
-          <%= link_to image_tag(images, width: '200px',height: '250px'), ground if ground.images.present?%>
-        </a>
-      <% end %>
       
       <div class="bnb-images">
-      	<div class="lg-img bnb-image" style="background-image:url(../uploads/product/images/1/20180426_085010.jpg)"></div>
-	      	<div class="bnb-image sm-img-1" style="background-image:url(../uploads/product/images/1/20180530_015216.jpg)"></div>
-	      	<div class="bnb-image sm-img-2" style="background-image:url(../uploads/product/images/1/20180614_095006.jpg)"></div>
-	      	<div class="bnb-image sm-img-3" style="background-image:url(../uploads/product/images/1/20180614_095006.jpg)">
+      	<div class="lg-img bnb-image" style="background-image:url(<%= ground.images_urls[0] %>)"></div>
+	      	<div class="bnb-image sm-img-1" style="background-image:url(<%= ground.images_urls[1] %>)"></div>
+	      	<div class="bnb-image sm-img-2" style="background-image:url(<%= ground.images_urls[2] %>)"></div>
+	      	<div class="bnb-image sm-img-3" style="background-image:url(<%= ground.images_urls[0] %>)">
       		<div class="bnb-image-layer"></div>
       		<p class="more-images">查看更多</p>
       	</div>
       	<div class="clearfix"></div>
       </div>
-      
-      
       
 			<div class="introduce">
 				<h2 class="eachProgramTitle">簡介</h2>
@@ -38,10 +32,10 @@
 		
 			<h2 class="eachProgramTitle">內容</h2>
 				<div class="row">
-					<div class="col-3"><h5>設備</h5></div>
-					<div class="col-3"><h5>活動類型</h5></div>
-					<div class="col-3"><h5>優惠活動</h5></div>
-					<div class="col-3"><h5>額外限制</h5></div>
+					<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
+					<div class="col-3"><h5><%=image_tag('list.png', size: '20')%> 活動類型</h5></div>
+					<div class="col-3"><h5><%=image_tag('sale.png', size: '20')%> 優惠活動</h5></div>
+					<div class="col-3"><h5><%=image_tag('lock.png', size: '20')%> 額外限制</h5></div>
 				</div>
 				<div class="row" style="height: 100px">
 					<div class="col-3"><%= ground.equipment %></div>
@@ -51,9 +45,9 @@
 				</div>
 
 			<h2 class="eachProgramTitle">聯絡資訊</h2>
-			<p>電話:  <%= ground.tel %></p>
-			<p>信箱:  <%= ground.email %></p>
-			<p>網站:  <%= ground.url %></p>
+			<p><%=image_tag('tel.png', size: '20')%> 電話：  <%= ground.tel %></p>
+			<p><%=image_tag('mail2.png', size: '20')%> 信箱：  <%= ground.email %></p>
+			<p><%=image_tag('home.png', size: '20')%> 網站：  <%= ground.url %></p>
 		
 			<h2 class="eachProgramTitle">地理位置
 				<span class="pull-right"><%= ground.location %></span>
