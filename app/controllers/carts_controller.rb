@@ -77,7 +77,6 @@ before_action :current_cart
   end
 
   def matter
-
     @product = Product.where(id: params[:item_id])
     @item_id = params[:item_id]
     @matter = Matter.new
