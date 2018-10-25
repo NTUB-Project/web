@@ -61,8 +61,10 @@ before_action :current_cart
       find_item = CartItem.where(user_id: current_user.id, product_id: params[:id])
       if find_item.blank? && count < 5
         CartItem.create(user_id: current_user.id , cart_id: current_cart , product_id: params[:id])
+        redirect_back(fallback_location: root_path, notice: "加入蒐藏")
       else
-        redirect_to root_path ,alert: "此類別的蒐藏已滿囉!" if find_item.blank?
+        redirect_back(fallback_location: root_path, alert: "已蒐藏過囉！") unless find_item.blank?
+        redirect_back(fallback_location: root_path, alert: "此類別的蒐藏已滿囉!")  if find_item.blank?
       end
 
     else
@@ -77,10 +79,14 @@ before_action :current_cart
   end
 
   def matter
-    @product = Product.where(id: params[:item_id])
-    @item_id = params[:item_id]
-    @matter = Matter.new
-    @category = Product.find(params[:item_id][0].to_i).category_id
+    if params[:item_id] == nil
+      redirect_back(fallback_location: root_path, alert: "您還未選擇廠商！")
+    else
+      @product = Product.where(id: params[:item_id])
+      @item_id = params[:item_id]
+      @matter = Matter.new
+      @category = Product.find(params[:item_id][0].to_i).category_id
+    end
   end
 
   def matter_send
