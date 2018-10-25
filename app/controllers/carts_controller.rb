@@ -206,7 +206,6 @@ before_action :current_cart
       @matter_form = current_user.matter_forms.new(matter_form_params)
       @matter_form.memo = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
       @products = Product.where(id: @item_id)
-      debugger
     end
   end
 
