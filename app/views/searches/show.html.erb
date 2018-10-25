@@ -1,48 +1,58 @@
-<div class="content	">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<div class="content">
   <% @products.each do |product| %>
-		<button type="button" class="addbtn" >
-			<%= link_to 'Collect', add_cart_path(product), method: "post" %>
-		</button>
-		<button type="button" class="connectbtn">
-			<%= link_to 'Connect' ,product.url %>
-		</button>
+
 		<div class="detail">
-      <div class="star-rating" data-score=<%= @avg_rating %> ></div>
-      <em><%= "#{@comments.length} 則留言"%></em>
-			<div class="name"><h1><%= product.name %></h1></div>
+			<div class="addbtn">
+	      <%= link_to '♡ 加入蒐藏', add_cart_path(product), method: "post", class: "btn" %>
+	    </div>
+      
+			<div class="name">
+				<p><%= product.name %>
+					<span class="star-rating" data-score=<%= @avg_rating %> style="font-size: 20px;	padding-left: 10px;"></span>
+					<span style="font-size: 14px"><%= "[ #{@comments.length} 則留言 ]"%></span>
+				</p>
+			</div>
+      
+      <div class="bnb-images">
+      	<div class="lg-img bnb-image" style="background-image:url(<%= product.images_urls[0] %>)"></div>
+	      	<div class="bnb-image sm-img-1" style="background-image:url(<%= product.images_urls[1] %>)"></div>
+	      	<div class="bnb-image sm-img-2" style="background-image:url(<%= product.images_urls[2] %>)"></div>
+	      	<div class="bnb-image sm-img-3" style="background-image:url(<%= product.images_urls[0] %>)">
+      		<div class="bnb-image-layer"></div>
+      		<p class="more-images">查看更多</p>
+      	</div>
+      	<div class="clearfix"></div>
+      </div>
+      
 			<div class="introduce">
-				<h2>簡介</h2>
-				<p><%= product.name %></p>
+				<h2 class="eachProgramTitle">簡介</h2>
+				<%= product.description %>
 			</div>
-		</div>
-		<div class="detail2">
-      <% for images in product.images_urls %>
-        <a data-fancybox="gallery">
-          <%= link_to image_tag(images, width: '200px',height: '250px'), product if product.images.present?%>
-        </a>
-      <% end %>
-		</div>
-		<div class="detail3">
-			<div class="icons">
-			  <%= image_tag("projector.png")%>
-			  <%= image_tag("computer.png")%>
-			  <%= image_tag("sofa.png")%>
-			  <%= image_tag("drum-set.png")%>
-			  <%= image_tag("karaoke.png")%>
-			  <%= image_tag("parking.png")%>
-			  <%= image_tag("speaker.png")%>
-			  <%= image_tag("spotlight.png")%>
-			  <%= image_tag("stage.png")%>
-			</div>
-		</div>
-		<div class="detail4">
-			<h2>聯絡資訊</h2>
-			<p>電話號碼：<%= product.tel %></p>
-			<p>地址：<%= product.location %></p>
-		</div>
-		<div class="detail5">
-			<h2>地理位置</h2>
-      <div id="map" style="width:100%;height:400px">地圖預留</div>
+		
+			<h2 class="eachProgramTitle">內容</h2>
+				<div class="row">
+					<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
+					<div class="col-3"><h5><%=image_tag('list.png', size: '20')%> 活動類型</h5></div>
+					<div class="col-3"><h5><%=image_tag('sale.png', size: '20')%> 優惠活動</h5></div>
+					<div class="col-3"><h5><%=image_tag('lock.png', size: '20')%> 額外限制</h5></div>
+				</div>
+				<div class="row" style="height: 100px">
+					<div class="col-3"><%= product.equipment %></div>
+					<div class="col-3"><%= product.item %></div>
+					<div class="col-3"><%= product.activity %></div>
+					<div class="col-3"><%= product.limit %></div>
+				</div>
+
+			<h2 class="eachProgramTitle">聯絡資訊</h2>
+			<%=image_tag('tel.png', size: '20')%> 電話：  <%= product.tel %></br></br>
+			<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= product.email %></br></br>
+			<%=image_tag('home.png', size: '20')%> 網站：  <%= product.url %>
+		
+			<h2 class="eachProgramTitle">地理位置
+				<span class="pull-right"><%= product.location %></span>
+			</h2>
+      <div id="map" style="width:100%; height:400px">地圖預留</div>
 		</div>
 
 		<%=render "comments/index" %>
@@ -53,6 +63,5 @@
 <div class="backtotop">
 	<a class="top" href="#"> <%= image_tag("top-arrow.png")%></a>
 </div>
-
 
 <%=render "shared/vendormapjs" %>
