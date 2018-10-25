@@ -4,7 +4,7 @@
     <%= f.input :school, label: "學校/單位：", placeholder: 'ex: 國立臺北商業大學資管系' %>
     <%= f.input :date, label: "活動日期：", as: :datetime, start_year: Date.today.year, end_year: Date.today.year + 5 %>
     <%= f.input :people, label: "預估活動人數：", placeholder: 'ex: 10、20、30' %>
-    <%= f.input :location, label: "活動地點：", placeholder: 'ex: 台北市信義區xx路xx號xx樓' %>
+    <%= f.input :activity_location, label: "活動地點：", placeholder: 'ex: 台北市信義區xx路xx號xx樓' %>
     <% if @product.count > 1 %>
       <div class="form-check">
         <input class="form-check-input" type="radio" name="Radios" id="FM_Radios1" value="option1" checked>
