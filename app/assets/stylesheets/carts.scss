@@ -134,6 +134,13 @@ div.message1{
   border: 0;
   border-color: #2b837a;
 }
+.textinput{
+  width: 100%;
+  height: 100px;
+}
+textarea:disabled{
+  background: #e9ecef;
+}
 
 //寄信預覽
 .modal-header{
