@@ -6,14 +6,13 @@
 			<div class="addbtn">
 	      <%= link_to '♡ 加入蒐藏', add_cart_path(ground), method: "post", class: "btn" %>
 	    </div>
-      
+
 			<div class="name">
 				<p><%= ground.name %>
 					<span class="star-rating" data-score=<%= @avg_rating %> style="font-size: 20px;	padding-left: 10px;"></span>
 					<span style="font-size: 14px"><%= "[ #{@comment.length} 則留言 ]"%></span>
 				</p>
 			</div>
-      
       <div class="bnb-images">
       	<a class="fancybox" rel="group" href="<%= ground.images_urls[0] %>">
       		<div class="lg-img bnb-image" style="background-image:url(<%= ground.images_urls[0] %>)"></div>
@@ -22,22 +21,22 @@
 	      	<div class="bnb-image sm-img-1" style="background-image:url(<%= ground.images_urls[1] %>)"></div>
 	      </a>
 	      <a class="fancybox" rel="group" href="<%= ground.images_urls[2] %>">
-	      	<div class="bnb-image sm-img-2 fancybox" style="background-image:url(<%= ground.images_urls[2] %>)"></div>
+	      	<div class="bnb-image sm-img-2" style="background-image:url(<%= ground.images_urls[2] %>)"></div>
 	      </a>
 	      <a class="fancybox" rel="group" href="<%= ground.images_urls[0] %>">
-	      	<div class="bnb-image sm-img-3 fancybox" style="background-image:url(<%= ground.images_urls[0] %>)">
+	      	<div class="bnb-image sm-img-3" style="background-image:url(<%= ground.images_urls[0] %>)">
 	      		<div class="bnb-image-layer"></div>
 	      		<p class="more-images">查看更多</p>
       		</div>
       	</a>
       	<div class="clearfix"></div>
       </div>
-      
+
 			<div class="introduce">
 				<h2 class="eachProgramTitle">簡介</h2>
 				<%= ground.description %>
 			</div>
-		
+
 			<h2 class="eachProgramTitle">內容</h2>
 				<div class="row">
 					<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
@@ -56,7 +55,7 @@
 			<%=image_tag('tel.png', size: '20')%> 電話：  <%= ground.tel %></br></br>
 			<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= ground.email %></br></br>
 			<%=image_tag('home.png', size: '20')%> 網站：  <%= ground.url %>
-		
+
 			<h2 class="eachProgramTitle">地理位置
 				<span class="pull-right"><%= ground.location %></span>
 			</h2>
