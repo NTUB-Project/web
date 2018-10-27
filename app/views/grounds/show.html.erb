@@ -15,13 +15,21 @@
 			</div>
       
       <div class="bnb-images">
-      	<div class="lg-img bnb-image" style="background-image:url(<%= ground.images_urls[0] %>)"></div>
+      	<a class="fancybox" rel="group" href="<%= ground.images_urls[0] %>">
+      		<div class="lg-img bnb-image" style="background-image:url(<%= ground.images_urls[0] %>)"></div>
+      	</a>
+      	<a class="fancybox" rel="group" href="<%= ground.images_urls[1] %>">
 	      	<div class="bnb-image sm-img-1" style="background-image:url(<%= ground.images_urls[1] %>)"></div>
-	      	<div class="bnb-image sm-img-2" style="background-image:url(<%= ground.images_urls[2] %>)"></div>
-	      	<div class="bnb-image sm-img-3" style="background-image:url(<%= ground.images_urls[0] %>)">
-      		<div class="bnb-image-layer"></div>
-      		<p class="more-images">查看更多</p>
-      	</div>
+	      </a>
+	      <a class="fancybox" rel="group" href="<%= ground.images_urls[2] %>">
+	      	<div class="bnb-image sm-img-2 fancybox" style="background-image:url(<%= ground.images_urls[2] %>)"></div>
+	      </a>
+	      <a class="fancybox" rel="group" href="<%= ground.images_urls[0] %>">
+	      	<div class="bnb-image sm-img-3 fancybox" style="background-image:url(<%= ground.images_urls[0] %>)">
+	      		<div class="bnb-image-layer"></div>
+	      		<p class="more-images">查看更多</p>
+      		</div>
+      	</a>
       	<div class="clearfix"></div>
       </div>
       
@@ -65,3 +73,9 @@
 </div>
 
 <%=render "shared/vendormapjs" %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
