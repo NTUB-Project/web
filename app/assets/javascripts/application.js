@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require underscore-min
 //= require gmaps/google
+//= require jquery
 //= require fancybox
 //= require_tree .
 

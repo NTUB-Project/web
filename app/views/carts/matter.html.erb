@@ -36,7 +36,7 @@
               </label></p>
               <% @product.each do |product| %>
                 給<%= product.name %>的信件內容：
-                <input name="<%= product.id %>" id="<%= product.id %>" class="form-control string required" disabled /> </p>
+                <textarea name="<%= product.id %>" id="<%= product.id %>" class="form-control string required textinput" disabled /> </textarea>
               <% end %>
             </div>
           <% else %>
