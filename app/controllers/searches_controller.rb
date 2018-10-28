@@ -115,14 +115,15 @@ class SearchesController < ApplicationController
       marker.infowindow hash.product.name
     end
     @products = Product.where(id: params[:id])
-    product_id = Product.find(params[:id])
-    @comments = product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
+    @product_id = Product.find(params[:id])
+    @comments = @product_id.comments.order('created_at desc' ).paginate(page: params[:page], per_page: 5)
+    @comment = @product_id.comments
     el = 0
     sum = 0
-    @comments.each do |i|
-      el = i.rating
+    @comment.each do |i|
+      el = i.rating if i.rating != nil
       sum = sum + el
-      @avg_rating =  sum / @comments.count
+      @avg_rating =  sum / @comment.count
     end
   end
 

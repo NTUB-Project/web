@@ -38,6 +38,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [400,400]
   end
 
+   version :big do #設同時切其他size的版本-medium
+
+     process resize_to_fill: [600,600]
+   end
+
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
