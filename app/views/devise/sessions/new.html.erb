@@ -4,9 +4,10 @@
     <div class="login">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
-        <%= f.input :email,  label:'信箱：', placeholder: 'ex: user@gmail.com',required: false, autofocus: true %>
-        <%= f.input :password,  label:'密碼：', required: false %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.label :email, "信箱：" %>
+        <%= f.text_field :email , placeholder: 'ex: user@gmail.com',required: false, autofocus: true%>
+        <%= f.label :password, "密碼：" %>
+        <%= f.text_field :password , required: false%>
       </div>
       <div class="form-actions">
         <%= f.button :submit, "登入", class: "btn" %>

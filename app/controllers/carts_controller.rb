@@ -123,7 +123,7 @@ before_action :current_cart
       }
       respond_to do |format|
         if @matter.save
-          flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」"
+          flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」，廠商將回信至用戶的註冊信箱，請耐心等待!"
           format.html { redirect_to controller: "carts", action: "show"}
           format.js   { render js: "window.location.href='#{cart_path}'"}
         end
