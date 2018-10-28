@@ -77,7 +77,7 @@
         符合條件共<%=@search%>家廠商
         <% @products.each do |product| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(product.images_urls[0], width: '200px',height: '250px'), product if product.images.present?%>
+              <%= image_tag(product.images_urls[0], width: '200px',height: '250px') if product.images.present?%>
               <div class="card-body">
 
                 <div class="row">
