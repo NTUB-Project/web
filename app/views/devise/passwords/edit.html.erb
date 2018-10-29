@@ -9,15 +9,16 @@
         <%= f.full_error :reset_password_token %>
       
         <div class="form-inputs">
-          <%= f.input :password, label: "新密碼：", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-          <%= f.input :password_confirmation, label: "確認新密碼：", required: true %>
+          <%= f.label :password, "　新密碼：" %>
+          <%= f.text_field :password , required: true, autofocus: true%>
+          <%= f.label :password_confirmation, "確認密碼：" %>
+          <%= f.text_field :password_confirmation,required: true%>
         </div>
-      
+        
         <div class="form-actions">
           <%= f.button :submit, "確定" %>
         </div>
       <% end %>
-      
       <div class="devise_link">
         <%= render "devise/shared/links" %>
       </div>

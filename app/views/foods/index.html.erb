@@ -50,7 +50,7 @@
         符合條件共<%=@search%>家廠商
         <% @foods.each do |food| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(food.images_urls[0], width: '200px',height: '250px'), food if food.images.present?%>
+              <%= image_tag(food.images_urls[0], width: '200px',height: '250px') if food.images.present?%>
               <div class="card-body">
                 <div class="row">
 

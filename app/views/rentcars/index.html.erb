@@ -52,7 +52,7 @@
         符合條件共<%=@search%>家廠商
         <% @rentcars.each do |rentcar| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(rentcar.images_urls[0], width: '200px',height: '250px'), rentcar if rentcar.images.present?%>
+              <%= image_tag(rentcar.images_urls[0], width: '200px',height: '250px') if rentcar.images.present?%>
               <div class="card-body">
 
                 <div class="row">

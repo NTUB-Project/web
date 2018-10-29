@@ -59,7 +59,6 @@ body{
   font-family: '微軟正黑體', sans-serif;
 }
 
-
 //footer
 span.title{
   color: rgb(27,189,54);
@@ -165,6 +164,15 @@ div.login .devise_btn{
   border: #73aea8;
   color: #fff;
 }
+form input{
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px;
+}
+small{
+  margin-bottom: 10px;
+}
 
 //活動性質篩選
 div.activitycontent{
@@ -178,14 +186,6 @@ div.activitycontent{
 }
 #searchPageLeftColumn .filter-list.filter-list-react {
   margin: 0;
-}
-.filters-header-text {
-  padding: 13px;
-  font-size: 16px;
-  font-weight: 700;
-  border-bottom: 1px solid #ddd;
-  background-color: #5392f9;
-  color: #fff;
 }
 .filter-list ul {
   margin: 0 0 20px;
@@ -343,4 +343,81 @@ div.activitycontent{
 //fancybox
 #fancybox-close{
   right: -35px;
+}
+
+
+//寄件夾
+.mattercontent{
+  padding-top: 100px;
+	height: auto;
+	h2{
+	  font-weight: 600;
+	  color: #075950;
+	  text-align: center;
+	  letter-spacing: 3px;
+	}
+	.container{
+	  width: 70%;
+	}
+	.matter_menu{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+	right: auto;
+	left: auto;
+  }
+  .matter_title {
+    margin-top: 10px;
+    text-align: center;
+    font-family: '微軟正黑體';
+  }
+  .matter_title button{
+    border: 0;
+    background: #fff;
+    padding-right: 50px;
+  }
+  .matter_title button img{
+    margin-right: 5px;
+  }
+  .matter_title > div {
+    display: inline-block;
+    font-size: 24px;
+    margin: 0 10px;
+  }
+  .matter_title > div :hover{
+    color: #2b837a;
+    text-decoration: underline;
+  }
+  .click_log{
+    letter-spacing: 3px;
+  }
+  .categor{
+    padding-bottom: 40px;
+  }
+}
+thead{
+  background: #bfdad7;
+}
+thead th:nth-child(1),tbody td:nth-child(1){
+  width: 100px;
+}
+thead th:nth-child(2),tbody td:nth-child(2){
+  width: 250px;
+}
+.tbody  td:nth-child:hover{
+  background: #000;
+}
+
+@media (max-width: 1000px) {
+  thead th:nth-child(1),tbody td:nth-child(1){
+  width: 30px;
+  }
+  thead th:nth-child(2),tbody td:nth-child(2){
+    width: 100px;
+  }
+  .tbody  td:nth-child:hover{
+    background: #000;
+  }
+
 }

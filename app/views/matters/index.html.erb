@@ -1,69 +1,138 @@
-</br>
-</br>
-</br>
-</br>
-<% @matter.each do |matter| %>
-廠商：<%= matter.product.name %></p>
-內容：<%= matter.mattertext %></p>
-<% end %></p>
+<div class="mattercontent">
+  <div class="container">
+  <div class="matter_menu">
+  	<%= image_tag("mymail.jpg",width: '99%')%>
+  	<div class="matter_title">
+  		<div><button class="click_log" id="Selfbtn" onclick="openCategory('Self'),changeColor('Selfbtn')"><%= image_tag("edit.png", size: '25')%> 自行輸入信件</button></div>
+  		<div><button class="click_log" id="Formbtn" onclick="openCategory('Form'),changeColor('Formbtn')"><%= image_tag("table.png", size: '25')%> 表格信件</button></div>
+  	</div>
+  </div>
 
-<% @matter_form.each do |matter_form| %>
-廠商：<%= matter_form.product.name %></p>
-  <% case matter_form.product.category.title %>
-    <% when "場地" %>
-    <div>
-      我們是<%= matter_form.school %>，
-      將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
-      參加人數大約為<%= matter_form.people %>人，
-      請問是否能跟您租借場地？
-      備註：<%= matter_form.memo %>
-    </div></p>
-    <% when "食物" %>
-    <div>
-      我們是<%= matter_form.school %>，
-      將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
-      地點在<%= matter_form.activity_location %>
-      參加人數大約為<%= matter_form.people %>人，
-      葷食人數大約為<%= matter_form.vegetarian %>人，
-      素食人數大約為<%= matter_form.non_vegetarian %>人，
-      <% if matter_form.expect_menu != "無" %>
-      必要的菜色有：<%= matter_form.expect_menu %>，
-      <% end %>
-      預算是<%= matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。
-      備註：<%= matter_form.memo %>
-    </div></p>
-    <% when "租車" %>
+  <div id="Self" class="categor">
+    <% if @matter.blank? %>
+    <h2>目前無自行輸入信件!</h2>
+    <% else %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">廠商名</th>
+          <th scope="col">信件內容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @matter.each do |matter| %>
+        <tr>
+          <td><%= matter.id %></td>
+          <td><%= matter.product.name %></td>
+          <td><%= matter.mattertext %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+  
+  <div id="Form" class="categor" style="display:none">
+    <% if @matter_form.blank? %>
+    <h1>目前無表格信件!</h1>
+    <%else%>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">廠商名</th>
+          <th scope="col">信件內容</th>
+        </tr>
+      </thead>
+      <tbody>
+         <% @matter_form.each do |matter_form| %>
+        <tr>
+          <td><%= matter_form.id %></td>
+          <td><%= matter_form.product.name %></td>
+          <td>
+            <% case matter_form.product.category.title %>
+      <% when "場地" %>
+      <div>
+        我們是<%= matter_form.school %>，
+        將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+        參加人數大約為<%= matter_form.people %>人，
+        請問是否能跟您租借場地？
+        備註：<%= matter_form.memo %>
+      </div></p>
+      <% when "食物" %>
       <div>
         我們是<%= matter_form.school %>，
         將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
         地點在<%= matter_form.activity_location %>
         參加人數大約為<%= matter_form.people %>人，
-        請問大概要包幾台車以及價格為多少？
+        葷食人數大約為<%= matter_form.vegetarian %>人，
+        素食人數大約為<%= matter_form.non_vegetarian %>人，
+        <% if matter_form.expect_menu != "無" %>
+        必要的菜色有：<%= matter_form.expect_menu %>，
+        <% end %>
+        預算是<%= matter_form.budget %>元，麻煩請給我們估價單及菜色單，謝謝。
         備註：<%= matter_form.memo %>
       </div></p>
-    <% when "設備" %>
-      <div>
-        我們是<%= matter_form.school %>，
-        將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
-        地點在<%= matter_form.activity_location %>，
-        請問能跟您租<%= matter_form.device %>嗎？
-        備註：<%= matter_form.memo %>
-      </div></p>
-    <% when "印刷" %>
-      <div>
-        我們是<%= matter_form.school %>，
-        將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
-        我們想要印刷<%= matter_form.size %>件，
-        請問價格多少？
-        備註：材質為<%= matter_form.material %>，<%= matter_form.memo %>
-      </div></p>
-    <% when "舞台服" %>
-      <div>
-        我們是<%= matter_form.school %>，
-        將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
-        我們想要租借<%= matter_form.material %><%= matter_form.size %>件，
-        請問價格多少？
-        備註：<%= matter_form.memo %>
-      </div></p>
-  <% end %>
-<% end %></p>
+      <% when "租車" %>
+        <div>
+          我們是<%= matter_form.school %>，
+          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          地點在<%= matter_form.activity_location %>
+          參加人數大約為<%= matter_form.people %>人，
+          請問大概要包幾台車以及價格為多少？
+          備註：<%= matter_form.memo %>
+        </div></p>
+      <% when "設備" %>
+        <div>
+          我們是<%= matter_form.school %>，
+          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          地點在<%= matter_form.activity_location %>，
+          請問能跟您租<%= matter_form.device %>嗎？
+          備註：<%= matter_form.memo %>
+        </div></p>
+      <% when "印刷" %>
+        <div>
+          我們是<%= matter_form.school %>，
+          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          我們想要印刷<%= matter_form.size %>件，
+          請問價格多少？
+          備註：材質為<%= matter_form.material %>，<%= matter_form.memo %>
+        </div></p>
+      <% when "舞台服" %>
+        <div>
+          我們是<%= matter_form.school %>，
+          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          我們想要租借<%= matter_form.material %><%= matter_form.size %>件，
+          請問價格多少？
+          備註：<%= matter_form.memo %>
+        </div></p>
+    <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+
+  </div>
+</div>
+
+<script>
+function openCategory(categoryName) {
+  var i;
+  var x = document.getElementsByClassName("categor");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  document.getElementById(categoryName).style.display = "block";
+}
+function changeColor(btnName) {
+  var x = document.getElementsByClassName("click_log");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.color = "black";
+  }
+  document.getElementById(btnName).style.color = "TEAL";
+}
+</script>
