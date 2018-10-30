@@ -6,12 +6,12 @@
         <%= f.error_notification %>
           <div class="form-group">
             <%= f.label :email, "　信　箱：" %>
-            <%= f.text_field :email , placeholder: 'ex: user@gmail.com',required: true, autofocus: true%>
+            <%= f.email_field :email , placeholder: 'ex: user@gmail.com',required: true, autofocus: true%>
             <%= f.label :password, "　密　碼：" %>
-            <%= f.text_field :password , required: true%>
+            <%= f.password_field :password , required: true%>
             <small class="form-text text-muted">※請使用6個字元以上的英文字母、數字和符號</small>
             <%= f.label :password_confirmation, "確認密碼：" %>
-            <%= f.text_field :password_confirmation , required: true%>
+            <%= f.password_field :password_confirmation , required: true%>
           </div>
           
         <div class="form-actions">

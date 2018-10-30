@@ -6,16 +6,16 @@
         <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.label :email, "　信　箱：" %>
-          <%= f.text_field :email , placeholder: 'ex: user@gmail.com',required: true, autofocus: true%>
+          <%= f.email_field :email , placeholder: 'ex: user@gmail.com',required: true, autofocus: true%>
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
           <% end %>
           <%= f.label :password, "　新密碼：" %>
-          <%= f.text_field :password , autocomplete: "off", required: false%>
+          <%= f.password_field :password , autocomplete: "off", required: false%>
           <%= f.label :password_confirmation, "確認密碼：" %>
-          <%= f.text_field :password_confirmation,required: false%>
+          <%= f.password_field :password_confirmation,required: false%>
           <%= f.label :current_password, "目前密碼：" %>
-          <%= f.text_field :current_password ,required: true%>
+          <%= f.password_field :current_password ,required: true%>
         </div>
         
         <div class="form-actions">
