@@ -1,12 +1,8 @@
 <div class="modal-header ">
-  <% if @matter_form!= nil %>
-      <% if @matter_form.errors.any? %>
-        <h4 class="modal-title" id="myModalLabel">錯誤</h4>
-      <% else %>
-        <h4 class="modal-title" id="myModalLabel">預覽</h4>
-      <% end %>
-    <% else %>
-      <h4 class="modal-title" id="myModalLabel">錯誤</h4>
+  <% if @errors_matter_form_send != nil %>
+    <h4 class="modal-title" id="myModalLabel">錯誤</h4>
+  <% else %>
+    <h4 class="modal-title" id="myModalLabel">預覽</h4>
   <% end %>
 
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,11 +10,10 @@
   </button>
 </div>
 <div class="modal-body">
-<% if @matter_form!= nil %>
-  <% if @matter_form.errors.any? %>
+<% if @errors_matter_form_send != nil %>
   <div id="errors_form_div"></div>
-  <% else %>
-    <% i = 0 %>
+<% else %>
+  <% i = 0 %>
     <% if @products != nil %>
       <% @products.each do |product|%>
         <span><%= product.name %></span>，您好！<br/>
@@ -111,8 +106,5 @@
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
-<% else %>
-<div id="errors_form_div"></div>
 <% end %>
 </div>
