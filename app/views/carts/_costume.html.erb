@@ -3,7 +3,7 @@
     <div class="message1">
       <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
         <div class="col-md-4 col-lg-3">
-          <% if item.product.email != "無" && item.product.email != "" %>
+          <% if item.product.email != "無" && item.product.email != "" && item.product.eamil != "NONE"%>
             <%= check_box_tag "item_id[]",item.product.id %>
           <% end %>
           <%= image_tag('logo.png', width: '100',height: '100px')%>
