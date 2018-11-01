@@ -2,32 +2,8 @@
   <p id="notice"><%= notice %></p>
   <h1>尋找附近</h1>
   <div class="container">
-  <div class="row">
-    <div class="col-md-12 col-lg-6">
-      <div id="map" style="width:100%; height:600px;">地圖預留</div>
-    </div>
-
-    <div class="col-md-12 col-lg-6">
-      <div class="row">
-        <% @products.each do |product| %>
-        <div class="col-6" style="margin-bottom: 20px">
-          <div class="nearly">
-            <div class="gmap-images">
-            	<div class="lg-img gmap-image" style="background-image:url(<%= product.images_urls[0] %>)"></div>
-            </div>
-            <h5><%= product.name %></h5>
-            <p>性質：<%= product.item %></p>
-            <p>地址：<%= product.location %></p>
-            <p>電話：<%= product.tel %></p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-
-    </div>
+    <div id="map" style="width:100%; height:800px;">地圖預留</div>
   </div>
-  </div>
-
 </div>
 
 
