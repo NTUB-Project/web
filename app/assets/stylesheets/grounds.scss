@@ -45,6 +45,25 @@
     background: #2b837a; 
     -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
 }
+.index-images {
+    width: 200px;
+}
+.image-centered, .index-images .lg-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.index-image-container, .index-images .lg-img {
+    display: block;
+    float: left;
+}
+
+.index-images .lg-img {
+    width: 100%;
+    height: 250px;
+    margin-right: 8px;
+}
+
 
 //show頁面
 div.content{
@@ -73,6 +92,7 @@ div.detail{
 }
 .name p{
 	font-size: 36px;
+	line-height: 36px;
 }
 div.introduce{
 	height: 150px;
@@ -161,7 +181,7 @@ div.introduce{
 div.backtotop{
 	position: fixed;
 	right: 11%;
-	bottom: 20%;
+	bottom: 5%;
 }
 a.top{
 	border-radius: 50%;
@@ -185,6 +205,6 @@ a.top img{
   div.backtotop{
 	position: fixed;
 	right: 3%;
-	bottom: 20%;
+	bottom: 5%;
 }
 }

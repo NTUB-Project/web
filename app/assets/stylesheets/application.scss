@@ -175,7 +175,7 @@ div.login .devise_btn{
   border: #73aea8;
   color: #fff;
 }
-form input{
+.login form input{
   padding: 5px 10px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -333,24 +333,51 @@ div.activitycontent{
 }
 .nearly{
   border: 1px solid gray;
-  border-radius: 5px;
-  height: 300px;
+  border-radius: 2px;
+  height: 290px;
   background: rgba(176, 239, 239, 0.1);
   h5{
+    margin: 0 auto;
     color: Teal;
     padding-top: 10px;
+    line-height: 30px;
+    white-space: nowrap; 
+    width: 95%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
+  p{
+    padding-left: 15px;
+    text-align: left;
+    margin: 10px 0;
+    white-space: nowrap; 
+    width: 95%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
   }
 }
 .nearly:hover {
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
     transition: 300ms;
   }
-.map{
-  position: fixed;
-  left: 0;
-  bottom: 0;
+.gmap-images {
+    width: 100%;
+}
+.image-centered, .gmap-images .lg-img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.gmap-image-container, .gmap-images .lg-img {
+    display: block;
+    float: left;
 }
 
+.gmap-images .lg-img {
+    width: 100%;
+    height: 150px;
+    margin-right: 8px;
+}
 
 //蒐藏庫寄信頁面
 .nav-tabs{
@@ -366,6 +393,7 @@ div.activitycontent{
 //fancybox
 #fancybox-close{
   right: -35px;
+  display: none;
 }
 
 
@@ -497,5 +525,18 @@ thead th:nth-child(4),tbody td:nth-child(4){
   thead th:nth-child(4),tbody td:nth-child(4){
     font-size: 18px;
   }
+  
+  //gmap
+  .nearly{
+    height: 330px;
+  h5{
+    line-height: 40px;
+    font-size: 30px;
+  }
+  p{
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
 
 }

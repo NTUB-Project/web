@@ -60,9 +60,10 @@
         符合條件共<%=@search%>家廠商
         <% @grounds.each do |ground| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= image_tag(ground.images_urls[0], width: '200px',height: '250px') if ground.images.present?%>
+              <div class="index-images">
+              	<div class="lg-img index-image" style="background-image:url(<%= ground.images_urls[0] %>)"></div>
+              </div>
               <div class="card-body">
-
                 <div class="row">
                   <div class="col-6 cardleft">
                     <h3 class="mb-3">

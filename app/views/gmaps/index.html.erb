@@ -1,23 +1,24 @@
 <div class="gmapcontent">
-
   <p id="notice"><%= notice %></p>
   <h1>尋找附近</h1>
   <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-lg-6">
-      <div id="map" style="width:100%;height:600px">地圖預留</div>
+    <div class="col-md-12 col-lg-6">
+      <div id="map" style="width:100%; height:600px;">地圖預留</div>
     </div>
 
-    <div class="col-sm-12 col-lg-6">
+    <div class="col-md-12 col-lg-6">
       <div class="row">
         <% @products.each do |product| %>
         <div class="col-6" style="margin-bottom: 20px">
           <div class="nearly">
-          <%= link_to image_tag(product.images_urls[0], width: '200px',height: '150px'), product if product.images.present?%>
-          <h5><%= product.name %></h5>
-          <p><%= product.item %></p>
-          <p><%= product.location %></p>
-          <p><%= product.tel %></p>
+            <div class="gmap-images">
+            	<div class="lg-img gmap-image" style="background-image:url(<%= product.images_urls[0] %>)"></div>
+            </div>
+            <h5><%= product.name %></h5>
+            <p>性質：<%= product.item %></p>
+            <p>地址：<%= product.location %></p>
+            <p>電話：<%= product.tel %></p>
           </div>
         </div>
         <% end %>
