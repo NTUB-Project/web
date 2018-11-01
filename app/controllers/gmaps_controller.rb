@@ -2,7 +2,14 @@ class GmapsController < ApplicationController
   before_action :set_gmap, only: [:edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    product = Product.group("name").select("MIN(id) AS id , name")
+    @products = []
+    if product != []
+      0.upto(product.to_a.count-1) do |i|
+        @products <<  Product.find(product[i].id)
+      end
+    end
+    # @products = Product.all
     @gmaps = Gmap.all
     @hash = Gmaps4rails.build_markers(@gmaps) do |gmap, marker|
       if gmap.product == nil

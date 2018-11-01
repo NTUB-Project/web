@@ -13,11 +13,13 @@
         <% @products.each do |product| %>
         <div class="col-6" style="margin-bottom: 20px">
           <div class="nearly">
-          <%= link_to image_tag(product.images_urls[0], width: '200px',height: '150px'), product if product.images.present?%>
-          <h5><%= product.name %></h5>
-          <p><%= product.item %></p>
-          <p><%= product.location %></p>
-          <p><%= product.tel %></p>
+            <div class="gmap-images">
+            	<div class="lg-img gmap-image" style="background-image:url(<%= product.images_urls[0] %>)"></div>
+            </div>
+            <h5><%= product.name %></h5>
+            <p>性質：<%= product.item %></p>
+            <p>地址：<%= product.location %></p>
+            <p>電話：<%= product.tel %></p>
           </div>
         </div>
         <% end %>

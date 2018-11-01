@@ -44,7 +44,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'hirb-unicode'
 gem 'mini_magick' #切圖片
-gem 'fog' #S3
+gem 'fog-aws' #S3
 gem 'gmaps4rails'#googlmap
 gem 'gon', '~> 6.2' #controller變數直接傳給js
 gem 'webpacker', '~> 3.5'
