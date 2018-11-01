@@ -52,9 +52,7 @@
         符合條件共<%=@search%>家廠商
         <% @equipments.each do |equipment| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <div class="index-images">
-              	<div class="lg-img index-image" style="background-image:url(<%= equipment.images_urls[0] %>)"></div>
-              </div>
+              <%= image_tag(equipment.images_urls[0], width: '200px',height: '250px') if equipment.images.present?%>
               <div class="card-body">
 
                 <div class="row">
