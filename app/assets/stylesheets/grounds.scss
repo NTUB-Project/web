@@ -173,6 +173,18 @@ a.top{
 	text-decoration: none;
 }
 a.top img{
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
+}
+
+
+@media (max-width: 1000px) {
+  div.detail{
+  	width: 85%;
+  }
+  div.backtotop{
+	position: fixed;
+	right: 3%;
+	bottom: 20%;
+}
 }

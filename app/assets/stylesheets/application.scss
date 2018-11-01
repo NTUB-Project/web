@@ -37,6 +37,14 @@ body{
 .logo{
   font-weight: 900;
   font-size: 25px;
+  img{
+    height: 60px;
+    width: 60px;
+  }
+}
+.logo:hover{
+  text-decoration: none;
+  color: #666666;
 }
 
 //navbar
@@ -99,18 +107,21 @@ footer{
 }
 //關於我們
 .about_us{
-  .about_us_image{
-    width: auto;
-    height: 280px;
-    img{
-      max-width: 100%;
-      max-height: 100%;
-      margin: auto;
-      float: right;
-    }
-  }
   padding-top: 120px;
   padding-bottom: 20px;
+  .about_us_image{
+    img{
+      max-width: 50%;
+      max-height: 50%;
+      margin: auto;
+      float: right;
+      padding-top: 5px;
+    }
+  }
+  p{
+    font-size: 18px;
+    line-height: 1.5;
+  }
 }
 
 //登入登出
@@ -240,10 +251,13 @@ div.activitycontent{
 }
 .filter-menu {
   cursor: text;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   padding-top: 18px;
-  padding-bottom: 7px;
+  padding-bottom: 18px;
+}
+.filter-item-info{
+  font-size: 16px;
 }
 
 //gmap
@@ -310,6 +324,13 @@ div.activitycontent{
 
 
 //gmap
+.gmapcontent{
+  padding-top: 40px;
+	height: auto;
+	margin-top: 40px;
+	font-family: "微軟正黑體", sans-serif;
+	text-align: center;
+}
 .nearly{
   border: 1px solid gray;
   border-radius: 5px;
@@ -324,8 +345,10 @@ div.activitycontent{
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
     transition: 300ms;
   }
-#map{
+.map{
   position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
 
@@ -375,7 +398,7 @@ div.activitycontent{
   .matter_title button{
     border: 0;
     background: #fff;
-    padding-right: 50px;
+    padding-right: 20px;
   }
   .matter_title button img{
     margin-right: 5px;
@@ -400,24 +423,79 @@ thead{
   background: #bfdad7;
 }
 thead th:nth-child(1),tbody td:nth-child(1){
-  width: 100px;
+  width: 40px;
 }
 thead th:nth-child(2),tbody td:nth-child(2){
-  width: 250px;
+  width: 150px;
+}
+thead th:nth-child(3),tbody td:nth-child(3){
+  width: 200px;
+}
+thead th:nth-child(4),tbody td:nth-child(4){
+  width: 280px;
 }
 .tbody  td:nth-child:hover{
   background: #000;
 }
 
 @media (max-width: 1000px) {
+  //navbar
+  .navbar-nav{
+  font-size: 26px;
+  }
+  .logo{
+    font-weight: 900;
+    font-size: 30px;
+    img{
+      height: 70px;
+      width: 70px;
+    }
+  }
+  span.title{
+    font-size: 30px;
+  }
+  
+  //about頁面
+  .about_us{
+    .about_us_image{
+      img{
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+    p{
+    font-size: 20px;
+    }
+  }
+  
+  //各廠商index篩選列
+  .filter-menu {
+  font-size: 24px;
+  }
+  .filter-item-info{
+  font-size: 20px;
+  }
+  
+  //寄件夾欄位
+  .mattercontent{
+    .container{
+      width: 100%;
+    }
+  }
+  .table{
+    font-size: 24px;
+  }
   thead th:nth-child(1),tbody td:nth-child(1){
-  width: 30px;
+  font-size: 18px;
   }
   thead th:nth-child(2),tbody td:nth-child(2){
-    width: 100px;
+    font-size: 18px;
   }
-  .tbody  td:nth-child:hover{
-    background: #000;
+  thead th:nth-child(3),tbody td:nth-child(3){
+    font-size: 18px;
+  }
+  thead th:nth-child(4),tbody td:nth-child(4){
+    font-size: 18px;
   }
 
 }
