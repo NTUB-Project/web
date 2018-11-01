@@ -14,10 +14,10 @@
   <div id="errors_form_div"></div>
 <% else %>
   <% i = 0 %>
-    <% if @products != nil %>
-      <% @products.each do |product|%>
-        <span><%= product.name %></span>，您好！<br/>
-        <% case product.category_id %>
+    <% if @item_id != nil %>
+      <% @item_id.each do |item_id|%>
+        <span><%= Product.find(item_id).name %></span>，您好！<br/>
+        <% case Product.find(item_id).category_id %>
         <% when 1 %>
           <div>
             我們是<%= @matter_form.school %>，

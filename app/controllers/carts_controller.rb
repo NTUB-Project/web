@@ -84,7 +84,6 @@ before_action :current_cart
     if params[:item_id] == nil
       redirect_back(fallback_location: root_path, alert: "您還未選擇廠商！")
     else
-      @product = Product.where(id: params[:item_id])
       @item_id = params[:item_id]
       @matter = Matter.new
       @category = Product.find(params[:item_id][0].to_i).category_id
@@ -118,7 +117,9 @@ before_action :current_cart
           else
             @matter.errors.messages[:images][0]="附件只能為圖片！" unless @matter.errors[:images].blank?
             @matter.errors.messages[:mattertext]=[] if params[:Radios] == "option2"
-            @errors_matter_send = errors + @matter.errors.full_messages
+            matter_errors = []
+            @matter.errors.messages.values.map{ |i| matter_errors<< i[0] if i[0] !=nil }
+            @errors_matter_send = errors + matter_errors
             format.html { return render :matter }
             format.js {return render :matter_send }
           end
@@ -126,7 +127,6 @@ before_action :current_cart
     else
       @matter = current_user.matters.new(matter_params)
       @matter.mattertext = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
-      @products = Product.where(id: @item_id)
     end
   end
 
@@ -186,7 +186,9 @@ before_action :current_cart
         else
           @matter_form.errors.messages[:images][0]="附件只能為圖片！" unless @matter_form.errors[:images].blank?
           @matter_form.errors.messages[:memo]=[] if params[:Radios] == "option2"
-          @errors_matter_form_send = errors_form + @matter_form.errors.full_messages
+          matter_form_errors = []
+          @matter_form.errors.messages.values.map{ |i| matter_form_errors<< i[0] if i[0] !=nil }
+          @errors_matter_form_send = errors_form + matter_form_errors
           format.html { return render :matter }
           format.js {return render :matter_form_send }
         end
@@ -194,7 +196,6 @@ before_action :current_cart
     else
       @matter_form = current_user.matter_forms.new(matter_form_params)
       @matter_form.memo = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
-      @products = Product.where(id: @item_id)
     end
   end
 

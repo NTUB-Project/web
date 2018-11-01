@@ -14,9 +14,9 @@
   <div id="errors_div"></div>
 <% else %>
   <% i = 0 %>
-    <% if @products != nil %>
-      <% @products.each do |product|%>
-        <span><%= product.name %></span>，您好！
+    <% if @item_id != nil %>
+      <% @item_id.each do |item_id|%>
+        <span><%= Product.find(item_id).name %></span>，您好！
         <% if params[:Radios]== "option2" %>
           <p><%= @matter.mattertext.split(',')[i].split('"')[1] %></p>
           <% i += 1 %>
