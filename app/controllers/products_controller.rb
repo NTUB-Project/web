@@ -91,6 +91,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    Gmap.find_by(product_id: @product.id).destroy
     Product.where(name: @product.name).destroy_all
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }

@@ -8,11 +8,26 @@ class GmapsController < ApplicationController
       if gmap.product == nil
         gmap.destroy
       else
-
+        case gmap.product.category.title
+        when "場地"
+          link = ground_path(gmap.product.id)
+        when "食物"
+          link = food_path(gmap.product.id)
+        when "租車"
+          link = rentcar_path(gmap.product.id)
+        when "設備"
+          link = equipment_path(gmap.product.id)
+        when "印刷"
+          link = custommade_path(gmap.product.id)
+        when "舞台服"
+          link = costume_path(gmap.product.id)
+        end
         marker.lat gmap.latitude
         marker.lng gmap.longitude
-
-        marker.infowindow gmap.product.name+"</br>"+ "<img src=" + gmap.product.images_urls[0] + " >" + gmap.product.location
+        marker.infowindow "<img src=" + gmap.product.images_urls[0] + " width=100 height=100  >"+ "</p>" +
+                          gmap.product.name+ "</br>"+
+                          "地址：" + gmap.product.location + "</br>" +
+                          "<a href=#{link}> 詳細介紹 </a>"
 
       end
     end

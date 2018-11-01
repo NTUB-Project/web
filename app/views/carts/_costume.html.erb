@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-6 col-lg-7 card-text">
-          <h3><%= link_to "#{item.product.name}" , ground_path(item.product_id) %></h3>
+          <h3><%= link_to "#{item.product.name}" , costume_path(item.product_id) %></h3>
           <p><%= image_tag("marker.png", width: '20px',height: '20px')%><%= item.product.location %></p>
           <p><%= image_tag("telephone.png", width: '20px',height: '20px')%><%= item.product.tel %></p>
           <p><%= image_tag("mail.png", width: '20px',height: '20px')%><%= item.product.email.split('"')[1] %></p>
