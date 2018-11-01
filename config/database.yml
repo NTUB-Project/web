@@ -60,7 +60,7 @@ default: &default
   pool: 5
   username: postgresql
   password: pass
-  host:     <%= ENV['IP'] %>
+  host:   <%= ENV['IP'] %>
 
 development:
   <<: *default

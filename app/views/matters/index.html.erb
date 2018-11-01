@@ -17,7 +17,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">廠商名</th>
+          <th scope="col">廠商郵件</th>
           <th scope="col">信件內容</th>
+          <th scope="col">寄件時間</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +27,9 @@
         <tr>
           <td><%= matter.id %></td>
           <td><%= matter.product.name %></td>
+          <td><%= matter.product.email %></td>
           <td><%= matter.mattertext %></td>
+          <td><%= matter.created_at.localtime.to_s.split('+').first %></td>
         </tr>
         <% end %>
       </tbody>
@@ -42,7 +46,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">廠商名</th>
+          <th scope="col">廠商郵件</th>
           <th scope="col">信件內容</th>
+          <th scope="col">寄件時間</th>
         </tr>
       </thead>
       <tbody>
@@ -50,6 +56,7 @@
         <tr>
           <td><%= matter_form.id %></td>
           <td><%= matter_form.product.name %></td>
+          <td><%= matter_form.product.email %></td>
           <td>
             <% case matter_form.product.category.title %>
       <% when "場地" %>
@@ -109,6 +116,7 @@
         </div></p>
     <% end %>
           </td>
+          <td><%= matter_form.created_at.localtime.to_s.split('+').first %></td>
         </tr>
         <% end %>
       </tbody>
