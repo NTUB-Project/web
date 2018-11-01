@@ -6,14 +6,14 @@
 			<div class="addbtn">
 	      <%= link_to '♡ 加入蒐藏', add_cart_path(costume), method: "post", class: "btn" %>
 	    </div>
-      
+
 			<div class="name">
 				<p><%= costume.name %>
 					<span class="star-rating" data-score=<%= @avg_rating %> style="font-size: 20px;	padding-left: 10px;"></span>
 					<span style="font-size: 14px"><%= "[ #{@comments.length} 則留言 ]"%></span>
 				</p>
 			</div>
-      
+
       <div class="bnb-images">
       	<a class="fancybox" rel="group" href="<%= costume.images_urls[0] %>">
       		<div class="lg-img bnb-image" style="background-image:url(<%= costume.images_urls[0] %>)"></div>
@@ -34,12 +34,12 @@
       	</a>
       	<div class="clearfix"></div>
       </div>
-      
+
 			<div class="introduce">
 				<h2 class="eachProgramTitle">簡介</h2>
 				<%= costume.description %>
 			</div>
-		
+
 			<h2 class="eachProgramTitle">內容</h2>
 				<div class="row">
 					<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
@@ -58,7 +58,7 @@
 			<%=image_tag('tel.png', size: '20')%> 電話：  <%= costume.tel %></br></br>
 			<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= costume.email %></br></br>
 			<%=image_tag('home.png', size: '20')%> 網站：  <%= costume.url %>
-		
+
 			<h2 class="eachProgramTitle">地理位置
 				<span class="pull-right"><%= costume.location %></span>
 			</h2>
@@ -75,3 +75,9 @@
 </div>
 
 <%=render "shared/vendormapjs" %>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
