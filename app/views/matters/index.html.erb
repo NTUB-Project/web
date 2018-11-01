@@ -27,7 +27,7 @@
         <tr>
           <td><%= matter.id %></td>
           <td><%= matter.product.name %></td>
-          <td><%= matter.product.email %></td>
+          <td><%= matter.product.email.split('"')[1] %></td>
           <td><%= matter.mattertext %></td>
           <td><%= matter.created_at.localtime.to_s.split('+').first %></td>
         </tr>
@@ -35,9 +35,13 @@
       </tbody>
     </table>
     <% end %>
+<<<<<<< HEAD
     <%= will_paginate @matter , class:"digg_pagination"%>
+=======
+  <%= will_paginate @matter , class:"digg_pagination"%></ul>
+>>>>>>> 6390286f8fef3c4c4c322b6acb5459e823d81ff9
   </div>
-  
+
   <div id="Form" class="categor" style="display:none">
     <% if @matter_form.blank? %>
     <h2>目前無表格信件!</h2>
@@ -57,13 +61,13 @@
         <tr>
           <td><%= matter_form.id %></td>
           <td><%= matter_form.product.name %></td>
-          <td><%= matter_form.product.email %></td>
+          <td><%= matter_form.product.email.split('"')[1] %></td>
           <td>
             <% case matter_form.product.category.title %>
       <% when "場地" %>
       <div>
         我們是<%= matter_form.school %>，
-        將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+        將在<%= matter_form.date.to_s.split('+').first %>舉辦活動，
         參加人數大約為<%= matter_form.people %>人，
         請問是否能跟您租借場地？
         備註：<%= matter_form.memo %>
@@ -71,7 +75,7 @@
       <% when "食物" %>
       <div>
         我們是<%= matter_form.school %>，
-        將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+        將在<%= matter_form.date.to_s.split('+').first %>舉辦活動，
         地點在<%= matter_form.activity_location %>
         參加人數大約為<%= matter_form.people %>人，
         葷食人數大約為<%= matter_form.vegetarian %>人，
@@ -85,7 +89,7 @@
       <% when "租車" %>
         <div>
           我們是<%= matter_form.school %>，
-          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          將在<%= matter_form.date.to_s.split('+').first %>舉辦活動，
           地點在<%= matter_form.activity_location %>
           參加人數大約為<%= matter_form.people %>人，
           請問大概要包幾台車以及價格為多少？
@@ -94,7 +98,7 @@
       <% when "設備" %>
         <div>
           我們是<%= matter_form.school %>，
-          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          將在<%= matter_form.date.to_s.split('+').first %>舉辦活動，
           地點在<%= matter_form.activity_location %>，
           請問能跟您租<%= matter_form.device %>嗎？
           備註：<%= matter_form.memo %>
@@ -102,7 +106,7 @@
       <% when "印刷" %>
         <div>
           我們是<%= matter_form.school %>，
-          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          將在<%= matter_form.date.to_s.split('+').first %>舉辦活動，
           我們想要印刷<%= matter_form.size %>件，
           請問價格多少？
           備註：材質為<%= matter_form.material %>，<%= matter_form.memo %>
@@ -110,7 +114,7 @@
       <% when "舞台服" %>
         <div>
           我們是<%= matter_form.school %>，
-          將在<%= matter_form.date.to_s.split('UTC').first %>舉辦活動，
+          將在<%= matter_form.date.to_s.split('+').first %>舉辦活動，
           我們想要租借<%= matter_form.material %><%= matter_form.size %>件，
           請問價格多少？
           備註：<%= matter_form.memo %>
@@ -123,7 +127,11 @@
       </tbody>
     </table>
     <% end %>
+<<<<<<< HEAD
     <%= will_paginate @matter_form , class:"digg_pagination"%>
+=======
+  <%= will_paginate @matter_form , class:"digg_pagination"%></ul>
+>>>>>>> 6390286f8fef3c4c4c322b6acb5459e823d81ff9
   </div>
 
   </div>

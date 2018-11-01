@@ -5,11 +5,14 @@
     <div class="col-md-4 col-lg-3 cardimg">
 		  <div class="cd-slider-wrapper">
 			  <ul class="cd-slider">
-          <% for images in comment.images %>
-            <% if comment.images.present? %>
-              <li><%= image_tag(images.thumb.url)  %></li>
-            <% end %>
-          <% end %>
+          <div class="index-images">
+            <% 0.upto(comment.images.count-1) do |i| %>
+    	      <a class="fancybox" rel="group2" href="<%= comment.images_urls[i] %>">
+    	      <% end %>
+    	      	<div class="lg-img index-images" style="background-image:url(<%= comment.images[0].thumb.url %>)">
+          		</div>
+          	</a>
+          </div>
 				</ul>
 			</div>
     </div>
@@ -46,9 +49,5 @@
     score: function() {
            return $(this).attr('data-score');
     }
-  });
-
-  jQuery(function() {
-    $("a.fancybox").fancybox();
   });
   </script>
