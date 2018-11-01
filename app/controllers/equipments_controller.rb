@@ -2,13 +2,14 @@ class EquipmentsController < ApplicationController
 
   def index
     equipment = Product.where(category: Category.find_by(title: "設備").id).group("name").select("MIN(id) AS id , name")
-    @equipments = []
+    equipments = []
     if equipment != []
       0.upto(equipment.to_a.count-1) do |i|
-        @equipments <<  Product.find_by(id: equipment[i].id)
+        equipments <<  Product.find_by(id: equipment[i].id)
       end
     end
-    @search = @equipments.count
+    @equipments = equipments.paginate(page: params[:page], per_page: 10)
+    @search = equipments.count
     #checkbox
     @regions =Region.all
     @activity_kinds = ActivityKind.all

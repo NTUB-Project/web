@@ -2,17 +2,20 @@ class GroundsController < ApplicationController
 
   def index
     ground = Product.where(category: Category.find_by(title: "場地").id).group("name").select("MIN(id) AS id , name")
-    @grounds = []
+    grounds = []
     if ground != []
       0.upto(ground.to_a.count-1) do |i|
-        @grounds <<  Product.find(ground[i].id)
+        grounds <<  Product.find(ground[i].id)
       end
     end
-    @search = @grounds.count
+    @grounds = grounds.paginate(page: params[:page], per_page: 10)
+    
+    @search = grounds.count
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all
     @activity_kinds = ActivityKind.all
+    
   end
 
   def search

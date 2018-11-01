@@ -2,13 +2,14 @@ class RentcarsController < ApplicationController
 
   def index
     rentcar = Product.where(category: Category.find_by(title: "租車").id).group("name").select("MIN(id) AS id , name")
-    @rentcars = []
+    rentcars = []
     if rentcar != []
       0.upto(rentcar.to_a.count-1) do |i|
-        @rentcars <<  Product.find_by(id: rentcar[i].id)
+        rentcars <<  Product.find_by(id: rentcar[i].id)
       end
     end
-    @search = @rentcars.count
+    @rentcars = rentcars.paginate(page: params[:page], per_page: 10)
+    @search = rentcars.count
     #checkbox
     @regions =Region.all
     @people_numbers = PeopleNumber.all

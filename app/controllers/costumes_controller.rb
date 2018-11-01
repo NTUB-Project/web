@@ -1,13 +1,14 @@
 class CostumesController < ApplicationController
   def index
     costume = Product.where(category: Category.find_by(title: "舞台服").id).group("name").select("MIN(id) AS id , name")
-    @costumes = []
+    costumes = []
     if costume != []
       0.upto(costume.to_a.count-1) do |i|
-        @costumes <<  Product.find_by(id: costume[i].id)
+        costumes <<  Product.find_by(id: costume[i].id)
       end
     end
-    @search = @costumes.count
+    @costumes = costumes.paginate(page: params[:page], per_page: 10)
+    @search = costumes.count
     #checkbox
     @people_numbers = PeopleNumber.all
     @regions =Region.all

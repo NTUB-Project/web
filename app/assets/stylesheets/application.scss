@@ -278,6 +278,7 @@ div.activitycontent{
   display: inline-flex;
   background: white;
   cursor: default;
+  padding-bottom: 10px;
   /* self-clearing method: */ }
   .digg_pagination a, .digg_pagination span, .digg_pagination em {
     padding: 0.2em 0.5em;
@@ -399,7 +400,12 @@ div.activitycontent{
   }
   .categor{
     padding-bottom: 40px;
+    text-align: center;
   }
+  .categor table{
+    text-align: left;
+  }
+  
 }
 thead{
   background: #bfdad7;

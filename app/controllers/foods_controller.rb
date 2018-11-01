@@ -2,13 +2,14 @@ class FoodsController < ApplicationController
 
   def index
     food = Product.where(category: Category.find_by(title: "食物").id).group("name").select("MIN(id) AS id , name")
-    @foods = []
+    foods = []
     if food != []
       0.upto(food.to_a.count-1) do |i|
-        @foods <<  Product.find_by(id: food[i].id)
+        foods <<  Product.find_by(id: food[i].id)
       end
     end
-    @search = @foods.count
+    @foods = foods.paginate(page: params[:page], per_page: 10)
+    @search = foods.count
     #checkbox
     @regions =Region.all
     @people_numbers = PeopleNumber.all

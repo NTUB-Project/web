@@ -1,13 +1,14 @@
 class CustommadeController < ApplicationController
   def index
     custommade = Product.where(category: Category.find_by(title: "印刷").id).group("name").select("MIN(id) AS id , name")
-    @custommades = []
+    custommades = []
     if custommade != []
       0.upto(custommade.to_a.count-1) do |i|
-        @custommades <<  Product.find_by(id: custommade[i].id)
+        custommades <<  Product.find_by(id: custommade[i].id)
       end
     end
-    @search = @custommades.count
+    @custommades = custommades.paginate(page: params[:page], per_page: 10)
+    @search = custommades.count
     #checkbox
     @regions =Region.all
   end
