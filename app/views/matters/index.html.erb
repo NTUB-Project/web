@@ -27,7 +27,7 @@
         <tr>
           <td><%= matter.id %></td>
           <td><%= matter.product.name %></td>
-          <td><%= matter.product.email %></td>
+          <td><%= matter.product.email.split('"')[1] %></td>
           <td><%= matter.mattertext %></td>
           <td><%= matter.created_at.localtime.to_s.split('+').first %></td>
         </tr>
@@ -35,8 +35,9 @@
       </tbody>
     </table>
     <% end %>
+  <%= will_paginate @matter , class:"digg_pagination"%></ul>
   </div>
-  
+
   <div id="Form" class="categor" style="display:none">
     <% if @matter_form.blank? %>
     <h2>目前無表格信件!</h2>
@@ -56,7 +57,7 @@
         <tr>
           <td><%= matter_form.id %></td>
           <td><%= matter_form.product.name %></td>
-          <td><%= matter_form.product.email %></td>
+          <td><%= matter_form.product.email.split('"')[1] %></td>
           <td>
             <% case matter_form.product.category.title %>
       <% when "場地" %>
@@ -122,6 +123,7 @@
       </tbody>
     </table>
     <% end %>
+  <%= will_paginate @matter_form , class:"digg_pagination"%></ul>
   </div>
 
   </div>
