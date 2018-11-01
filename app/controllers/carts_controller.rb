@@ -59,11 +59,13 @@ before_action :current_cart
         end
       end
       find_item = CartItem.where(user_id: current_user.id, product_id: params[:id])
+      name = Product.find(params[:id]).name
       if find_item.blank? && count < 5
         CartItem.create(user_id: current_user.id , cart_id: current_cart , product_id: params[:id])
-        redirect_back(fallback_location: root_path, notice: "加入蒐藏")
+
+        redirect_back(fallback_location: root_path, notice: "#{name}加入蒐藏")
       else
-        redirect_back(fallback_location: root_path, alert: "已蒐藏過囉！") unless find_item.blank?
+        redirect_back(fallback_location: root_path, alert: "#{name}已蒐藏過囉！") unless find_item.blank?
         redirect_back(fallback_location: root_path, alert: "此類別的蒐藏已滿囉!")  if find_item.blank?
       end
 
@@ -75,7 +77,7 @@ before_action :current_cart
   def remove
     cart_items = CartItem.find_by(product_id: params[:id])
     cart_items.destroy
-    redirect_to "/cart", notice:"刪除成功！"
+    redirect_to "/cart", notice:"#{cart_items.product.name}刪除成功！"
   end
 
   def matter
@@ -92,16 +94,9 @@ before_action :current_cart
   def matter_send
     @item_id = params.keys[1].split('/')[3].split('%2F')
     if params[:commit] == "寄出"
+      errors=[]
       if params[:Radios] == "option2"
-          @item_id.map{ |i|
-            if params[i] == ""
-              respond_to do |format|
-                @errors = "分開信件內容不能為空！"
-                format.html { return render :matter }
-                format.js {return render :matter_send }
-              end
-            end
-          }
+        @item_id.map{ |i| errors << "#{Product.find(i).name} 信件內容不能為空！" if params[i].blank? }
       end
       @item_id.map{ |i|
         @matter = current_user.matters.new(matter_params)
@@ -113,21 +108,21 @@ before_action :current_cart
           CartMailer.matter(@matter,@products).deliver_now
           cart_items = CartItem.find_by(product_id: i)
           cart_items.destroy
-        else
-          respond_to do |format|
+        end
+      }
+        respond_to do |format|
+          if @matter.save
+            flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」，廠商將回信至用戶的註冊信箱，請耐心等待!"
+            format.html { redirect_to controller: "carts", action: "show"}
+            format.js   { render js: "window.location.href='#{cart_path}'"}
+          else
+            @matter.errors.messages[:images][0]="附件只能為圖片！" unless @matter.errors[:images].blank?
+            @matter.errors.messages[:mattertext]=[] if params[:Radios] == "option2"
+            @errors_matter_send = errors + @matter.errors.full_messages
             format.html { return render :matter }
             format.js {return render :matter_send }
           end
-
         end
-      }
-      respond_to do |format|
-        if @matter.save
-          flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」，廠商將回信至用戶的註冊信箱，請耐心等待!"
-          format.html { redirect_to controller: "carts", action: "show"}
-          format.js   { render js: "window.location.href='#{cart_path}'"}
-        end
-      end
     else
       @matter = current_user.matters.new(matter_params)
       @matter.mattertext = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
@@ -138,16 +133,9 @@ before_action :current_cart
   def matter_form_send
     @item_id = params.keys[1].split('/')[3].split('%2F')
     if params[:commit] == "寄出"
+      errors_form = []
       if params[:Radios] == "option2"
-          @item_id.map{ |i|
-            if params[i] == ""
-              respond_to do |format|
-                @errors_form = "分開信件內容不能為空！"
-                format.html { return render :matter }
-                format.js {return render :matter_form_send }
-              end
-            end
-          }
+        @item_id.map{ |i| errors_form << "#{Product.find(i).name} 信件內容不能為空！" if params[i].blank? }
       end
       @item_id.map { |i|
         @matter_form = current_user.matter_forms.new(matter_form_params)
@@ -188,18 +176,19 @@ before_action :current_cart
           CartMailer.matter_form(@matter_form,@products).deliver_now
           cart_items = CartItem.find_by(product_id: i)
           cart_items.destroy
-        else
-          respond_to do |format|
-            format.html { return render :matter }
-            format.js {return render :matter_form_send }
-          end
         end
       }
       respond_to do |format|
         if @matter_form.save
-          flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」"
+          flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」，廠商將回信至用戶的註冊信箱，請耐心等待!"
           format.html { redirect_to controller: "carts", action: "show"}
           format.js   { render js: "window.location.href='#{cart_path}'"}
+        else
+          @matter_form.errors.messages[:images][0]="附件只能為圖片！" unless @matter_form.errors[:images].blank?
+          @matter_form.errors.messages[:memo]=[] if params[:Radios] == "option2"
+          @errors_matter_form_send = errors_form + @matter_form.errors.full_messages
+          format.html { return render :matter }
+          format.js {return render :matter_form_send }
         end
       end
     else

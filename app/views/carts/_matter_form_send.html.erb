@@ -1,12 +1,8 @@
 <div class="modal-header ">
-  <% if @matter_form!= nil %>
-      <% if @matter_form.errors.any? %>
-        <h4 class="modal-title" id="myModalLabel">錯誤</h4>
-      <% else %>
-        <h4 class="modal-title" id="myModalLabel">預覽</h4>
-      <% end %>
-    <% else %>
-      <h4 class="modal-title" id="myModalLabel">錯誤</h4>
+  <% if @errors_matter_form_send != nil %>
+    <h4 class="modal-title" id="myModalLabel">錯誤</h4>
+  <% else %>
+    <h4 class="modal-title" id="myModalLabel">預覽</h4>
   <% end %>
 
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -14,11 +10,10 @@
   </button>
 </div>
 <div class="modal-body">
-<% if @matter_form!= nil %>
-  <% if @matter_form.errors.any? %>
+<% if @errors_matter_form_send != nil %>
   <div id="errors_form_div"></div>
-  <% else %>
-    <% i = 0 %>
+<% else %>
+  <% i = 0 %>
     <% if @products != nil %>
       <% @products.each do |product|%>
         <span><%= product.name %></span>，您好！<br/>
@@ -26,7 +21,7 @@
         <% when 1 %>
           <div>
             我們是<%= @matter_form.school %>，
-            將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
+            將在<%= @matter_form.date.to_s.split('+').first %>舉辦活動，
             參加人數大約為<%= @matter_form.people %>人，
             請問是否能跟您租借場地？<br/>
             <% if params[:Radios]== "option2" %>
@@ -39,7 +34,7 @@
         <% when 2 %>
           <div>
             我們是<%= @matter_form.school %>，
-            將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
+            將在<%= @matter_form.date.to_s.split('+').first %>舉辦活動，
             地點在<%= @matter_form.activity_location %>
             參加人數大約為<%= @matter_form.people %>人，
             葷食人數大約為<%= @matter_form.vegetarian %>人，
@@ -58,7 +53,7 @@
         <% when 3 %>
           <div>
             我們是<%= @matter_form.school %>，
-            將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
+            將在<%= @matter_form.date.to_s.split('+').first %>舉辦活動，
             地點在<%= @matter_form.activity_location %>
             參加人數大約為<%= @matter_form.people %>人，
             請問大概要包幾台車以及價格為多少？<br/>
@@ -72,7 +67,7 @@
         <% when 4 %>
           <div>
             我們是<%= @matter_form.school %>，
-            將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
+            將在<%= @matter_form.date.to_s.split('+').first %>舉辦活動，
             地點在<%= @matter_form.activity_location %>，
             請問能跟您租<%= @matter_form.device %>嗎？<br/>
             <% if params[:Radios]== "option2" %>
@@ -85,7 +80,7 @@
         <% when 5 %>
           <div>
             我們是<%= @matter_form.school %>，
-            將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
+            將在<%= @matter_form.date.to_s.split('+').first %>舉辦活動，
             我們想要印刷<%= @matter_form.size %>件，
             請問總價格多少？<br/>
             <% if params[:Radios]== "option2" %>
@@ -98,7 +93,7 @@
         <% when 6 %>
           <div>
             我們是<%= @matter_form.school %>，
-            將在<%= @matter_form.date.to_s.split('UTC').first %>舉辦活動，
+            將在<%= @matter_form.date.to_s.split('+').first %>舉辦活動，
             我們想要租借<%= @matter_form.material %><%= @matter_form.size %>件，
             請問總價格多少？<br/>
             <% if params[:Radios]== "option2" %>
@@ -111,8 +106,5 @@
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
-<% else %>
-<div id="errors_form_div"></div>
 <% end %>
 </div>
