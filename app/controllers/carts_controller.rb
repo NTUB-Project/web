@@ -92,16 +92,17 @@ before_action :current_cart
 
   def matter_send
     @item_id = params.keys[1].split('/')[3].split('%2F')
-    if params[:commit] == "寄出"
+    if params[:button] == "寄出"
       errors=[]
       if params[:Radios] == "option2"
         @item_id.map{ |i| errors << "#{Product.find(i).name} 信件內容不能為空！" if params[i].blank? }
       end
+
       @item_id.map{ |i|
         @matter = current_user.matters.new(matter_params)
         @matter.mattertext = params[i] if params[:Radios] == "option2"
         @matter.product_id = i
-        @matter.save
+        @matter.save if errors.blank?
         if @matter.save
           @products = Product.find_by(id: i)
           CartMailer.matter(@matter,@products).deliver_now
@@ -109,6 +110,7 @@ before_action :current_cart
           cart_items.destroy
         end
       }
+
         respond_to do |format|
           if @matter.save
             flash[:notice] = "已成功寄出信件，並移至「我的寄件夾」，廠商將回信至用戶的註冊信箱，請耐心等待!"
@@ -132,7 +134,7 @@ before_action :current_cart
 
   def matter_form_send
     @item_id = params.keys[1].split('/')[3].split('%2F')
-    if params[:commit] == "寄出"
+    if params[:button] == "寄出"
       errors_form = []
       if params[:Radios] == "option2"
         @item_id.map{ |i| errors_form << "#{Product.find(i).name} 信件內容不能為空！" if params[i].blank? }
@@ -170,7 +172,7 @@ before_action :current_cart
             @matter_form.skip_device = true
             @matter_form.skip_people = true
         end
-        @matter_form.save
+        @matter_form.save if errors_form.blank?
         if @matter_form.save
           @products = Product.find_by(id: i)
           CartMailer.matter_form(@matter_form,@products).deliver_now
