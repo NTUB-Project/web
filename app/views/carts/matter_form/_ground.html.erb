@@ -28,7 +28,7 @@
     <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@item_id)}[images][]"%>
   </div>
   <div class="form-actions">
-    <%= f.button :submit,"寄出" %>
-    <%= f.button :submit,"預覽" ,{:remote => true , 'data-toggle' =>  "FM_modal", 'data-target' => '#FM_modal-window'} %>
+    <%= f.button :button,"寄出".html_safe, data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 寄出中..."} , value: "寄出"%>
+    <%= f.button :button,"預覽".html_safe, remote: true , 'data-toggle' =>  "FM_modal", 'data-target' => '#FM_modal-window', value: "預覽",data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 預覽中..."} %>
   </div>
 <% end %>

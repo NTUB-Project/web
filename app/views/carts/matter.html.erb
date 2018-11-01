@@ -46,8 +46,8 @@
 
         </div>
         <div class="form-actions">
-          <%= f.button :submit,"寄出" %>
-          <%= f.button :submit,"預覽" ,{:remote => true , 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} %>
+          <%= f.button :button,"寄出".html_safe, data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 寄出中..."} , value: "寄出"%>
+          <%= f.button :button,"預覽".html_safe, remote: true , 'data-toggle' =>  "modal", 'data-target' => '#modal-window', value: "預覽",data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 預覽中..."}   %>
         </div>
       <% end %>
     </div>
@@ -103,6 +103,15 @@ function changeColor(btnName) {
   }
   document.getElementById(btnName).style.color = "TEAL";
 }
+$(document).on('click', '#Self :submit', function () {
+    var buttons = $('#Self :submit').not($(this));
+    buttons.attr('disabled', true);
+});
+
+$(document).on('click', '#Form :submit', function () {
+    var buttons = $('#Form :submit').not($(this));
+    buttons.attr('disabled', true);
+});
 document.getElementById('Radios2').onchange = function() {
   '<% @item_id.each do |item_id| %>'
   document.getElementById('<%= item_id %>').disabled = !this.checked;
@@ -127,5 +136,6 @@ document.getElementById('FM_Radios1').onchange = function() {
   '<% end %>'
   document.getElementById('memo').disabled = !this.checked;
 };
+
 
 </script>
