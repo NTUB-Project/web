@@ -36,7 +36,6 @@ class ProductsController < ApplicationController
         @costumes << i
       end
     }
-
     @ground = @grounds.count
     @food = @foods.count
     @rentcar = @rentcars.count
@@ -64,11 +63,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    1.upto(product_params.values[13].count-1) do |region|
-      1.upto(product_params.values[14].count-1) do |activity_kind|
+    number = 12  if product_params.values.count == 14
+    number = 13  if product_params.values.count == 15
+    1.upto(product_params.values[number].count-1) do |region|
+      1.upto(product_params.values[number+1].count-1) do |activity_kind|
         @product = Product.new(product_params)
-        @product.region_id = product_params.values[13][region]
-        @product.activity_kind_id = product_params.values[14][activity_kind]
+        @product.region_id = product_params.values[number][region]
+        @product.activity_kind_id = product_params.values[number+1][activity_kind]
         @product.save
       end
     end
@@ -77,6 +78,52 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    number = 12  if product_params.values.count == 14
+    number = 13  if product_params.values.count == 15
+    new_count = (product_params.values[number+1].count-1) * (product_params.values[number].count-1)
+    old_count = Product.where(name: @product.name).count
+
+    if new_count-old_count == 0
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          @product.region_id = product_params.values[number][region]
+          @product.activity_kind_id = product_params.values[number+1][activity_kind]
+          @product.update(product_params)
+        end
+      end
+    end
+
+    if new_count-old_count > 0
+      @product.region_id = product_params.values[number][1].to_i
+      @product.activity_kind_id = product_params.values[number+1][1].to_i
+      @product.update(product_params)
+      1.upto(Product.where(name: @product.name).ids.count-1) do |i|
+        Product.find(Product.where(name: @product.name).ids.sort![i]).destroy
+      end
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          @product = Product.new(product_params)
+          @product.region_id = product_params.values[number][region]
+          @product.activity_kind_id = product_params.values[number+1][activity_kind]
+          @product.save
+        end
+      end
+      Product.find(Product.where(name: @product.name).ids.sort![1]).destroy
+    end
+
+    if new_count-old_count < 0
+      1.upto(old_count-new_count) do |i|
+        Product.find(Product.where(name: @product.name).ids.last).destroy
+      end
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          @product.region_id = product_params.values[number][region]
+          @product.activity_kind_id = product_params.values[number+1][activity_kind]
+          @product.update(product_params)
+        end
+      end
+    end
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -86,12 +133,18 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    Gmap.find_by(product_id: @product.id).destroy
+    Product.where(name: @product.name).ids.map{|i|
+      CartItem.find_by(product_id: i).destroy if CartItem.find_by(product_id: i) != nil
+      Comment.find_by(product_id: i).destroy if Comment.find_by(product_id: i) != nil
+      Gmap.find_by(product_id: i).destroy if Gmap.find_by(product_id: i) != nil
+    }
     Product.where(name: @product.name).destroy_all
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
