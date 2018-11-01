@@ -8,12 +8,16 @@ class GmapsController < ApplicationController
       if gmap.product == nil
         gmap.destroy
       else
+
         marker.lat gmap.latitude
         marker.lng gmap.longitude
-        marker.infowindow gmap.product.name
+
+        marker.infowindow gmap.product.name+"</br>"+ "<img src=" + gmap.product.images_urls[0] + " >" + gmap.product.location
+
       end
     end
   end
+
 
   def new
     product_id = Product.find_by(location: params[:address]).id
