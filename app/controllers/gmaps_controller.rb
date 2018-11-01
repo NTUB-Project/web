@@ -31,9 +31,9 @@ class GmapsController < ApplicationController
         end
         marker.lat gmap.latitude
         marker.lng gmap.longitude
-        marker.infowindow "<img src=" + gmap.product.images_urls[0] + " width=50% >"+ "</p>" +
-                          gmap.product.name+ "</br>"+
-                          "地址：" + gmap.product.location + "</br>" +
+        marker.infowindow "<img src=" + gmap.product.images_urls[0] + " width=150 >"+ "</p>" +
+                          "<p style=font-size:20px>"+gmap.product.name+"</p>"+ 
+                          "<p style=font-size:14px>地址：" + gmap.product.location + "</p>" +
                           "<a href=#{link}> 詳細介紹 </a>"
 
       end
