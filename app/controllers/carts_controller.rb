@@ -84,7 +84,6 @@ before_action :current_cart
     if params[:item_id] == nil
       redirect_back(fallback_location: root_path, alert: "您還未選擇廠商！")
     else
-      @product = Product.where(id: params[:item_id])
       @item_id = params[:item_id]
       @matter = Matter.new
       @category = Product.find(params[:item_id][0].to_i).category_id
@@ -126,7 +125,6 @@ before_action :current_cart
     else
       @matter = current_user.matters.new(matter_params)
       @matter.mattertext = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
-      @products = Product.where(id: @item_id)
     end
   end
 
@@ -194,7 +192,6 @@ before_action :current_cart
     else
       @matter_form = current_user.matter_forms.new(matter_form_params)
       @matter_form.memo = @item_id.map { |i| params[i] } if params[:Radios] == "option2"
-      @products = Product.where(id: @item_id)
     end
   end
 
