@@ -141,6 +141,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     Product.where(name: @product.name).ids.map{|i|
+      Matter.find_by(product_id: i).destroy if Matter.find_by(product_id: i) != nil
+      MatterForm.find_by(product_id: i).destroy if MatterForm.find_by(product_id: i) != nil
       CartItem.find_by(product_id: i).destroy if CartItem.find_by(product_id: i) != nil
       Comment.find_by(product_id: i).destroy if Comment.find_by(product_id: i) != nil
       Gmap.find_by(product_id: i).destroy if Gmap.find_by(product_id: i) != nil
