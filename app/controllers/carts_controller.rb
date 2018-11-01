@@ -117,7 +117,9 @@ before_action :current_cart
           else
             @matter.errors.messages[:images][0]="附件只能為圖片！" unless @matter.errors[:images].blank?
             @matter.errors.messages[:mattertext]=[] if params[:Radios] == "option2"
-            @errors_matter_send = errors + @matter.errors.full_messages
+            matter_errors = []
+            @matter.errors.messages.values.map{ |i| matter_errors<< i[0] if i[0] !=nil }
+            @errors_matter_send = errors + matter_errors
             format.html { return render :matter }
             format.js {return render :matter_send }
           end
@@ -184,7 +186,9 @@ before_action :current_cart
         else
           @matter_form.errors.messages[:images][0]="附件只能為圖片！" unless @matter_form.errors[:images].blank?
           @matter_form.errors.messages[:memo]=[] if params[:Radios] == "option2"
-          @errors_matter_form_send = errors_form + @matter_form.errors.full_messages
+          matter_form_errors = []
+          @matter_form.errors.messages.values.map{ |i| matter_form_errors<< i[0] if i[0] !=nil }
+          @errors_matter_form_send = errors_form + matter_form_errors
           format.html { return render :matter }
           format.js {return render :matter_form_send }
         end
