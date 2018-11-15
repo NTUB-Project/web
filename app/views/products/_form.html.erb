@@ -9,7 +9,7 @@
     <%= f.collection_check_boxes :region_ids, Region.all, :id, :title, { multiple: true }  %></p>
     活動類型：</br>
     <%= f.collection_check_boxes :activity_kind_ids, ActivityKind.all, :id, :title, { multiple: true }  %></p>
-    圖片（必填）：
+    圖片（必填!!!!!!）：
     <%= f.file_field :images, multiple: true, name: "product[images][]" %></p>
     <%= f.association :category, label: "類別：" %>
     <%= f.association :people_number, label: "人數：" %>
@@ -31,7 +31,7 @@
 <% end %>
 
 <%= form_tag '/gmaps/new',method: 'get' do %>
-  地址：</p>
+  地址：（請先update或create廠商資料在轉換經緯度！！否則寫不進資料庫也不會有提示錯誤～～～）</p>
   <input name="ConstructionADD" type="text" id="ConstructionADD" size="50" maxlength="50"/>
   <botton  type="submit" class="btn" onClick="codeAddress()">轉換經度及緯度</botton>
   <input name="Longitude" type="text" id="Longitude" size="10" maxlength="10" readonly="readonly"/>

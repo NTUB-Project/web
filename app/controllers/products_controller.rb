@@ -82,15 +82,17 @@ class ProductsController < ApplicationController
     number = 13  if product_params.values.count == 15
     new_count = (product_params.values[number+1].count-1) * (product_params.values[number].count-1)
     old_count = Product.where(name: @product.name).count
-
     if new_count-old_count == 0
-      1.upto(product_params.values[number].count-1) do |region|
-        1.upto(product_params.values[number+1].count-1) do |activity_kind|
-          @product.region_id = product_params.values[number][region]
-          @product.activity_kind_id = product_params.values[number+1][activity_kind]
-          @product.update(product_params)
+      product = Product.where(name: @product.name).ids.sort!
+      product.map{ |i|
+        1.upto(product_params.values[number].count-1) do |region|
+          1.upto(product_params.values[number+1].count-1) do |activity_kind|
+            Product.find(i).region_id = product_params.values[number][region]
+            Product.find(i).activity_kind_id = product_params.values[number+1][activity_kind]
+            Product.find(i).update(product_params)
+          end
         end
-      end
+      }
     end
 
     if new_count-old_count > 0
@@ -98,14 +100,14 @@ class ProductsController < ApplicationController
       @product.activity_kind_id = product_params.values[number+1][1].to_i
       @product.update(product_params)
       1.upto(Product.where(name: @product.name).ids.count-1) do |i|
-        Product.find(Product.where(name: @product.name).ids.sort![i]).destroy
+        Product.find(Product.where(name: @product.name).ids.sort![1]).destroy
       end
       1.upto(product_params.values[number].count-1) do |region|
         1.upto(product_params.values[number+1].count-1) do |activity_kind|
-          @product = Product.new(product_params)
-          @product.region_id = product_params.values[number][region]
-          @product.activity_kind_id = product_params.values[number+1][activity_kind]
-          @product.save
+          product = Product.new(product_params)
+          product.region_id = product_params.values[number][region]
+          product.activity_kind_id = product_params.values[number+1][activity_kind]
+          product.save
         end
       end
       Product.find(Product.where(name: @product.name).ids.sort![1]).destroy
@@ -113,15 +115,18 @@ class ProductsController < ApplicationController
 
     if new_count-old_count < 0
       1.upto(old_count-new_count) do |i|
-        Product.find(Product.where(name: @product.name).ids.last).destroy
+        Product.find(Product.where(name: @product.name).ids.sort![-1]).destroy
       end
-      1.upto(product_params.values[number].count-1) do |region|
-        1.upto(product_params.values[number+1].count-1) do |activity_kind|
-          @product.region_id = product_params.values[number][region]
-          @product.activity_kind_id = product_params.values[number+1][activity_kind]
-          @product.update(product_params)
+      product = Product.where(name: @product.name).ids.sort!
+      product.map{ |i|
+        1.upto(product_params.values[number].count-1) do |region|
+          1.upto(product_params.values[number+1].count-1) do |activity_kind|
+            Product.find(i).region_id = product_params.values[number][region]
+            Product.find(i).activity_kind_id = product_params.values[number+1][activity_kind]
+            Product.find(i).update(product_params)
+          end
         end
-      end
+      }
     end
 
     respond_to do |format|

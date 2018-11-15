@@ -32,7 +32,7 @@ class GmapsController < ApplicationController
         marker.lat gmap.latitude
         marker.lng gmap.longitude
         marker.infowindow "<img src=" + gmap.product.images_urls[0] + " width=150 >"+ "</p>" +
-                          "<p style=font-size:20px>"+gmap.product.name+"</p>"+ 
+                          "<p style=font-size:20px>"+gmap.product.name+"</p>"+
                           "<p style=font-size:14px>地址：" + gmap.product.location + "</p>" +
                           "<a href=#{link}> 詳細介紹 </a>"
 
@@ -42,7 +42,7 @@ class GmapsController < ApplicationController
 
 
   def new
-    product_id = Product.find_by(location: params[:address]).id
+    product_id = Product.where(location: params[:address]).ids.sort![0]
     if Gmap.find_by(product_id: product_id).blank?
       Gmap.create(latitude: params[:lat], longitude: params[:long], address: params[:address], product_id: product_id)
     else
