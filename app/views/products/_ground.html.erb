@@ -6,7 +6,7 @@
       <th>類別</th>
       <th>地區</th>
       <th>活動類別</th>
-      <th>圖片</th>
+      <th>廠商圖片</th>
       <th>人數</th>
       <th>廠商介紹</th>
       <th>聯絡電話</th>
@@ -17,7 +17,9 @@
       <th>設備</th>
       <th>限制條件</th>
       <th>優惠活動</th>
-      <th colspan="15"></th>
+      <th>價格圖片</th>
+      <th>價格</th>
+      <th colspan="17"></th>
     </tr>
   </thead>
 
@@ -41,6 +43,10 @@
         <td><%= product.equipment %></td>
         <td><%= product.limit %></td>
         <td><%= product.activity %></td>
+        <% for images in product.budget_images_urls %>
+          <td><%= link_to image_tag(images, width: '200px',height: '250px'), product if product.budget_images.present?%></td>
+        <% end %>
+        <td><%= product.budget %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

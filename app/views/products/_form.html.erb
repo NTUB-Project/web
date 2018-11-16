@@ -22,6 +22,20 @@
     <%= f.input :equipment, label: "設備："  %>
     <%= f.input :limit, label: "限制條件（廠規、里程數、件數..）："  %>
     <%= f.input :activity, label: "優惠活動（注意日期）："  %>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="Budget" id="Budget1" value="三小時/一小時(續)/一天：" checked>
+      <%= f.input :budget, label: "三小時/一小時(續)/一天：" ,placeholder: "2000,600,7000", input_html: {id: "budget1"} %>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="Budget" id="Budget2" value="按時段收費：" >
+      <%= f.input :budget, label: "最低時段收費：" ,placeholder: "08:00~12:00,4,8000", input_html: {id: "budget2",disabled: true} %>
+      預算圖片：
+      <%= f.file_field :images, multiple: true, name: "product[budget_images][]" %></p>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="Budget" id="Budget3" value="每小時/每人：" >
+      <%= f.input :budget, label: "每小時/每人：" ,placeholder: "100", input_html: {id: "budget3",disabled: true}  %>
+    </div>
 
   </div>
 
@@ -39,6 +53,21 @@
 <%end%>
 
 <script type="text/javascript">
+document.getElementById('Budget2').onchange = function() {
+  document.getElementById('budget2').disabled = !this.checked;
+  document.getElementById('budget1').disabled = true;
+  document.getElementById('budget3').disabled = true;
+};
+document.getElementById('Budget1').onchange = function() {
+  document.getElementById('budget2').disabled = true ;
+  document.getElementById('budget3').disabled = true ;
+  document.getElementById('budget1').disabled = !this.checked;
+};
+document.getElementById('Budget3').onchange = function() {
+  document.getElementById('budget2').disabled = true ;
+  document.getElementById('budget1').disabled = true ;
+  document.getElementById('budget3').disabled = !this.checked;
+};
 function codeAddress(){
 var add = document.getElementById("ConstructionADD");
 var long = document.getElementById("Longitude");

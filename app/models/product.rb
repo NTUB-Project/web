@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   has_many :matters
   has_many :matter_forms
   mount_uploaders :images, ImageUploader
+  mount_uploaders :budget_images, ImageUploader
   has_and_belongs_to_many :regions
   has_and_belongs_to_many :activity_kinds
   has_one :gmap

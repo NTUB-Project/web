@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-
     @product = Product.group(:name).select("MIN(id) AS id , name")
     @a = []
     if @product != []
@@ -63,13 +62,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    number = 12  if product_params.values.count == 14
-    number = 13  if product_params.values.count == 15
+    number = 14  if product_params.values.count == 16
+    number = 15  if product_params.values.count == 17
     1.upto(product_params.values[number].count-1) do |region|
       1.upto(product_params.values[number+1].count-1) do |activity_kind|
         @product = Product.new(product_params)
-        @product.region_id = product_params.values[number][region]
-        @product.activity_kind_id = product_params.values[number+1][activity_kind]
+        @product.region_id = product_params[:region_ids][region]
+        @product.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
         @product.save
       end
     end
@@ -78,21 +77,25 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    number = 12  if product_params.values.count == 14
     number = 13  if product_params.values.count == 15
+    number = 14  if product_params.values.count == 16
+    number = 15  if product_params.values.count == 17
     new_count = (product_params.values[number+1].count-1) * (product_params.values[number].count-1)
     old_count = Product.where(name: @product.name).count
     if new_count-old_count == 0
       product = Product.where(name: @product.name).ids.sort!
-      product.map{ |i|
-        1.upto(product_params.values[number].count-1) do |region|
-          1.upto(product_params.values[number+1].count-1) do |activity_kind|
-            Product.find(i).region_id = product_params.values[number][region]
-            Product.find(i).activity_kind_id = product_params.values[number+1][activity_kind]
-            Product.find(i).update(product_params)
-          end
+      count = new_count - 1
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          products = Product.find(product[count])
+          products.update(product_params)
+          products.budget = products.budget + "," + params[:Budget]
+          products.region_id = product_params[:region_ids][region]
+          products.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          count = count - 1
+          products.save
         end
-      }
+      end
     end
 
     if new_count-old_count > 0
@@ -105,8 +108,8 @@ class ProductsController < ApplicationController
       1.upto(product_params.values[number].count-1) do |region|
         1.upto(product_params.values[number+1].count-1) do |activity_kind|
           product = Product.new(product_params)
-          product.region_id = product_params.values[number][region]
-          product.activity_kind_id = product_params.values[number+1][activity_kind]
+          product.region_id = product_params[:region_ids][region]
+          product.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
           product.save
         end
       end
@@ -118,15 +121,17 @@ class ProductsController < ApplicationController
         Product.find(Product.where(name: @product.name).ids.sort![-1]).destroy
       end
       product = Product.where(name: @product.name).ids.sort!
-      product.map{ |i|
-        1.upto(product_params.values[number].count-1) do |region|
-          1.upto(product_params.values[number+1].count-1) do |activity_kind|
-            Product.find(i).region_id = product_params.values[number][region]
-            Product.find(i).activity_kind_id = product_params.values[number+1][activity_kind]
-            Product.find(i).update(product_params)
-          end
+      count = new_count - 1
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          products = Product.find(product[count])
+          products.update(product_params)
+          products.region_id = product_params[:region_ids][region]
+          products.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          count = count - 1
+          products.save
         end
-      }
+      end
     end
 
     respond_to do |format|
@@ -167,6 +172,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, {:images => []}, :item, :url, :equipment, :limit, :activity, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, {:region_ids => []}, :activity_kind_ids => [])
+      params.require(:product).permit(:name, {:images => []},{:budget_images => []}, :budget, :item, :url, :equipment, :limit, :activity, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, {:region_ids => []}, :activity_kind_ids => [])
     end
 end
