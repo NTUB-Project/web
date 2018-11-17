@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-
     @product = Product.group(:name).select("MIN(id) AS id , name")
     @a = []
     if @product != []
@@ -36,7 +35,6 @@ class ProductsController < ApplicationController
         @costumes << i
       end
     }
-
     @ground = @grounds.count
     @food = @foods.count
     @rentcar = @rentcars.count
@@ -64,11 +62,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    1.upto(product_params.values[13].count-1) do |region|
-      1.upto(product_params.values[14].count-1) do |activity_kind|
+    number = 14  if product_params.values.count == 16
+    number = 15  if product_params.values.count == 17
+    1.upto(product_params.values[number].count-1) do |region|
+      1.upto(product_params.values[number+1].count-1) do |activity_kind|
         @product = Product.new(product_params)
-        @product.region_id = product_params.values[13][region]
-        @product.activity_kind_id = product_params.values[14][activity_kind]
+        @product.region_id = product_params[:region_ids][region]
+        @product.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
         @product.save
       end
     end
@@ -77,6 +77,63 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    number = 13  if product_params.values.count == 15
+    number = 14  if product_params.values.count == 16
+    number = 15  if product_params.values.count == 17
+    new_count = (product_params.values[number+1].count-1) * (product_params.values[number].count-1)
+    old_count = Product.where(name: @product.name).count
+    if new_count-old_count == 0
+      product = Product.where(name: @product.name).ids.sort!
+      count = new_count - 1
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          products = Product.find(product[count])
+          products.update(product_params)
+          products.budget = products.budget + "," + params[:Budget]
+          products.region_id = product_params[:region_ids][region]
+          products.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          count = count - 1
+          products.save
+        end
+      end
+    end
+
+    if new_count-old_count > 0
+      @product.region_id = product_params.values[number][1].to_i
+      @product.activity_kind_id = product_params.values[number+1][1].to_i
+      @product.update(product_params)
+      1.upto(Product.where(name: @product.name).ids.count-1) do |i|
+        Product.find(Product.where(name: @product.name).ids.sort![1]).destroy
+      end
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          product = Product.new(product_params)
+          product.region_id = product_params[:region_ids][region]
+          product.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          product.save
+        end
+      end
+      Product.find(Product.where(name: @product.name).ids.sort![1]).destroy
+    end
+
+    if new_count-old_count < 0
+      1.upto(old_count-new_count) do |i|
+        Product.find(Product.where(name: @product.name).ids.sort![-1]).destroy
+      end
+      product = Product.where(name: @product.name).ids.sort!
+      count = new_count - 1
+      1.upto(product_params.values[number].count-1) do |region|
+        1.upto(product_params.values[number+1].count-1) do |activity_kind|
+          products = Product.find(product[count])
+          products.update(product_params)
+          products.region_id = product_params[:region_ids][region]
+          products.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          count = count - 1
+          products.save
+        end
+      end
+    end
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -86,12 +143,20 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    Gmap.find_by(product_id: @product.id).destroy
+    Product.where(name: @product.name).ids.map{|i|
+      Matter.find_by(product_id: i).destroy if Matter.find_by(product_id: i) != nil
+      MatterForm.find_by(product_id: i).destroy if MatterForm.find_by(product_id: i) != nil
+      CartItem.find_by(product_id: i).destroy if CartItem.find_by(product_id: i) != nil
+      Comment.find_by(product_id: i).destroy if Comment.find_by(product_id: i) != nil
+      Gmap.find_by(product_id: i).destroy if Gmap.find_by(product_id: i) != nil
+    }
     Product.where(name: @product.name).destroy_all
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -107,6 +172,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, {:images => []}, :item, :url, :equipment, :limit, :activity, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, {:region_ids => []}, :activity_kind_ids => [])
+      params.require(:product).permit(:name, {:images => []},{:budget_images => []}, :budget, :item, :url, :equipment, :limit, :activity, :description, :location, :tel, :email, :category_id,  :activity_kind_id, :people_number_id, {:region_ids => []}, :activity_kind_ids => [])
     end
 end

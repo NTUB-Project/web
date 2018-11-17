@@ -89,6 +89,19 @@
   <%= @product.activity %>
 </p>
 
+<p>
+  <% for images in @product.budget_images_urls %>
+    <li class="selected">
+      <td><%= link_to image_tag(images, width: '200px',height: '250px'), @product if @product.budget_images.present?%></td>
+    </li>
+  <% end %>
+</p>
+
+<p>
+  <strong>價格:</strong>
+  <%= @product.budget %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

@@ -9,7 +9,7 @@
             <% 0.upto(comment.images.count-1) do |i| %>
     	      <a class="fancybox" rel="group2" href="<%= comment.images_urls[i] %>">
     	      <% end %>
-    	      	<div class="lg-img index-images" style="background-image:url(<%= comment.images[0].thumb.url %>)">
+    	      	<div class="lg-img index-images" style="background-image:url(<%= comment.images_urls[0] %>)">
           		</div>
           	</a>
           </div>
