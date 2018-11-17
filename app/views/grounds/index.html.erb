@@ -1,7 +1,6 @@
 <div class="activitycontent">
   <div class="container">
-    <div class="row">
-      <div id="searchPageLeftColumn" class="col-md-12 col-lg-3">
+      <div id="searchPageLeftColumn" class="search_bar col-md-12 col-lg-3">
         <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
             <div class="filters-header-text">
@@ -104,7 +103,20 @@
         <% end %>
         <%= will_paginate @grounds , class:"digg_pagination"%>
       </div>
-    </div>
   </div>
 </div>
 
+<script>
+  $(window).scroll(function(){
+		if($(this).scrollTop()>$('.search_bar').offset().top  ){
+			
+			$('#joinedFilterList').addClass('fixed');
+				
+		}else if( $(this).scrollTop()<$('.search_bar').offset().top){
+			$('#joinedFilterList').removeClass('fixed');
+			
+		}
+		
+	});
+
+</script>
