@@ -19,7 +19,8 @@
       <th>優惠活動</th>
       <th>價格圖片</th>
       <th>價格</th>
-      <th colspan="17"></th>
+      <th>價格類型</th>
+      <th colspan="18"></th>
     </tr>
   </thead>
 
@@ -47,6 +48,7 @@
           <td><%= link_to image_tag(images, width: '200px',height: '250px'), product if product.budget_images.present?%></td>
         <% end %>
         <td><%= product.budget %></td>
+        <td><%= product.budget_option %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
