@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_16_070539) do
+ActiveRecord::Schema.define(version: 2018_11_17_085038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(version: 2018_11_16_070539) do
     t.json "images"
     t.json "budget_images"
     t.string "budget"
+    t.string "budget_option"
+    t.integer "min_price"
     t.index ["activity_kind_id"], name: "index_products_on_activity_kind_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["people_number_id"], name: "index_products_on_people_number_id"

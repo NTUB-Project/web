@@ -9,13 +9,13 @@ class GroundsController < ApplicationController
       end
     end
     @grounds = grounds.paginate(page: params[:page], per_page: 10)
-    
+
     @search = grounds.count
     #checkbox
     @regions = Region.all
     @people_numbers = PeopleNumber.all
     @activity_kinds = ActivityKind.all
-    
+
   end
 
   def search
@@ -40,16 +40,55 @@ class GroundsController < ApplicationController
     end
     people_number_name = []
     people_number.map{|i| people_number_name << i.name}
-    #search
-    product = [region_name,activity_kind_name,people_number_name].reject(&:empty?).reduce(:&) || []
-    if product != []
-      @grounds = []
-      0.upto(product.count-1) do |i|
-        @grounds <<  Product.find_by(name: product[i])
+
+    #budget
+    price=[]
+    if params[:commit] != nil
+      @price =[]
+      peo = params[:people].to_i
+      hou = params[:hours].to_i
+      peo = 1 if peo == 0
+      hou = 1 if hou == 0
+      find.map{|i|
+        case Product.find(i.id).budget_option
+
+        when "按時段收費"
+          @price <<  (Product.find(i.id).min_price * hou).to_s + "," + i.id.to_s
+
+        when "三小時/一小時(續)/一天"
+          if params[:hours].to_i >= 3
+            @price << (Product.find(i.id).budget.split(",")[0].to_i + (hou-3 ) * Product.find(i.id).budget.split(",")[1].to_i).to_s + "," + i.id.to_s
+          else
+            @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s
+          end
+
+        when "每小時/每人"
+          @price << (Product.find(i.id).budget.to_i * peo * hou).to_s + "," + i.id.to_s
+        end
+      }
+      unless params[:budget].blank?
+        @price.each do |i|
+          price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0] <= params[:budget]
+        end
       end
+    end
+    #search
+    product = [region_name,activity_kind_name,people_number_name,price].reject(&:empty?).reduce(:&) || []
+    @grounds = []
+    if product != []
+      Product.where(name: product).group("name").select("MIN(id) AS id , name").map{ |i|
+        @grounds <<  Product.find(i.id)
+      }
       @search = @grounds.count
     else
-      redirect_to grounds_path, notice: "無搜尋到此條件"
+      if @price != []
+        find.map{ |i|
+          @grounds <<  Product.find(i.id)
+         }
+         @search = @grounds.count
+      else
+        redirect_to grounds_path, notice: "無搜尋到此條件"
+      end
     end
     #checkbox
     @regions = Region.all

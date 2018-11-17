@@ -69,6 +69,8 @@ class ProductsController < ApplicationController
         @product = Product.new(product_params)
         @product.region_id = product_params[:region_ids][region]
         @product.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+        @product.budget_option = params[:Budget]
+        @product.min_price = @product.budget.split(",")[2].to_i / @product.budget.split(",")[1].to_i if @product.budget_option == "按時段收費"
         @product.save
       end
     end
@@ -89,9 +91,10 @@ class ProductsController < ApplicationController
         1.upto(product_params.values[number+1].count-1) do |activity_kind|
           products = Product.find(product[count])
           products.update(product_params)
-          products.budget = products.budget + "," + params[:Budget]
           products.region_id = product_params[:region_ids][region]
           products.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          products.budget_option = params[:Budget]
+          products.min_price = products.budget.split(",")[2].to_i / products.budget.split(",")[1].to_i if products.budget_option == "按時段收費"
           count = count - 1
           products.save
         end
@@ -110,6 +113,8 @@ class ProductsController < ApplicationController
           product = Product.new(product_params)
           product.region_id = product_params[:region_ids][region]
           product.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          products.budget_option = params[:Budget]
+          products.min_price = products.budget.split(",")[2].to_i / products.budget.split(",")[1].to_i if products.budget_option == "按時段收費"
           product.save
         end
       end
@@ -128,6 +133,8 @@ class ProductsController < ApplicationController
           products.update(product_params)
           products.region_id = product_params[:region_ids][region]
           products.activity_kind_id = product_params[:activity_kind_ids][activity_kind]
+          products.budget_option = params[:Budget]
+          products.min_price = products.budget.split(",")[2].to_i / products.budget.split(",")[1].to_i if products.budget_option == "按時段收費"
           count = count - 1
           products.save
         end
