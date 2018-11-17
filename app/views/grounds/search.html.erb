@@ -49,11 +49,58 @@
                       </div>
                     </li>
                   </ul>
-                  <% end %>
+
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div id="joinedFilterList">
+
+          <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
+            <div class="filters-header-text">
+              <div style="display: block;">
+                <i class="ficon ficon-filter-icon"></i>
+                <p>進階篩選</p>
+              </div>
+            </div>
+            <div id="filtersContainerReact" class="filtersContainerReact">
+              <div>
+                <div class="filters-container" data-selenium="filter-container">
+                  <ul class="filters-list">
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">活動時間</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <input type="text" name="hours"  placeholder="3">小時
+                        </ul>
+                        <ul class="list-filter__items filter-list-item">
+                          <input type="text" name="people"  placeholder="15">人
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">預算</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <input type="text" name="budget"  placeholder="5000">元
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <%= submit_tag "開始尋找" %>
+          <% end %>
         </div>
       </div>
       <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
@@ -86,6 +133,21 @@
                         <% end %>
                       <% else %>
                         <%= ground.people_number.title %>
+                      <% end %>
+                    </p>
+                    <% if @price !=nil %>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("person.png", width: '20px',height: '20px')%>
+                      最低價格：
+                      <% @price.each do |i| %>
+                        <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
+                      <% end %>
+                    </p>
+                    <% end %>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("person.png", width: '20px',height: '20px')%>
+                      <% if ground.budget != ""%>
+                        <a>收費方式：<%= ground.budget_option %></a>
                       <% end %>
                     </p>
                   </div>
