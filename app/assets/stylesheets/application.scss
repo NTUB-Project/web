@@ -192,20 +192,21 @@ div.activitycontent{
 	height: auto;
 	margin-top: 40px;
 }
+#searchbar{
+  overflow: auto;
+  height: 90%;
+  float: left;
+  width: 250px;
+}
 #joinedFilterList {
   border: 1px solid #ddd;
   border-radius: 5px;
-  float: left;
-  width: 250px;
-  overflow: auto;
-  height: 100%;
 }
 #searchPageLeftColumn .filter-list.filter-list-react {
   margin: 0;
 }
 #searchPageRightColumn {
   float: right;
-  display: inline-block;
 }
 .filter-list ul {
   margin: 0 0 20px;
@@ -270,6 +271,7 @@ div.activitycontent{
 }
 .search_bar .fixed{
   position: fixed;
+  top: 80px;
 }
 
 //gmap
@@ -479,10 +481,17 @@ thead th:nth-child(4),tbody td:nth-child(4){
   
   //各廠商index篩選列
   .filter-menu {
-  font-size: 24px;
+    font-size: 24px;
   }
   .filter-item-info{
-  font-size: 20px;
+    font-size: 20px;
+  }
+ #searchbar{
+    float: none;
+    width: 100%;
+  }
+  #searchPageRightColumn {
+    float: none;
   }
   
   //寄件夾欄位

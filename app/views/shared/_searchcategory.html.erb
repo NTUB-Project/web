@@ -4,7 +4,7 @@
       <% @categories.each do |i| %>
         <% checked = @c && @c.collect(&:id).include?(i.id) %>
         <%= check_box_tag "category_ids[]", i.id, checked, :id  => "#{i.id}" ,class: "checkbox_submit"%>
-        <%= i.title %></p>
+        <%= i.title %><p class="hidesearch"></p>
       <% end %>
     </span>
   </span>

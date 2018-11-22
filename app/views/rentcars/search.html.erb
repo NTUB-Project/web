@@ -1,8 +1,8 @@
 <div class="activitycontent">
-  <div class="container">
-    <div class="row">
-      <div id="searchPageLeftColumn" class="col-sm-12 col-md-4 col-lg-3">
-        <div id="joinedFilterList">
+  <div id="mobile" class="container">
+      <div id="searchPageLeftColumn" class="search_bar col-md-12 col-lg-3">
+        <div id="searchbar">
+          <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
             <div class="filters-header-text">
               <div style="display: block;">
@@ -47,12 +47,13 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
-      <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
+      <div id="searchPageRightColumn" class="col-md-12 col-lg-9">
         符合條件共<%=@search%>家廠商
         <% @rentcars.each do |rentcar| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(rentcar.images_urls[0], width: '200px',height: '250px'), rentcar if rentcar.images.present?%>
+              <%= image_tag(rentcar.images_urls[0], width: '200px',height: '250px') if rentcar.images.present?%>
               <div class="card-body">
 
                 <div class="row">
@@ -96,6 +97,5 @@
             </div>
         <% end %>
       </div>
-    </div>
   </div>
 </div>

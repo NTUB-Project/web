@@ -98,3 +98,33 @@ anime.timeline({loop: true})
       }});
   });
 });
+
+
+
+//各廠商篩選列
+
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+      $(document).ready(function(){
+        $('#mobile').removeClass('container');
+        $(".hidesearch").hide();
+      });
+  } else {
+      $(window).scroll(function(){
+      	if($(this).scrollTop()>$('.activitycontent').offset().top){
+      		$('#searchbar').addClass('fixed');
+      	}else if( $(this).scrollTop()<$('.activitycontent').offset().top){
+      		$('#searchbar').removeClass('fixed');
+      	}
+      	if( $(window).scrollTop() + $(window).height()>$('.footer').offset().top){
+      		 $('#searchbar').removeClass('fixed');
+      	}
+    });
+  }
+}
+
+  var x = window.matchMedia("(max-width: 1000px)")
+  myFunction(x) // Call listener function at run time
+  x.addListener(myFunction)
+  
+  

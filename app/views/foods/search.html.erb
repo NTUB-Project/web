@@ -1,8 +1,8 @@
 <div class="activitycontent">
-  <div class="container">
-    <div class="row">
-      <div id="searchPageLeftColumn" class="col-sm-12 col-md-4 col-lg-3">
-        <div id="joinedFilterList">
+  <div id="mobile" class="container">
+      <div id="searchPageLeftColumn" class="search_bar col-md-12 col-lg-3">
+        <div id="searchbar">
+          <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
             <div class="filters-header-text">
               <div style="display: block;">
@@ -45,15 +45,15 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
-      <div id="searchPageRightColumn" class="col-sm-12 col-md-8 col-lg-9">
+      <div id="searchPageRightColumn" class="col-md-12 col-lg-9">
         符合條件共<%=@search%>家廠商
         <% @foods.each do |food| %>
             <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= link_to image_tag(food.images_urls[0], width: '200px',height: '250px'), food if food.images.present?%>
+              <%= image_tag(food.images_urls[0], width: '200px',height: '250px') if food.images.present?%>
               <div class="card-body">
                 <div class="row">
-
                   <div class="col-6 cardleft">
                     <h3 class="mb-0 mb-3">
                       <a class="text-dark" href="#"><%= food.name %></a>
@@ -79,7 +79,6 @@
                       <% end %>
                     </p>
                   </div>
-
                   <div class="col-6 cardright">
                     <div class="card-text mb-auto cardscroll">
                       <a><%= food.description %></a>
@@ -94,6 +93,5 @@
             </div>
         <% end %>
       </div>
-    </div>
   </div>
 </div>
