@@ -35,7 +35,7 @@ class GmapsController < ApplicationController
                           "<p style=font-size:20px>"+gmap.product.name+"</p>"+
                           "<p style=font-size:14px>地址：" + gmap.product.location + "</p>" +
                           "<a href=#{link}> 詳細介紹 </a>"
-
+                                                  
       end
     end
   end
