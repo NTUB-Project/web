@@ -26,11 +26,11 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
           var gmap = <%=raw @hash.to_json %>
           var mark = gmap.concat(pos);
           markers = handler.addMarkers(mark);
-          handler.bounds.extendWith(markers);
+          handler.map.centerOn(markers[0]);
           _.each(markers, function(marker){
            google.maps.event.trigger(marker.getServiceObject(), 'click');
-         });
-         handler.fitMapToBounds();
+          });
+          handler.getMap().setZoom(15);
        });
  } else {
    alert("未允許或遭遇錯誤！");
