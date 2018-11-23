@@ -20,16 +20,16 @@
         </label></p>
         <% @item_id.each do |item_id| %>
           給<%= Product.find(item_id).name %>的備註內容：
-          <input name="<%= item_id %>" id="FM_<%= item_id %>" class="form-control string required" disabled /> </p>
+          <textarea name="<%= item_id %>" id="FM_<%= item_id %>" class="form-control string required textinput" disabled /> </textarea>
         <% end %>
       </div>
     <% else %>
-      <%= f.input :memo, label: "備註：", placeholder: '若沒有，請填無' %>
+      <%= f.text_area :memo, label: "備註：", placeholder: '若沒有，請填無', class: 'textinput' %>
     <% end %>
     <%= f.file_field :images, multiple: true, name: "#{matter_cart_path(@item_id)}[images][]"%>
   </div>
   <div class="form-actions">
-    <%= f.button :button,"寄出".html_safe, data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 寄出中..."} , value: "寄出"%>
+    <%= f.button :button,"寄出".html_safe, data: {confirm: "確定寄出?", disable_with: "<i class='fa fa-spinner fa-spin'></i> 寄出中..."} , value: "寄出"%>
     <%= f.button :button,"預覽".html_safe, remote: true , 'data-toggle' =>  "FM_modal", 'data-target' => '#FM_modal-window', value: "預覽",data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 預覽中..."} %>
   </div>
 <% end %>

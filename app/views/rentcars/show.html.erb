@@ -56,8 +56,8 @@
 
 			<h2 class="eachProgramTitle">聯絡資訊</h2>
 			<%=image_tag('tel.png', size: '20')%> 電話：  <%= rentcar.tel %></br></br>
-			<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= rentcar.email %></br></br>
-			<%=image_tag('home.png', size: '20')%> 網站：  <%= rentcar.url %>
+			<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= rentcar.email.split('"')[1] %></br></br>
+			<%=image_tag('home.png', size: '20')%> 網站：  <%= rentcar.url.split('"')[1] %>
 
 			<h2 class="eachProgramTitle">地理位置
 				<span class="pull-right"><%= rentcar.location %></span>

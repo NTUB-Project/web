@@ -80,7 +80,7 @@ Latitude.value = results[0].geometry.location.lat();
 $.ajax({
   type: "get",
   url: "/gmaps/new",
-  data: {"long": Longitude.value, "lat": Latitude.value, "address": add.value},
+  data: {"long": Longitude.value, "lat": Latitude.value, "address": add.value },
   });
 } else {
 alert("Geocode was not successful for the following reason: " + status);}

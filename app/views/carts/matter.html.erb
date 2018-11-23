@@ -3,13 +3,13 @@
   <div class="sub_title">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active">
-        <button class="click_log" id="Selfbtn" onclick="openCategory('Self'),changeColor('Selfbtn')">自行輸入</button>
+        <a class="nav-link active" id="self_matter" >
+        <button class="click_log" id="Selfbtn" >自行輸入</button>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">
-        <button class="click_log" id="Formbtn" onclick="openCategory('Form'),changeColor('Formbtn')">表格</button>
+        <a class="nav-link" id="form_matter" >
+        <button class="click_log" id="Formbtn" >表格</button>
         </a>
       </li>
     </ul>
@@ -46,7 +46,7 @@
 
         </div>
         <div class="form-actions">
-          <%= f.button :button,"寄出".html_safe, data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 寄出中..."} , value: "寄出"%>
+          <%= f.button :button,"寄出".html_safe, data: {confirm: "確定寄出?", disable_with: "<i class='fa fa-spinner fa-spin'></i> 寄出中..."} , value: "寄出"%>
           <%= f.button :button,"預覽".html_safe, remote: true , 'data-toggle' =>  "modal", 'data-target' => '#modal-window', value: "預覽",data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> 預覽中..."}   %>
         </div>
       <% end %>
@@ -103,6 +103,26 @@ function changeColor(btnName) {
   }
   document.getElementById(btnName).style.color = "TEAL";
 }
+
+document.getElementById('self_matter').style.borderColor = '#2b837a #2b837a #fff';
+document.getElementById('Selfbtn').style.color = "teal";
+
+document.getElementById('form_matter').onclick = function() {
+  document.getElementById('self_matter').style.borderColor = '#e9ecef #e9ecef #2b837a';
+  document.getElementById('form_matter').style.borderColor = '#2b837a #2b837a #fff';
+  document.getElementById('Selfbtn').style.color = "black";
+  document.getElementById('Formbtn').style.color = "teal";
+  openCategory('Form');
+};
+
+document.getElementById('self_matter').onclick = function() {
+  document.getElementById('form_matter').style.borderColor = '#e9ecef #e9ecef #2b837a';
+  document.getElementById('self_matter').style.borderColor = '#2b837a #2b837a #fff';
+  document.getElementById('Formbtn').style.color = "black";
+  document.getElementById('Selfbtn').style.color = "teal";
+  openCategory('Self');
+};
+
 $(document).on('click', '#Self :submit', function () {
     var buttons = $('#Self :submit').not($(this));
     buttons.attr('disabled', true);
