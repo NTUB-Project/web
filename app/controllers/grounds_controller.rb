@@ -56,10 +56,10 @@ class GroundsController < ApplicationController
           @price <<  (Product.find(i.id).min_price * hou).to_s + "," + i.id.to_s
 
         when "三小時/一小時(續)/一天"
-          if params[:hours].to_i >= 3
+          if params[:hours].to_i >= 3 && Product.find(i.id).budget.blank? == false
             @price << (Product.find(i.id).budget.split(",")[0].to_i + (hou-3 ) * Product.find(i.id).budget.split(",")[1].to_i).to_s + "," + i.id.to_s
           else
-            @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s
+            @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s if Product.find(i.id).budget.blank? == false
           end
 
         when "每小時/每人"
