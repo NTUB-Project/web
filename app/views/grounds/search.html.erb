@@ -57,14 +57,13 @@
         </div>
           <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
-            <div class="filters-header-text">
+            <div class="filters-header-text" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
               <div style="display: block;">
                 <i class="ficon ficon-filter-icon"></i>
                 <p>進階篩選</p>
               </div>
             </div>
-            <div id="filtersContainerReact" class="filtersContainerReact">
-              <div>
+            <div class="collapse" id="collapseExample">
                 <div class="filters-container" data-selenium="filter-container">
                   <ul class="filters-list">
                     <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
@@ -93,12 +92,10 @@
                       </div>
                     </li>
                   </ul>
-
                 </div>
-              </div>
+                <%= submit_tag "開始尋找" %>
             </div>
           </div>
-          <%= submit_tag "開始尋找" %>
           <% end %>
         </div>
         </div>

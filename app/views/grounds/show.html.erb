@@ -43,13 +43,25 @@
 		<div class="row">
 			<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
 			<div class="col-3"><h5><%=image_tag('list.png', size: '20')%> 活動類型</h5></div>
-			<div class="col-3"><h5><%=image_tag('sale.png', size: '20')%> 優惠活動</h5></div>
+			<div class="col-3"><h5><%=image_tag('sale.png', size: '20')%> 收費相關</h5></div>
 			<div class="col-3"><h5><%=image_tag('lock.png', size: '20')%> 額外限制</h5></div>
 		</div>
 		<div class="row" style="height: 100px">
 			<div class="productContent col-3"><%= ground.equipment %></div>
 			<div class="productContent col-3"><%= ground.item %></div>
-			<div class="productContent col-3"><%= ground.activity %></div>
+			<div class="productContent col-3">
+				
+				<% if @price !=nil %>
+          <% @price.each do |i| %>
+            <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
+          <% end %>
+        <% end %>
+        <% if ground.budget != ""%>
+          <%= ground.budget_option %>
+        <% end %>
+       
+			
+			</div>
 			<div class="productContent col-3"><%= ground.limit %></div>
 		</div>
 

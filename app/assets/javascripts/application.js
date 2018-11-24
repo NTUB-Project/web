@@ -110,16 +110,22 @@ function myFunction(x) {
         $(".hidesearch").hide();
       });
   } else {
+    
       $(window).scroll(function(){
-      	if($(this).scrollTop()>$('.activitycontent').offset().top){
-      		$('#searchbar').addClass('fixed');
-      	}else if( $(this).scrollTop()<$('.activitycontent').offset().top){
-      		$('#searchbar').removeClass('fixed');
-      	}
-      	if( $(window).scrollTop() + $(window).height()>$('.footer').offset().top){
-      		 $('#searchbar').removeClass('fixed');
-      	}
+        if( $('#searchbar').height()<$('#searchPageRightColumn').height() ){
+        
+        	if($(this).scrollTop()>$('.activitycontent').offset().top){
+        		$('#searchbar').addClass('fixed');
+        	}else if( $(this).scrollTop()<$('.activitycontent').offset().top){
+        		$('#searchbar').removeClass('fixed');
+        	}
+        	if( $(window).scrollTop() + $(window).height()>$('.footer').offset().top){
+        		 $('#searchbar').removeClass('fixed');
+        	}
+      	
+        };
     });
+    
   }
 }
 
