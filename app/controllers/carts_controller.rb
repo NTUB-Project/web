@@ -117,7 +117,7 @@ before_action :current_cart
             format.html { redirect_to controller: "carts", action: "show"}
             format.js   { render js: "window.location.href='#{cart_path}'"}
           else
-            @matter.errors.messages[:images][0]="附件只能為圖片！" unless @matter.errors[:images].blank?
+            @matter.errors.messages[:images][0]="附件只能為圖片或影片！" unless @matter.errors[:images].blank?
             @matter.errors.messages[:mattertext]=[] if params[:Radios] == "option2"
             matter_errors = []
             @matter.errors.messages.values.map{ |i| matter_errors<< i[0] if i[0] !=nil }
@@ -186,7 +186,7 @@ before_action :current_cart
           format.html { redirect_to controller: "carts", action: "show"}
           format.js   { render js: "window.location.href='#{cart_path}'"}
         else
-          @matter_form.errors.messages[:images][0]="附件只能為圖片！" unless @matter_form.errors[:images].blank?
+          @matter_form.errors.messages[:images][0]="附件只能為圖片或影片！" unless @matter_form.errors[:images].blank?
           @matter_form.errors.messages[:memo]=[] if params[:Radios] == "option2"
           matter_form_errors = []
           @matter_form.errors.messages.values.map{ |i| matter_form_errors<< i[0] if i[0] !=nil }

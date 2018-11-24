@@ -56,10 +56,10 @@ class GroundsController < ApplicationController
           @price <<  (Product.find(i.id).min_price * hou).to_s + "," + i.id.to_s
 
         when "三小時/一小時(續)/一天"
-          if params[:hours].to_i >= 3
+          if params[:hours].to_i >= 3 && Product.find(i.id).budget.blank? == false
             @price << (Product.find(i.id).budget.split(",")[0].to_i + (hou-3 ) * Product.find(i.id).budget.split(",")[1].to_i).to_s + "," + i.id.to_s
           else
-            @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s
+            @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s if Product.find(i.id).budget.blank? == false
           end
 
         when "每小時/每人"
@@ -68,7 +68,7 @@ class GroundsController < ApplicationController
       }
       unless params[:budget].blank?
         @price.each do |i|
-          price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0] <= params[:budget]
+          price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0].to_i <= params[:budget].to_i
         end
       end
     end
@@ -86,6 +86,7 @@ class GroundsController < ApplicationController
           @grounds <<  Product.find(i.id)
          }
          @search = @grounds.count
+
       else
         redirect_to grounds_path, notice: "無搜尋到此條件"
       end
