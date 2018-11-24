@@ -68,7 +68,7 @@ class GroundsController < ApplicationController
       }
       unless params[:budget].blank?
         @price.each do |i|
-          price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0] <= params[:budget]
+          price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0].to_i <= params[:budget].to_i
         end
       end
     end
@@ -86,6 +86,7 @@ class GroundsController < ApplicationController
           @grounds <<  Product.find(i.id)
          }
          @search = @grounds.count
+
       else
         redirect_to grounds_path, notice: "無搜尋到此條件"
       end
