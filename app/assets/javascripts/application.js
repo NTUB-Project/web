@@ -108,6 +108,8 @@ function myFunction(x) {
       $(document).ready(function(){
         $('#mobile').removeClass('container');
         $(".hidesearch").hide();
+        $("#collapseTitle").css();
+        
       });
   } else {
     

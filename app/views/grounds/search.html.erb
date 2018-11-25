@@ -133,16 +133,19 @@
                       <% end %>
                     </p>
                     
-                    <% if @price !=nil  %>
-                    <p class="card-text mb-auto" id="moneyStyle">
-                      <%= image_tag("coin.png", width: '20px',height: '20px')%>
-                      NT$
-                        <% @price.each do |i| %>
-                          <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
-                        <% end %>
-                      起
-                    </p>
-                    <% end %>
+                    <% @price.each do |a| %>
+                      <% if a.split(",")[1].to_i == ground.id %>
+                        <p class="card-text mb-auto" id="moneyStyle">
+                          <%= image_tag("coin.png", width: '20px',height: '20px')%>
+                          NT$
+                            <% @price.each do |i| %>
+                              <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
+                            <% end %>
+                          起
+                        </p>
+                         <% end %>
+                      <% end %>
+                   
                     
                     <p class="card-text mb-auto">
                       <%= image_tag("money.png", width: '20px',height: '20px')%>
