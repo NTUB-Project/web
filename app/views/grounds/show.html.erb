@@ -14,8 +14,8 @@
 				</p>
 			</div>
       <div class="bnb-images">
-      	
-      	
+
+
       	<a class="fancybox" rel="group" href="<%= ground.images_urls[0] %>">
       		<div class="lg-img bnb-image" style="background-image:url(<%= ground.images_urls[0] %>)"></div>
       	</a>
@@ -52,35 +52,33 @@
 			<div class="productContent col-3"><%= ground.equipment %></div>
 			<div class="productContent col-3"><%= ground.item %></div>
 			<div class="productContent col-3">
-        
+
         <% if ground.budget != ""  %>
         	<b>計價方式</b></br>
-        	
+
         	<% if ground.budget_option == "三小時/一小時(續)/一天" %>
 	          <% 0.upto(2) do |i| %>
 		        	NT$<%= ground.budget.split(',')[i] %>/<%= ground.budget_option.split('/')[i] %></br>
 		        <% end %>
 		      <% end %>
-          
+
           <% if ground.budget_option == "按時段收費" %>
           	<%= ground.budget.split(',')[0] %></br>
           	NT$<%= ground.budget.split(',')[2] %>/<%= ground.budget.split(',')[1] %>小時</br>
-						<a class="fancybox" rel="group1" href="<%= ground.budget_images_urls[0] %>">
-	      			<%= image_tag( ground.budget_images_urls[0], width: '70px',height: '70px') if ground.budget_images.present? %>
-			      </a>          	
+            <a href="<%= ground.budget_images_urls[0] %>" target="_blank">查看預算圖片</a>
           <% end %>
-          
+
           <% if ground.budget_option == "每小時/每人" %>
 	        	每小時/每人
 		      	NT$<%= ground.budget %></br>
 		      <% end %>
-          
+
         <% else %>
           無
         <% end %>
-        
-        
-			
+
+
+
 			</div>
 			<div class="productContent col-3"><%= ground.limit %></div>
 		</div>
