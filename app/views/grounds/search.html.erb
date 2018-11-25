@@ -132,19 +132,24 @@
                         <%= ground.people_number.title %>
                       <% end %>
                     </p>
-                    <% if @price !=nil %>
+                    
                     <p class="card-text mb-auto">
                       <%= image_tag("coin.png", width: '20px',height: '20px')%>
-                      最低價格：
-                      <% @price.each do |i| %>
-                        <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
+                      最低價格：NT$
+                      <% if @price !=nil %>
+                        <% @price.each do |i| %>
+                          <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
+                        <% end %>
                       <% end %>
                     </p>
-                    <% end %>
+                    
                     <p class="card-text mb-auto">
                       <%= image_tag("money.png", width: '20px',height: '20px')%>
+                      收費方式：
                       <% if ground.budget != ""%>
-                        <a>收費方式：<%= ground.budget_option %></a>
+                        <a><%= ground.budget_option %></a>
+                      <% else %>
+                      目前無資料
                       <% end %>
                     </p>
                   </div>

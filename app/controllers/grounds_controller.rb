@@ -61,7 +61,7 @@ class GroundsController < ApplicationController
           else
             @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s if Product.find(i.id).budget.blank? == false
           end
-
+          
         when "每小時/每人"
           @price << (Product.find(i.id).budget.to_i * peo * hou).to_s + "," + i.id.to_s
         end
@@ -118,6 +118,7 @@ class GroundsController < ApplicationController
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end
+    
   end
 
 end

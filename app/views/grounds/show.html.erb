@@ -50,16 +50,32 @@
 			<div class="productContent col-3"><%= ground.equipment %></div>
 			<div class="productContent col-3"><%= ground.item %></div>
 			<div class="productContent col-3">
-				
-				<% if @price !=nil %>
-          <% @price.each do |i| %>
-            <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
+        
+        <% if ground.budget != ""  %>
+        	<b>計價方式</b></br>
+        	
+        	<% if ground.budget_option == "三小時/一小時(續)/一天" %>
+	          <% 0.upto(2) do |i| %>
+		        	NT$<%= ground.budget.split(',')[i] %>/<%= ground.budget_option.split('/')[i] %></br>
+		        <% end %>
+		      <% end %>
+          
+          <% if ground.budget_option == "按時段收費" %>
+          	<%= ground.budget.split(',')[0] %></br>
+          	NT$<%= ground.budget.split(',')[2] %>/<%= ground.budget.split(',')[1] %>小時</br>
+          	<a href="<%= ground.budget_images_urls[0] %>">查看預算圖片</a>
           <% end %>
+          
+          <% if ground.budget_option == "每小時/每人" %>
+	        	每小時/每人
+		      	NT$<%= ground.budget %></br>
+		      <% end %>
+          
+        <% else %>
+          無
         <% end %>
-        <% if ground.budget != ""%>
-          <%= ground.budget_option %>
-        <% end %>
-       
+        
+        
 			
 			</div>
 			<div class="productContent col-3"><%= ground.limit %></div>
