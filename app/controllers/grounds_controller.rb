@@ -61,14 +61,30 @@ class GroundsController < ApplicationController
           else
             @price << Product.find(i.id).budget.split(",")[0] + "," + i.id.to_s if Product.find(i.id).budget.blank? == false
           end
-          
+
         when "每小時/每人"
           @price << (Product.find(i.id).budget.to_i * peo * hou).to_s + "," + i.id.to_s
         end
       }
-      unless params[:budget].blank?
+      1.upto(@price.count) do |i|
+        index = 0
+        while index < @price.count-1
+          if @price[index].split(",")[0].to_i > @price[index+1].split(",")[0].to_i
+            x = @price[index]
+            y = @price[index+1]
+            @price[index] = y
+            @price[index+1] = x
+          end
+          index = index +1
+        end
+      end
+      if params[:budget].blank? != true || params[:hours].blank? != true || params[:people].blank? != true  
         @price.each do |i|
-          price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0].to_i <= params[:budget].to_i
+          if params[:budget].blank? != true
+            price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0].to_i <= params[:budget].to_i
+          else
+            price << Product.find(i.split(",")[1].to_i).name
+          end
         end
       end
     end
@@ -81,15 +97,7 @@ class GroundsController < ApplicationController
       }
       @search = @grounds.count
     else
-      if @price != []
-        find.map{ |i|
-          @grounds <<  Product.find(i.id)
-         }
-         @search = @grounds.count
-
-      else
-        redirect_to grounds_path, notice: "無搜尋到此條件"
-      end
+      redirect_to grounds_path, notice: "無搜尋到此條件"
     end
     #checkbox
     @regions = Region.all
@@ -118,7 +126,7 @@ class GroundsController < ApplicationController
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end
-    
+
   end
 
 end

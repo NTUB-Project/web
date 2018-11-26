@@ -102,74 +102,75 @@
       </div>
       <div id="searchPageRightColumn" class="col-md-12 col-lg-9">
         符合條件共<%=@search%>家廠商
-        <% @grounds.each do |ground| %>
-            <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-              <%= image_tag(ground.images_urls[0], width: '200px',height: '250px') if ground.images.present?%>
-              <div class="card-body">
+        <% @price.each do |price| %>
+          <% @grounds.each do |ground| %>
+            <% if price.split(",")[1].to_i == ground.id.to_i %>
+              <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
+                <%= image_tag(ground.images_urls[0], width: '200px',height: '250px') if ground.images.present?%>
+                <div class="card-body">
 
-                <div class="row">
-                  <div class="col-6 cardleft">
-                    <h3 class="mb-3">
-                      <a class="text-dark" href="#"><%= ground.name %></a>
-                    </h3>
-                    <p class="card-text mb-auto">
-                      <%= image_tag("marker.png", width: '20px',height: '20px')%>
-                      <% if ground.location != ""%>
-                        <a><%= ground.location.split('區').first+'區' %></a>
-                      <% end %>
-                    </p>
-                    <p class="card-text mb-auto">
-                      <%= image_tag("person.png", width: '20px',height: '20px')%>
-                      <% if ground.people_number.title != "不限人數" && ground.people_number.title != "50以上"  %>
-                        <% PeopleNumber.find_by(title: ground.people_number.title).id.upto(PeopleNumber.find_by(title: ground.people_number.title).id) do |i| %>
-                          <%= PeopleNumber.find(i).title.split('~').first %>
+                  <div class="row">
+                    <div class="col-6 cardleft">
+                      <h3 class="mb-3">
+                        <a class="text-dark" href="#"><%= ground.name %></a>
+                      </h3>
+                      <p class="card-text mb-auto">
+                        <%= image_tag("marker.png", width: '20px',height: '20px')%>
+                        <% if ground.location != ""%>
+                          <a><%= ground.location.split('區').first+'區' %></a>
                         <% end %>
-                        ~
-                        <% PeopleNumber.find_by(title: '50以上').id.upto(PeopleNumber.find_by(title: '50以上').id) do |i| %>
-                          <%= PeopleNumber.find(i).title.split('~').first %>
+                      </p>
+                      <p class="card-text mb-auto">
+                        <%= image_tag("person.png", width: '20px',height: '20px')%>
+                        <% if ground.people_number.title != "不限人數" && ground.people_number.title != "50以上"  %>
+                          <% PeopleNumber.find_by(title: ground.people_number.title).id.upto(PeopleNumber.find_by(title: ground.people_number.title).id) do |i| %>
+                            <%= PeopleNumber.find(i).title.split('~').first %>
+                          <% end %>
+                          ~
+                          <% PeopleNumber.find_by(title: '50以上').id.upto(PeopleNumber.find_by(title: '50以上').id) do |i| %>
+                            <%= PeopleNumber.find(i).title.split('~').first %>
+                          <% end %>
+                        <% else %>
+                          <%= ground.people_number.title %>
                         <% end %>
-                      <% else %>
-                        <%= ground.people_number.title %>
-                      <% end %>
-                    </p>
-                    
-                    <% @price.each do |a| %>
-                      <% if a.split(",")[1].to_i == ground.id %>
-                        <p class="card-text mb-auto" id="moneyStyle">
-                          <%= image_tag("coin.png", width: '20px',height: '20px')%>
-                          NT$
-                            <% @price.each do |i| %>
-                              <%= i.split(",")[0].to_i if i.split(",")[1].to_i == ground.id %>
-                            <% end %>
-                          起
-                        </p>
-                         <% end %>
-                      <% end %>
-                   
-                    
-                    <p class="card-text mb-auto">
-                      <%= image_tag("money.png", width: '20px',height: '20px')%>
-                      收費方式：
-                      <% if ground.budget != ""%>
-                        <a><%= ground.budget_option %></a>
-                      <% else %>
-                      目前無資料
-                      <% end %>
-                    </p>
-                  </div>
+                      </p>
 
-                  <div class="col-6 cardright">
-                    <div class="card-text mb-auto cardscroll">
-                      <a><%= ground.description %></a>
+                      <% @price.each do |i| %>
+                        <% if i.split(",")[1].to_i == ground.id %>
+                          <p class="card-text mb-auto" id="moneyStyle">
+                            <%= image_tag("coin.png", width: '20px',height: '20px')%>
+                            NT$
+                              <%= i.split(",")[0].to_i  %>
+                            起
+                          </p>
+                        <% end %>
+                      <% end %>
+
+                      <p class="card-text mb-auto">
+                        <%= image_tag("money.png", width: '20px',height: '20px')%>
+                        收費方式：
+                        <% if ground.budget != ""%>
+                          <a><%= ground.budget_option %></a>
+                        <% else %>
+                        目前無資料
+                        <% end %>
+                      </p>
+                    </div>
+
+                    <div class="col-6 cardright">
+                      <div class="card-text mb-auto cardscroll">
+                        <a><%= ground.description %></a>
+                      </div>
                     </div>
                   </div>
                 </div>
+                <div class="cardbtn">
+                  <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn" %>
+                  <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn" %>
+                </div>
               </div>
-              <div class="cardbtn">
-                <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn" %>
-                <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn" %>
-              </div>
-            </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
   </div>

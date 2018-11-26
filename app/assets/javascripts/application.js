@@ -108,14 +108,13 @@ function myFunction(x) {
       $(document).ready(function(){
         $('#mobile').removeClass('container');
         $(".hidesearch").hide();
-        //$("#collapseTitle").css();
-        
+    
       });
   } else {
-    
+
       $(window).scroll(function(){
         if( $('#searchbar').height()<$('#searchPageRightColumn').height() ){
-        
+
         	if($(this).scrollTop()>$('.activitycontent').offset().top){
         		$('#searchbar').addClass('fixed');
         	}else if( $(this).scrollTop()<$('.activitycontent').offset().top){
@@ -124,15 +123,13 @@ function myFunction(x) {
         	if( $(window).scrollTop() + $(window).height()>$('.footer').offset().top){
         		 $('#searchbar').removeClass('fixed');
         	}
-      	
+
         };
     });
-    
+
   }
 }
 
   var x = window.matchMedia("(max-width: 1000px)")
   myFunction(x) // Call listener function at run time
   x.addListener(myFunction)
-  
-  
