@@ -126,6 +126,7 @@ class GroundsController < ApplicationController
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end
+    
 
   end
 
