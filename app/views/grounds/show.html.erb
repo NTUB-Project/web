@@ -66,7 +66,8 @@
           	<%= ground.budget.split(',')[0] %></br>
           	NT$<%= ground.budget.split(',')[2] %>/<%= ground.budget.split(',')[1] %>小時</br>
 						<a class="fancybox" rel="group1" href="<%= ground.budget_images_urls[0] %>">
-	      			<%= image_tag( ground.budget_images_urls[0], width: '70px',height: '70px') if ground.budget_images.present? %>
+							<p style="<% ground.budget_images_urls[0] %>">查看預算圖片</p>
+	      			
 			      </a>          	
           <% end %>
           
