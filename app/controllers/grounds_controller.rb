@@ -43,7 +43,6 @@ class GroundsController < ApplicationController
 
     #budget
     price=[]
-    if params[:commit] != nil
       @price =[]
       peo = params[:people].to_i
       hou = params[:hours].to_i
@@ -78,7 +77,7 @@ class GroundsController < ApplicationController
           index = index +1
         end
       end
-      if params[:budget].blank? != true || params[:hours].blank? != true || params[:people].blank? != true  
+      if params[:budget].blank? != true || params[:hours].blank? != true || params[:people].blank? != true
         @price.each do |i|
           if params[:budget].blank? != true
             price << Product.find(i.split(",")[1].to_i).name if i.split(",")[0].to_i <= params[:budget].to_i
@@ -87,14 +86,19 @@ class GroundsController < ApplicationController
           end
         end
       end
-    end
     #search
     product = [region_name,activity_kind_name,people_number_name,price].reject(&:empty?).reduce(:&) || []
     @grounds = []
+    @price_grounds = []
     if product != []
+      g_id = []
+      p_id = []
       Product.where(name: product).group("name").select("MIN(id) AS id , name").map{ |i|
+        g_id << i.id
         @grounds <<  Product.find(i.id)
       }
+      @price.map{ |i| p_id << i.split(",")[1].to_i }
+      (g_id - p_id).map{ |i| @price_grounds << Product.find(i) }
       @search = @grounds.count
     else
       redirect_to grounds_path, notice: "無搜尋到此條件"
@@ -126,7 +130,7 @@ class GroundsController < ApplicationController
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end
-    
+
 
   end
 
