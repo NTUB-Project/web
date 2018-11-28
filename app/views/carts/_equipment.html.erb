@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-md-2 col-lg-2 trace_delete">
-          <button><%=link_to image_tag('cancel.png'), remove_cart_path(item.product_id), method: :put %></button>
+          <%=link_to image_tag('cancel.png'), remove_cart_path(item.product_id), method: :put %>
         </div>
       </div>
     </div>
