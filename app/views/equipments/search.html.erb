@@ -1,105 +1,105 @@
 <div class="activitycontent">
   <div id="mobile" class="container">
-    <div id="searchPageLeftColumn" class="search_bar col-md-12 col-lg-3">
-      <div id="searchbar">
-        <div id="joinedFilterList">
-        <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
-          <div class="filters-header-text">
-            <div style="display: block;">
-              <i class="ficon ficon-filter-icon"></i>
-              <p>自訂篩選</p>
+      <div id="searchPageLeftColumn" class="search_bar col-md-12 col-lg-3">
+        <div id="searchbar">
+          <div id="joinedFilterList">
+          <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
+            <div class="filters-header-text">
+              <div style="display: block;">
+                <i class="ficon ficon-filter-icon"></i>
+                <p>自訂篩選</p>
+              </div>
             </div>
-          </div>
-          <div id="filtersContainerReact" class="filtersContainerReact">
-            <div>
-              <div class="filters-container" data-selenium="filter-container">
-                <%= form_tag '/equipments/search' do %>
-                <ul class="filters-list">
-
-                  <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
-                    <div class="filter-menu">
-                      <span class="list-filter__title">地區</span>
-                    </div>
-                    <div class="filter-items">
-                      <ul class="list-filter__items filter-list-item">
-                        <%= render 'shared/searchregion'%>
-                      </ul>
-                      <div class="filter-options clearfix"></div>
-                    </div>
-                  </li>
-
-                  <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
-                    <div class="filter-menu">
-                      <span class="list-filter__title">活動類型</span>
-                    </div>
-                    <div class="filter-items">
-                      <ul class="list-filter__items filter-list-item">
-                        <%= render 'shared/searchactivity'%>
-                      </ul>
-                      <div class="filter-options clearfix"></div>
-                    </div>
-                  </li>
-
-                </ul>
-                <% end %>
+            <div id="filtersContainerReact" class="filtersContainerReact">
+              <div>
+                <div class="filters-container" data-selenium="filter-container">
+                  <%= form_tag '/equipments/search' do %>
+                  <ul class="filters-list">
+  
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">地區</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchregion'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+  
+                    <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
+                      <div class="filter-menu">
+                        <span class="list-filter__title">活動類型</span>
+                      </div>
+                      <div class="filter-items">
+                        <ul class="list-filter__items filter-list-item">
+                          <%= render 'shared/searchactivity'%>
+                        </ul>
+                        <div class="filter-options clearfix"></div>
+                      </div>
+                    </li>
+  
+                  </ul>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        </div>
       </div>
-      </div>
-    </div>
-    <div id="searchPageRightColumn" class="col-md-12 col-lg-9">
-      符合條件共<%=@search%>家廠商
-      <% @equipments.each do |equipment| %>
-          <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
-            <%= image_tag(equipment.images_urls[0], width: '200px',height: '250px') if equipment.images.present?%>
-            <div class="card-body">
-
-              <div class="row">
-                <div class="col-6 cardleft">
-                  <h3 class="mb-0 mb-3">
-                    <a class="text-dark" href="#"><%= equipment.name %></a>
-                  </h3>
-                  <p class="card-text mb-auto">
-                    <%= image_tag("house.png", width: '20px',height: '20px')%>
-                    <a><%= equipment.name %></a>
-                  </p>
-                  <p class="card-text mb-auto">
-                    <%= image_tag("marker.png", width: '20px',height: '20px')%>
-                    <% if equipment.location != ""%>
-                      <a><%= equipment.location.split('區').first+'區' %></a>
-                    <% end %>
-                  </p>
-                  <p class="card-text mb-auto">
-                    <%= image_tag("person.png", width: '20px',height: '20px')%>
-                    <% if equipment.people_number.title != "不限人數" && equipment.people_number.title != "50以上" %>
-                        <% PeopleNumber.find_by(title: equipment.people_number.title).id.upto(PeopleNumber.find_by(title: equipment.people_number.title).id) do |i| %>
-                          <%= PeopleNumber.find(i).title.split('~').first %>
-                        <% end %>
-                        ~
-                        <% PeopleNumber.find_by(title: '50以上').id.upto(PeopleNumber.find_by(title: '50以上').id) do |i| %>
-                          <%= PeopleNumber.find(i).title.split('~').first %>
-                        <% end %>
-                    <% else %>
-                      <%= equipment.people_number.title %>
-                    <% end %>
-                  </p>
-                </div>
-
-                <div class="col-6 cardright">
-                  <div class="card-text mb-auto cardscroll">
-                    <a><%= equipment.description %></a>
+      <div id="searchPageRightColumn" class="col-md-12 col-lg-9">
+        符合條件共<%=@search%>家廠商
+        <% @equipments.each do |equipment| %>
+            <div class="card flex-md-row mb-3 box-shadow h-md-250 w-100">
+              <%= image_tag(equipment.images_urls[0], width: '200px',height: '250px') if equipment.images.present?%>
+              <div class="card-body">
+  
+                <div class="row">
+                  <div class="col-6 cardleft">
+                    <h3 class="mb-0 mb-3">
+                      <a class="text-dark" href="#"><%= equipment.name %></a>
+                    </h3>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("house.png", width: '20px',height: '20px')%>
+                      <a><%= equipment.name %></a>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("marker.png", width: '20px',height: '20px')%>
+                      <% if equipment.location != ""%>
+                        <a><%= equipment.location.split('區').first+'區' %></a>
+                      <% end %>
+                    </p>
+                    <p class="card-text mb-auto">
+                      <%= image_tag("person.png", width: '20px',height: '20px')%>
+                      <% if equipment.people_number.title != "不限人數" && equipment.people_number.title != "50以上" %>
+                          <% PeopleNumber.find_by(title: equipment.people_number.title).id.upto(PeopleNumber.find_by(title: equipment.people_number.title).id) do |i| %>
+                            <%= PeopleNumber.find(i).title.split('~').first %>
+                          <% end %>
+                          ~
+                          <% PeopleNumber.find_by(title: '50以上').id.upto(PeopleNumber.find_by(title: '50以上').id) do |i| %>
+                            <%= PeopleNumber.find(i).title.split('~').first %>
+                          <% end %>
+                      <% else %>
+                        <%= equipment.people_number.title %>
+                      <% end %>
+                    </p>
+                  </div>
+  
+                  <div class="col-6 cardright">
+                    <div class="card-text mb-auto cardscroll">
+                      <a><%= equipment.description %></a>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class="cardbtn">
+                <%= link_to '加入蒐藏', add_cart_path(equipment), method: "post", class: "btn" %>
+                <%= link_to '詳細資訊', equipment_path(equipment,@detail) , class: "btn" %>
+              </div>
             </div>
-            <div class="cardbtn">
-              <%= link_to '加入蒐藏', add_cart_path(equipment), method: "post", class: "btn" %>
-              <%= link_to '詳細資訊', equipment_path(equipment,@detail) , class: "btn" %>
-            </div>
-          </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
 </div>

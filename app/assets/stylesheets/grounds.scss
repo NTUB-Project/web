@@ -115,12 +115,12 @@ div.introduce{
 .bnb-images {
     width: 100%;
 }
-.image-centered, .bnb-images .lg-img, .bnb-images .sm-img-1, .bnb-images .sm-img-2, .bnb-images .sm-img-3, .bnb .bnb-image-overlay .bnb-image-overlay-content .bnb-image-nav .bnb-nav-image, .room-type-card-content .room-image, .slick-box .slick-container .slider-nav .slider-nav-image {
+.image-centered, .bnb-images .lg-img, .bnb-images .sm-img-1, .bnb-images .sm-img-2, .bnb-images .sm-img-3, .bnb .bnb-image-overlay .bnb-image-overlay-content .bnb-image-nav .bnb-nav-image, .room-type-card-content .room-image, .slick-box .slick-container .slider-nav .slider-nav-image , .bnb-images .lg-imgone,.bnb-images .lg-imgtwo,.bnb-images .sm-img-1two,.bnb-images .sm-img-2three{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-.bnb-image-container, .bnb-images .lg-img, .bnb-images .sm-img-1, .bnb-images .sm-img-2, .bnb-images .sm-img-3 {
+.bnb-image-container, .bnb-images .lg-img, .bnb-images .sm-img-1, .bnb-images .sm-img-2, .bnb-images .sm-img-3, .bnb-images .lg-imgone,.bnb-images .lg-imgtwo,.bnb-images .sm-img-1two,.bnb-images .sm-img-2three{
     display: block;
     float: left;
 }
@@ -171,8 +171,25 @@ div.introduce{
 .clearfix {
     zoom: 1;
 }
-
-
+.bnb-images .lg-imgone {
+    width: 100%;
+    height: 400px;
+    margin-right: 8px;
+}
+.bnb-images .lg-imgtwo {
+    width: 50%;
+    height: 400px;
+    margin-right: 8px;
+}
+.bnb-images .sm-img-1two {
+    width: calc(50% - 12px);
+    height: 400px;
+    margin-bottom: 8px;
+}
+.bnb-images .sm-img-2three {
+    width: calc(44% - 10px);
+    height: 191px;
+}
 /*------------TOP------------*/
 div.backtotop{
 	position: fixed;

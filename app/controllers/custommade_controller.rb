@@ -50,6 +50,7 @@ class CustommadeController < ApplicationController
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end
+    @imgs =  @product_id.images.count
   end
 
 

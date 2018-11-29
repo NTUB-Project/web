@@ -46,6 +46,11 @@ body{
   text-decoration: none;
   color: #666666;
 }
+span.title{
+  color: rgb(27,189,54);
+  font-weight: 900;
+  font-size: 25px;
+}
 
 //navbar
 .navbar-toggler{
@@ -68,14 +73,20 @@ body{
 }
 
 //footer
-span.title{
-  color: rgb(27,189,54);
-  font-weight: 900;
-  font-size: 25px;
-}
 footer{
-  background-color: rgba(77,140,105,0.2);
+  background-color: #e7f1f1;
   clear: both;
+  width: 100%;
+  .logo{
+    font-size: 20px;
+    margin: 0;
+  }
+  span.title{
+    font-size: 20px;
+  }
+  p{
+    margin: 0;
+  }
 }
 .item{
   color: #fff;
@@ -138,11 +149,12 @@ div.devise_content{
 	padding-bottom: 80px;
 	text-align: center;
 	background-image: image-url('background.jpg');
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	background-attachment: fixed;
   background-position: center;
   background-size: cover;
 }
+
 div.devise_content h3{
 	font-size: 40px;
 	margin-top: 50px;

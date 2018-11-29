@@ -15,23 +15,49 @@
 			</div>
 
       <div class="bnb-images">
-      	<a class="fancybox" rel="group" href="<%= food.images_urls[0] %>">
-      		<div class="lg-img bnb-image" style="background-image:url(<%= food.images_urls[0] %>)"></div>
-      	</a>
-      	<a class="fancybox" rel="group" href="<%= food.images_urls[1] %>">
-	      	<div class="bnb-image sm-img-1" style="background-image:url(<%= food.images_urls[1] %>)"></div>
-	      </a>
-	      <a class="fancybox" rel="group" href="<%= food.images_urls[2] %>">
-	      	<div class="bnb-image sm-img-2" style="background-image:url(<%= food.images_urls[2] %>)"></div>
-	      </a>
-	      <% 0.upto(food.images.count-4) do |i| %>
-	      <a class="fancybox" rel="group" href="<%= food.images_urls[i+3] %>">
-	      <% end %>
-	      	<div class="bnb-image sm-img-3" style="background-image:url(<%= food.images_urls[3] %>)">
-	      		<div class="bnb-image-layer"></div>
-	      		<p class="more-images">查看更多</p>
-      		</div>
-      	</a>
+      	<% if @imgs > 3 %>
+	      	<a class="fancybox" rel="group" href="<%= food.images_urls[0] %>">
+	      		<div class="lg-img" style="background-image:url(<%= food.images_urls[0] %>)"></div>
+	      	</a>
+	      	<a class="fancybox" rel="group" href="<%= food.images_urls[1] %>">
+		      	<div class="sm-img-1" style="background-image:url(<%= food.images_urls[1] %>)"></div>
+		      </a>
+		      <a class="fancybox" rel="group" href="<%= food.images_urls[2] %>">
+		      	<div class="sm-img-2" style="background-image:url(<%= food.images_urls[2] %>)"></div>
+		      </a>
+		      <% 0.upto(food.images.count-4) do |i| %>
+		      <a class="fancybox" rel="group" href="<%= food.images_urls[i+3] %>">
+		      <% end %>
+		      	<div class="sm-img-3" style="background-image:url(<%= food.images_urls[3] %>)">
+		      		<div class="bnb-image-layer"></div>
+		      		<p class="more-images">查看更多</p>
+	      		</div>
+	      	</a>
+	      	
+	      <% elsif @imgs == 1 %>
+      		<a class="fancybox" rel="group" href="<%= food.images_urls[0] %>">
+	      		<div class="lg-imgone" style="background-image:url(<%= food.images_urls[0] %>)"></div>
+	      	</a>
+	      	
+	      <% elsif @imgs == 2 %>
+	      	<a class="fancybox" rel="group" href="<%= food.images_urls[0] %>">
+	      		<div class="lg-imgtwo" style="background-image:url(<%= food.images_urls[0] %>)"></div>
+	      	</a>
+	      	<a class="fancybox" rel="group" href="<%= food.images_urls[1] %>">
+		      	<div class="sm-img-1two" style="background-image:url(<%= food.images_urls[1] %>)"></div>
+		      </a>
+		      
+		    <% else %>
+	      	<a class="fancybox" rel="group" href="<%= food.images_urls[0] %>">
+	      		<div class="lg-img" style="background-image:url(<%= food.images_urls[0] %>)"></div>
+	      	</a>
+	      	<a class="fancybox" rel="group" href="<%= food.images_urls[1] %>">
+		      	<div class="sm-img-1" style="background-image:url(<%= food.images_urls[1] %>)"></div>
+		      </a>
+		      <a class="fancybox" rel="group" href="<%= food.images_urls[2] %>">
+		      	<div class="sm-img-2three" style="background-image:url(<%= food.images_urls[2] %>)"></div>
+		      </a>
+      	<% end %>
       	<div class="clearfix"></div>
       </div>
 
