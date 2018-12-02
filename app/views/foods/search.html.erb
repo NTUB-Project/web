@@ -4,13 +4,15 @@
         <div id="searchbar">
           <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
+            <a style="color: #fff; text-decoration: none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
             <div class="filters-header-text">
               <div style="display: block;">
                 <i class="ficon ficon-filter-icon"></i>
                 <p>自訂篩選</p>
               </div>
             </div>
-            <div id="filtersContainerReact" class="filtersContainerReact">
+            </a>
+            <div id="collapseExample2">
               <div>
                 <div class="filters-container" data-selenium="filter-container">
                   <%= form_tag '/foods/search' do %>

@@ -108,6 +108,22 @@ function myFunction(x) {
       $(document).ready(function(){
         $('#mobile').removeClass('container');
         $(".hidesearch").hide();
+        $('#searchbar').css('height','auto');
+        $('#collapseExample2').addClass('collapse');
+        
+        $(window).scroll(function(){
+          if( $(this).height()+$('#searchbar').height()<$('.activitycontent').height()+$('.footer').height() ){
+
+          	if($(this).scrollTop()>$('#searchPageLeftColumn').offset().top){
+          		$('#searchbar').addClass('fixed');
+          	}else if( $(this).scrollTop()<$('#searchPageLeftColumn').offset().top){
+          		$('#searchbar').removeClass('fixed');
+          	}
+
+          };
+      });
+
+        
       });
   } else {
 
@@ -124,7 +140,7 @@ function myFunction(x) {
         	}
 
         };
-    });
+      });
 
   }
 }
@@ -132,3 +148,12 @@ function myFunction(x) {
   var x = window.matchMedia("(max-width: 1000px)")
   myFunction(x) // Call listener function at run time
   x.addListener(myFunction)
+  
+//footer
+
+$(document).ready(function(){
+if( $('body').height()<$(window).height() ){
+    a = $(window).height()-$('body').height()
+
+  };
+});

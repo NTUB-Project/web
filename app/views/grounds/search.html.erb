@@ -4,13 +4,15 @@
         <div id="searchbar">
           <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
+            <a style="color: #fff; text-decoration: none" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
             <div class="filters-header-text">
               <div style="display: block;">
                 <i class="ficon ficon-filter-icon"></i>
                 <p>自訂篩選</p>
               </div>
             </div>
-            <div id="filtersContainerReact" class="filtersContainerReact">
+            </a>
+            <div id="collapseExample2">
                 <div class="filters-container" data-selenium="filter-container">
                   <%= form_tag '/grounds/search' do %>
                   <ul class="filters-list">
@@ -55,12 +57,14 @@
         </div>
           <div id="joinedFilterList">
           <div class="filter-list filter-list-react filter-list--vertical" data-selenium="filter-list">
-            <div class="filters-header-text" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              <div style="display: block;">
-                <i class="ficon ficon-filter-icon"></i>
-                <p>進階篩選</p>
+            <a style="color: #fff; text-decoration: none" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <div class="filters-header-text" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <div style="display: block;">
+                  <i class="ficon ficon-filter-icon"></i>
+                  <p>進階篩選</p>
+                </div>
               </div>
-            </div>
+            </a>
             <div class="collapse" id="collapseExample">
                 <div class="filters-container" data-selenium="filter-container">
                   <ul class="filters-list">
