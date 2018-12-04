@@ -17,14 +17,31 @@ class FoodsController < ApplicationController
 
   def search
     all = Product.where(category: Category.find_by(title: "食物").id)
-    find = all.where(region: params[:region_ids]).or(all.where(people_number: params[:people_number_ids]))
-    food = find.group("name").select("MIN(id) AS id , name")
-    if food != []
-      @foods = []
-      0.upto(food.to_a.count-1) do |i|
-        @foods <<  Product.find_by(id: food[i].id)
+    find = all.group("name").select("MIN(id) AS id , name")
+    #region
+    region = find.where(region: params[:region_ids]).to_a
+    region_name = []
+    region.map {|i| region_name << i.name}
+    #people_number
+    people_number = []
+    if params[:people_number_ids] != nil
+      1.upto(params[:people_number_ids].max.to_i) do |i|
+        if find.where(people_number: i ).to_a != []
+          find.where(people_number: i ).to_a.map {|m| people_number <<  m }
+        end
       end
-      @search = @foods.count
+    end
+    people_number_name = []
+    people_number.map{|i| people_number_name << i.name}
+    #search
+    product = [region_name,people_number_name].reject(&:empty?).reduce(:&) || []
+    foods = []
+    if product != []
+      Product.where(name: product).group("name").select("MIN(id) AS id , name").map{ |i|
+        foods <<  Product.find(i.id)
+      }
+      @search = foods.count
+      @foods = foods.paginate(page: params[:page], per_page: 10)
     else
       redirect_to foods_path, notice: "無搜尋到此條件"
     end
@@ -54,7 +71,7 @@ class FoodsController < ApplicationController
       sum = sum + el
       @avg_rating =  sum / @comment.count
     end
-    
+
     @imgs =  @product_id.images.count
 
   end

@@ -93,13 +93,13 @@ class GroundsController < ApplicationController
     if product != []
       g_id = []
       p_id = []
-      Product.where(name: product).group("name").select("MIN(id) AS id , name").map{ |i|
-        g_id << i.id
-        @grounds <<  Product.find(i.id)
-      }
+      Product.where(name: product).group("name").select("MIN(id) AS id , name").map{ |i| g_id << i.id }
       @price.map{ |i| p_id << i.split(",")[1].to_i }
-      (g_id - p_id).map{ |i| @price_grounds << Product.find(i) }
-      @search = @grounds.count
+      ( p_id & g_id ).map{ |i| @grounds << Product.find(i) }
+      ( g_id - p_id ).map{ |i| @price_grounds << Product.find(i) }
+
+      @search = (@grounds + @price_grounds).count
+      @grounds = (@grounds + @price_grounds).paginate(page: params[:page], per_page: 5)
     else
       redirect_to grounds_path, notice: "無搜尋到此條件"
     end

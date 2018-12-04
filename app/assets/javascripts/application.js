@@ -90,7 +90,7 @@ anime.timeline({loop: true})
   $(".checkbox_submit").change(function(){
       var src = $(this);
       $.ajax({
-        type: "post",
+        type: "get",
         url: "/grounds/search",
         data: {"region_ids": this.id},
         success: function(result){
@@ -110,7 +110,7 @@ function myFunction(x) {
         $(".hidesearch").hide();
         $('#searchbar').css('height','auto');
         $('#collapseExample2').addClass('collapse');
-        
+
         $(window).scroll(function(){
           if( $(this).height()+$('#searchbar').height()<$('.activitycontent').height()+$('.footer').height() ){
 
@@ -123,7 +123,7 @@ function myFunction(x) {
           };
       });
 
-        
+
       });
   } else {
 
@@ -148,7 +148,7 @@ function myFunction(x) {
   var x = window.matchMedia("(max-width: 1000px)")
   myFunction(x) // Call listener function at run time
   x.addListener(myFunction)
-  
+
 //footer
 
 $(document).ready(function(){
@@ -157,3 +157,12 @@ if( $('body').height()<$(window).height() ){
 
   };
 });
+
+//各類廠商加入蒐藏notice
+function addcart(){
+  var id = document.getElementsByName("addbutton")[0].id;
+  $.ajax({
+    type: "post",
+    url: "/cart/add/" + id,
+    });
+};

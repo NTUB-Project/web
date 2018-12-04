@@ -17,14 +17,31 @@ class RentcarsController < ApplicationController
 
   def search
     all = Product.where(category: Category.find_by(title: "租車").id)
-    find = all.where(region: params[:region_ids]).or(all.where(people_number: params[:people_number_ids]))
-    rentcar = find.group("name").select("MIN(id) AS id , name")
-    if rentcar != []
-      @rentcars = []
-      0.upto(rentcar.to_a.count-1) do |i|
-        @rentcars <<  Product.find_by(id: rentcar[i].id)
+    find = all.group("name").select("MIN(id) AS id , name")
+    #region
+    region = find.where(region: params[:region_ids]).to_a
+    region_name = []
+    region.map {|i| region_name << i.name}
+    #people_number
+    people_number = []
+    if params[:people_number_ids] != nil
+      1.upto(params[:people_number_ids].max.to_i) do |i|
+        if find.where(people_number: i ).to_a != []
+          find.where(people_number: i ).to_a.map {|m| people_number <<  m }
+        end
       end
-      @search = @rentcars.count
+    end
+    people_number_name = []
+    people_number.map{|i| people_number_name << i.name}
+    #search
+    product = [region_name,people_number_name].reject(&:empty?).reduce(:&) || []
+    rentcars =[]
+    if product != []
+      Product.where(name: product).group("name").select("MIN(id) AS id , name").map{ |i|
+        rentcars <<  Product.find(i.id)
+      }
+      @search = rentcars.count
+      @rentcars = rentcars.paginate(page: params[:page], per_page: 10)
     else
       redirect_to rentcars_path, notice: "無搜尋到此條件"
     end

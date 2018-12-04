@@ -63,10 +63,19 @@ before_action :current_cart
       if find_item.blank? && count < 5
         CartItem.create(user_id: current_user.id , cart_id: current_cart , product_id: params[:id])
 
-        redirect_back(fallback_location: root_path, notice: "#{name}加入蒐藏")
+        respond_to do |format|
+          flash[:notice] = "#{name}已加入蒐藏！"
+          format.js   { render js:  "location.reload()" }
+        end
       else
-        redirect_back(fallback_location: root_path, alert: "#{name}已蒐藏過囉！") unless find_item.blank?
-        redirect_back(fallback_location: root_path, alert: "此類別的蒐藏已滿囉!")  if find_item.blank?
+        respond_to do |format|
+          if find_item.blank?
+            flash[:alert] = "此類別的蒐藏已滿囉!"
+          else
+            flash[:alert] = "#{name}已蒐藏過囉！"
+          end
+          format.js   { render js:  "location.reload()" }
+        end
       end
 
     else

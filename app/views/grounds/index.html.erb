@@ -14,7 +14,7 @@
               </a>
               <div id="collapseExample2">
                 <div class="filters-container" data-selenium="filter-container">
-                  <%= form_tag '/grounds/search' do %>
+                  <%= form_tag '/grounds/search' , method: :get do %>
                     <ul class="filters-list">
                       <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
                         <div class="filter-menu">
@@ -150,7 +150,7 @@
                 </div>
               </div>
               <div class="cardbtn">
-                <%= link_to '加入蒐藏', add_cart_path(ground), method: "post", class: "btn" ,id: ground.id %>
+                <button type="button" name="addbutton" onClick="addcart()" class="btn" id="<%= ground.id %>">加入蒐藏</button>
                 <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn" %>
               </div>
             </div>

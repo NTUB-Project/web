@@ -15,14 +15,15 @@ class CustommadeController < ApplicationController
 
   def search
     all = Product.where(category: Category.find_by(title: "印刷").id)
-    find = all.where(region: params[:region_ids]).or(all.where(people_number: params[:people_number_ids]))
+    find = all.where(region: params[:region_ids])
     custommade = find.group("name").select("MIN(id) AS id , name")
     if custommade != []
-      @custommades = []
+      custommades = []
       0.upto(custommade.to_a.count-1) do |i|
-        @custommades <<  Product.find_by(id: custommade[i].id)
+        custommades <<  Product.find_by(id: custommade[i].id)
       end
-      @search = @custommades.count
+      @search = custommades.count
+      @custommades = custommades.paginate(page: params[:page], per_page: 10)
     else
       redirect_to custommade_index_path, notice: "無搜尋到此條件"
     end

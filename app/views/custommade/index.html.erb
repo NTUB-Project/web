@@ -15,7 +15,7 @@
             <div id="collapseExample2">
               <div>
                 <div class="filters-container" data-selenium="filter-container">
-                  <%= form_tag search_custommade_index_path do %>
+                  <%= form_tag search_custommade_index_path, method: :get do %>
                   <ul class="filters-list">
 
                     <li id="dealsFilterList" class="filter-box filter-box--list dealsFilterList" data-selenium="filter-box">
@@ -85,7 +85,7 @@
                 </div>
               </div>
               <div class="cardbtn">
-                <%= link_to '加入蒐藏', add_cart_path(custommade), method: "post", class: "btn" %>
+                <button type="button" name="addbutton" onClick="addcart()" class="btn" id="<%= custommade.id %>">加入蒐藏</button>
                 <%= link_to '詳細資訊', custommade_path(custommade,@detail) , class: "btn" %>
               </div>
             </div>

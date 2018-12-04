@@ -13,17 +13,17 @@ Rails.application.routes.draw do
   resources :categories
   resources :comments
 
-  post '/grounds/search' => 'grounds#search'
-  post '/foods/search' => 'foods#search'
-  post '/rentcars/search' => 'rentcars#search'
-  post '/equipments/search' => 'equipments#search'
-  post '/costumes/search' => 'costumes#search'
-  post '/custommade/search' => 'custommade#search'
-  post '/searches/search' => 'searches#search'
-  post '/searches' => 'searches#index'
+  get '/grounds/search/:id' => 'grounds#search'
+  get '/foods/search' => 'foods#search'
+  get '/rentcars/search' => 'rentcars#search'
+  get '/equipments/search' => 'equipments#search'
+  get '/costumes/search' => 'costumes#search'
+  get '/custommade/search' => 'custommade#search'
+  get '/searches/search' => 'searches#search'
+  get '/searches' => 'searches#index'
   resources :equipments, :foods, :grounds, :rentcars, :costumes, :custommade do
     collection do
-      post :search
+      get :search
     end
   end
   resources :searches

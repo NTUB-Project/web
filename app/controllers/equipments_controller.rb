@@ -20,18 +20,19 @@ class EquipmentsController < ApplicationController
     find = all.where(region: params[:region_ids]).or(all.where(activity_kind_id: params[:activity_kind_ids]))
     equipment = find.group("name").select("MIN(id) AS id , name")
     if equipment != []
-      @equipments = []
+      equipments = []
       0.upto(equipment.to_a.count-1) do |i|
-        @equipments <<  Product.find_by(id: equipment[i].id)
+        equipments <<  Product.find_by(id: equipment[i].id)
       end
-      @search = @equipments.count
+      @search = equipments.count
+      @equipments = equipments.paginate(page: params[:page], per_page: 10)
     else
       redirect_to equipments_path, notice: "無搜尋到此條件"
     end
 
     #checkbox
     @regions = Region.all
-    @activity_kinds = PeopleNumber.all
+    @activity_kinds = ActivityKind.all
     @r = Region.where(id: params[:region_ids]).to_a
     @a = ActivityKind.where(id: params[:activity_kind_ids]).to_a
   end
