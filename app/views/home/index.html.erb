@@ -2,7 +2,7 @@
 <div class="bkgrdimg"><%= image_tag("background.jpg") %>
 	<div class="dropdownWraper">
 		<div class="centerDropdown">
-			<%= form_tag '/searches', method:"post"  do %>
+			<%= form_tag '/searches', method: :get do %>
 			<div class="dropdown evtType">
 				<select name="activity_kind_ids" id="activity_kind_ids">
 					<option style="display:none;" disabled="" selected="">活動性質</option>

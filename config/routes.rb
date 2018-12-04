@@ -26,7 +26,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :searches
+  resources :searches do
+    collection do
+      get :search
+    end
+  end
 
   resources :home do
     get 'about', on: :collection

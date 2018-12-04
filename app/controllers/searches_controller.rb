@@ -86,16 +86,17 @@ class SearchesController < ApplicationController
 
     product = [region_name,activity_kind_name,people_number_name,category_name].reject(&:empty?).reduce(:&) || []
 
-    @products = []
+    products = []
     if product != []
       0.upto(product.count-1) do |i|
-        @products <<  Product.find_by(name: product[i])
+        products <<  Product.find_by(name: product[i])
       end
     else
       redirect_to searches_path, notice: "無搜尋到此條件"
     end
 
-    @search = @products.count
+    @search = products.count
+    @products = products.paginate(page: params[:page], per_page: 10)
 
     #checkbox
     @regions = Region.all
