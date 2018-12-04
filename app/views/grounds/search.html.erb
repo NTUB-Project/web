@@ -161,7 +161,7 @@
                   </div>
                 </div>
                 <div class="cardbtn">
-                  <button type="button" name="addbutton" onClick="addcart()" class="btn" id="<%= ground.id %>">加入蒐藏</button>
+                  <button name="addbutton" onClick="addcart(<%= ground.id %>)" class="btn" >加入蒐藏</button>
                   <%= link_to '詳細資訊', ground_path(ground,@detail) , class: "btn" %>
                 </div>
               </div>

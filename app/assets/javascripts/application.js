@@ -159,8 +159,7 @@ if( $('body').height()<$(window).height() ){
 });
 
 //各類廠商加入蒐藏notice
-function addcart(){
-  var id = document.getElementsByName("addbutton")[0].id;
+function addcart(id){
   $.ajax({
     type: "post",
     url: "/cart/add/" + id,

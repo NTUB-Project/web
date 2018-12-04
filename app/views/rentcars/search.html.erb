@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="cardbtn">
-                <button type="button" name="addbutton" onClick="addcart()" class="btn" id="<%= rentcar.id %>">加入蒐藏</button>
+                <button name="addbutton" onClick="addcart(<%= rentcar.id %>)" class="btn" >加入蒐藏</button>
                 <%= link_to '詳細資訊', rentcar_path(rentcar,@detail) , class: "btn" %>
               </div>
             </div>
