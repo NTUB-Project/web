@@ -1,8 +1,7 @@
 <div class="devise_content">
-  
-  <div class="container">
-    <div class="login">
-      <h3 class="devise_title">會員登入</h3>
+  <div class="deviseForm">
+  <h3 class="devise_title">會員登入</h3>
+      <div class="login">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.label :email, "信箱：" %>
@@ -18,5 +17,6 @@
         <%= render "devise/shared/links" %>
       </div>
     </div>
+  
   </div>
 </div>

@@ -1,12 +1,12 @@
 <div class="devise_content">
-  <h3 class="devise_title">註冊</h3>
-  <div class="container">
+  <div class="deviseForm">
+    <h3 class="devise_title">註冊</h3>
     <div class="login">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
           <div class="form-group">
             <%= f.label :email, "　信　箱：" %>
-            <%= f.email_field :email , placeholder: 'ex: user@gmail.com',required: true, autofocus: true%>
+            <%= f.email_field :email , placeholder: 'ex: user@gmail.com',required: true, autofocus: true%></br>
             <%= f.label :password, "　密　碼：" %>
             <%= f.password_field :password , required: true%>
             <small class="form-text text-muted">※請使用6個字元以上的英文字母、數字和符號</small>
