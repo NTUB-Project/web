@@ -107,6 +107,7 @@ function myFunction(x) {
   if (x.matches) { // If media query matches
       $(document).ready(function(){
         $('#mobile').removeClass('container');
+        $('#gmapcontainer').removeClass('container');
         $(".hidesearch").hide();
         $('#searchbar').css('height','auto');
         $('#collapseExample2').addClass('collapse');
