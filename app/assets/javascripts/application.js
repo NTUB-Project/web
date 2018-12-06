@@ -153,9 +153,16 @@ function myFunction(x) {
 
 
 //各類廠商加入蒐藏notice
-function addcart(id){
-  $.ajax({
-    type: "post",
-    url: "/cart/add/" + id,
-    });
+function addcart(id,a,url){
+  if (a == false){
+    window.location.href = url ;
+    alert('請先登入再蒐藏！');
+  }
+  else{
+    $.ajax({
+      type: "post",
+      url: "/cart/add/" + id,
+      });
+  }
+
 };
