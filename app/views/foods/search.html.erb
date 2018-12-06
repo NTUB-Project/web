@@ -93,7 +93,7 @@
                 </div>
               </div>
               <div class="cardbtn">
-                <button name="addbutton" onClick="addcart(<%= food.id %>)" class="btn" >加入蒐藏</button>
+                <button name="addbutton" onClick="addcart(<%= food.id %>, <%= user_signed_in? %>, '<%= new_user_session_url %>')" class="btn" >加入蒐藏</button>
                 <%= link_to '詳細資訊', food_path(food,@detail) , class: "btn" %>
               </div>
             </div>

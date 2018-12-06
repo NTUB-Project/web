@@ -153,6 +153,7 @@ function myFunction(x) {
   x.addListener(myFunction)
 
 
+<<<<<<< HEAD
 // //各類廠商加入蒐藏notice
 function addcart(id){
   $.ajax({
@@ -161,3 +162,19 @@ function addcart(id){
     });
 };
 
+=======
+//各類廠商加入蒐藏notice
+function addcart(id,a,url){
+  if (a == false){
+    window.location.href = url ;
+    alert('請先登入再蒐藏！');
+  }
+  else{
+    $.ajax({
+      type: "post",
+      url: "/cart/add/" + id,
+      });
+  }
+
+};
+>>>>>>> 5a253b101af85ace99698ac9be80aa65c978d966

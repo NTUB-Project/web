@@ -47,7 +47,6 @@ before_action :current_cart
   end
 
   def add
-    if user_signed_in?
       @category = Product.find(params[:id]).category_id
       count = 0
       items = CartItem.where(user_id: current_user.id)
@@ -62,7 +61,6 @@ before_action :current_cart
       name = Product.find(params[:id]).name
       if find_item.blank? && count < 5
         CartItem.create(user_id: current_user.id , cart_id: current_cart , product_id: params[:id])
-
         respond_to do |format|
           flash[:notice] = "#{name}已加入蒐藏！"
           format.js   { render js:  "location.reload()" }
@@ -77,10 +75,6 @@ before_action :current_cart
           format.js   { render js:  "location.reload()" }
         end
       end
-
-    else
-      redirect_to new_user_session_url, alert:"請先登入再蒐藏!"
-    end
   end
 
   def remove
