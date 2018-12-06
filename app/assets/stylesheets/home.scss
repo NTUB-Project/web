@@ -244,7 +244,9 @@ select:-moz-focusing {
   .dropdown select {
     width: 90%; }
   .dropdown.evtType, .dropdown.location, .dropdown.capacity {
-    width: 90%; }
+    width: 90%;
+    font-size: 32px;
+    letter-spacing: 5px; }
   .dropdown.evtType select,.dropdown.location select, .dropdown.capacity select {
     width: 95%; }
   .dropdown::after {
@@ -252,13 +254,17 @@ select:-moz-focusing {
 
   .greenBtn {
     margin: 20px 0 0 0px;
-    width: 90%; }
+    width: 90%;
+    font-size: 28px;
+    letter-spacing: 10px;
+    line-height: 30px;
+  }
 
   .keySearch {
     width: 90%;
     margin: 20px 0 0;
     padding: 0 0 0 15px;
-    font-size: 0.9em; }
+    font-size: 1.5em; }
 
   .keySearchBtn {
     display: none;
@@ -269,4 +275,14 @@ select:-moz-focusing {
   .feature{
     padding-top: 150px;
   }
+  
+  //首頁icon
+  .grid-container h2 {
+	font-size: 26px;
+  }
+  .dropdown.evtType::before, .dropdown.location::before, .dropdown.capacity::before{
+  background-size: 30px;
+  height: 33px;
+  width: 31px;
+}
 }

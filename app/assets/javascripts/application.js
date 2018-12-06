@@ -126,7 +126,9 @@ function myFunction(x) {
 
       });
   } else {
-
+    $(document).ready(function(){
+      $('#collapseExample2').addClass('show');
+    });
       $(window).scroll(function(){
         if( $('#searchbar').height()<$('#searchPageRightColumn').height() ){
 
@@ -149,14 +151,6 @@ function myFunction(x) {
   myFunction(x) // Call listener function at run time
   x.addListener(myFunction)
 
-//footer
-
-$(document).ready(function(){
-if( $('body').height()<$(window).height() ){
-    a = $(window).height()-$('body').height()
-
-  };
-});
 
 //各類廠商加入蒐藏notice
 function addcart(id){

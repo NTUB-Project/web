@@ -8,6 +8,7 @@ div.cartcontent{
 	height: auto;
 	margin-top: 40px;
 	font-family: "微軟正黑體", sans-serif;
+	height: -webkit-fill-available;
 }
 .cartcontent .card p{
   font-size: 14px;
@@ -15,7 +16,7 @@ div.cartcontent{
   line-height: 24px;
 }
 div.message1{
-	margin:0 auto;
+	margin: 0 auto;
 	right: auto;
 	left: auto;
 	width: 70%;
@@ -76,8 +77,8 @@ div.message1{
   border: 0;
   background: #fff;
 }
-.sub_title button img{
-  margin-right: 5px;
+.sub_title img{
+  margin-right: 2px;
 }
 .sub_title > div {
   display: inline-block;
@@ -175,9 +176,33 @@ textarea:disabled{
     width: 90%;
   }
   div.message1{
-  	margin:0 auto;
-  	right: auto;
-  	left: auto;
   	width: 100%;
+  	.card-text h3{
+  	  font-size: 36px;
+  	}
+  	.card-text p{
+  	  font-size: 24px;
+  	  line-height: 30px;
+  	}
+  	.trace_delete img{
+  	  width: 30px;
+  	}
+  }
+  .sub_title {
+  margin-top: 10px;
+  text-align: center;
+  font-family: '微軟正黑體';
+  }
+  .sub_title button {
+  font-size: 30px;
+  line-height: 30px;
+  }
+  .sub_title button img{
+   margin-right: 2px;
+   width: 30px;
+   height: 30px;
+  }
+  .cartbtn .btn{
+    font-size: 24px;
   }
 }

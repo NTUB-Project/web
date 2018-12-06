@@ -120,7 +120,7 @@ footer{
 //關於我們
 .about_us{
   padding-top: 120px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   .about_us_image{
     img{
       max-width: 50%;
@@ -137,8 +137,8 @@ footer{
   .video{
     text-align: center;
     iframe{
-      width: 80%;
-      height: 480px;
+      width: 900px;
+      height: 500px;
     }
   }
 }
@@ -164,7 +164,7 @@ div.devise_content h3{
 }
 div.login{
 	font-size: 36px;
-	background:rgba(175,175,175,0.3);
+	background: rgba(175,175,175,0.3);
   border-radius: 50px;
   margin-top: 20px;
   .devise_inputs{
@@ -378,7 +378,6 @@ div.activitycontent{
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: #495057;
     background-color: #fff;
-
 }
 
 
@@ -464,8 +463,12 @@ thead th:nth-child(4),tbody td:nth-child(4){
 
 @media (max-width: 1000px) {
   //navbar
+  body{
+    letter-spacing: 1px;
+  }
   .navbar-nav{
-  font-size: 26px;
+  font-size: 30px;
+  line-height: 40px;
   }
 
   .logo{
@@ -488,6 +491,8 @@ thead th:nth-child(4),tbody td:nth-child(4){
 
   //about頁面
   .about_us{
+    margin-top: 90px;
+    height: -webkit-fill-available;
     .about_us_image{
       img{
         max-width: 100%;
@@ -495,12 +500,38 @@ thead th:nth-child(4),tbody td:nth-child(4){
       }
     }
     p{
-    font-size: 20px;
+    font-size: 26px;
     }
     .video iframe{
-      width: 100%;
-      height: 300px;
+      width: 700px;
+      height: 400px;
     }
+  }
+  
+  //devise頁面
+  div.deviseForm{
+    width: 1200px;
+  }
+  div.devise_content h3{
+  	font-size: 50px;
+  }
+  div.login{
+    margin-top: 30px;
+  }
+  div.login form{
+  	font-size: 25px;
+  }
+  .login form input{
+    margin-bottom: 20px;
+  }
+  div.login .devise_btn{
+  	font-size: 25px;
+  }
+  .login .form-group, .login .form-inputs{
+    padding: 10px 20px 0px 20px;
+  }
+  .form-actions .btn{
+    font-size: 26px;
   }
   
 
@@ -511,14 +542,17 @@ thead th:nth-child(4),tbody td:nth-child(4){
   .filter-item-info{
     font-size: 20px;
   }
- #searchbar{
+  #searchbar{
     float: none;
     width: 100%;
   }
   #searchPageRightColumn {
     float: none;
   }
-
+  #searchbar p {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
   //寄件夾欄位
   .mattercontent{
     .container{

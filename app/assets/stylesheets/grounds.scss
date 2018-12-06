@@ -109,6 +109,17 @@ div.introduce{
   overflow: auto;
   height: 140px;
 }
+.productContentTitle{
+  height: 100px;
+}
+.content img{
+  width: 20px;
+  height: 20px;
+}
+.descriptContent{
+  overflow: auto;
+  height: 140px;
+}
 
 /*------------show.html各別廠商圖片------------*/
 
@@ -212,8 +223,11 @@ a.top img{
 
 
 @media (max-width: 1000px) {
+  .content{
+    font-size: 24px;
+  }
   .card p{
-	  font-size: 22px;
+	  font-size: 24px;
 	  line-height: 24px;
   }
   div.detail{
@@ -223,5 +237,50 @@ a.top img{
   	position: fixed;
   	right: 3%;
   	bottom: 5%;
+  }
+  .cardbtn .btn{
+    font-size: 22px;
+  }
+  .cardright{
+    font-size: 24px;
+  }
+  div.detail{
+	width: 95%;
+  }
+  .name p{
+  	font-size: 50px;
+  	line-height: 50px;
+  }
+  div.introduce{
+	height: 300px;
+	font-size: 30px;
+	line-height: 30px;
+  }
+  .descriptContent{
+  height: 270px;
+  }
+  .productContent{
+  height: 250px;
+  font-size: 24px;
+  line-height: 30px;
+  }
+  .productContentTitle{
+  height: 230px;
+  }
+  .content h2{
+    font-size: 40px;
+  }
+  .content img{
+  width: 30px;
+  height: 30px;
+  }
+  .content h5{
+    font-size: 30px;
+  }
+  .pull-right{
+	font-size: 24px;
+  }
+  .detail .addbtn .btn{
+    font-size: 30px;
   }
 }

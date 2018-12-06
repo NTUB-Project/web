@@ -63,17 +63,17 @@
 
 	<div class="introduce">
 		<h2 class="eachProgramTitle">簡介</h2>
-		<%= ground.description %>
+		<div class="descriptContent"><%= ground.description %></div>
 	</div>
 
 	<h2 class="eachProgramTitle">內容</h2>
 		<div class="row">
-			<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
-			<div class="col-3"><h5><%=image_tag('list.png', size: '20')%> 活動類型</h5></div>
-			<div class="col-3"><h5><%=image_tag('sale.png', size: '20')%> 收費相關</h5></div>
-			<div class="col-3"><h5><%=image_tag('lock.png', size: '20')%> 額外限制</h5></div>
+			<div class="col-3"><h5><%=image_tag('monitor.png')%> 設備</h5></div>
+			<div class="col-3"><h5><%=image_tag('list.png')%> 活動類型</h5></div>
+			<div class="col-3"><h5><%=image_tag('sale.png')%> 收費相關</h5></div>
+			<div class="col-3"><h5><%=image_tag('lock.png')%> 額外限制</h5></div>
 		</div>
-		<div class="row" style="height: 100px">
+		<div class="row productContentTitle">
 			<div class="productContent col-3"><%= ground.equipment %></div>
 			<div class="productContent col-3"><%= ground.item %></div>
 			<div class="productContent col-3">
@@ -111,9 +111,9 @@
 		</div>
 
 	<h2 class="eachProgramTitle">聯絡資訊</h2>
-	<%=image_tag('tel.png', size: '20')%> 電話：  <%= ground.tel %></br></br>
-	<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= ground.email.split('"')[1] %></br></br>
-	<%=image_tag('home.png', size: '20')%> 網站：  <%= ground.url.split('"')[1] %>
+	<%=image_tag('tel.png')%> 電話：  <%= ground.tel %></br></br>
+	<%=image_tag('mail2.png')%> 信箱：  <%= ground.email.split('"')[1] %></br></br>
+	<%=image_tag('home.png')%> 網站：  <%= ground.url.split('"')[1] %>
 
 	<h2 class="eachProgramTitle">地理位置
 		<span class="pull-right"><%= ground.location %></span>

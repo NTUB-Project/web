@@ -68,12 +68,12 @@
 
 			<h2 class="eachProgramTitle">內容</h2>
 				<div class="row">
-					<div class="col-3"><h5><%=image_tag('monitor.png', size: '20')%> 設備</h5></div>
-					<div class="col-3"><h5><%=image_tag('list.png', size: '20')%> 活動類型</h5></div>
-					<div class="col-3"><h5><%=image_tag('sale.png', size: '20')%> 優惠活動</h5></div>
-					<div class="col-3"><h5><%=image_tag('lock.png', size: '20')%> 額外限制</h5></div>
+					<div class="col-3"><h5><%=image_tag('monitor.png')%> 設備</h5></div>
+					<div class="col-3"><h5><%=image_tag('list.png')%> 活動類型</h5></div>
+					<div class="col-3"><h5><%=image_tag('sale.png')%> 優惠活動</h5></div>
+					<div class="col-3"><h5><%=image_tag('lock.png')%> 額外限制</h5></div>
 				</div>
-				<div class="row" style="height: 100px">
+				<div class="row productContentTitle">
 					<div class="col-3"><%= food.equipment %></div>
 					<div class="col-3"><%= food.item %></div>
 					<div class="col-3"><%= food.activity %></div>
@@ -81,9 +81,9 @@
 				</div>
 
 			<h2 class="eachProgramTitle">聯絡資訊</h2>
-			<%=image_tag('tel.png', size: '20')%> 電話：  <%= food.tel %></br></br>
-			<%=image_tag('mail2.png', size: '20')%> 信箱：  <%= food.email.split('"')[1] %></br></br>
-			<%=image_tag('home.png', size: '20')%> 網站：  <%= food.url.split('"')[1] %>
+			<%=image_tag('tel.png')%> 電話：  <%= food.tel %></br></br>
+			<%=image_tag('mail2.png')%> 信箱：  <%= food.email.split('"')[1] %></br></br>
+			<%=image_tag('home.png')%> 網站：  <%= food.url.split('"')[1] %>
 
 			<h2 class="eachProgramTitle">地理位置
 				<span class="pull-right"><%= food.location %></span>
