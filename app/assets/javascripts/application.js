@@ -153,16 +153,6 @@ function myFunction(x) {
   x.addListener(myFunction)
 
 
-<<<<<<< HEAD
-// //各類廠商加入蒐藏notice
-function addcart(id){
-  $.ajax({
-    type: "post",
-    url: "/cart/add/" + id,
-    });
-};
-
-=======
 //各類廠商加入蒐藏notice
 function addcart(id,a,url){
   if (a == false){
@@ -177,4 +167,3 @@ function addcart(id,a,url){
   }
 
 };
->>>>>>> 5a253b101af85ace99698ac9be80aa65c978d966
