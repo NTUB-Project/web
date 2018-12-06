@@ -30,7 +30,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
           _.each(markers, function(marker){
            google.maps.event.trigger(marker.getServiceObject(), 'click');
           });
-          handler.getMap().setZoom(15);
+          handler.getMap().setZoom(16);
        });
  } else {
    alert("未允許或遭遇錯誤！");
