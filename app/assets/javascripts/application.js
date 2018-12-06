@@ -153,10 +153,11 @@ function myFunction(x) {
   x.addListener(myFunction)
 
 
-//各類廠商加入蒐藏notice
+// //各類廠商加入蒐藏notice
 function addcart(id){
   $.ajax({
     type: "post",
     url: "/cart/add/" + id,
     });
 };
+
