@@ -99,7 +99,7 @@ class GroundsController < ApplicationController
       ( g_id - p_id ).map{ |i| @price_grounds << Product.find(i) }
 
       @search = (@grounds + @price_grounds).count
-      @grounds = (@grounds + @price_grounds).paginate(page: params[:page], per_page: 5)
+      @grounds = (@grounds + @price_grounds).paginate(page: params[:page], per_page: 10)
     else
       redirect_to grounds_path, notice: "無搜尋到此條件"
     end
